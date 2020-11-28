@@ -1,12 +1,12 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-
+const helpers = require('./helpers');
 const commonConfig = require('./webpack.common');
 
 module.exports = merge(commonConfig, {
-  devtool: 'eval-source-map',
-
   mode: 'development',
+  
+  devtool: 'eval-source-map',
 
   entry: {
     'app': [
@@ -14,8 +14,24 @@ module.exports = merge(commonConfig, {
     ]
   },
 
+  module: {
+    rules: [
+      // JS files
+      {
+        test: /\.jsx?$/,
+        include: helpers.root('client'),
+        loader: 'babel-loader'
+      },
+
+      // CSS files
+      
+      { test: /\.css$/, use: ['style-loader','css-loader' ]}
+    ]
+  },
+
   output: {
     filename: 'js/[name].js',
+    //path: helpers.root('dist'),
     chunkFilename: '[id].chunk.js'
   },
 

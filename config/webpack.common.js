@@ -10,6 +10,7 @@ const NODE_ENV = process.env.NODE_ENV;
 const isProd = NODE_ENV === 'production';
 
 module.exports = {
+  mode: 'development',
   entry: {
     'app': [
       helpers.root('client/app/index.js')
@@ -37,31 +38,9 @@ module.exports = {
         loader: 'babel-loader'
       },
 
-      // SCSS files
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                'sourceMap': true,
-                'importLoaders': 1
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [
-                  autoprefixer
-                ]
-              }
-            },
-            'sass-loader'
-          ]
-        })
-      }
+      // CSS files
+      
+      { test: /\.css$/, use: ['style-loader','css-loader' ]}
     ]
   },
 
