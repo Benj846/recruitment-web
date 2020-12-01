@@ -38,6 +38,12 @@ module.exports = {
         loader: 'babel-loader'
       },
 
+      // Sass files
+      {
+        test: /\.sass?$/,
+        include: helpers.root('client'),
+        loader: 'sass-loader'
+      },
       // CSS files
       
       { test: /\.css$/, use: ['style-loader','css-loader' ]}
