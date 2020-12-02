@@ -1,0 +1,213 @@
+.이력서 {
+  top: 210px;
+  left: 520px;
+  width: 158px;
+  height: 31px;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    25px/31px var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal bold 25px/31px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+.text2 {
+  top: 246px;
+  left: 520px;
+  width: 386px;
+  height: 19px;
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  letter-spacing: 0px;
+  opacity: 1;
+}
+
+.기본정보 {
+  top: 330px;
+  left: 520px;
+  height: 24px;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal bold 20px/24px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+.line {
+  width: 880px;
+  margin-left: 0px;
+  border: 2px solid var(--unnamed-color-707070);
+  border: 2px solid #707070;
+  opacity: 1;
+}
+.root {
+  padding-top: 20px;
+}
+.componentStyle {
+  margin: 80px 100px 0px 100px;
+}
+.form {
+  width: 160px;
+  height: 190px;
+  display: flex;
+  border: solid 1px;
+}
+.form-container {
+  display: flex;
+}
+.씨발 {
+  display: flex;
+}
+.no-input-outline {
+  outline: 0px;
+}
+.input-container {
+  margin-left: 20px;
+}
+.span-name {
+  margin-right: 68px;
+  font-size: 13px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+.input-name {
+  width: 250px;
+  height: 40px;
+  border: 1px solid var(--unnamed-color-dddddd);
+  border: 1px solid #dddddd;
+  opacity: 1;
+}
+.span-gender {
+  margin-left: 20px;
+  margin-right: 68px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+.gender-input {
+  width: 250px;
+  height: 40px;
+}
+.span-birth {
+  margin-right: 45px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+.input-birth {
+  width: 250px;
+  height: 40px;
+  border: 1px solid var(--unnamed-color-dddddd);
+  background: #f0f0f0 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  opacity: 1;
+}
+.span-phonenum {
+  margin-left: 20px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+.input-phonenum {
+  width: 250px;
+  height: 40px;
+  border: 1px solid var(--unnamed-color-dddddd);
+  background: #f0f0f0 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  opacity: 1;
+}
+.span-addr {
+  margin-right: 56px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+.input-addr {
+  width: 250px;
+  height: 40px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--unnamed-color-dddddd);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  opacity: 1;
+}
+.span-mili {
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+
+.input-mili {
+}
+.span-email {
+  margin-right: 56px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+
+.input-email {
+  width: 610px;
+  height: 40px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--unnamed-color-dddddd);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  opacity: 1;
+}

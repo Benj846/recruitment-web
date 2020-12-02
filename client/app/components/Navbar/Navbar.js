@@ -5,28 +5,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AddTutorial from "../add-tutorial.component";
 import Tutorial from "../tutorial.component";
-import TutorialsList from "../tutorials-list.component";
+import Resume from "../Resume";
 import "./Navbar.css"
 class Navbar extends Component {
   render() {
     return (
       <div className="main">
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/tutorials"} className="navbar-brand">
+          <Link to={"/menu1"} className="navbar-brand">
             Fapply
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <ul className="submenu">
                 <li>submenu1
-                  <Link to={"/tutorials"} className="nav-link">
+                  <Link to={"/menu1"} className="nav-link">
                     Menu1
                   </Link>  
                 </li>
                 <li>submenu2</li>
                 <li>submenu3</li>
               </ul>
-              <Link to={"/tutorials"} className="nav-link">
+              <Link to={"/menu1"} className="nav-link">
                 Menu1
               </Link>
             </li>
@@ -45,7 +45,7 @@ class Navbar extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path="/tutorials" component={TutorialsList} /> 
+            <Route exact path="/menu1" component={Resume} /> 
             <Route exact path="/add" component={AddTutorial} />
             <Route exact path="/menu3" component={AddTutorial} />
             <Route path="/tutorials/:id" component={Tutorial} />
