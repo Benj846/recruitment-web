@@ -1,8 +1,5 @@
 .career-info {
-  width: 880px;
-  height: 1740px;
-  --border: 1px solid red;
-  margin: 0 auto;
+  margin: 80px 100px 0px 100px;
 }
 /* .career-content .career {
     --position: absolute;
@@ -194,4 +191,9 @@ hr {
   letter-spacing: 0px;
   color: #009999;
   opacity: 1;
+}
+
+.basic-multi-select {
+  width: 664px;
+  height: 40px;
 }

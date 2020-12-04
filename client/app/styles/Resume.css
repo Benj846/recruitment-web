@@ -1,7 +1,7 @@
 .main-style {
+  padding-bottom: 20px;
   top: 130px;
   left: 420px;
-  height: 154vh;
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;

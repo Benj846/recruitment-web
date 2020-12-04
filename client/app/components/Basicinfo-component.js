@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import './Basicinfo-component.css';
+import '../../app/styles/Basicinfo-component.css';
+import Popup from './Popup-component';
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'chocolate', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
+  { value: 'vanilla', label: 'Vanilla' }
 ];
 class Basicinfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showPopup: false,
       employee: {
-        name: 'dummy',
-      },
+        name: 'dummy'
+      }
     };
+  }
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   render() {
@@ -45,14 +52,8 @@ class Basicinfo extends Component {
                 id=""
               ></input>
               <span className="span-gender">성별</span>
-              {/* <input
-                className="no-input-outline gender-input"
-                type="text"
-                name="gender"
-                id=""
-              ></input> */}
-              <button>남</button>
-              <button>여</button>
+              <button className="male-btn">남</button>
+              <button className="female-btn">여</button>
               <br />
               <span className="span-birth">생년월일</span>
               <input
@@ -76,16 +77,42 @@ class Basicinfo extends Component {
                 name="address"
                 id=""
               ></input>
-              <button>search</button>
+              <button
+                className="search-btn"
+                onClick={this.togglePopup.bind(this)}
+              >
+                search
+              </button>
               <span className="span-mili">병역대상</span>
-              <Select option={options} />
+              <select className="select" name="" id="">
+                <option className="option1" value="해당없음">
+                  해당없음
+                </option>
+                <option value="">군필</option>
+                <option value="">공익</option>
+                <option value="">병역특례</option>
+                <option value="">면제</option>
+                <option value="">미필</option>
+              </select>
               <span className="span-email">이메일</span>
+
+              {/* ------------------------------------ */}
+
+              {/* ------------------------------------ */}
+
               <input
-                className="no-input-outline input-email"
+                className="input-email"
                 type="email"
                 name="email"
                 id=""
               ></input>
+
+              {this.state.showPopup ? (
+                <Popup
+                  text="거주지를 선택해주세요."
+                  closePopup={this.togglePopup.bind(this)}
+                />
+              ) : null}
             </div>
           </div>
         </div>

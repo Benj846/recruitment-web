@@ -64,9 +64,6 @@
 .씨발 {
   display: flex;
 }
-.no-input-outline {
-  outline: 0px;
-}
 .input-container {
   margin-left: 20px;
 }
@@ -91,6 +88,9 @@
   border: 1px solid #dddddd;
   opacity: 1;
 }
+.input-name:focus {
+  outline: none;
+}
 .span-gender {
   margin-left: 20px;
   margin-right: 68px;
@@ -108,6 +108,12 @@
 .gender-input {
   width: 250px;
   height: 40px;
+}
+.male-btn:focus {
+  outline: none;
+}
+.female-btn:focus {
+  outline: none;
 }
 .span-birth {
   margin-right: 45px;
@@ -130,6 +136,9 @@
   border: 1px solid #dddddd;
   opacity: 1;
 }
+.input-birth:focus {
+  outline: none;
+}
 .span-phonenum {
   margin-left: 20px;
   font: var(--unnamed-font-style-normal) normal
@@ -151,6 +160,9 @@
   border: 1px solid #dddddd;
   opacity: 1;
 }
+.input-phonenum:focus {
+  outline: none;
+}
 .span-addr {
   margin-right: 56px;
   font: var(--unnamed-font-style-normal) normal
@@ -164,6 +176,9 @@
   color: #999999;
   opacity: 1;
 }
+.search-btn:focus {
+  outline: none;
+}
 .input-addr {
   width: 250px;
   height: 40px;
@@ -172,6 +187,9 @@
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   opacity: 1;
+}
+.input-addr:focus {
+  outline: none;
 }
 .span-mili {
   font: var(--unnamed-font-style-normal) normal
@@ -186,8 +204,6 @@
   opacity: 1;
 }
 
-.input-mili {
-}
 .span-email {
   margin-right: 56px;
   font: var(--unnamed-font-style-normal) normal
@@ -209,5 +225,20 @@
   border: 1px solid var(--unnamed-color-dddddd);
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
+  opacity: 1;
+}
+.input-email:focus {
+  outline: none;
+}
+.popup-component {
+  justify-content: center;
+  margin: 20px;
+}
+.select {
+  background: #ffffff0d 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.option1 {
+  background: #ffffff0d 0% 0% no-repeat padding-box;
   opacity: 1;
 }

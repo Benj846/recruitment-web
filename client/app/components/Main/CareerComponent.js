@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
-import './career.css';
+import Select from 'react-select';
+import '../../styles/Career.css';
 
 function CareerComponent(props) {
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ];
+  const colourOptions = [
+    {
+      value: 'blue',
+      label: 'Blue',
+      color: '#0052CC',
+      isFixed: true
+    },
+    {
+      value: 'black',
+      label: 'Black',
+      color: '#000000',
+      isFixed: true
+    }
+  ];
   return (
     <div className="career-info">
       <div className="career-title">
@@ -42,9 +62,14 @@ function CareerComponent(props) {
       <div className="job-container">
         <div className="job-content">
           <span className="job-title">직무명</span>
-          <div className="job">
-            <div>+직무 추가하기</div>
-          </div>
+          <Select
+            defaultValue={[colourOptions[2], colourOptions[3]]}
+            isMulti
+            name="colors"
+            options={colourOptions}
+            className="basic-multi-select"
+            classNamePrefix="select"
+          />
         </div>
       </div>
     </div>
