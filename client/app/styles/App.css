@@ -1,3 +1,9 @@
+.main {
+  width: 100vw;
+  background: #eeeeee 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
 .list {
   text-align: left;
   max-width: 750px;
@@ -13,20 +19,20 @@
   max-width: 300px;
   margin: auto;
 }
-.submenu{
+.submenu {
   display: none;
 }
-.nav-item:hover > ul{
+.nav-item:hover > ul {
   display: block;
 }
-.navbar-brand{
+.navbar-brand {
   top: 20px;
   left: 430px;
   width: 100px;
   height: 19px;
   opacity: 1;
 }
-.rectangle{
+.rectangle {
   display: inline-block;
   width: 100px;
   height: 100px;

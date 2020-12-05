@@ -68,7 +68,7 @@
   margin-left: 20px;
 }
 .span-name {
-  margin-right: 68px;
+  margin-right: 70px;
   font-size: 13px;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
@@ -116,7 +116,7 @@
   outline: none;
 }
 .span-birth {
-  margin-right: 45px;
+  margin-right: 43px;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -141,6 +141,7 @@
 }
 .span-phonenum {
   margin-left: 20px;
+  margin-right: 40px;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)

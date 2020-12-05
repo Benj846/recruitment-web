@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Basicinfo from './Basicinfo-component';
 import '../styles/Resume.css';
-import CareerComponent from './Main/CareerComponent';
-import Education from './EducationComponent';
+import CareerComponent from './Career-Component';
+import Education from './Education-Component';
 export default class Resume extends Component {
   constructor(props) {
     super(props);
@@ -11,9 +11,9 @@ export default class Resume extends Component {
   render() {
     return (
       <main className="main-style">
-        <Basicinfo></Basicinfo>
-        <Education></Education>
-        <CareerComponent></CareerComponent>
+        <Basicinfo />
+        <Education />
+        <CareerComponent />
 
         {/* add more components here */}
       </main>

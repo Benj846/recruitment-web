@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import '../../styles/Career.css';
+import '../styles/Career.css';
 
 function CareerComponent(props) {
   const options = [
