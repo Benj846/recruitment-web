@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
 import '../../app/styles/Basicinfo-component.css';
 import Popup from './Popup-component';
 const options = [

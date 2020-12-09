@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Popup-component.css';
 
-class Test extends Component {
-  render() {
-    return <div>test</div>;
-  }
-}
-
 class Popup extends Component {
   constructor(props) {
     super(props);
