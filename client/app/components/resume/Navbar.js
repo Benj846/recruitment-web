@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 import AddTutorial from './add-tutorial.component';
-import App from './App/App';
+import App from '../App/App';
 import Resume from './Resume';
-import '../styles/Navbar.css';
+import '../../styles/Navbar';
 
 class Navbar extends Component {
   render() {
@@ -39,12 +39,15 @@ class Navbar extends Component {
           </div>
         </nav>
 
-        <div className="container mt-3">
-          <Switch>
-            <Route exact path="/hiring" component={App} />
-            <Route exact path="/add" component={AddTutorial} />
-            <Route exact path="/resume" component={Resume} />
-          </Switch>
+        {/* <div className="container mt-3"> */}
+        <div className="resume-container">
+          <div className="resume-content">
+            <Switch>
+              <Route exact path="/hiring" component={App} />
+              <Route exact path="/add" component={AddTutorial} />
+              <Route exact path="/resume" component={Resume} />
+            </Switch>
+          </div>
         </div>
       </div>
     );
