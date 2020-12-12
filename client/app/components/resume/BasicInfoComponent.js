@@ -50,7 +50,6 @@ class BasicInfoComponent extends Component {
                 className="no-input-outline input-name"
                 type="text"
                 name="name"
-                id=""
               ></input>
               <span className="span-gender">성별</span>
               <button className="male-btn">남</button>
@@ -61,14 +60,12 @@ class BasicInfoComponent extends Component {
                 className="no-input-outline input-birth"
                 type="date"
                 name="date"
-                id=""
               ></input>
               <span className="span-phonenum">전화번호</span>
               <input
                 className="no-input-outline input-phonenum"
                 type="number"
                 name="phoneNumber"
-                id=""
               ></input>
               <br />
               <span className="span-addr">거주지</span>
@@ -76,7 +73,6 @@ class BasicInfoComponent extends Component {
                 className="no-input-outline input-addr"
                 type="text"
                 name="address"
-                id=""
               ></input>
               <button
                 className="search-btn"
@@ -105,7 +101,6 @@ class BasicInfoComponent extends Component {
                 className="input-email"
                 type="email"
                 name="email"
-                id=""
               ></input>
 
               {this.state.showPopup ? (

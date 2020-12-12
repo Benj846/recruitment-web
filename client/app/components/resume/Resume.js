@@ -8,33 +8,25 @@ import SkillComponent from './SkillComponent';
 import PortfolioComponent from './PortfolioComponent';
 import '../../styles/Resume.css';
 
-export default class Resume extends Component {
-  constructor(props) {
-    super(props);
-  }
+function Resume()  {
+    return (
+      <div className="resume-body">
+        <div className="resume-main">
+            <BasicInfoComponent />
 
-  render() {
-    return (      
-      <main className="career-main">
-          <BasicInfoComponent />
+            <EducationComponent />
 
-          <EducationComponent />
+            <CareerComponent />
 
-          <CareerComponent />
+            <DriverComponent/>
 
-          <DriverComponent/>
+            <ExamComponent/>
 
-          <ExamComponent/>
+            <SkillComponent/>
 
-          <SkillComponent/>
-
-          <PortfolioComponent/>
-
-        <div>
-          
+            <PortfolioComponent/>
         </div>
-        {/* add more components here */}
-      </main>
+      </div>      
     );
-  }
 }
+export default Resume;

@@ -18,7 +18,7 @@ function SkillComponent (props) {
 
   return (
     <div className="skill-info">
-      <div className="career-title">
+      <div className="title-container">
         <div className="title">
             보유기술
         </div>

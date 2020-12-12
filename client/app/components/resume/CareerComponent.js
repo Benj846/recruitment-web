@@ -19,7 +19,7 @@ function CareerComponent(props) {
   
   return (
     <div className="career-info">
-      <div className="career-title">
+      <div className="title-container">
         <div className="title">경력사항</div>
         <div className="add-items" onClick={onCreate}>추가하기+</div>
       </div>

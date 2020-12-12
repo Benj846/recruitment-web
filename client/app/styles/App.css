@@ -1,6 +1,6 @@
 .main {
   width: 100vw;
-  background: #eeeeee 0% 0% no-repeat padding-box;
+  --background: #eeeeee 0% 0% no-repeat padding-box;
   opacity: 1;
 }
 

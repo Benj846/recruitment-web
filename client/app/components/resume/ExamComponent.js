@@ -18,7 +18,7 @@ function ExamComponent (props) {
 
   return (
     <div className="exam-info">
-      <div className="career-title">
+      <div className="title-container">
         <div className="title">
             공인시험
         </div>

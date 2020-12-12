@@ -1,4 +1,11 @@
-.career-main {
+.resume-body {
+  display: flex;
+  justify-content: center;
+  background: #eeeeee 0% 0% no-repeat padding-box;
+  box-shadow: 3px 3px 6px #00000029;
+}
+
+.resume-main {
   margin-top: 54px;
   --top: 130px;
   --left: 420px;
@@ -9,7 +16,7 @@
   opacity: 1;
   /* display: flex;
   justify-content: center; */
-  --width: 1080px;
+  width: 1080px;
 }
 /* .mm {
   background: #ffffff 0% 0% no-repeat padding-box;

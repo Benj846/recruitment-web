@@ -10,11 +10,24 @@ function EducationComponent(props) {
         <div className="title">최종학력</div>
         <select className="select-education">
           <option value={props.value}>최종학력을 선택해주세요</option>
-          <option value="대학교">대학교</option>
+          <option value="대학교">고졸</option>
+          <option value="대학교">초대졸</option>
+          <option value="대학교">편입</option>
+          <option value="대학교">학사</option>
+          <option value="대학교">석사</option>
+          <option value="대학교">박사</option>          
         </select>
       </div>
+      
     </div>
   );
 }
 
+function HighSchool() {
+  return(
+    <>
+      <div>고졸</div>
+    </>
+  );
+}
 export default EducationComponent;

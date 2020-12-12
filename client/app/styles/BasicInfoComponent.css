@@ -127,7 +127,7 @@
   opacity: 1;
 }
 .input-birth {
-  width: 250px;
+  width: 230px;
   height: 40px;
   border: 1px solid var(--unnamed-color-dddddd);
   background: #f0f0f0 0% 0% no-repeat padding-box;
@@ -152,7 +152,7 @@
   opacity: 1;
 }
 .input-phonenum {
-  width: 250px;
+  width: 230px;
   height: 40px;
   border: 1px solid var(--unnamed-color-dddddd);
   background: #f0f0f0 0% 0% no-repeat padding-box;

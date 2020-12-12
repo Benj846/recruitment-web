@@ -17,7 +17,7 @@ function PortfolioComponent (props) {
 
   return (
     <div className="portf-info">
-      <div className="career-title">
+      <div className="title-container">
         <div className="title">
             포트폴리오
         </div>
