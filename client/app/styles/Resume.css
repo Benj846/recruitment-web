@@ -18,6 +18,11 @@
   justify-content: center; */
   width: 1080px;
 }
+
+.resume-container {
+  --margin: 80px 100px 0px 100px;
+  border: 1px solid red;
+}
 /* .mm {
   background: #ffffff 0% 0% no-repeat padding-box;
   width: 1080px;

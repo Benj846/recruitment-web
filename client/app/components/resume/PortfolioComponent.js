@@ -1,6 +1,5 @@
 import React, { useState, useRef }  from 'react';
 import '../../styles/PortfolioComponent';
-import PortfolioListComponent from './PortfolioListComponent';
 
 function PortfolioComponent (props) {
   const [ids, setIds] = useState([]);
@@ -29,5 +28,24 @@ function PortfolioComponent (props) {
       <PortfolioListComponent ids={ids} onRemove={onRemove}/>
     </div>
   );
+}
+
+function PortfolioListComponent({ids, onRemove }) {
+    return(
+        <>
+            {
+                ids.map(
+                    id => <PortfolioDetailComponent id={id} key={id} onRemove={onRemove}/>
+                )
+            }
+        </>
+    );
+}
+
+function PortfolioDetailComponent({ids, onRemove }) {
+    return(
+        <>
+        </>
+    );
 }
 export default PortfolioComponent;
