@@ -1,4 +1,5 @@
 const express = require('express');
+const mysql = require('mysql');
 const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
@@ -11,15 +12,29 @@ const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
 
 const isDev = process.env.NODE_ENV !== 'production';
-const port  = process.env.PORT || 8080;
-
+const port = process.env.PORT || 8080;
 
 // Configuration
 // ================================================================================================
 
+// Set up Mysql
+
+const connection = mysql.createConnection({
+  host: '34.64.233.251',
+  user: 'fapply',
+  password: 'fapply@mysql',
+  database: 'fapply'
+});
+connection.connect();
+connection.query('SELECT * FROM FY_CODE_BIZ_TYPE', (err, rows) => {
+  if (err) throw err;
+  console.log('the solution is : ', rows[0]);
+});
+connection.end();
+
 // Set up Mongoose
-mongoose.connect(isDev ? config.db_dev : config.db);
-mongoose.Promise = global.Promise;
+// mongoose.connect(isDev ? config.db_dev : config.db);
+// mongoose.Promise = global.Promise;
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -31,22 +46,26 @@ require('./routes')(app);
 if (isDev) {
   const compiler = webpack(webpackConfig);
 
-  app.use(historyApiFallback({
-    verbose: false
-  }));
+  app.use(
+    historyApiFallback({
+      verbose: false
+    })
+  );
 
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    contentBase: path.resolve(__dirname, '../client/public'),
-    stats: {
-      colors: true,
-      hash: false,
-      timings: true,
-      chunks: false,
-      chunkModules: false,
-      modules: false
-    }
-  }));
+  app.use(
+    webpackDevMiddleware(compiler, {
+      publicPath: webpackConfig.output.publicPath,
+      contentBase: path.resolve(__dirname, '../client/public'),
+      stats: {
+        colors: true,
+        hash: false,
+        timings: true,
+        chunks: false,
+        chunkModules: false,
+        modules: false
+      }
+    })
+  );
 
   app.use(webpackHotMiddleware(compiler));
   app.use(express.static(path.resolve(__dirname, '../dist')));

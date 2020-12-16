@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/BasicInfoComponent'
+import '../../styles/BasicInfoComponent';
 import Popup from './PopupComponent';
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -29,14 +29,13 @@ class BasicInfoComponent extends Component {
         <div className="component-style">
           <p className="resume-title"> 이력서 작성하기</p>
           <p className="text">
-            {employee.name} 님의 프로필을 입력하시고, 더 많은
-            채용 기회를 확보하세요!
+            {employee.name} 님의 프로필을 입력하시고, 더 많은 채용 기회를
+            확보하세요!
           </p>
           <p className="basic-info-title">기본정보</p>
-          <hr className="division-line"/>
+          <hr className="division-line" />
 
           <div className="basic-info-container">
-            
             <div className="form-container">
               <form action="">
                 <div className="form">{/* <image src=""></image> */}</div>
@@ -97,11 +96,7 @@ class BasicInfoComponent extends Component {
 
               {/* ------------------------------------ */}
 
-              <input
-                className="input-email"
-                type="email"
-                name="email"
-              ></input>
+              <input className="input-email" type="email" name="email"></input>
 
               {this.state.showPopup ? (
                 <Popup

@@ -12,9 +12,7 @@ const isProd = NODE_ENV === 'production';
 module.exports = {
   mode: 'development',
   entry: {
-    'app': [
-      helpers.root('client/app/index.js')
-    ]
+    app: [helpers.root('client/app/index.js')]
   },
 
   output: {
@@ -25,7 +23,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.css', '.scss', '.html'],
     alias: {
-      'app': 'client/app'
+      app: 'client/app'
     }
   },
 
@@ -45,8 +43,19 @@ module.exports = {
         loader: 'sass-loader'
       },
       // CSS files
-      
-      { test: /\.css$/, use: ['style-loader','css-loader' ]}
+
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash]-[name].[ext]'
+            }
+          }
+        ]
+      }
     ]
   },
 
@@ -69,8 +78,10 @@ module.exports = {
       disable: !isProd
     }),
 
-    new CopyWebpackPlugin([{
-      from: helpers.root('client/public')
-    }])
+    new CopyWebpackPlugin([
+      {
+        from: helpers.root('client/public')
+      }
+    ])
   ]
 };
