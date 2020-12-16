@@ -7,6 +7,7 @@ import ExamComponent from './ExamComponent';
 import SkillComponent from './SkillComponent';
 import PortfolioComponent from './PortfolioComponent';
 import '../../styles/Resume.css';
+import SelfIntroductionComponent from './SelfIntroduction';
 
 function Resume()  {
     return (
@@ -25,6 +26,8 @@ function Resume()  {
             <SkillComponent/>
 
             <PortfolioComponent/>
+            
+            <SelfIntroductionComponent/>
         </div>
       </div>      
     );

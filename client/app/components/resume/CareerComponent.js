@@ -7,7 +7,6 @@ function CareerComponent(props) {
 
   const [ids, setIds] = useState([]);
   const refId = useRef(0);
-
   const onCreate = () => {
     const id = refId.current;    
     setIds(ids.concat(id));

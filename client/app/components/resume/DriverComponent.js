@@ -16,7 +16,7 @@ function DriversComponent (props) {
   }
 
   return (
-    <div className="exam-info">
+    <div className="driver-info">
       <div className="title-container">
         <div className="title">
             자격면허

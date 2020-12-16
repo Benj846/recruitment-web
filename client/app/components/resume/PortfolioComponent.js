@@ -2,50 +2,51 @@ import React, { useState, useRef }  from 'react';
 import '../../styles/PortfolioComponent';
 
 function PortfolioComponent (props) {
-  const [ids, setIds] = useState([]);
-  const refId = useRef(0);
-  const onCreate = () => {
-    const id = refId.current;    
-    setIds([...ids, id]);
-    refId.current += 1;
+  const [isClicked, setClicked] = useState(false);
+  const onAdd = () => {
+    setClicked(true);
   }
 
-  const onRemove = selectedId => {
-    setIds(ids.filter(id => id !== selectedId));
+  const onRemove = () => {
+    setClicked(false);
+  }
+
+  const printDetail = () => {
+    if (isClicked === true) {
+      return(
+        <>
+          <div className="url-link-container">
+            <div className="url-link-content">
+              <span>URL 링크</span>
+              <input className="link-input" placeholder="http://"/>
+            </div>
+            <div className="close-portfolio" onClick={onRemove}>X</div>
+          </div>
+          <div className="file-attach">
+            <span className="file-title">첨부파일</span>
+            <input className="file-input"/>
+            <button className="add-file">파일추가</button>
+          </div>
+        </>
+      );
+    } else {
+      return;
+    }
   }
 
   return (
     <div className="portf-info">
       <div className="title-container">
         <div className="title">
-            포트폴리오
+            논문/포트폴리오
         </div>
-        <div className="add-items" onClick={onCreate}>
+        <div className="add-items" onClick={onAdd}>
             추가하기+
         </div>
       </div>
-      <hr className="division-line"/>
-      <PortfolioListComponent ids={ids} onRemove={onRemove}/>
+      <hr className="division-line"/>  
+      {printDetail()}    
     </div>
-  );
-}
-
-function PortfolioListComponent({ids, onRemove }) {
-    return(
-        <>
-            {
-                ids.map(
-                    id => <PortfolioDetailComponent id={id} key={id} onRemove={onRemove}/>
-                )
-            }
-        </>
-    );
-}
-
-function PortfolioDetailComponent({ids, onRemove }) {
-    return(
-        <>
-        </>
     );
 }
 export default PortfolioComponent;

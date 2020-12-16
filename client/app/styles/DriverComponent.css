@@ -1,4 +1,4 @@
-.exam-info {
+.driver-info {
   margin: 80px 100px 0px 100px;
 }
 
@@ -15,7 +15,7 @@
   opacity: 1;
 } */
 
-.title {
+.driver-info .title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
     var(--unnamed-font-family-apple-sd-gothic-neo);
