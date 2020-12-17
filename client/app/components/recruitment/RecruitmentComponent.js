@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
 import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
-
+//import 'react-slideshow-image/dist/styles.css';
+import { Slide } from 'react-slideshow-image';
+import ImageGallery from 'react-image-gallery';
 function RecruitmentComponent(props) {
   const BANNER_BUTTON = 1;
   const AD_BUTTON = 2;
   const RECRUIT_BUTTON = 3;
-  const [input, setInput] = useState('');
+  // const [input, setInput] = useState('');
   const [btn, setbtn] = useState(AD_BUTTON);
-
+  const slideImages = [
+    'images/slide_2.png',
+    'images/',
+    'images/slide_3.jpg',
+    'images/slide_4.jpg'
+  ];
+  const images = [
+    {
+      original: 'https://picsum.photos/id/1018/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1018/250/150/'
+    },
+    {
+      original: 'https://picsum.photos/id/1015/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1015/250/150/'
+    },
+    {
+      original: 'https://picsum.photos/id/1019/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/'
+    }
+  ];
   const switchFuntion = (btn) => {
     switch (btn) {
       case 1:
         console.log('1');
         return (
           <div className="banner-container">
-            <div className="banner-content1">lksadf</div>
+            <div className="banner-content1">palce holder</div>
             <div className="asdf">
               <div id="test1">1</div>
               <div id="test2">2</div>
@@ -36,11 +57,14 @@ function RecruitmentComponent(props) {
         console.log('2');
         return (
           <div className="ad-container">
-            <div className="content">
-              <p className="content-button" onClick="">
-                Lv.1 선택 직무
-              </p>
-            </div>
+            <ImageGallery
+              items={images}
+              showThumbnails={false}
+              showFullscreenButton={false}
+              showPlayButton={false}
+              showBullets={true}
+              autoPlay={true}
+            />
           </div>
         );
       case 3:
@@ -101,7 +125,3 @@ function RecruitmentComponent(props) {
   );
 }
 export default RecruitmentComponent;
-
-// function Test(prop) {
-//   return <div>alsdkjflaskjdflkj</div>;
-// }
