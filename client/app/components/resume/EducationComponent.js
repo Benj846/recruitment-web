@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../../styles/EducationComponent'
 
 
@@ -75,13 +75,9 @@ function HighSchool() {
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
-          <div className="major-name">전공명</div>
-          <select className="major-name-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">선택</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-
+          <div className="in-school-period">재학기간</div>
+          <input type="date" className="in-school-period-input"/>
+          <input type="date" className="in-school-period-input"/>
         </div>
         <div className="location-period">
           <div className="title">소재지</div>
@@ -90,9 +86,13 @@ function HighSchool() {
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="date" className="in-school-period-input"/>
-          <input type="date" className="in-school-period-input"/>
+        </div>
+        <div className="flex-align-center">
+          <div className="major-name">전공분류</div>
+          <select className="major-name-input" defaultValue="default-value">
+            <option value="default-value" disabled="disabled">인문계열</option>
+            <option value="실업계열">실업계열</option>
+          </select>
         </div>
       </div>
     </>
@@ -100,6 +100,22 @@ function HighSchool() {
 }
 
 function College() {
+  const [ids, setIds] = useState([]);
+  const [lastId, setLastId] = useState(0);
+  const refId = useRef(0);
+  const onCreate = () => {
+    const id = refId.current;    
+    setIds(ids.concat(id));
+    setLastId(id);
+    refId.current += 1;
+  }
+
+  const onRemove = selectedId => {
+    const newIds = ids.filter(id => id !== selectedId);
+    setIds(newIds);
+    setLastId(newIds[newIds.length-1]);    
+  }
+
   return(
     <>
     <hr className="education-division"/>
@@ -110,30 +126,49 @@ function College() {
           </div>
           <div className="title">학교명</div>
           <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">선택</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <div className="major-name">전공명</div>
-          <select className="major-name-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">선택</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
-        <div className="location-period">
-          <div className="title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="default-value" disabled="disabled">패플대학교</option>
+            <option value="2">하버드</option>
+            <option value="3">옥스퍼드</option>
           </select>
           <div className="in-school-period">재학기간</div>
           <input type="date" className="in-school-period-input"/>
           <input type="date" className="in-school-period-input"/>
         </div>
+        <div className="location-period">
+          <div className="title">소재지</div>
+          <select className="location-input" defaultValue="default-value">
+            <option value="default-value"></option>
+            <option value="서울">서울</option>
+            <option value="인천">인천</option>
+          </select>
+        </div>
+        <div className="major-content">
+          <div className="title">전공명</div>
+          <select className="select-major" defaultValue="국어국문">
+              <option value="국어국문">국어국문</option>
+              <option value="영어영문">영어영문</option>
+          </select>
+          { ids.length === 0 ? <button className="add-major" onClick={onCreate}>전공추가</button>  : <></> }          
+        </div>
+        <AddedMajor ids={ids} lastId={lastId} onRemove={onRemove} onCreate={onCreate}/>
       </div>
   </>
+  );
+}
+
+function AddedMajor({ids, onCreate, lastId, onRemove}) {
+  return(
+    ids.map(id => 
+          <div key={id} className="major-content">
+            <div className="title">전공명</div>
+            <select className="select-major" defaultValue="국어국문">
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+            </select>
+            <div className="close-info" onClick={()=> onRemove(id)}>X</div>
+            { lastId === id ? <button className="add-major" onClick={onCreate}>전공추가</button>  : <></> }          
+          </div>
+      )
   );
 }
 
@@ -415,138 +450,4 @@ function Doctorate() {
     </>
   );
 }
-
-// reusable components
-function HighSchoolComponent() {
-  return(
-    <>
-     
-    </>
-  );
-}
-
-function TransferComponent() {
-  return(
-    <>
-    <hr className="education-division"/>
- 
- </>
-  );
-}
-
-
-function UniversityComponent() {
-  return(
-    <>
- 
-    </>
-  );
-}
-
-function MasterComponent() {
-  return(
-    <>
-      <div className="education-container">
-        <div className="name-major-content">
-          <div className="level">
-            대학원
-          </div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">선택</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <div className="major-name">전공명</div>
-          <select className="major-name-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">선택</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
-        <div className="location-period">
-          <div className="title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="date" className="in-school-period-input"/>
-          <input type="date" className="in-school-period-input"/>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function DoctorateComponent() {
-  return(
-    <>
-    <hr className="education-division"/>
-   <div className="education-container">
-     <div className="name-major-content">
-       <div className="level">
-         대학원(석사)
-       </div>
-       <div className="title">학교명</div>
-       <select className="title-input" defaultValue="default-value">
-         <option value="default-value" disabled="disabled">선택</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-       </select>
-       <div className="major-name">전공명</div>
-       <select className="major-name-input" defaultValue="default-value">
-         <option value="default-value" disabled="disabled">선택</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-       </select>
-     </div>
-     <div className="location-period">
-       <div className="title">소재지</div>
-       <select className="location-input" defaultValue="default-value">
-         <option value="default-value"></option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-       </select>
-       <div className="in-school-period">재학기간</div>
-       <input type="date" className="in-school-period-input"/>
-       <input type="date" className="in-school-period-input"/>
-     </div>
-   </div>
-
-   <div className="education-container">
-     <div className="name-major-content">
-       <div className="level">
-         대학원(박사)
-       </div>
-       <div className="title">학교명</div>
-       <select className="title-input" defaultValue="default-value">
-         <option value="default-value" disabled="disabled">선택</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-       </select>
-       <div className="major-name">전공명</div>
-       <select className="major-name-input" defaultValue="default-value">
-         <option value="default-value" disabled="disabled">선택</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-       </select>
-     </div>
-     <div className="location-period">
-       <div className="title">소재지</div>
-       <select className="location-input" defaultValue="default-value">
-         <option value="default-value"></option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-       </select>
-       <div className="in-school-period">재학기간</div>
-       <input type="date" className="in-school-period-input"/>
-       <input type="date" className="in-school-period-input"/>
-     </div>
-   </div>
- </>
-  );
-}
-
 export default EducationComponent;

@@ -37,7 +37,7 @@ function DriversListComponent({ids, onRemove}) {
             {
                 ids.map(
                     id =>
-                    <div className="body-detail">
+                    <div key={id} className="body-detail">
                         <div className="year-close">
                             <div>
                                 <span className="acquisition">취득년월 </span>

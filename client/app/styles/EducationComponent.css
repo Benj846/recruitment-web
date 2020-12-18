@@ -1,5 +1,11 @@
 .education-info {
-  margin: 80px 100px 0px 100px;
+  margin: 80px 100px 20px 100px;
+}
+
+.flex-align-center {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .education-title {
@@ -118,7 +124,7 @@ option:nth-of-type(1) {
   outline: none;
 }
 
-.education-container .name-major-content .major-name {
+.education-container .major-name {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -129,11 +135,11 @@ option:nth-of-type(1) {
   letter-spacing: 0px;
   color: #999999;
   opacity: 1;
-  margin-left: 20px;
+  margin-left: 120px;
 }
 
-.education-container .name-major-content .major-name-input {
-  margin-left: 56px;
+.education-container .major-name-input {
+  margin-left: 40px;
   width: 250px;
   height: 40px;
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
@@ -195,4 +201,17 @@ option:nth-of-type(1) {
   display: flex;
   align-items: center;
   margin-top: 10px;
+}
+
+.major-content {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.major-content .add-major {
+  background: #ffffff;
+}
+
+.major-content .add-major:focus {
+  outline: none;
 }
