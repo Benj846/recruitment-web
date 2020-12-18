@@ -39,8 +39,8 @@ class BasicInfoComponent extends Component {
             <div className="form-container">
               <form action="">
                 <div className="form">{/* <image src=""></image> */}</div>
-                <button>등록</button>
-                <button>삭제</button>
+                <button className="picture-submit">등록</button>
+                <button className="picture-delete">삭제</button>
               </form>
             </div>
             <div className="input-container">
@@ -80,15 +80,15 @@ class BasicInfoComponent extends Component {
                 search
               </button>
               <span className="span-mili">병역대상</span>
-              <select className="select" name="" id="">
-                <option className="option1" value="해당없음">
+              <select className="select" name="military-service-status">
+                <option className="not-applicable" value="해당없음">
                   해당없음
                 </option>
-                <option value="">군필</option>
-                <option value="">공익</option>
-                <option value="">병역특례</option>
-                <option value="">면제</option>
-                <option value="">미필</option>
+                <option value="fulfilled">군필</option>
+                <option value="social">공익</option>
+                <option value="substitutional">병역특례</option>
+                <option value="exempted">면제</option>
+                <option value="unfulfilled">미필</option>
               </select>
               <span className="span-email">이메일</span>
 
