@@ -17,7 +17,7 @@ function PortfolioComponent (props) {
         <>
           <div className="url-link-container">
             <div className="url-link-content">
-              <span>URL 링크</span>
+              <span className="url-link-title">URL 링크</span>
               <input className="link-input" placeholder="http://"/>
             </div>
             <div className="close-portfolio" onClick={onRemove}>X</div>
