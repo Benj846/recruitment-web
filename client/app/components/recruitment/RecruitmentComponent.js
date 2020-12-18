@@ -2,32 +2,40 @@ import React, { useState } from 'react';
 import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
-import { Slide } from 'react-slideshow-image';
 import ImageGallery from 'react-image-gallery';
+import resume from './images/resume.svg';
+import hangeul from './images/hangeul.svg';
+import gradu from './images/gradu.svg';
+import certificate from './images/certificate.svg';
+import calcu from './images/calcu.svg';
+import slide_1 from './images/slide_1.png';
+import slide_2 from './images/slide_2.png';
+import slide_3 from './images/slide_3.png';
+import slide_4 from './images/slide_4.png';
+import long from './images/long.png';
+import squre1 from './images/squre1.png';
+import squre2 from './images/squre2.png';
+import squre3 from './images/squre3.png';
+import squre4 from './images/squre4.png';
+import squre5 from './images/squre5.png';
 function RecruitmentComponent(props) {
   const BANNER_BUTTON = 1;
   const AD_BUTTON = 2;
   const RECRUIT_BUTTON = 3;
-  // const [input, setInput] = useState('');
-  const [btn, setbtn] = useState(AD_BUTTON);
-  const slideImages = [
-    'images/slide_2.png',
-    'images/',
-    'images/slide_3.jpg',
-    'images/slide_4.jpg'
-  ];
+  const [btn, setbtn] = useState(BANNER_BUTTON);
+
   const images = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/'
+      original: slide_1
     },
     {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/'
+      original: slide_2
     },
     {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/'
+      original: slide_3
+    },
+    {
+      original: slide_4
     }
   ];
   const switchFuntion = (btn) => {
@@ -36,37 +44,53 @@ function RecruitmentComponent(props) {
         console.log('1');
         return (
           <div className="banner-container">
-            <div className="banner-content1">palce holder</div>
-            <div className="asdf">
-              <div id="test1">1</div>
-              <div id="test2">2</div>
+            <div className="banner-content1">
+              <ImageGallery
+                items={images}
+                showThumbnails={false}
+                showFullscreenButton={false}
+                showPlayButton={false}
+                showBullets={true}
+                autoPlay={true}
+                // more info on react-image-gallery
+              />
             </div>
             <div className="asdf">
-              <div id="test3">3</div>
-              <div id="test4">4</div>
+              <div id="test1">
+                <img src={long} alt="long" />
+              </div>
+              <div id="test2">
+                <img src={long} alt="long" />
+              </div>
             </div>
             <div className="asdf">
-              <div className="fjfj1">1</div>
-              <div className="fjfj">2</div>
-              <div className="fjfj">3</div>
-              <div className="fjfj">4</div>
+              <div id="test3">
+                <img src={long} alt="long" />
+              </div>
+              <div id="test4">
+                <img src={long} alt="long" />
+              </div>
+            </div>
+            <div className="asdf">
+              <div className="fjfj1">
+                <img src={squre1} alt="squre1" />
+              </div>
+              <div className="fjfj">
+                <img src={squre1} alt="squre1" />
+              </div>
+              <div className="fjfj">
+                <img src={squre1} alt="squre1" />
+              </div>
+              <div className="fjfj">
+                <img src={squre1} alt="squre1" />
+              </div>
             </div>
           </div>
         );
       case 2:
         console.log('2');
-        return (
-          <div className="ad-container">
-            <ImageGallery
-              items={images}
-              showThumbnails={false}
-              showFullscreenButton={false}
-              showPlayButton={false}
-              showBullets={true}
-              autoPlay={true}
-            />
-          </div>
-        );
+        return <JobTree />;
+
       case 3:
         console.log('3');
 
@@ -110,13 +134,65 @@ function RecruitmentComponent(props) {
           </div>
           {/* 광고 banner layout */}
           {switchFuntion(btn)}
+          <span className="span-content">오늘 이 공고, 놓치지 마세요!</span>
+          <div className="asdf">
+            <div className="fjfj1">
+              <img src={squre2} alt="squre2" />
+              <span className="company-name-lar">기업명</span>
+              <span className="company-name-mid">직무명</span>
+              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+            </div>
+            <div className="fjfj">
+              <img src={squre3} alt="squre3" />
+              <span className="company-name-lar">기업명</span>
+              <span className="company-name-mid">직무명</span>
+              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+            </div>
+            <div className="fjfj">
+              <img src={squre4} alt="squre4" />
+              <span className="company-name-lar">기업명</span>
+              <span className="company-name-mid">직무명</span>
+              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+            </div>
+            <div className="fjfj">
+              <img src={squre5} alt="squre5" />
+              <span className="company-name-lar">기업명</span>
+              <span className="company-name-mid">직무명</span>
+              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+            </div>
+          </div>
           <span className="span-content">이력서 작성이 어려우신가요?</span>
           <div className="banner-content5">
-            <div className="boxed1">1</div>
-            <div className="boxed">2</div>
-            <div className="boxed">3</div>
-            <div className="boxed">4</div>
-            <div className="boxed">5</div>
+            <div className="boxed1">
+              <div className="circul">
+                <img src={resume} alt="resume" />
+              </div>
+              <span className="img-span">이력서 작성하기</span>
+            </div>
+            <div className="boxed">
+              <div className="circul">
+                <img src={hangeul} alt="hangeul" />
+              </div>
+              <span className="img-span">글자수 세기</span>
+            </div>
+            <div className="boxed">
+              <div className="circul">
+                <img src={calcu} alt="calcu" />
+              </div>
+              <span className="img-span">글자수 세기</span>
+            </div>
+            <div className="boxed">
+              <div className="circul">
+                <img src={gradu} alt="gradu" />
+              </div>
+              <span className="img-span">학점 계산하기</span>
+            </div>
+            <div className="boxed">
+              <div className="circul">
+                <img src={certificate} alt="certificate" />
+              </div>
+              <span className="img-span">학점 계산하기</span>
+            </div>
           </div>
         </div>
       </div>
@@ -125,3 +201,189 @@ function RecruitmentComponent(props) {
   );
 }
 export default RecruitmentComponent;
+
+const JobTree = () => {
+  const [selected, setSelected] = useState(false);
+  const [selected3, setSelected3] = useState(false);
+  return (
+    <div className="ad-container">
+      <div className="button-container">
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+        <button
+          className="lv1"
+          onClick={() => {
+            setSelected(!selected);
+            setSelected3(false);
+          }}
+        >
+          lv1.선택직무
+        </button>
+      </div>
+      <div className="button-container">
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+        <button
+          className="lv2"
+          disabled={!selected}
+          onClick={() => setSelected3(!selected3)}
+        >
+          lv2.선택직무
+        </button>
+      </div>
+      <div className="button-container">
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+        <button className="lv1" disabled={!selected3}>
+          lv3.선택직무
+        </button>
+      </div>
+    </div>
+  );
+};
