@@ -6,9 +6,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import App from './components/App/App';
 // import NotFound from './components/App/NotFound';
 
-// import Home from './csldkfjfomponents/Home/Home';
-
-// import HelloWorld from './components/HelloWorld/HelloWorld';
+//import Home from './components/Home/Home';
 
 render(
   <Router>

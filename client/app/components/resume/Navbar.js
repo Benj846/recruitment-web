@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-
-import AddTutorial from '../career/Career';
-import App from '../App/App';
+import fapply_logo from './logo_and_images/fapply_logo.svg';
 import Resume from './Resume';
 import '../../styles/Navbar';
 import Recruitment from '../recruitment/RecruitmentComponent';
@@ -16,7 +13,7 @@ class Navbar extends Component {
       <div className="navbar-wrapper">
         <nav className="navbar navbar-expand ">
           <Link to={'/'} className="navbar-brand">
-            Fapply
+            <img className="fapply_logo" src={fapply_logo} alt="fapply_logo" />
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
@@ -45,14 +42,14 @@ class Navbar extends Component {
         {/* <div className="container mt-3"> */}
         {/* <div className="resume-container">
           <div className="resume-content"> */}
-            <Switch>
-            <Route exact path="/" component={Recruitment} />
-              <Route exact path="/recruitment" />
-              <Route exact path="/career" component={Career} />
-              <Route exact path="/calendar" component={Calendar} />
-              <Route exact path="/resume" component={Resume} />
-            </Switch>
-          {/* </div>
+        <Switch>
+          <Route exact path="/" component={Recruitment} />
+          <Route exact path="/recruitment" />
+          <Route exact path="/career" component={Career} />
+          <Route exact path="/calendar" component={Calendar} />
+          <Route exact path="/resume" component={Resume} />
+        </Switch>
+        {/* </div>
         </div> */}
       </div>
     );

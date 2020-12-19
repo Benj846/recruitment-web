@@ -28,10 +28,10 @@
   margin-bottom: 18.5px;
 }
 .footer-content2 {
+  display: flex;
   text-align: left;
   letter-spacing: NaNpx;
   opacity: 1;
-  text-align: center;
 }
 .footer-text {
   width: 466px;
@@ -43,4 +43,8 @@
 .footer-hr {
   height: 0px;
   border-top: 1px solid #cccccc;
+}
+.footer_logo {
+  width: 20px;
+  height: 20px;
 }

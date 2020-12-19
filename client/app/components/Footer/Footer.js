@@ -1,5 +1,5 @@
 import React from 'react';
-// import Logo from './logo.svg';
+import Logo from './logo.svg';
 import '../../styles/Footer';
 
 function Footer(props) {
@@ -16,6 +16,7 @@ function Footer(props) {
       </div>
       <div className="footer-hr" />
       <div className="footer-content2">
+        <img src={Logo} alt="Logo" />
         <p className="footer-text">
           제뉴이스트(주) 패플라이 고객센터 : (070) 8778-1222 (평일 09:00 ~
           18:00, 주말 및 공휴일 휴무) 우21998, 인천시 연수구 하모니로 138번길 11
