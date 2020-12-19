@@ -14,7 +14,7 @@
   opacity: 1;
 } */
 
-.exam-info .title {
+.title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
     var(--unnamed-font-family-apple-sd-gothic-neo);
@@ -27,4 +27,9 @@
 }
 .exam-wrapper {
   display: flex;
+  justify-content: space-between;
+}
+
+.margin-left {
+  margin-left: 20px;
 }

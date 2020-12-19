@@ -35,7 +35,8 @@ hr {
   outline: none;
   width: 160px;
   height: 40px;
-  margin-left: 23px;
+  margin-left: 20px;
+  margin-right: 270px;
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
   border: 1px solid var(--unnamed-color-dddddd);
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -44,12 +45,21 @@ hr {
 }
 .skill-usage {
   outline: none;
-  width: 790px;
+  width: 520px;
   height: 40px;
-  margin-left: 23px;
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
   border: 1px solid var(--unnamed-color-dddddd);
   background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  opacity: 1;
+}
+
+.acquisition-period {
+  width: 160px;
+  height: 40px;
+  /* UI Properties */
+  border: 1px solid var(--박스-테두리-라인-색상);
+  background: #f0f0f0 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   opacity: 1;
 }
