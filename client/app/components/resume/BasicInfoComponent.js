@@ -1,29 +1,42 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../../styles/BasicInfoComponent';
 import Popup from './PopupComponent';
+import SignInComponent from '../member/SignInComponent';
+
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'chocolate', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' }
 ];
-class BasicInfoComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showPopup: false,
-      employee: {
-        name: 'dummy'
-      }
-    };
-  }
-  togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
+// class BasicInfoComponent extends Component {
+//   constructor(props) {
+//     super(props);
+function BasicInfoComponent() {
+    const [showPopup, setShowPopup] = useState(false);
+    const [showSignIn, setSignIn] = useState(false);
+    const [employee, setEmployee] = useState({
+      name: 'dummy'
+    })
+    // this.state = {
+    //   showPopup: false,
+    //   employee: {
+    //     name: 'dummy'
+    //   }
+    // };
+  //  }
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+    // this.setState({
+    //   showPopup: !this.state.showPopup
+    // });
   }
 
-  render() {
-    const { employee } = this.state;
+  const toggleSignInPopup = () => {
+    setSignIn(!showSignIn);
+  }
+
+    // const { employee } = this.state;
     return (
       <div className="root">
         <div className="component-style">
@@ -37,11 +50,13 @@ class BasicInfoComponent extends Component {
 
           <div className="basic-info-container">
             <div className="form-container">
-              <form action="">
+              {/* <form action=""> */}
+              <div>
                 <div className="form">{/* <image src=""></image> */}</div>
-                <button className="picture-submit">등록</button>
+                <button className="picture-submit" onClick={toggleSignInPopup}>등록</button>
                 <button className="picture-delete">삭제</button>
-              </form>
+              </div>
+              {/* </form> */}
             </div>
             <div className="input-container">
               <span className="span-name">이름</span>
@@ -75,7 +90,8 @@ class BasicInfoComponent extends Component {
               ></input>
               <button
                 className="search-btn"
-                onClick={this.togglePopup.bind(this)}
+                // onClick={this.togglePopup.bind(this)}
+                onClick={togglePopup}
               >
                 search
               </button>
@@ -98,18 +114,23 @@ class BasicInfoComponent extends Component {
 
               <input className="input-email" type="email" name="email"></input>
 
-              {this.state.showPopup ? (
+              {showPopup ? (
                 <Popup
                   text="거주지를 선택해주세요."
-                  closePopup={this.togglePopup.bind(this)}
+                  closePopup={togglePopup}
                 />
               ) : null}
+
+              {showSignIn ? (
+                <SignInComponent
+                  closeSignIn={toggleSignInPopup}
+                />
+              ) : null}
+              {console.log(showSignIn)}
             </div>
           </div>
         </div>
       </div>
     );
-  }
 }
-
 export default BasicInfoComponent;
