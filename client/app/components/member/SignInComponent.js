@@ -8,6 +8,7 @@ function SignInComponent({closeSignIn}) {
                 <div className="close-signin">
                     <button className="close-button" onClick={closeSignIn}>닫기</button>
                 </div>
+                
             </div>
         </div>
     );
