@@ -98,7 +98,7 @@ function BasicInfoComponent() {
             name="phoneNumber"
             disabled="disabled"
             value={user.phone}
-          ></input>          
+          ></input>
           <span className="span-addr">거주지</span>
           <input className="input-addr" type="text" name="address"></input>
           <button className="search-btn" onClick={togglePopup}>search</button>

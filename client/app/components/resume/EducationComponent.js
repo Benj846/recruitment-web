@@ -6,8 +6,8 @@ function EducationComponent(props) {
   const [isIntegratedChecked, setIsIntegratedChecked] = useState(false);
   const [isMasterClicked, setIsMasterClicked] = useState(false);
 
-  const handleCheckBoxChange = e => {
-    const checked = e.target.checked;
+  const handleCheckBoxChange = () => {
+    const checked = !isIntegratedChecked;
     setIsIntegratedChecked(checked);
     const result = <Doctorate isIntegratedChecked={checked}/>
     setValue(result);
@@ -57,8 +57,10 @@ function EducationComponent(props) {
         </select>
         {isMasterClicked ? 
           <>
-            <input type="checkbox" className="integrated" checked={isIntegratedChecked} onChange={handleCheckBoxChange}/>
-            <span className="integrated-title">석박사 연계과정</span>
+            <div className="integrated" onClick={handleCheckBoxChange}>
+              <input type="checkbox" checked={isIntegratedChecked}/>
+              <span className="integrated-title" >석박사 연계과정</span>
+            </div>
           </>: null}
       </div>
       <div className="added-education">

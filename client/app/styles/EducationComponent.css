@@ -60,6 +60,10 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
+.education-info .integrated {
+  cursor: pointer;
+}
+
 .education-container {
   margin-bottom: 20px;
 }
