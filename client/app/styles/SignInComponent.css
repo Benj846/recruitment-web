@@ -24,7 +24,21 @@
 
 .signin-container .close-signin {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.signin-container .close-signin div button {
+  background: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.signin-container .close-signin div button:focus {
+  outline: none;
+}
+
+.signin-container .close-signin div button:nth-of-type(1) {
+  background: #00bff0;
 }
 
 .signin-container .close-signin .close-button {

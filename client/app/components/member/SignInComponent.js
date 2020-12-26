@@ -6,6 +6,10 @@ function SignInComponent({closeSignIn}) {
         <div className="signin-container">
             <div className="signin-content">
                 <div className="close-signin">
+                    <div>
+                        <button className="personal-member">개인회원</button>
+                        <button className="company-member">기업회원</button>
+                    </div>
                     <button className="close-button" onClick={closeSignIn}>닫기</button>
                 </div>
                 <div className="header">
