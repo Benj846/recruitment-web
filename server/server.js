@@ -1,8 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const connecttion = require('./database');
 const mysql = require('mysql');
 const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
-const mongoose = require('mongoose');
 const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -10,6 +11,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
+const connection = require('./database');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 8080;
@@ -19,30 +21,80 @@ const port = process.env.PORT || 8080;
 
 // Set up Mysql
 
-const connection = mysql.createConnection({
-  host: '34.64.233.251',
-  user: 'fapply',
-  password: 'fapply@mysql',
-  database: 'fapply'
-});
-connection.connect();
-connection.query('SELECT * FROM FY_CODE_BIZ_TYPE', (err, rows) => {
-  if (err) throw err;
-  console.log('the solution is : ', rows[0]);
-});
-connection.end();
-
-// Set up Mongoose
-// mongoose.connect(isDev ? config.db_dev : config.db);
-// mongoose.Promise = global.Promise;
+// connection.connect(function (err) {
+//   if (err) {
+//     console.error('Error connecting: ' + err.stack);
+//     return;
+//   }
+//   console.log('Connected as thread id: ' + connection.threadId);
+// });
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// API routes
-require('./routes')(app);
+// REST APIs
+// app.use(bodyParser.json());
 
+// API routes
+// require('./routes')(app);
+// app.route('/test').get(function (req, res, next) {
+//   connection.query(
+//     'SELECT * FROM TB_COMMON_WORK WHERE lv = 1',
+//     function (error, results, fields) {
+//       if (error) throw error;
+//       console.log(results);
+//     }
+//   );
+// });
+// app.get('/status', (req, res) => res.json('working!'));
+
+// app.get('/testjson', (req, res) => {
+//   res.json({ message: 'Welcome to fapply application.' });
+// });
+
+//
+// Webpack config
+
+// GraphQL
+const expressGraghQL = require('express-graphql').graphqlHTTP;
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+  GraphQLInt,
+  GraphQLNonNull
+} = require('graphql');
+
+// const RootQueryType = new GraphQLObjectType({
+//   name: 'Query',
+//   description: 'Root Query',
+//   fields: () => ({
+//     id: {
+//       type: GraphQLNonNull(GraphQLInt)
+//     }
+//   })
+// });
+
+const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'helloworld',
+    fields: () => ({
+      message: { type: GraphQLString, resolve: () => 'hello world' }
+    })
+  })
+});
+// const schema = new GraphQLSchema({
+//   query: RootQueryType
+// });
+app.use(
+  '/graphql/',
+  expressGraghQL({
+    schema: schema,
+    graphiql: true
+  })
+);
 if (isDev) {
   const compiler = webpack(webpackConfig);
 
@@ -71,6 +123,7 @@ if (isDev) {
   app.use(express.static(path.resolve(__dirname, '../dist')));
 } else {
   app.use(express.static(path.resolve(__dirname, '../dist')));
+
   app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '../dist/index.html'));
     res.end();
@@ -82,7 +135,8 @@ app.listen(port, 'localhost', (err) => {
     console.log(err);
   }
 
-  console.info('>>> 🌎 Open http://0.0.0.0:%s/ in your browser.', port);
+  console.info('>>> 🌎 Open http://localhost:%s/ in your browser.', port);
+  console.log('hello');
 });
 
 module.exports = app;

@@ -3,7 +3,6 @@ import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
 import ImageGallery from 'react-image-gallery';
-// import { Advertisement } from 'semantic-ui-react';
 import resume from './images/resume.svg';
 import hangeul from './images/hangeul.svg';
 import gradu from './images/gradu.svg';
@@ -216,7 +215,7 @@ const JobTree = () => {
             setSelected3(false);
           }}
         >
-          lv1.선택직무
+          lv1.선택직무1
         </button>
         <button
           className="lv1"
@@ -225,7 +224,7 @@ const JobTree = () => {
             setSelected3(false);
           }}
         >
-          lv1.선택직무
+          lv1.선택직무2
         </button>
         <button
           className="lv1"
@@ -234,7 +233,7 @@ const JobTree = () => {
             setSelected3(false);
           }}
         >
-          lv1.선택직무
+          lv1.선택직무3
         </button>
         <button
           className="lv1"
