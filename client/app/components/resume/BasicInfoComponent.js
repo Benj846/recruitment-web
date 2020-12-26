@@ -129,7 +129,7 @@ function BasicInfoComponent() {
 
           {showSignIn ? (
             <SignInComponent
-              closeSignIn={toggleSignInPopup}
+              closePopup={toggleSignInPopup}
             />
           ) : null}          
         </div>

@@ -2,7 +2,7 @@
   margin: 80px 100px 0px 100px;
 }
 
-.education-title {
+.education-info .education-title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
     var(--unnamed-font-family-apple-sd-gothic-neo);
@@ -14,7 +14,7 @@
   opacity: 1;
 }
 
-.final-content {
+.education-info .final-content {
   display: flex;
   align-items: center;
 }
@@ -32,7 +32,7 @@
   opacity: 1;
 }
 
-.select-education {
+.education-info .select-education {
   width: 340px;
   height: 40px;
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
@@ -43,8 +43,13 @@
   margin: 0px 0px 0px 24px;
 }
 
-.select-education:focus {
+.education-info .select-education:focus {
   outline: none;
+}
+
+.education-info .integrated {
+  display: inline-block;
+  margin: 0px 13px 0px 24px;
 }
 
 option:nth-of-type(1) {
@@ -60,10 +65,6 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
-.education-info .integrated {
-  cursor: pointer;
-}
-
 .education-container {
   margin-bottom: 20px;
 }
@@ -73,13 +74,35 @@ option:nth-of-type(1) {
   border: 1px solid #dddddd;
   opacity: 1;
 }
-
 .education-container .name-period-content {
+  width: 880px;
+  height: 40px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.education-container .level {
+  display: inline-block;
+  width: 90px;
+  height: 40px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
 }
 
 .education-container .name-period-content .level {
+  display: block;
+  width: 90px;
+  height: 15px;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -93,6 +116,8 @@ option:nth-of-type(1) {
 }
 
 .education-container .name-period-content .title {
+  width: 90px;
+  height: 40px;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -103,26 +128,38 @@ option:nth-of-type(1) {
   letter-spacing: 0px;
   color: #999999;
   opacity: 1;
-  margin-left: 56px;
 }
 
 .education-container .name-period-content .title-input {
-  margin-left: 56px;
   width: 250px;
   height: 40px;
-
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
+  border: 1px solid var(--박스-테두리-라인-색상);
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   opacity: 1;
+}
+
+.education-container .title-input {
+  width: 250px;
+  height: 40px;
 }
 
 .education-container .name-period-content .title-input:focus {
   outline: none;
 }
 
-.education-container .major-name {
+.education-container .major-content {
+  display: flex;
+  width: 880px;
+  height: 40px;
+}
+
+.major-content .title {
+  display: inline-block;
+  width: 90px;
+  height: 40px;
+  margin-left: 90px;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -133,13 +170,105 @@ option:nth-of-type(1) {
   letter-spacing: 0px;
   color: #999999;
   opacity: 1;
+}
+
+.education-container .major-name {
+  display: inline-block;
+  width: 90px;
+  height: 40px;
+  margin-left: 90px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+
+.education-container .major-name-input {
+  width: 250px;
+  height: 40px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--unnamed-color-dddddd);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  opacity: 1;
+}
+
+.education-container .add-major {
+  width: 69px;
+  height: 40px;
   margin-left: 20px;
+  padding: 0px;
+
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--버튼-색상);
+  text-align: center;
+  font: normal normal normal 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #009999;
+  opacity: 1;
+  border: 1px solid var(--버튼-색상);
+  border: 1px solid #009999;
 }
 
-.education-container .select-major {
-  margin-left: 56px;
+.close-info {
+  width: 69px;
+  height: 40px;
+  margin-left: 20px;
+  padding: 0px;
+  border: 0px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.education-container .major-name-input:focus {
+  outline: none;
+}
+
+.education-container .location {
+  display: flex;
+  align-items: center;
+}
+
+.education-container .location {
+  width: 880px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.education-container .location-title {
+  width: 90px;
+  height: 40px;
+  margin-left: 90px;
+  margin-bottom: 10px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--셀렉트-박스-내-색상);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+
+.education-container .location-input {
   width: 250px;
   height: 40px;
+
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
   border: 1px solid var(--unnamed-color-dddddd);
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -147,70 +276,57 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
-.education-container .major-content .select-major:focus {
+.education-container .location-input:focus {
   outline: none;
 }
-
-.education-container .location-period {
-  display: flex;
-  align-items: center;
-}
-
-.location {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.location .location-title {
-  margin-left: 120px;
-}
-
-.location .location-input {
+.education-container .select-major {
   width: 250px;
   height: 40px;
-  margin-left: 56px;
-
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
+  border: 1px solid var(--박스-테두리-라인-색상);
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   opacity: 1;
 }
 
-.location-period .location-input:focus {
-  outline: none;
+.education-container .in-school-period-input {
+  width: 160px;
+  height: 40px;
+  margin-left: 20px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--박스-테두리-라인-색상);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  opacity: 1;
 }
 
-.in-school-period-input {
-  --width: 160px;
+.education-container .in-school-period {
+  width: 70px;
+  height: 40px;
+  margin-left: 20px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16)
+    var(--unnamed-font-family-apple-sd-gothic-neo);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--셀렉트-박스-내-색상);
+  text-align: left;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
 }
 
-.file-attach {
+/* .file-attach {
   display: flex;
   align-items: center;
   margin-top: 10px;
-}
+} */
 
-.major-content {
-  display: flex;
-  margin-bottom: 5px;
-}
-
-.major-content .add-major {
-  background: #ffffff;
-}
-
-.major-content .add-major:focus {
-  outline: none;
-}
-
-.education-container .close-info {
-  background: none;
-  border: none;
-  outline: none;
-}
-
-.education-container .select-major {
-  outline: none;
+.education-info .division-line {
+  width: 880px;
+  margin-left: 0px;
+  border: 2px solid var(--unnamed-color-707070);
+  border: 2px solid #707070;
+  opacity: 1;
 }
