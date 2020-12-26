@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const connecttion = require('./database');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
 const path = require('path');
@@ -14,7 +14,7 @@ const webpackConfig = require('../webpack.config');
 const connection = require('./database');
 
 const isDev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3333;
 
 // Configuration
 // ================================================================================================
