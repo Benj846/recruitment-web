@@ -1,59 +1,38 @@
-/* .main {
-  width: 100vw;
-  background: #eeeeee 0% 0% no-repeat padding-box;
-  opacity: 1;
-} */
-/* ::-webkit-scrollbar {
-  display: none;
-} */
-
 .navbar-wrapper {
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  --box-shadow: 0px 2px 5px #00000029;
-  opacity: 1;
-  overflow-x: auto;
 }
 
-.navbar {
-  --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  --box-shadow: 0px 2px 5px #00000029;
-  opacity: 1;
+.navbar-inner {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0px 2px 5px #00000029;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.navbar-list {
+  display: flex;
+  flex-flow: wrap row;
+}
+
+.navbar-brand {
+  width: 100px;
+}
+
+.fapply_logo {
+  width: 100%;
+  display: block;
 }
 
 .nav-link {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-18) /
-    var(--unnamed-line-spacing-21)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-707070);
+  font: normal normal 18px/21px 'Noto Sans', sans-serif;
   text-align: center;
-  font: normal normal medium 18px/21px Apple SD Gothic Neo;
-  letter-spacing: 0px;
   color: #707070;
-  opacity: 1;
 }
-.mt-3 {
-  margin-top: 0px;
-}
+
 .container {
   padding-bottom: 60px;
   --margin: 0px 50px 0px 50px;
-}
-
-/* .resume-container {
-  display: flex;
-  justify-content: center;
-  --background: #eeeeee 0% 0% no-repeat padding-box;
-}
-
-.resume-content {
-  --display: flex;
-  --justify-content: center;
-  width: 1080px;
-} */
-.navbar-brand {
-  width: 122px;
-  height: 23px;
 }

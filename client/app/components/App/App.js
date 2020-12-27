@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../styles/vendor/normalize.css';
 import '../../styles/App.css';
 import Navbar from '../resume/Navbar';
 

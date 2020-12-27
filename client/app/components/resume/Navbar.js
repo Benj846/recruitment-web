@@ -11,11 +11,11 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar-wrapper">
-        <nav className="navbar navbar-expand ">
+        <nav className="navbar-inner">
           <Link to={'/'} className="navbar-brand">
             <img className="fapply_logo" src={fapply_logo} alt="fapply_logo" />
           </Link>
-          <div className="navbar-nav mr-auto">
+          <div className="navbar-nav">
             <li className="nav-item">
               <Link to={'/recruitment'} className="nav-link">
                 채용공고
