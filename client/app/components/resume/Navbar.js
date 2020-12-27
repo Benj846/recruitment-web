@@ -12,30 +12,36 @@ class Navbar extends Component {
     return (
       <div className="navbar-wrapper">
         <nav className="navbar-inner">
-          <Link to={'/'} className="navbar-brand">
-            <img className="fapply_logo" src={fapply_logo} alt="fapply_logo" />
-          </Link>
-          <div className="navbar-nav">
-            <li className="nav-item">
-              <Link to={'/recruitment'} className="nav-link">
-                채용공고
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/career'} className="nav-link">
-                커리어
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/calendar'} className="nav-link">
-                채용달력
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/resume'} className="nav-link">
-                이력서
-              </Link>
-            </li>
+          <div className="navbar-content">
+            <Link to={'/'} className="navbar-brand">
+              <img
+                className="fapply_logo"
+                src={fapply_logo}
+                alt="fapply_logo"
+              />
+            </Link>
+            <div className="navbar-nav">
+              <li className="nav-item">
+                <Link to={'/recruitment'} className="nav-link">
+                  채용공고 ABC
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={'/career'} className="nav-link">
+                  커리어
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={'/calendar'} className="nav-link">
+                  채용달력
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={'/resume'} className="nav-link">
+                  이력서
+                </Link>
+              </li>
+            </div>
           </div>
         </nav>
 

@@ -29,11 +29,11 @@ class BasicInfoComponent extends Component {
         <div className="component-style">
           <p className="resume-title"> 이력서 작성하기</p>
           <p className="text">
-            {employee.name} 님의 프로필을 입력하시고, 더 많은 채용 기회를
-            확보하세요!
+            <span className="user-name">{employee.name}</span> 님의 프로필을
+            입력하시고, 더 많은 채용 기회를 확보하세요!
           </p>
           <p className="basic-info-title">기본정보</p>
-          <hr className="division-line" />
+          <hr className="divider" />
 
           <div className="basic-info-container">
             <div className="form-container">

@@ -9,27 +9,27 @@ import PortfolioComponent from './PortfolioComponent';
 import '../../styles/Resume.css';
 import SelfIntroductionComponent from './SelfIntroduction';
 
-function Resume()  {
-    return (
-      <div className="resume-body">
-        <div className="resume-main">
-            <BasicInfoComponent />
+function Resume() {
+  return (
+    <div className="resume-body">
+      <div className="resume-main">
+        <BasicInfoComponent />
 
-            <EducationComponent />
+        <EducationComponent />
 
-            <CareerComponent />
+        <CareerComponent />
 
-            <DriverComponent/>
+        <DriverComponent />
 
-            <ExamComponent/>
+        <ExamComponent />
 
-            <SkillComponent/>
+        <SkillComponent />
 
-            <PortfolioComponent/>
-            
-            <SelfIntroductionComponent/>
-        </div>
-      </div>      
-    );
+        <PortfolioComponent />
+
+        <SelfIntroductionComponent />
+      </div>
+    </div>
+  );
 }
 export default Resume;
