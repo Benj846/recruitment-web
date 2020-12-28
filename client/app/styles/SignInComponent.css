@@ -28,6 +28,7 @@
 }
 
 .signin-container .member-close-popup div button {
+  border: 1px solid black;
   background: none;
   border-radius: 5px;
   margin-left: 5px;
@@ -167,7 +168,21 @@
   margin: 150px auto;
 }
 
-.signin-container .signup-content .body div:nth-of-type(2n-1) {
+.signin-container
+  .signup-content
+  .body
+  .personal-info-collect-container
+  div:nth-of-type(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signin-container
+  .signup-content
+  .body
+  .marketing-accept-container
+  div:nth-of-type(1) {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -190,6 +205,7 @@
   border-radius: 5px;
   width: 300px;
   height: 40px;
+  margin-top: 50px;
 }
 
 .signup-content .body .next-button-content button:focus {
@@ -197,6 +213,36 @@
 }
 
 .signup-content .body .view-detail {
-  font-size: 11px;
+  font-size: 13px;
   color: #909090;
+  cursor: pointer;
+}
+
+.signup-content .body .personal-info-collect-container .full {
+  animation-duration: 1s;
+  width: 400px;
+  height: 100px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.signup-content .body .personal-info-collect-container .full:focus {
+  outline: none;
+}
+
+.signup-content .body .personal-info-collect-container .full:disabled {
+  background: none;
+}
+
+.signup-content .body .marketing-accept-container .full {
+  width: 400px;
+  height: 100px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
 }
