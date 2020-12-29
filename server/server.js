@@ -16,19 +16,6 @@ const connection = require('./database');
 const isDev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3333;
 
-// Configuration
-// ================================================================================================
-
-// Set up Mysql
-
-// connection.connect(function (err) {
-//   if (err) {
-//     console.error('Error connecting: ' + err.stack);
-//     return;
-//   }
-//   console.log('Connected as thread id: ' + connection.threadId);
-// });
-
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -130,7 +117,7 @@ if (isDev) {
   });
 }
 
-app.listen(port, 'localhost', (err) => {
+app.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err);
   }
