@@ -82,6 +82,10 @@
   opacity: 1;
 }
 
+.basic-info-container .picture-submit:focus {
+  outline: none;
+}
+
 .basic-info-container .picture-delete {
   width: 80px;
   height: 40px;
