@@ -3,7 +3,8 @@ import { Switch, Route, Link } from 'react-router-dom';
 import fapply_logo from './logo_and_images/fapply_logo.svg';
 import Resume from './Resume';
 import '../../styles/Navbar';
-import Recruitment from '../recruitment/RecruitmentComponent';
+import MainComponent from '../Main/MainComponent';
+import RecruitmentComponent from '../recruitment/RecruitmentComponent';
 import Career from '../career/Career';
 import Calendar from '../calendar/Calendar';
 
@@ -43,8 +44,8 @@ class Navbar extends Component {
         {/* <div className="resume-container">
           <div className="resume-content"> */}
         <Switch>
-          <Route exact path="/" component={Recruitment} />
-          <Route exact path="/recruitment" />
+          <Route exact path="/" component={MainComponent} />
+          <Route exact path="/recruitment" component={RecruitmentComponent} />
           <Route exact path="/career" component={Career} />
           <Route exact path="/calendar" component={Calendar} />
           <Route exact path="/resume" component={Resume} />
