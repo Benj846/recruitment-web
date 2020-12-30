@@ -280,14 +280,19 @@ option:nth-of-type(1) {
 .education-container .location-input:focus {
   outline: none;
 }
-.education-container .select-major {
-  width: 250px;
-  height: 40px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--박스-테두리-라인-색상);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
+
+.in-school-period-input {
+  --width: 160px;
+}
+
+.file-attach {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.major-content {
+  display: flex;
+  margin-bottom: 5px;
 }
 
 .education-container .in-school-period-input {
