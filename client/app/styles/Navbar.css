@@ -57,3 +57,22 @@
   width: 122px;
   height: 23px;
 }
+
+.navbar-wrapper .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-wrapper .navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-wrapper .utility button {
+  border: none;
+  background: none;
+}
+
+.navbar-wrapper .utility button:focus {
+  outline: none;
+}
