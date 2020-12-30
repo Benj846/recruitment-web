@@ -60,6 +60,10 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
+.education-info .integrated {
+  cursor: pointer;
+}
+
 .education-container {
   margin-bottom: 20px;
 }
@@ -70,12 +74,12 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
-.education-container .name-major-content {
+.education-container .name-period-content {
   display: flex;
   align-items: center;
 }
 
-.education-container .name-major-content .level {
+.education-container .name-period-content .level {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -88,7 +92,7 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
-.education-container .name-major-content .title {
+.education-container .name-period-content .title {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -102,7 +106,7 @@ option:nth-of-type(1) {
   margin-left: 56px;
 }
 
-.education-container .name-major-content .title-input {
+.education-container .name-period-content .title-input {
   margin-left: 56px;
   width: 250px;
   height: 40px;
@@ -114,11 +118,11 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
-.education-container .name-major-content .title-input:focus {
+.education-container .name-period-content .title-input:focus {
   outline: none;
 }
 
-.education-container .name-major-content .major-name {
+.education-container .major-name {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
     var(--unnamed-line-spacing-16)
@@ -132,7 +136,7 @@ option:nth-of-type(1) {
   margin-left: 20px;
 }
 
-.education-container .name-major-content .major-name-input {
+.education-container .select-major {
   margin-left: 56px;
   width: 250px;
   height: 40px;
@@ -143,7 +147,7 @@ option:nth-of-type(1) {
   opacity: 1;
 }
 
-.education-container .name-major-content .major-name-input:focus {
+.education-container .major-content .select-major:focus {
   outline: none;
 }
 
@@ -152,17 +156,17 @@ option:nth-of-type(1) {
   align-items: center;
 }
 
-.location-period {
+.location {
   display: flex;
   align-items: center;
   margin-top: 10px;
 }
 
-.location-period .title {
+.location .location-title {
   margin-left: 120px;
 }
 
-.location-period .location-input {
+.location .location-input {
   width: 250px;
   height: 40px;
   margin-left: 56px;
@@ -197,5 +201,15 @@ option:nth-of-type(1) {
 }
 
 .major-content .add-major:focus {
+  outline: none;
+}
+
+.education-container .close-info {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.education-container .select-major {
   outline: none;
 }
