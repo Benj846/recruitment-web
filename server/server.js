@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const connecttion = require('./database');
-const mysql = require('mysql2');
 const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
 const path = require('path');

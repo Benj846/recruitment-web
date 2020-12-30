@@ -37,6 +37,15 @@ class Navbar extends Component {
                 이력서
               </Link>
             </li>
+            <li className="nav-item">
+              <button className="sign-in-btn">로그인</button>
+            </li>
+            <li className="nav-item">
+              <button className="sign-up-btn">회원가입</button>
+            </li>
+            <li className="nav-item">
+              <button className="business-btn">기업페이지</button>
+            </li>
           </div>
         </nav>
 

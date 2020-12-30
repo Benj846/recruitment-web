@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/MainComponent';
+import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
 import ImageGallery from 'react-image-gallery';
@@ -19,10 +19,7 @@ import squre3 from '../Main/images/squre3.png';
 import squre4 from '../Main/images/squre4.png';
 import squre5 from '../Main/images/squre5.png';
 function RecruitmentComponent(props) {
-  const BANNER_BUTTON = 1;
-  const AD_BUTTON = 2;
-  const RECRUIT_BUTTON = 3;
-  const [btn, setbtn] = useState(BANNER_BUTTON);
+  const [btn, setbtn] = useState(false);
 
   const images = [
     {
@@ -42,6 +39,13 @@ function RecruitmentComponent(props) {
   return (
     <>
       <div className="recruit-container">
+        <div className="filter-container">
+          <button className="filter-search" onClick={() => setbtn(!btn)}>
+            조건 검색
+          </button>
+          <button className="filter-popular">인기 채용 공고</button>
+          <button className="filter-today">오늘 마감 공고</button>
+        </div>
         <div className="recruit-content">
           <input className="search-input" />
           <button
@@ -50,8 +54,10 @@ function RecruitmentComponent(props) {
           >
             <span className="search-text">검색</span>
           </button>
-          <div className="status-div">{}</div>
-
+          <div className="span-container">
+            <span className="text-span">인기 채용 공고</span>
+            <span className="more-span">더 보기</span>
+          </div>
           {/* 광고 banner layout */}
           <div className="banner-container">
             <div className="banner-content1">
