@@ -47,17 +47,27 @@ function RecruitmentComponent(props) {
           <button className="filter-today">오늘 마감 공고</button>
         </div>
         <div className="recruit-content">
-          <input className="search-input" />
+          <input
+            className="search-input"
+            placeholder="찾고 계신 채용 광고가 있나요?"
+          />
           <button
             className="search-btn"
             onChange={(e) => setKeyword(e.target.value)}
           >
             <span className="search-text">검색</span>
           </button>
+          <button className="filter-search2" onClick={() => setbtn(!btn)}>
+            조건 검색
+          </button>
           <div className="span-container">
             <span className="text-span">인기 채용 공고</span>
+            <button className="btn-power">파워공고</button>
+            <button className="btn-common">일반공고</button>
             <span className="more-span">더 보기</span>
           </div>
+          {btn ? <div className="search-popup"></div> : <div></div>}
+
           {/* 광고 banner layout */}
           <div className="banner-container">
             <div className="banner-content1">
@@ -100,66 +110,6 @@ function RecruitmentComponent(props) {
               <div className="fjfj">
                 <img src={squre1} alt="squre1" />
               </div>
-            </div>
-          </div>
-          <span className="span-content">오늘 이 공고, 놓치지 마세요!</span>
-          <div className="asdf">
-            <div className="fjfj1">
-              <img src={squre2} alt="squre2" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
-            </div>
-            <div className="fjfj">
-              <img src={squre3} alt="squre3" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
-            </div>
-            <div className="fjfj">
-              <img src={squre4} alt="squre4" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
-            </div>
-            <div className="fjfj">
-              <img src={squre5} alt="squre5" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
-            </div>
-          </div>
-          <span className="span-content">이력서 작성이 어려우신가요?</span>
-          <div className="banner-content5">
-            <div className="boxed1">
-              <div className="circul">
-                <img src={resume} alt="resume" />
-              </div>
-              <span className="img-span">이력서 작성하기</span>
-            </div>
-            <div className="boxed">
-              <div className="circul">
-                <img src={hangeul} alt="hangeul" />
-              </div>
-              <span className="img-span">글자수 세기</span>
-            </div>
-            <div className="boxed">
-              <div className="circul">
-                <img src={calcu} alt="calcu" />
-              </div>
-              <span className="img-span">글자수 세기</span>
-            </div>
-            <div className="boxed">
-              <div className="circul">
-                <img src={gradu} alt="gradu" />
-              </div>
-              <span className="img-span">학점 계산하기</span>
-            </div>
-            <div className="boxed">
-              <div className="circul">
-                <img src={certificate} alt="certificate" />
-              </div>
-              <span className="img-span">학점 계산하기</span>
             </div>
           </div>
         </div>
