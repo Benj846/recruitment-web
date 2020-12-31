@@ -17,4 +17,5 @@ connection.connect();
 //   //if (err) throw err;
 //   console.log('the solution is : ', rows[0]);
 // });
+
 module.exports = connection;
