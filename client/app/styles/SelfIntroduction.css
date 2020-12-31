@@ -2,7 +2,7 @@
   margin: 80px 100px 80px 100px;
 }
 
-.division-line {
+.self-info .division-line {
   width: 880px;
   margin-left: 0px;
   border: 2px solid var(--unnamed-color-707070);
@@ -43,4 +43,9 @@
 
 .self-info .text-area:focus {
   outline: none;
+}
+
+.self-info .title-container {
+  display: flex;
+  justify-content: space-between;
 }

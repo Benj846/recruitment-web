@@ -8,47 +8,50 @@
   bottom: 0;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  z-index: 999;
 }
 
 .signin-container .signin-content {
-  --position: absolute;
   width: 500px;
   height: 600px;
   /* left: 35%;
   right: 35%;
   top: 5%;
   bottom: 5%; */
-  margin: 50px auto;
+  margin: auto auto;
   background: white;
 }
 
-.signin-container .close-signin {
+.signin-container .member-close-popup {
   display: flex;
   justify-content: space-between;
 }
 
-.signin-container .close-signin div button {
+.signin-container .member-close-popup div button {
+  border: 1px solid black;
   background: none;
   border-radius: 5px;
   margin-left: 5px;
 }
 
-.signin-container .close-signin div button:focus {
+.signin-container .member-close-popup div button:focus {
   outline: none;
 }
 
-.signin-container .close-signin div button:nth-of-type(1) {
+.signin-container .member-close-popup div button:nth-of-type(1) {
   background: #00bff0;
 }
 
-.signin-container .close-signin .close-button {
+.signin-container .member-close-popup .close-button {
   width: 100px;
   height: 40px;
   background: none;
   border: 0px;
 }
 
-.signin-container .close-signin .close-button:focus {
+.signin-container .member-close-popup .close-button:focus {
   outline: none;
 }
 
@@ -97,13 +100,14 @@
 }
 
 .signin-content .body .signin-find-idpw-content button {
+  border: 1px solid black;
   background: none;
   border-radius: 5px;
   width: 195px;
   margin: 0 5px 0 5px;
 }
 
-.signin-content .body .signin-find-idpw-content:focus {
+.signin-content .body .signin-find-idpw-content button:focus {
   outline: none;
 }
 
@@ -123,19 +127,286 @@
   margin: 0 10px 0 0;
 }
 
-.signin-content .body .signup-content {
+.signin-content .body .signup-fapply {
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  --border: 1px solid black;
 }
-.signin-content .body .signup-content .signup-fapply {
+.signin-content .body .signup-fapply .signup-button {
   background: none;
+  border: 1px solid black;
   border-radius: 5px;
   width: 400px;
   height: 40px;
 }
 
-.signin-content .body .signup-content .signup-fapply:focus {
+.signin-content .body .signup-fapply .signup-button:focus {
+  outline: none;
+}
+
+/* Signup ---------------------------------------------------------------- */
+.signin-content .signup-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.signin-container .signup-content {
+  width: 500px;
+  height: 600px;
+  margin: 50px auto;
+  background: white;
+}
+
+.signin-container .signup-content .body {
+  --border: 1px black solid;
+  width: 400px;
+  height: 300px;
+  margin: 150px auto;
+}
+
+.signup-content .body .check-all-title {
+  cursor: pointer;
+}
+
+.signup-content .body .personal-info-collect-title {
+  cursor: pointer;
+}
+
+.signup-content .body .age-fourteen-title {
+  cursor: pointer;
+}
+
+.signup-content .body .marketing-accept-title {
+  cursor: pointer;
+}
+
+.signin-container
+  .signup-content
+  .body
+  .personal-info-collect-container
+  div:nth-of-type(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signin-container
+  .signup-content
+  .body
+  .marketing-accept-container
+  div:nth-of-type(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signup-content .body .div-line {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.signup-content .body .next-button-content {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-content .body .next-button-content button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 300px;
+  height: 40px;
+  margin-top: 50px;
+}
+
+.signup-content .body .next-button-content button:focus {
+  outline: none;
+}
+
+.signup-content .body .view-detail {
+  font-size: 13px;
+  color: #909090;
+  cursor: pointer;
+}
+
+.signup-content .body .personal-info-collect-container .full {
+  animation-duration: 1s;
+  width: 400px;
+  height: 100px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.signup-content .body .personal-info-collect-container .full:focus {
+  outline: none;
+}
+
+.signup-content .body .personal-info-collect-container .full:disabled {
+  background: none;
+}
+
+.signup-content .body .marketing-accept-container .full {
+  width: 400px;
+  height: 100px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+/* Signup with Phone email ---------------------------------------------------------------- */
+.signin-content .with-phone-email-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.signin-container .with-phone-email-content {
+  width: 550px;
+  height: 850px;
+  margin: 50px auto;
+  background: white;
+}
+
+.signin-container .with-phone-email-content .body {
+  width: 450px;
+  height: 100%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.with-phone-email-content .input-email-phone {
+  border: 1px solid black;
+  height: 50px;
+  background: none;
+}
+
+.with-phone-email-content .input-email-phone::placeholder {
+  text-align: center;
+}
+
+.with-phone-email-content .input-email-phone:focus {
+  outline: none;
+}
+
+.with-phone-email-content .submit-email-phone {
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.with-phone-email-content .submit-email-phone:focus {
+  outline: none;
+}
+
+.with-phone-email-content .or-text {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.with-phone-email-content .body button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 50px;
+  margin: 10px 0px;
+}
+
+.with-phone-email-content .body button:focus {
+  outline: none;
+}
+
+.with-phone-email-content .body .guide-text {
+  margin-top: 25px;
+}
+
+.with-phone-email-content .body .guide-text div {
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Input signup with Phone email ---------------------------------------------------------------- */
+.signin-content .input-with-phone-email-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.signin-container .input-with-phone-email-content {
+  width: 550px;
+  height: 850px;
+  margin: 50px auto;
+  background: white;
+}
+
+.signin-container .input-with-phone-email-content .body {
+  width: 450px;
+  height: 100%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-container .input-with-phone-email-content .body .required {
+  color: #ff0000;
+}
+
+.signin-container .input-with-phone-email-content .body .input-signup-name {
+  border: 1px solid black;
+  height: 45px;
+  margin-bottom: 15px;
+}
+
+.signin-container
+  .input-with-phone-email-content
+  .body
+  .input-signup-name::placeholder {
+  text-align: center;
+}
+
+.signin-container
+  .input-with-phone-email-content
+  .body
+  .input-signup-name:focus {
+  outline: none;
+}
+
+.signin-container .input-with-phone-email-content .body .input-signup-password {
+  border: 1px solid black;
+  height: 45px;
+}
+
+.signin-container
+  .input-with-phone-email-content
+  .body
+  .input-signup-password:focus {
   outline: none;
 }

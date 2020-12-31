@@ -45,10 +45,6 @@ function BasicInfoComponent() {
     setShowPopup(!showPopup);
   }
 
-  const toggleSignInPopup = () => {
-    setSignIn(!showSignIn);
-  }
-
   const handleSelectChange = () => {
 
   }
@@ -69,7 +65,7 @@ function BasicInfoComponent() {
           {/* <form action=""> */}
           <div className="form-content">
             <div className="form">{/* <image src=""></image> */}</div>
-            <button className="picture-submit" onClick={toggleSignInPopup}>등록</button>
+            <button className="picture-submit">등록</button>
             <button className="picture-delete">삭제</button>
           </div>
           {/* </form> */}
@@ -127,11 +123,6 @@ function BasicInfoComponent() {
             />
           ) : null}
 
-          {showSignIn ? (
-            <SignInComponent
-              closeSignIn={toggleSignInPopup}
-            />
-          ) : null}          
         </div>
       </div>
     </div>
