@@ -10,7 +10,9 @@ let dbConfig = {
 
 // solution 1
 const pool = mysql.createPool(dbConfig);
-pool.query('select 1+1', (err, rows)=>{/* */});
+pool.query('select 1+1', (err, rows) => {
+  /* */
+});
 
 // // solution 2
 // let connection;
