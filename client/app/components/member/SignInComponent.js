@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Select from 'react-select';
 import '../../styles/SignInComponent'
 
 function SignInComponent({closePopup}) {
@@ -303,6 +304,53 @@ function SelectTaskYouWant({ closePopup }) {
     const togglePopup = () => {
         setShowSignup(!showSignup);           
     }
+    const color = '#cccccc';
+    const customStyles = {
+        control : (base, state) => ({
+                ...base,
+                height: '50px',
+                minHeight: '50px',
+                boxShadow: state.isFocused ? 0 : 0,
+                borderColor: state.isFocused ? color : color,
+                '&:hover':{
+                    borderColor : state.isFocused ? null : null
+                }
+            })
+    }
+    const jobFamilyOptions = [
+        {value: "경영/사무", label:"경영/사무"}
+    ]
+    const SelectJobFamily = () => {
+        return(<Select options={jobFamilyOptions} placeholder="경영/사무" styles={customStyles} />);         
+    }
+
+    const jobGroupOptions = [
+        {value: "기획/전략/경영", label:"기획/전략/경영"},
+        {value: "인사/노무/교육", label:"인사/노무/교육"},
+        {value: "사무/총무/법무/특허", label:"사무/총무/법무/특허"},
+        {value: "재무/세무/IR", label:"재무/세무/IR"},
+    ]
+    const SelectJobGroup = () => {
+        return(<Select options={jobGroupOptions} placeholder="기획/전략/경영" styles={customStyles}/>);         
+    }
+
+    const jobOptions = [
+        {value: "사업기획", label:"사업기획"},
+        {value: "경영혁신", label:"경영혁신"},
+        {value: "사업제휴", label:"사업제휴"}
+    ]
+    const SelectJob = () =>  {
+        return(<Select options={jobOptions} placeholder="사업제휴" isMulti styles={customStyles}/>);        
+    }
+
+    const detailJobOptions = [
+        {value: "사업기획", label:"사업기획"},
+        {value: "경영혁신", label:"경영혁신"},
+        {value: "사업제휴", label:"사업제휴"}
+    ]
+    const SelectDetailJob = () =>  {
+        return(<Select options={detailJobOptions} placeholder="조직관리" isMulti isSearchable={false} styles={customStyles}/>);        
+    }
 
     return (
         <div className="select-task-container">
@@ -325,7 +373,22 @@ function SelectTaskYouWant({ closePopup }) {
                     </div>
                 </div>
                 <div className="body">
-                
+                    <div className="select-job-family-title" >직종 선택하기</div>
+                    <SelectJobFamily/>
+                    <div className="select-job-group-title" >직군 선택하기</div>
+                    <SelectJobGroup/>
+                    <div className="select-job-title" >
+                        <div>직무 선택하기</div>
+                        <div>최대 3개</div>
+                    </div>
+                    <SelectJob/>
+                    <div className="select-detail-job-title" >
+                        <div>세부직무 선택하기</div>
+                        <div>최대 6개</div>
+                    </div>
+                    <SelectDetailJob/>
+                    <button className="signup-done">가입완료</button>
+                    <button className="signup-later">나중에 할게요</button>
                 </div>
                 {/* {showSignup ? <SelectTaskYouWant closePopup={closePopup}/> : null} */}
             </div>
