@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-const mysql = require('mysql');
-=======
 //const mysql = require('mysql2');
 const mysql = require('mysql2');
->>>>>>> origin/theo
 require('dotenv').config();
 let dbConfig = {
   host: process.env.DB_HOST,
@@ -14,7 +10,9 @@ let dbConfig = {
 
 // solution 1
 const pool = mysql.createPool(dbConfig);
-pool.query('select 1+1', (err, rows)=>{/* */});
+pool.query('select 1+1', (err, rows) => {
+  /* */
+});
 
 // // solution 2
 // let connection;
