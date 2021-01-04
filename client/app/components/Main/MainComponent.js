@@ -18,11 +18,17 @@ import squre2 from './images/squre2.png';
 import squre3 from './images/squre3.png';
 import squre4 from './images/squre4.png';
 import squre5 from './images/squre5.png';
+import logo_samsung from './images/logo_samsung.png';
+import icon_bookmark from './images/icon_bookmark.png';
+
 function MainComponent(props) {
   const BANNER_BUTTON = 1;
   const AD_BUTTON = 2;
   const RECRUIT_BUTTON = 3;
-  const [btn, setbtn] = useState(BANNER_BUTTON);
+  const [btn, setbtn] = useState(RECRUIT_BUTTON);
+
+  const [monthNum, setmonthNum] = useState(1);
+  const [weekNum, setweekNum] = useState(1);
 
   const images = [
     {
@@ -96,7 +102,845 @@ function MainComponent(props) {
 
         return (
           <div className="calender-container">
-            <div>this is 3</div>
+            <div className="calender-content-date">
+              <button
+                className="calender-left"
+                onClick={() => setweekNum(weekNum - 1)}
+              >
+                left
+              </button>
+              <span className="calender-span">
+                {monthNum}월{weekNum}주차 마감 공고
+              </span>
+              <button
+                className="calender-right"
+                onClick={() => setweekNum(weekNum + 1)}
+              >
+                right
+              </button>
+            </div>
+            <div className="calender-disp">
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+              <div>
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span>15:00</span>
+                <img src={logo_samsung} alt="img" className="logo" />
+                <p>
+                  <span className="calender-disp-span">삼성전자</span>
+                  <span>2020년 보험 영업</span>
+                </p>
+              </div>
+            </div>
+            <div className="ad-container"></div>
           </div>
         );
       default:

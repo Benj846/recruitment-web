@@ -200,16 +200,8 @@
 .banner-content5 {
   padding-bottom: 60px;
 }
-.ad-container {
-  display: flex;
-  height: 646px;
-  background: #f0f0f0 0% 0% no-repeat padding-box;
-  border-radius: 5px;
-  opacity: 1;
-}
 
 .calender-container {
-  height: 646px;
   background: #f0f0f0 0% 0% no-repeat padding-box;
   border-radius: 5px;
   opacity: 1;
@@ -264,4 +256,32 @@
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 50px;
   opacity: 1;
+}
+.calender-disp {
+  display: grid;
+  grid-template-columns: repeat(7, 150px);
+  grid-template-rows: repeat(10, 56px);
+  border-radius: 5px 5px 0px 0px;
+  opacity: 1;
+}
+
+.calender-disp > div > button {
+  width: 8px;
+  height: 12px;
+}
+.calender-disp .logo {
+  width: 48px;
+  height: 18px;
+}
+.calender-disp > div > p {
+  font-size: 13px;
+}
+.calender-disp > div > p > span {
+  font-size: 10px;
+}
+.calender-disp-span {
+  display: block;
+}
+.bookmark {
+  width: 10px;
 }

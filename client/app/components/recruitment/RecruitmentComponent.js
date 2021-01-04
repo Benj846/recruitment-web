@@ -66,7 +66,26 @@ function RecruitmentComponent(props) {
             <button className="btn-common">일반공고</button>
             <span className="more-span">더 보기</span>
           </div>
-          {btn ? <div className="search-popup"></div> : <div></div>}
+          {btn ? (
+            <div className="search-popup">
+              <div className="tab-container">
+                <button className="tab-content">직무</button>
+                <button className="tab-content">지역</button>
+                <button className="tab-content">산업.기업</button>
+                <button className="tab-content">기업형태</button>
+                <button className="tab-content">경력기간</button>
+                <button className="tab-content">학력</button>
+                <button className="tab-content">고용형태</button>
+                <input
+                  type="text"
+                  className="tab-content-input"
+                  placeholder="직무명을 입력해주세요"
+                />
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
 
           {/* 광고 banner layout */}
           <div className="banner-container">
