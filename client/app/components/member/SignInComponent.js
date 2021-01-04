@@ -1,36 +1,47 @@
 import React, { useState, useRef } from 'react';
 import Select from 'react-select';
 import '../../styles/SignInComponent'
+import partyPopper from './images/party-popper.png';
+import closeBtn from './images/close_button.svg';
+import fapplyLogo from './images/Fapply_logo.svg';
 
-function SignInComponent({closePopup}) {
+function SignInComponent({closePopup, customStyle, showPopup}) {
     const [showSignup, setShowSignup] = useState(false);
-    const togglePopup = () => {
+    const toggleSignup = () => {
         setShowSignup(!showSignup);           
     }
+
+    const [showFindIdPw, setShowFindIdPw] = useState(false);
+    const toggleFindIdPw = () => {
+        setShowFindIdPw(!showFindIdPw);           
+    }
+
     return(
-        <div className="signin-container">
+        <div className="signin-container" style={customStyle}>
             <div className="signin-content">
-                <div className="member-close-popup">
-                    <div>
-                        <button className="personal-member">개인회원</button>
-                        <button className="company-member">기업회원</button>
-                    </div>
-                    <button className="close-button" onClick={closePopup}>닫기</button>
+                <div className="logo-close-popup">
+                    <div className="empty-space"></div>
+                    <img src={fapplyLogo}/>
+                    <button className="close-button" onClick={closePopup}><img src={closeBtn}/></button>
                 </div>
                 <div className="header">
-                    <div className="company-name">Fapply</div>
-                    <div className="preamble-one">여러분의 소중한 커리어</div>
-                    <div className="preamble-two">Fapply와 함께 만들어나가요!</div>
+                    <div className="preamble-one">여러분의 소중한 커리어를</div>
+                    <div className="preamble-two">패플라이와 함께 만들어나가요!</div>
                 </div>
                 <div className="body">
-                    <div className="title">로그인 정보</div>
+                    <div className="choose-member">
+                        <button className="personal">개인회원</button>
+                        <button className="company">기업회원</button>
+                    </div>
                     <div className="input-content">
                         <input className="input-email-phone" name="email-phone" placeholder="이메일 or 전화번호"/>
                         <input className="input-password" name="password" placeholder="비밀번호"/>
                     </div>
+                    <button className="signin-button">패플라이 로그인</button>
                     <div className="signin-find-idpw-content">
-                        <button>로그인</button>
-                        <button>ID/PW 찾기</button>
+                        <button className="find-idpw" onClick={toggleFindIdPw}>아이디/비밀번호 찾기</button>
+                        <div className="between-line">|</div>
+                        <button className="signup-button" onClick={toggleSignup}>회원가입</button>
                     </div>
                     <div className="signin-throw-social-title">채널 로그인하기</div>
                     <div className="social-content">
@@ -40,11 +51,47 @@ function SignInComponent({closePopup}) {
                         <div className="google"></div>
                         <div className="apple"></div>
                     </div>
-                    <div className="signup-fapply">
-                        <button className="signup-button" onClick={togglePopup}>Fapply 회원되기</button>
-                    </div>                    
                 </div>
                 {showSignup ? <SignupComponent closePopup={closePopup}/> : null}
+                {showFindIdPw ? <FindIwPwComponent closePopup={closePopup}/> : null}
+            </div>
+        </div>
+    );
+}
+
+function FindIwPwComponent({closePopup}) {
+    return(
+        <div id="find-idpw-container">
+            <div className="find-idpw-content">
+                <div className="logo-close-popup">
+                    <div className="empty-space"></div>
+                    <div>아이디/비밀번호 찾기</div>
+                    <button className="close-button" onClick={closePopup}><img src={closeBtn}/></button>
+                </div>
+                <div className="find-buttons">
+                    <button className="id-btn">ID 찾기</button>
+                    <button className="pw-btn">비밀번호 찾기</button>
+                </div>
+                <div className="body">
+                    <div className="input-content">
+                        <div>이름</div>
+                        <input className="name" placeholder="이름을 입력해주세요"/>
+                        <div className="phone-title-content">
+                            <div className="title">휴대폰 번호 입력</div>
+                            <div className="guide">프로필에 인증된 휴대폰 번호와 일치해야 합니다</div>
+                        </div>
+                        <div className="phone-input-content">
+                            <input className="phone" placeholder="휴대폰 번호를 입력해주세요"/>
+                            <button className="verify-phone-btn">인증</button>
+                        </div>
+                        <div className="verify-confirm-title">인증번호 확인</div>                            
+                        <div className="verify-input-content">
+                            <input className="number" placeholder="인증번호 네 자리를 입력해주세요."/>
+                            <button className="btn">확인</button>
+                        </div>
+                        <button className="submit">확인</button>            
+                    </div>
+                </div>
             </div>
         </div>
     );
@@ -127,12 +174,10 @@ function SignupComponent({ closePopup }) {
     return(
         <div className="signup-container">
             <div className="signup-content">
-                <div className="member-close-popup">
-                    <div>
-                        <button className="personal-member">개인회원</button>
-                        <button className="company-member">기업회원</button>
-                    </div>
-                    <button className="close-button" onClick={closePopup}>닫기</button>
+                <div className="logo-close-popup">
+                    <div className="empty-space"></div>
+                    <img src={fapplyLogo}/>
+                    <button className="close-button" onClick={closePopup}><img src={closeBtn}/></button>
                 </div>
                 <div className="header">
                     <div className="company-name">Fapply</div>
@@ -211,10 +256,6 @@ function SigninWithPhoneEmail({closePopup}) {
         <div className="with-phone-email-container">
             <div className="with-phone-email-content">
                 <div className="member-close-popup">
-                    <div>
-                        <button className="personal-member">개인회원</button>
-                        <button className="company-member">기업회원</button>
-                    </div>
                     <button className="close-button" onClick={closePopup}>닫기</button>
                 </div>
                 <div className="header">
@@ -304,6 +345,7 @@ function SelectTaskYouWant({ closePopup }) {
     const togglePopup = () => {
         setShowSignup(!showSignup);           
     }
+    
     const color = '#cccccc';
     const customStyles = {
         control : (base, state) => ({
@@ -346,7 +388,7 @@ function SelectTaskYouWant({ closePopup }) {
     const detailJobOptions = [
         {value: "사업기획", label:"사업기획"},
         {value: "경영혁신", label:"경영혁신"},
-        {value: "사업제휴", label:"사업제휴"}
+        {value: "사업제휴asdf", label:"사업제휴asdfasdf"}
     ]
     const SelectDetailJob = () =>  {
         return(<Select options={detailJobOptions} placeholder="조직관리" isMulti isSearchable={false} styles={customStyles}/>);        
@@ -387,12 +429,46 @@ function SelectTaskYouWant({ closePopup }) {
                         <div>최대 6개</div>
                     </div>
                     <SelectDetailJob/>
-                    <button className="signup-done">가입완료</button>
-                    <button className="signup-later">나중에 할게요</button>
+                    <button className="signup-done" onClick={togglePopup}>가입완료</button>
+                    <button className="signup-later" onClick={togglePopup}>나중에 할게요</button>
                 </div>
-                {/* {showSignup ? <SelectTaskYouWant closePopup={closePopup}/> : null} */}
+                {showSignup ? <SignupEnd closePopup={closePopup}/> : null}
             </div>
         </div>
     );
+}
+
+function SignupEnd({closePopup}) {
+    const [showPopup, setShowSignup] = useState(false);
+    const togglePopup = () => {
+        setShowSignup(!showPopup);           
+    }
+
+    const backgroudRgba = {
+        backgroundColor: "rgba(0, 0, 0, 0)"
+    }
+
+    return (
+        <div className="signup-end-container">
+            <div className="signup-end-content">
+                <div className="header">
+                    <div className="preamble-one">
+                        <img src={partyPopper}></img>
+                        <div>짝짝짝!</div>
+                        <div>패플라이 가입을 축하합니다.</div>
+                        <div>빛나는 커리어를 함께 만들어요!</div>
+                    </div>
+                    <div className="preamble-two">
+                        <div>패플라이와 함께 다양한 커리어를</div>
+                        <div>구경하러 가보시겠어요?</div>
+                    </div>
+                    <button className="go-signup" onClick={togglePopup}>로그인하러 가기</button>
+                    {/* <button className="go-signup">로그인하러 가기</button> */}
+                </div>
+                {showPopup ? <SignInComponent closePopup={closePopup} customStyle={backgroudRgba}/> : null}
+            </div>
+        </div>
+    );
+
 }
 export default SignInComponent;

@@ -12,7 +12,13 @@ import SignInComponent from '../member/SignInComponent';
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
   const toggleSigninPopup = () => {        
-    setShowPopup(!showPopup);
+    const flag = !showPopup;
+    setShowPopup(flag);
+      if (flag === true) {
+          document.body.style.overflow="hidden"
+      } else {
+          document.body.style.overflow="visible"
+      }
   }
 
   return (
@@ -50,8 +56,7 @@ function Navbar() {
       </nav>
       {showPopup ? (
             <SignInComponent
-              closePopup={toggleSigninPopup}
-            />
+              closePopup={toggleSigninPopup} showPopup={showPopup} />
           ) : null}          
       <Switch>
         <Route exact path="/" component={MainComponent} />
