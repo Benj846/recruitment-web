@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 const mysql = require('mysql');
+=======
+//const mysql = require('mysql2');
+const mysql = require('mysql2');
+>>>>>>> origin/theo
 require('dotenv').config();
 let dbConfig = {
   host: process.env.DB_HOST,
