@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Select from 'react-select';
 import '../../styles/SignInComponent'
 
 function SignInComponent({closePopup}) {
@@ -222,15 +223,17 @@ function SigninWithPhoneEmail({closePopup}) {
                     <div className="preamble-two">Fapply와 함께 만들어나가요!</div>
                 </div>
                 <div className="body">
-                    <span>이메일 or 휴대폰 번호로 가입하기</span>
-                    <input className="input-email-phone" placeholder="이메일 or 휴대폰 번호 입력"></input>
-                    <button className="submit-email-phone" onClick={togglePopup}>이메일/휴대폰 번호로 가입하기</button>                    
-                    <span className="or-text">or</span>
-                    <button>카카오 계정으로 회원가입</button>
-                    <button>네이버 계정으로 회원가입</button>
-                    <button>페이스북 계정으로 회원가입</button>
-                    <button>구글 계정으로 회원가입</button>
-                    <button>애플 계정으로 회원가입</button>
+                    <span>이메일 혹은 휴대폰 번호로 가입하기</span>
+                    <input className="input-email-phone" placeholder="이메일 혹은 휴대폰 번호 입력"></input>
+                    <button className="submit-email-phone" onClick={togglePopup}>다음으로 이동</button>                    
+                    <hr className="div-line"/>
+                    <div className="social-channels">
+                        <button>f</button>
+                        <button>N</button>
+                        <button>K</button>
+                        <button>G</button>
+                        <button>A</button>
+                    </div>
                     <div className="guide-text">
                         <div>걱정마세요! 여러분의 지원 내역은 sns에 노출되지 않습니다.</div>
                         <div>회원가입 시 개인정보 처리방침과 이용약관을 확인하였으며 동의합니다.</div>
@@ -244,8 +247,14 @@ function SigninWithPhoneEmail({closePopup}) {
 
 function InputSignupWithPhoneEmail({ closePopup }) {
     const [showSignup, setShowSignup] = useState(false);
+    const [isPhoneOrEmail, setPhoneOrEmail] = useState(false);
     const togglePopup = () => {
         setShowSignup(!showSignup);           
+    }
+
+    const togglePhoneEmail = f => {
+        const flag = f;
+        setPhoneOrEmail(flag);
     }
     return(
         <div className="input-with-phone-email-container">
@@ -258,23 +267,130 @@ function InputSignupWithPhoneEmail({ closePopup }) {
                     <button className="close-button" onClick={closePopup}>닫기</button>
                 </div>
                 <div className="header">
-                    <div className="company-name">Fapply</div>
-                    <div className="preamble-one">여러분의 소중한 커리어</div>
-                    <div className="preamble-two">Fapply와 함께 만들어나가요!</div>
+                    <div className="title">패플라이 회원가입</div>
                 </div>
                 <div className="body">
-                        <div>
-                            <span className="required">*</span>
-                            <span className="signup-name"> 이름</span>
-                        </div>
-                        <input className="input-signup-name" placeholder="이름 입력"/>
-                    <div>
-                        <span className="required">*</span>
-                        <span className="signup-password"> 비밀번호</span>
+                    <span className="signup-name">이름</span>
+                    <input className="input-signup-name" placeholder="이름을 입력해주세요"/>
+                    <span className="signup-password">비밀번호</span>
+                    <input className="input-signup-password" placeholder="8~12자의 영문, 숫자, 특수문자 중 2가지 이상 조합 필수"/>
+                    <span className="signup-password">비밀번호 확인</span>
+                    <input className="input-signup-password-confirm" placeholder="비밀번호를 다시 한 번 입력해주세요"/>
+                    <span className="signup-password">휴대폰/이메일 인증</span>
+                    <div className="select-phone-email">
+                        <button className="phone" onClick={()=>togglePhoneEmail(true)}>휴대폰</button>
+                        <button className="email" onClick={()=>togglePhoneEmail(false)}>이메일</button>
                     </div>
-                    <input className="input-signup-password" placeholder="이름 입력"/>
+                    <div className="verify">
+                        {isPhoneOrEmail ? <input className="input-info-for-verify" placeholder="휴대폰 번호를 입력해주세요"></input>
+                        : <input className="input-info-for-verify" placeholder="이메일을 입력해주세요"></input>}                        
+                        <button className="verify-btn">인증</button>
+                    </div>
+                    <div className="verify-confirm">
+                        <div className="verify-confirm-title">인증번호 확인</div>
+                        <input className="input-info-for-verify-confirm" placeholder="인증번호 6자리를 입력해주세요."></input>
+                        <button className="verify-confirm-btn">확인</button>
+                    </div>
+                    <button className="select-job-btn" onClick={togglePopup}>직무 선택하기</button>
                 </div>
-                {showSignup ? <SigninWithPhoneEmail closePopup={closePopup}/> : null}
+                {showSignup ? <SelectTaskYouWant closePopup={closePopup}/> : null}
+            </div>
+        </div>
+    );
+}
+
+function SelectTaskYouWant({ closePopup }) {
+    const [showSignup, setShowSignup] = useState(false);
+    const togglePopup = () => {
+        setShowSignup(!showSignup);           
+    }
+    const color = '#cccccc';
+    const customStyles = {
+        control : (base, state) => ({
+                ...base,
+                height: '50px',
+                minHeight: '50px',
+                boxShadow: state.isFocused ? 0 : 0,
+                borderColor: state.isFocused ? color : color,
+                '&:hover':{
+                    borderColor : state.isFocused ? null : null
+                }
+            })
+    }
+    const jobFamilyOptions = [
+        {value: "경영/사무", label:"경영/사무"}
+    ]
+    const SelectJobFamily = () => {
+        return(<Select options={jobFamilyOptions} placeholder="경영/사무" styles={customStyles} />);         
+    }
+
+    const jobGroupOptions = [
+        {value: "기획/전략/경영", label:"기획/전략/경영"},
+        {value: "인사/노무/교육", label:"인사/노무/교육"},
+        {value: "사무/총무/법무/특허", label:"사무/총무/법무/특허"},
+        {value: "재무/세무/IR", label:"재무/세무/IR"},
+    ]
+    const SelectJobGroup = () => {
+        return(<Select options={jobGroupOptions} placeholder="기획/전략/경영" styles={customStyles}/>);         
+    }
+
+    const jobOptions = [
+        {value: "사업기획", label:"사업기획"},
+        {value: "경영혁신", label:"경영혁신"},
+        {value: "사업제휴", label:"사업제휴"}
+    ]
+    const SelectJob = () =>  {
+        return(<Select options={jobOptions} placeholder="사업제휴" isMulti styles={customStyles}/>);        
+    }
+
+    const detailJobOptions = [
+        {value: "사업기획", label:"사업기획"},
+        {value: "경영혁신", label:"경영혁신"},
+        {value: "사업제휴", label:"사업제휴"}
+    ]
+    const SelectDetailJob = () =>  {
+        return(<Select options={detailJobOptions} placeholder="조직관리" isMulti isSearchable={false} styles={customStyles}/>);        
+    }
+
+    return (
+        <div className="select-task-container">
+            <div className="select-task-content">
+                <div className="member-close-popup">
+                    <div>
+                        <button className="personal-member">개인회원</button>
+                        <button className="company-member">기업회원</button>
+                    </div>
+                    <button className="close-button" onClick={closePopup}>닫기</button>
+                </div>
+                <div className="header">
+                    <div className="title">관심 직무 선택하기</div>
+                    <div className="preamble">
+                        <div>아래 관심 직무를 선택하면</div>
+                        <div>더 정확한 채용정보를 추천받을 수 있어요.</div>
+                    </div>
+                    <div className="guide-preamble">
+                        경력은 현재 직종을, 신입은 관심 직종을 선택해주세요.
+                    </div>
+                </div>
+                <div className="body">
+                    <div className="select-job-family-title" >직종 선택하기</div>
+                    <SelectJobFamily/>
+                    <div className="select-job-group-title" >직군 선택하기</div>
+                    <SelectJobGroup/>
+                    <div className="select-job-title" >
+                        <div>직무 선택하기</div>
+                        <div>최대 3개</div>
+                    </div>
+                    <SelectJob/>
+                    <div className="select-detail-job-title" >
+                        <div>세부직무 선택하기</div>
+                        <div>최대 6개</div>
+                    </div>
+                    <SelectDetailJob/>
+                    <button className="signup-done">가입완료</button>
+                    <button className="signup-later">나중에 할게요</button>
+                </div>
+                {/* {showSignup ? <SelectTaskYouWant closePopup={closePopup}/> : null} */}
             </div>
         </div>
     );
