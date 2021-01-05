@@ -5,7 +5,7 @@ import partyPopper from './images/party-popper.png';
 import closeBtn from './images/close_button.svg';
 import fapplyLogo from './images/Fapply_logo.svg';
 
-function SignInComponent({closePopup, customStyle, showPopup}) {
+function SignInComponent({closePopup, customStyle, showSignin}) {
     const [showSignup, setShowSignup] = useState(false);
     const toggleSignup = () => {
         setShowSignup(!showSignup);           

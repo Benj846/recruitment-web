@@ -8,19 +8,19 @@ import RecruitmentComponent from '../recruitment/RecruitmentComponent';
 import Career from '../career/Career';
 import Calendar from '../calendar/Calendar';
 import SignInComponent from '../member/SignInComponent';
+import MyPageComponent from '../member/MyPageComponent';
 
 function Navbar() {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showSignin, setSignin] = useState(false);
   const toggleSigninPopup = () => {        
-    const flag = !showPopup;
-    setShowPopup(flag);
+    const flag = !showSignin;
+    setSignin(flag);
       if (flag === true) {
           document.body.style.overflow="hidden"
       } else {
           document.body.style.overflow="visible"
       }
   }
-
   return (
     <div className="navbar-wrapper">
       <nav className="navbar navbar-expand ">
@@ -51,12 +51,19 @@ function Navbar() {
         </div>
         <div className="utility">
           <button className="signin-btn" onClick={toggleSigninPopup}>로그인/회원가입</button>
+        </div>
+        <li className="nav-item">
+              <Link to={'/mypage'} className="nav-link mypage-margin">
+                마이페이지
+              </Link>
+            </li>
+        <div className="utility">
           <button className="business-btn">기업페이지</button>
         </div>
       </nav>
-      {showPopup ? (
+      {showSignin ? (
             <SignInComponent
-              closePopup={toggleSigninPopup} showPopup={showPopup} />
+              closePopup={toggleSigninPopup} showSignin={showSignin} />
           ) : null}          
       <Switch>
         <Route exact path="/" component={MainComponent} />
@@ -64,6 +71,7 @@ function Navbar() {
         <Route exact path="/career" component={Career} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/resume" component={Resume} />
+        <Route exact path="/mypage" component={MyPageComponent} />
       </Switch>
     </div>
   );
