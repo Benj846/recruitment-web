@@ -120,7 +120,7 @@
 
 .employ-type .employ-period {
   border: 1px solid var(--unnamed-color-dddddd);
-  background: #e0e0e0 0% 0% no-repeat padding-box;
+  --background: #e0e0e0 0% 0% no-repeat padding-box;
   border: 1px solid #bebebe;
   opacity: 1;
   width: 160px;
@@ -140,7 +140,7 @@
 
 .employ-type .employ-period-input {
   border: 1px solid var(--unnamed-color-dddddd);
-  background: #e0e0e0 0% 0% no-repeat padding-box;
+  --background: #e0e0e0 0% 0% no-repeat padding-box;
   border: 1px solid #bebebe;
   opacity: 1;
   width: 160px;

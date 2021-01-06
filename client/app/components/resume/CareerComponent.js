@@ -105,9 +105,9 @@ function CareerListComponent({ids, onRemove}) {
                     {/* 근무기간 */}
                     <div className="employ-type">
                         <div className="employ-type-style">근무기간</div>
-                        <input type="date" className="employ-period zero-outline"></input>
-                        <input type="date" className="employ-period zero-outline"></input>
-                        <input className="employ-period-input zero-outline"></input>
+                        <input type="month" className="employ-period zero-outline"></input>
+                        <input type="month" className="employ-period zero-outline"></input>
+                        <input className="employ-period-input zero-outline" disabled={true}></input>
                         <div className="present">
                         <input type="radio"></input>
                         <span>재직 중</span>
