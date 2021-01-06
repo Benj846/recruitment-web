@@ -79,7 +79,7 @@ function RecruitmentComponent(props) {
                 <input
                   type="text"
                   className="tab-content-input"
-                  placeholder="직무명을 입력해주세요"
+                  placeholder="직무명을 입력해주세요."
                 />
               </div>
             </div>
