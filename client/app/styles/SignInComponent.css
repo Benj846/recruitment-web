@@ -1,0 +1,754 @@
+.signin-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+.signin-container .signin-content {
+  width: 440px;
+  --height: 90vh;
+  height: 710px;
+  /* left: 35%;
+  right: 35%;
+  top: 5%;
+  bottom: 5%; */
+  margin: auto auto;
+  background: white;
+}
+
+.signin-container .member-close-popup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signin-container .member-close-popup div button {
+  border: 1px solid black;
+  background: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.signin-container .member-close-popup div button:focus {
+  outline: none;
+}
+
+.signin-container .member-close-popup div button:nth-of-type(1) {
+  background: #00bff0;
+}
+
+.signin-container .member-close-popup .close-button {
+  width: 100px;
+  height: 40px;
+  background: none;
+  border: 0px;
+}
+
+.signin-container .member-close-popup .close-button:focus {
+  outline: none;
+}
+
+.signin-content > .header {
+  --border: 1px solid red;
+  text-align: center;
+}
+
+.signin-content .header .company-name {
+  font-size: 25px;
+  color: #000000;
+}
+
+.signin-content .body .title {
+  margin-left: 50px;
+  font-size: 15px;
+}
+
+.signin-content .body .input-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signin-content .body .input-content .input-email-phone {
+  width: 400px;
+  height: 35px;
+}
+
+.signin-content .body .input-content input::placeholder {
+  color: #909090;
+  text-align: center;
+  font-size: 12px;
+}
+
+.signin-content .body .input-content .input-password {
+  margin-top: 10px;
+  width: 400px;
+  height: 35px;
+}
+
+.signin-content .body .signin-find-idpw-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.signin-content .body .signin-find-idpw-content button {
+  border: 1px solid black;
+  background: none;
+  border-radius: 5px;
+  width: 195px;
+  margin: 0 5px 0 5px;
+}
+
+.signin-content .body .signin-find-idpw-content button:focus {
+  outline: none;
+}
+
+.signin-content .body .signin-throw-social-title {
+  margin: 30px 0 0 50px;
+}
+
+.signin-content .body .social-content {
+  display: flex;
+  justify-content: center;
+}
+
+.signin-content .body .social-content div {
+  border: 1px solid black;
+  width: 70px;
+  height: 70px;
+  margin: 0 10px 0 0;
+}
+
+.signin-content .body .signup-fapply {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.signin-content .body .signup-fapply .signup-button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 400px;
+  height: 40px;
+}
+
+.signin-content .body .signup-fapply .signup-button:focus {
+  outline: none;
+}
+
+/* Signup ---------------------------------------------------------------- */
+.signin-content > .signup-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.signup-container > .signup-content {
+  width: 440px;
+  --height: 90vh;
+  height: 710px;
+  margin: 50px auto;
+  background: white;
+  --border: 1px solid red;
+}
+
+.signup-content > .header {
+  width: 400px;
+  --border: 1px solid black;
+  text-align: center;
+  margin: 50px auto;
+}
+
+.signup-content > .body {
+  --border: 1px black solid;
+  width: 400px;
+  height: 300px;
+  margin: 50px auto;
+}
+
+.signup-content .body .check-all-title {
+  cursor: pointer;
+}
+
+.signup-content .body .personal-info-collect-title {
+  cursor: pointer;
+}
+
+.signup-content .body .age-fourteen-title {
+  cursor: pointer;
+}
+
+.signup-content .body .marketing-accept-title {
+  cursor: pointer;
+}
+
+.signin-container
+  .signup-content
+  .body
+  .personal-info-collect-container
+  div:nth-of-type(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signin-container
+  .signup-content
+  .body
+  .marketing-accept-container
+  div:nth-of-type(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signup-content .body .div-line {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.signup-content .body .next-button-content {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-content .body .next-button-content button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 300px;
+  height: 40px;
+  margin-top: 50px;
+}
+
+.signup-content .body .next-button-content button:focus {
+  outline: none;
+}
+
+.signup-content .body .view-detail {
+  font-size: 13px;
+  color: #909090;
+  cursor: pointer;
+}
+
+.signup-content .body .personal-info-collect-container .full {
+  animation-duration: 1s;
+  width: 400px;
+  height: 100px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.signup-content .body .personal-info-collect-container .full:focus {
+  outline: none;
+}
+
+.signup-content .body .personal-info-collect-container .full:disabled {
+  background: none;
+}
+
+.signup-content .body .marketing-accept-container .full {
+  width: 400px;
+  height: 100px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+/* Signup with Phone email ---------------------------------------------------------------- */
+.signin-content .with-phone-email-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.with-phone-email-container > .with-phone-email-content {
+  width: 440px;
+  height: 710px;
+  --height: 90vh;
+  margin: 50px auto;
+  background: white;
+}
+
+.with-phone-email-content > .header {
+  --border: 1px solid black;
+  width: 400px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.with-phone-email-content > .header > div {
+  font: normal normal bold 23px/32px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+.signin-container .with-phone-email-content .body {
+  width: 400px;
+  height: 100%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.with-phone-email-content .input-email-phone {
+  border: 1px solid black;
+  height: 45px;
+  background: none;
+  margin-bottom: 6px;
+}
+
+.with-phone-email-content .input-email-phone::placeholder {
+  --text-align: center;
+  padding-left: 10px;
+}
+
+.with-phone-email-content .input-email-phone:focus {
+  outline: none;
+}
+
+.with-phone-email-content .submit-email-phone {
+  background: none;
+  border: 1px solid black;
+  height: 45px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.with-phone-email-content .submit-email-phone:focus {
+  --outline: none;
+}
+
+.with-phone-email-content .social-channels {
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+.with-phone-email-content .social-channels button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  margin: 6px 4px;
+}
+
+.with-phone-email-content .body button:focus {
+  outline: none;
+}
+
+.with-phone-email-content .body .guide-text {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.with-phone-email-content .body .guide-text div {
+  --font: normal normal medium 11px/16px Noto Sans KR;
+  --letter-spacing: 0px;
+  --opacity: 1;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* Input signup with Phone email ---------------------------------------------------------------- */
+.signin-content .input-with-phone-email-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.input-with-phone-email-container > .input-with-phone-email-content {
+  width: 440px;
+  height: 710px;
+  --height: 95vh;
+  margin: 0 auto;
+  background: white;
+}
+
+.input-with-phone-email-content > .header {
+  --border: 1px solid black;
+  margin: 20px auto;
+  width: 400px;
+}
+
+.input-with-phone-email-content > .header > .title {
+  text-align: center;
+  font: normal normal bold 18px/26px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+.input-with-phone-email-content > .body {
+  width: 400px;
+  height: 100%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-container .input-with-phone-email-content .body .required {
+  color: #ff0000;
+}
+
+.signin-container .input-with-phone-email-content .body .input-signup-name {
+  border: 1px solid #cccccc;
+  height: 40px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.signin-container
+  .input-with-phone-email-content
+  .body
+  .input-signup-name::placeholder {
+  color: #cccccc;
+  opacity: 1;
+  letter-spacing: 0px;
+}
+
+.signin-container
+  .input-with-phone-email-content
+  .body
+  .input-signup-name:focus {
+  outline: none;
+}
+
+.signin-container .input-with-phone-email-content .body .input-signup-password {
+  border: 1px solid #cccccc;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.signin-container
+  .input-with-phone-email-content
+  .body
+  .input-signup-password::placeholder {
+  color: #cccccc;
+  opacity: 1;
+  letter-spacing: 0px;
+}
+
+.signin-container
+  .input-with-phone-email-content
+  .body
+  .input-signup-password:focus {
+  outline: none;
+}
+
+.input-with-phone-email-content .input-signup-password-confirm {
+  border: 1px solid #cccccc;
+  height: 40px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.input-with-phone-email-content .input-signup-password-confirm::placeholder {
+  color: #cccccc;
+  --font-weight: bold;
+}
+
+.input-with-phone-email-content .input-signup-password-confirm:focus {
+  outline: none;
+}
+
+.input-with-phone-email-content .select-phone-email button {
+  background: none;
+  border: 1px solid #cccccc;
+  width: 200px;
+  height: 40px;
+}
+
+.input-with-phone-email-content .verify {
+  margin-top: 10px;
+}
+
+.input-with-phone-email-content .verify .input-info-for-verify {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+}
+
+.input-with-phone-email-content .verify .input-info-for-verify::placeholder {
+  color: #cccccc;
+  --font-size: 15px;
+}
+
+.input-with-phone-email-content .verify .verify-btn {
+  background: #dddddd 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  color: #999999;
+  width: 100px;
+  height: 40px;
+}
+
+.input-with-phone-email-content .verify .verify-btn:focus {
+  outline: none;
+}
+
+.input-with-phone-email-content .verify-confirm {
+  margin-top: 10px;
+}
+
+.input-with-phone-email-content .verify-confirm .input-info-for-verify-confirm {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+}
+
+.input-with-phone-email-content
+  .verify-confirm
+  .input-info-for-verify-confirm::placeholder {
+  color: #cccccc;
+}
+
+.input-with-phone-email-content
+  .verify-confirm
+  .input-info-for-verify-confirm:focus {
+  outline: none;
+}
+
+.input-with-phone-email-content .verify-confirm .verify-confirm-btn {
+  background: #009999 0% 0% no-repeat padding-box;
+  border: 1px solid #009999;
+  color: #ffffff;
+  width: 100px;
+  height: 40px;
+}
+
+.input-with-phone-email-content .select-job-btn {
+  height: 50px;
+  border: 1px solid #aaaaaa;
+  border-radius: 3px;
+  margin-top: 30px;
+  background: none;
+  font: normal normal bold 15px/19px Apple SD Gothic Neo;
+}
+
+/*---------------------------------------------------------------------------------------*/
+/* select task you want ---------------------------------------------------------------- */
+.signin-content .select-task-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.select-task-container > .select-task-content {
+  width: 440px;
+  height: 710px;
+  --height: 95vh;
+  margin: 50px auto;
+  background: white;
+}
+
+.select-task-content > .header {
+  width: 400px;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.select-task-content > .header > .title {
+  font: normal normal bold 18px/26px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+.select-task-content > .header > .preamble {
+  margin-top: 15px;
+  text-align: center;
+  font: normal normal medium 15px/22px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+
+.select-task-content > .header > .guide-preamble {
+  margin-top: 5px;
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #cccccc;
+  opacity: 1;
+}
+
+.select-task-content > .body {
+  width: 400px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-task-content > .body > .select-job-family-title {
+  text-align: left;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+}
+
+.select-task-content > .body > .select-job-family {
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  opacity: 1;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  padding: 5px;
+}
+
+.select-task-content > .body > .select-job-family:focus {
+  outline: none;
+}
+
+.select-task-content > .body > .select-job-group-title {
+  text-align: left;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.select-task-content > .body > .select-job-group {
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  opacity: 1;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  padding: 5px;
+}
+
+.select-task-content > .body > .select-job-group:focus {
+  outline: none;
+}
+
+.select-task-content > .body > .select-job-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-task-content > .body > .select-job-title > div {
+  text-align: left;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.select-task-content > .body > .select-job-title > div:nth-child(2) {
+  font: normal normal medium 11px/16px Noto Sans KR;
+  font-size: 13px;
+  letter-spacing: 0px;
+  color: #cccccc;
+  opacity: 1;
+}
+
+/* .select-task-content > .body > .select-job:focus {
+  outline: none;
+} */
+
+.select-task-content > .body > .select-detail-job-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-task-content > .body > .select-detail-job-title > div {
+  text-align: left;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.select-task-content > .body > .select-detail-job-title > div:nth-child(2) {
+  font: normal normal medium 11px/16px Noto Sans KR;
+  font-size: 13px;
+  letter-spacing: 0px;
+  color: #cccccc;
+  opacity: 1;
+}
+
+.select-task-content > .body > .signup-done {
+  background: #009999 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  opacity: 1;
+  height: 50px;
+  border: none;
+  font: normal normal bold 15px/21px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.select-task-content > .body > .signup-later {
+  width: 100px;
+  height: 22px;
+
+  background: none;
+  border-radius: 3px;
+  --font-size: 12px;
+
+  opacity: 1;
+  --border: 1px solid black;
+  border: none;
+  font: normal normal bold 13px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #aaaaaa;
+  margin: 5px auto 0px auto;
+  text-decoration: underline;
+}
