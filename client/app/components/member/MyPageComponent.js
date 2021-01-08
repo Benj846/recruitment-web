@@ -115,6 +115,79 @@ function MyPageComponent() {
             setBookmarkClicked(false);
         }
     }
+
+    const [noticeItems, setNoticeItems] = useState([
+        {
+            id: 1,
+            company: '네이버',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 2,
+            company: '삼성전자',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 3,
+            company: '딜리버리 히어로',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 4,
+            company: '쿠팡',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 5,
+            company: '우아한형제들',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 6,
+            company: '현대자동차',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 7,
+            company: '카카오',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 8,
+            company: '어메이징 브루잉 컴퍼니',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 9,
+            company: '여기어때',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        },
+        {
+            id: 10,
+            company: 'Vercel',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            date: '21-01-08 13:00',
+            expired: '21-02-07 13:00'
+        }
+    ]);
     
     return(
         <div id="mypage-wrapper">
@@ -218,9 +291,12 @@ function MyPageComponent() {
                                 <span className="main">채용제안</span>
                                 <span className="sub">기업에서 보내온 채용 제안입니다.</span>
                             </div>
-                            <div className="select-rows">
-                                <select>
-                                    <option>10개식 노출</option>
+                            <div className="select-rows-content">
+                                <select className="select-rows" defaultValue="10">
+                                    <option value="10">10개씩 노출</option>
+                                    <option value="20">20개씩 노출</option>
+                                    <option value="30">30개씩 노출</option>
+                                    <option value="50">50개씩 노출</option>
                                 </select>
                             </div>
                         </div>
@@ -229,10 +305,27 @@ function MyPageComponent() {
                         </div>
                         <table>
                             <thead>
-
-                            </thead>
+                                <tr>
+                                    <th>회사명</th>
+                                    <th>알림내용</th>
+                                    <th>요청일시</th>
+                                    <th>마감일정</th>
+                                </tr>
+                            </thead>                            
+                            <tbody>
+                                {
+                                    noticeItems.map(item => (
+                                        <tr key = {item.id} >
+                                            <td>{item.company}</td>
+                                            <td>{item.content}</td>
+                                            <td>{item.date}</td>
+                                            <td>{item.expired}</td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
                         </table>
-
+                        <div className="pager">1 2 3 4 5 6 7 8 9 10</div>
                     </div>
                 </div>
                 : null}
