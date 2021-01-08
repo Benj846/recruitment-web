@@ -5,17 +5,24 @@
 }
 
 #mypage-container {
-  width: 1060px;
+  /* width: 1060px;
   height: 841px;
-  border: 1px solid #dddddd;
+  border: 1px solid #dddddd; */
   margin: 0 auto;
 }
 
-#mypage-container > #mypage-content {
+#mypage-container > #profile-container {
+  width: 1060px;
+  height: 841px;
+  border: 1px solid #dddddd;
+}
+
+#profile-container > .profile-content {
   width: 880px;
   margin: 87px auto 0px auto;
 }
 
+/* Skyscraper ------------------------------------------------------------------------*/
 .mypage-skyscraper {
   border: 1px solid #dddddd;
   position: sticky;
@@ -25,7 +32,7 @@
   align-self: flex-start;
 }
 
-.mypage-skyscraper > .title {
+.mypage-skyscraper > .profile {
   padding-left: 16px;
   background: #f0f0f0 0% 0% no-repeat padding-box;
   border-radius: 5px 5px 0px 0px;
@@ -69,52 +76,62 @@
   opacity: 1;
 }
 
-.mypage-skyscraper > .resume {
+.mypage-skyscraper > .profile,
+.notice,
+.resume,
+.book-mark,
+.account {
   cursor: pointer;
-  margin-bottom: 0px;
 }
 
-.mypage-skyscraper > .added-content > div {
+/* .mypage-skyscraper > .notice-clicked-content {
+
+} */
+
+.mypage-skyscraper > .resume-clicked-content,
+.notice-clicked-content > div {
   margin-left: 32px;
+  cursor: pointer;
 }
 
-#mypage-content > .profile-title {
+/* Profile content-------------------------------------------------------------------*/
+#profile-container > .profile-content > .profile-title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-20) / var(--unnamed-line-spacing-29)
     var(--unnamed-font-family-noto-sans-kr);
   letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
+  --text-align: left;
   font: normal normal bold 20px/29px Noto Sans KR;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
 }
 
-#mypage-content > .div-line {
+#profile-container > .profile-content > .div-line {
   margin: 5px 0 0 0;
   width: 100%;
 }
 
-#mypage-content > .info {
+#profile-container > .profile-content > .info {
   margin: 30px 0 0 0;
   display: flex;
 }
 
-#mypage-content > .info > .pic > img {
+#profile-container > .profile-content > .info > .pic > img {
   border: 1px solid #cccccc;
 }
 
-#mypage-content > .info > .pic > .buttons button {
+#profile-container > .profile-content > .info > .pic > .buttons button {
   width: 80px;
   height: 40px;
   border: none;
 }
 
-#mypage-content > .info > .pic > .buttons button:focus {
+#profile-container > .profile-content > .info > .pic > .buttons button:focus {
   outline: none;
 }
 
-#mypage-content > .info > .pic > .buttons > .change-btn {
+#profile-container > .profile-content > .info > .pic > .buttons > .change-btn {
   background: #009999 0% 0% no-repeat padding-box;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) 13px/16px Apple SD Gothic Neo;
@@ -126,16 +143,16 @@
   opacity: 1;
 }
 
-#mypage-content > .info > .basic {
+#profile-container > .profile-content > .info > .basic {
   margin-left: 20px;
   --display: flex;
 }
 
-#mypage-content > .info > .basic > input {
+#profile-container > .profile-content > .info > .basic > input {
   padding: 16px;
 }
 
-#mypage-content > .info > .basic > .font-style {
+#profile-container > .profile-content > .info > .basic > .font-style {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
     var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
@@ -147,40 +164,40 @@
   opacity: 1;
 }
 
-#mypage-content > .info > .basic > .input-name {
+#profile-container > .profile-content > .info > .basic > .input-name {
   margin-left: 64px;
   width: 250px;
   height: 40px;
 }
 
-#mypage-content > .info > .basic > .gender {
+#profile-container > .profile-content > .info > .basic > .gender {
   margin-left: 20px;
 }
 
-#mypage-content > .info > .basic > .male {
+#profile-container > .profile-content > .info > .basic > .male {
   margin-left: 64px;
   width: 115px;
   height: 40px;
   border: 1px solid #cccccc;
 }
 
-#mypage-content > .info > .basic > .female {
+#profile-container > .profile-content > .info > .basic > .female {
   width: 115px;
   height: 40px;
   border: 1px solid #cccccc;
 }
 
-#mypage-content > .info > .basic > .birth {
+#profile-container > .profile-content > .info > .basic > .birth {
   width: 250px;
   height: 40px;
   margin: 10px 0 0 32px;
 }
 
-#mypage-content > .info > .basic > .phone-title {
+#profile-container > .profile-content > .info > .basic > .phone-title {
   margin-left: 20px;
 }
 
-#mypage-content > .info > .basic > .input-phone {
+#profile-container > .profile-content > .info > .basic > .input-phone {
   width: 230px;
   height: 40px;
   margin-left: 32px;
@@ -189,11 +206,11 @@
   opacity: 1;
 }
 
-#mypage-content > .info > .basic > .input-phone:focus {
+#profile-container > .profile-content > .info > .basic > .input-phone:focus {
   outline: none;
 }
 
-#mypage-content > .info > .basic > .change-phone-btn {
+#profile-container > .profile-content > .info > .basic > .change-phone-btn {
   width: 50px;
   height: 19px;
   margin-left: -50px;
@@ -208,34 +225,43 @@
   opacity: 1;
 }
 
-#mypage-content > .info > .basic > .change-phone-btn:focus {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .change-phone-btn:focus {
   outline: none;
 }
 
-#mypage-content > .info > .basic > .input-email {
+#profile-container > .profile-content > .info > .basic > .input-email {
   margin: 10px 0 0 48px;
   width: 250px;
   height: 40px;
 }
 
-#mypage-content > .info > .basic > .job-status {
+#profile-container > .profile-content > .info > .basic > .job-status {
   margin-left: 20px;
 }
 
-#mypage-content > .info > .basic > .select-job-status {
+#profile-container > .profile-content > .info > .basic > .select-job-status {
   display: inline-flex;
   margin-left: 32px;
 }
 
-#mypage-content > .info > .basic > .basic-div {
+#profile-container > .profile-content > .info > .basic > .basic-div {
   width: 100%;
 }
 
-#mypage-content > .info > .basic > .mailing-avail {
+#profile-container > .profile-content > .info > .basic > .mailing-avail {
   display: flex;
 }
 
-#mypage-content > .info > .basic > .mailing-avail .font-style {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  .font-style {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
     var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
@@ -247,48 +273,89 @@
   opacity: 1;
 }
 
-#mypage-content > .info > .basic > .mailing-avail > .content {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  > .content {
   --border: 1px solid black;
   width: 400px;
   margin-left: 39px;
 }
 
-#mypage-content > .info > .basic > .mailing-avail > .content > button {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  > .content
+  > button {
   border: 1px solid black;
   background: none;
   width: 50px;
   height: 20px;
 }
 
-#mypage-content > .info > .basic > .mailing-avail > .content > button:focus {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  > .content
+  > button:focus {
   outline: none;
 }
 
-#mypage-content > .info > .basic > .mailing-avail > .content > .marketing-btn {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  > .content
+  > .marketing-btn {
   margin-left: 50px;
 }
 
-#mypage-content > .info > .basic > .mailing-avail > .content > .job-offer-btn {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  > .content
+  > .job-offer-btn {
   margin-left: 76px;
 }
 
-#mypage-content > .info > .basic > .mailing-avail > .content > .noti-event-btn {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  > .content
+  > .noti-event-btn {
   margin-left: 141px;
 }
 
-#mypage-content > .info > .basic > .mailing-avail > .content > .like-btn {
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  > .mailing-avail
+  > .content
+  > .like-btn {
   margin-left: 127px;
 }
 
 /* customize --------------------------------------------------------------------*/
-#mypage-content > .customize-job > .header {
+#profile-container > .profile-content > .customize-job > .header {
   margin-top: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-#mypage-content > .customize-job .title-content > .title {
+#profile-container > .profile-content > .customize-job .title-content > .title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24) Apple SD Gothic
     Neo;
@@ -300,7 +367,11 @@
   opacity: 1;
 }
 
-#mypage-content > .customize-job .title-content > .sub-title {
+#profile-container
+  > .profile-content
+  > .customize-job
+  .title-content
+  > .sub-title {
   margin-left: 10px;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
@@ -313,7 +384,7 @@
   opacity: 1;
 }
 
-#mypage-content > .customize-job > .header > .submit {
+#profile-container > .profile-content > .customize-job > .header > .submit {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
     var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
@@ -327,16 +398,16 @@
   border: none;
 }
 
-#mypage-content > .customize-job > .submit:focus {
+#profile-container > .profile-content > .customize-job > .submit:focus {
   outline: none;
 }
 
-#mypage-content > .customize-job > .job-div {
+#profile-container > .profile-content > .customize-job > .job-div {
   margin-top: 5px;
   margin-bottom: 15px;
 }
 
-#mypage-content > .customize-job > .main {
+#profile-container > .profile-content > .customize-job > .main {
   width: 100%;
   --height: 200px;
   --background: #f5f5f5 0% 0% no-repeat padding-box;
@@ -349,7 +420,7 @@
   align-items: center;
 }
 
-#mypage-content > .customize-job > .main > .added-job {
+#profile-container > .profile-content > .customize-job > .main > .added-job {
   width: 100%;
   height: 150px;
   font: var(--unnamed-font-style-normal) normal normal
@@ -368,7 +439,7 @@
   opacity: 1;
 }
 
-#mypage-content > .customize-job > .main > .save-btn {
+#profile-container > .profile-content > .customize-job > .main > .save-btn {
   width: 160px;
   height: 55px;
   background: transparent linear-gradient(114deg, #009999 0%, #7f37c7 100%) 0%
@@ -378,7 +449,7 @@
   margin-top: 30px;
 }
 
-#mypage-content > .customize-job > .main > .save-btn {
+#profile-container > .profile-content > .customize-job > .main > .save-btn {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-16) / var(--unnamed-line-spacing-24)
     var(--unnamed-font-family-noto-sans-kr);
@@ -390,11 +461,15 @@
   opacity: 1;
 }
 
-#mypage-content > .customize-job > .main > .save-btn:focus {
+#profile-container
+  > .profile-content
+  > .customize-job
+  > .main
+  > .save-btn:focus {
   outline: none;
 }
 
-#mypage-content > .change-phone-container {
+#profile-container > .profile-content > .change-phone-container {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -419,16 +494,23 @@
   opacity: 1;
 }
 
-.change-phone-content > .close-popup {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .close-popup {
   display: flex;
   justify-content: flex-end;
 }
 
-.change-phone-content > .close-popup > .btn {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .close-popup
+  > .btn {
   margin: 5px;
 }
 
-.change-phone-content > .title {
+.profile-content > .change-phone-container > .change-phone-content > .title {
   text-align: center;
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     18px/26px var(--unnamed-font-family-noto-sans-kr);
@@ -440,35 +522,114 @@
   opacity: 1;
 }
 
-.change-phone-content > .input-content {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .input-content {
   margin: 0 15px;
 }
 
-.change-phone-content > .input-content > input {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .input-content
+  > input {
   width: 300px;
   height: 50px;
   border: 1px solid black;
 }
 
-.change-phone-content > .input-content > input:focus {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .input-content
+  > input:focus {
   outline: none;
 }
 
-.change-phone-content > .input-content > input::placeholder {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .input-content
+  > input::placeholder {
   padding: 15px;
   font-size: 14px;
 }
 
-.change-phone-content > .input-content > button {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .input-content
+  > button {
   width: 100px;
   height: 50px;
   border: 1px solid black;
 }
 
-.change-phone-content > .input-content > button:focus {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .input-content
+  > button:focus {
   outline: none;
 }
 
-.change-phone-content > .input-content > .verify-title {
+.profile-content
+  > .change-phone-container
+  > .change-phone-content
+  > .input-content
+  > .verify-title {
   margin-top: 24px;
+}
+
+/* Notice/Offer ------------------------------------------------------------------- */
+#mypage-container > #offer-container {
+  width: 1060px;
+  height: 841px;
+  border: 2px dotted #ffaa00;
+}
+
+/* #offer-container > #offer-content {
+  width: 1080px;
+  --margin: 87px auto 0px auto;
+} */
+
+#offer-container > #offer-content > .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#offer-content > .header > .title > .main {
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    var(--unnamed-font-size-22) / var(--unnamed-line-spacing-32)
+    var(--unnamed-font-family-noto-sans-kr);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal bold 22px/32px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+#offer-content > .header > .title > .sub {
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
+    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+
+#offer-content > .notice-guide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background: #f0f0f0 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  opacity: 1;
+  margin-top: 16px;
 }
