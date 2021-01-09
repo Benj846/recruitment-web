@@ -48,73 +48,87 @@ function MyPageComponent() {
         })
     }
 
-    const [isProfileClicked, setProfileClicked] = useState(true);
-    const [isResumeClicked, setResumeClicked] = useState(false);
-    const [isNoticeClicked, setNoticeClicked] = useState(false);
-    const [isBookmarkClicked, setBookmarkClicked] = useState(false);
-    const [isAccountClicked, setAccountClicked] = useState(false);
+    const menuNumber = [{profile: 0}, {recruitOffer: 1}, {recruitNotice:2}, {likeNotice:3}, {etc: 4}];
+    Object.freeze(menuNumber);
+    // const initValues = new Array(menuNumber.length);
+    // initValues.fill(false);
+    const [menu, setMenu] = useState();    
+
+
 
     const toggleProfileClick = () => {
         if (isProfileClicked === true) {
             return;
         }
         else {            
-            setProfileClicked(true);
-            setNoticeClicked(false);
+            setProfileClicked(true);            
+            setOfferClicked(false);
             setBookmarkClicked(false);
             setAccountClicked(false);
         }
     }
 
-    const toggleNoticeClick = () => {
-        const flag = !isNoticeClicked;
-        setNoticeClicked(flag);
-    }
+    // const toggleNoticeClick = () => {
+    //     setNoticeClicked(!isNoticeClicked);
+    // }
 
-    const [isOfferClicked, setOfferClicked] = useState(false);
-    const [isLikeCompanyClicked, setLikeCompanyClicked] = useState(false);
-    const [isLikeNoticeClicked, setLikeNoticeClicked] = useState(false);
-    const [isEtcClicked, setEtcClicked] = useState(false);
+    const [isProfileClicked, setProfileClicked] = useState(true);
+    // const [isResumeClicked, setResumeClicked] = useState(false);
+    // const [isNoticeClicked, setNoticeClicked] = useState(false);
+    // const [isBookmarkClicked, setBookmarkClicked] = useState(false);
+    // const [isAccountClicked, setAccountClicked] = useState(false);
+
+    // const [isOfferClicked, setOfferClicked] = useState(false);
+    // const [isRecruitClicked, setRecruitClicked] = useState(false);
+    // const [isLikeRecruitClicked, setLikeRecruitClicked] = useState(false);
+    // const [isEtcClicked, setEtcClicked] = useState(false);    
+
+    // const toggleAllToFalse = () => {
+    //     // 프로필
+    //     setProfileClicked(false);            
+    //     // 알림
+    //     setOfferClicked(false);
+    //     setRecruitClicked(false);        
+    //     setLikeRecruitClicked(false);
+    //     // 이력서
 
 
-    const toggleOfferClick = () => {
-        if (isOfferClicked === true) {
-            return;
-        } else {
-            setOfferClicked(true);
-            setLikeCompanyClicked(false);
-            setLikeNoticeClicked(false);
-            setEtcClicked(false);
-            setProfileClicked(false);
-        }
-    }
+    //     // 북마크
 
-    const toggleResume = () => {
-        const clicked = !isResumeClicked;
-        setResumeClicked(clicked);
-    }
+    //     setAccountClicked(false);
+    // }
 
-    const toggleBookmarkClick = () => {
-        // if(isBookmarkClicked === true) {
-        //     return;
-        // } else {
-        //     setProfileClicked(false);
-        //     setNoticeClicked(false);
-        //     setBookmarkClicked(true);
-        //     setAccountClicked(false);
-        // }
-    }
+    // const toggleOfferClick = () => {
+    //     if (isOfferClicked === true) {
+    //         return;
+    //     } else {
+    //         setOfferClicked(true);
+    //         setRecruitClicked(false);
+    //         setLikeRecruitClicked(false);
+    //         setEtcClicked(false);
+    //         setProfileClicked(false);
+    //     }
+    // }
 
-    const toggleAccountClick = () => {
-        if (isAccountClicked === true) {
-            return;
-        } else {
-            setProfileClicked(false);
-            setAccountClicked(true);
-            setNoticeClicked(false);            
-            setBookmarkClicked(false);
-        }
-    }
+    // const toggleResume = () => {
+    //     const clicked = !isResumeClicked;
+    //     setResumeClicked(clicked);
+    // }
+
+    // const toggleBookmarkClick = () => {
+    //     setBookmarkClicked(!isBookmarkClicked);
+    // }
+
+    // const toggleAccountClick = () => {
+    //     if (isAccountClicked === true) {
+    //         return;
+    //     } else {
+    //         setProfileClicked(false);
+    //         setAccountClicked(true);
+    //         setNoticeClicked(false);            
+    //         setBookmarkClicked(false);
+    //     }
+    // }
 
     const [noticeItems, setNoticeItems] = useState([
         {
@@ -134,7 +148,7 @@ function MyPageComponent() {
         {
             id: 3,
             company: '딜리버리 히어로',
-            content: '담당자로부터 이력서 공개요청이 도착했습니다. 이 요청은 처음 영국에서 시작되어',
+            content: '담당자로부터 이력서 공개요청이 도착했습니다.',
             date: '21-01-08 13:00',
             expired: '21-02-07 13:00'
         },
@@ -195,22 +209,29 @@ function MyPageComponent() {
                 <div className="profile" onClick={toggleProfileClick}>프로필/관심직무 관리</div>
                 <div className="notice" onClick={toggleNoticeClick}>알림</div>
                 {isNoticeClicked ?
-                    <div className="notice-clicked-content">
+                    <div className="notice-clicked">
                         <div className="offer" onClick={toggleOfferClick}>채용제안</div>
-                        <div className="like-company">관심기업</div>
-                        <div className="like-notice">관심공고</div>
+                        <div className="recruit">채용공고</div>
+                        <div className="like-recruit">관심공고</div>
                         <div className="etc">기타</div>
                     </div>
                     : null}
                 <div className="resume" onClick={toggleResume}>이력서관리</div>
                 {isResumeClicked ? 
-                    <div class="resume-clicked-content">
+                    <div class="resume-clicked">
                         <div className="resume-list">이력서 목록</div>
                         <div className="edit-resume">이력서 작성</div>
                         <div className="career-list">경력기술서 목록</div>
                     </div>
                 : null}
                 <div className="book-mark" onClick={toggleBookmarkClick}>북마크</div>
+                {isBookmarkClicked ? 
+                <div className="bookmark-clicked">
+                    <div>최근 본 공고</div>
+                    <div>관심 기업 목록</div>
+                    <div>관심 공고 목록</div>
+                </div>
+                : null}
                 <div className="account" onClick={toggleAccountClick}>계정관리</div>
             </div>
 
@@ -283,6 +304,8 @@ function MyPageComponent() {
                 {/* 나의 프로필 */}
 
                 {/* 채용 제안 */}
+                {console.log('isOfferClicked', isOfferClicked)}
+                {console.log('isProfileClicked', isProfileClicked)}
                 {isOfferClicked ? 
                 <div id="offer-container">
                     <div id="offer-content">
@@ -329,6 +352,8 @@ function MyPageComponent() {
                     </div>
                 </div>
                 : null}
+                {/* 채용공고 */}
+                
             </div>
         </div>
     );
