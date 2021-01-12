@@ -15,8 +15,17 @@ import icon from './imgaes/icon_heart_active_guide.png';
 function RecruitmentComponent(props) {
   const [btn, setbtn] = useState(false);
   const [toggle, settoggle] = useState(JOB);
+  const [generalBtn, setgeneralBtn] = useState(true);
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-  const [generalBtn, setgeneralBtn] = useState(false);
+  const [ramdomdata, setRamdomdata] = useState([
+    {
+      id: 1,
+      product_name: 'orios'
+    },
+    {}
+  ]);
+
   const JOB = 1;
   const ADDRESS = 2;
   const COMPANY = 3;
@@ -61,6 +70,22 @@ function RecruitmentComponent(props) {
     }
   ];
 
+  const [data, setData] = useState([
+    {
+      id: 0,
+      date: 15,
+      company: '카카오커머스',
+      period: '2020-12-20'
+    },
+    {
+      id: 1,
+      date: 15,
+      company: '네이버',
+      period: '2020-12-20'
+    }
+  ]);
+  const postItems = numbers.map((number) => <Post key={number.toString()} />);
+
   return (
     <>
       <div className="recruit-container">
@@ -71,7 +96,9 @@ function RecruitmentComponent(props) {
           <Link to={'/recruitment'} className="filter-popular">
             인기 채용 공고
           </Link>
-          <button className="filter-today">오늘 마감 공고</button>
+          <button className="filter-today" onClick={() => setgeneralBtn(true)}>
+            오늘 마감 공고
+          </button>
         </div>
         <div className="recruit-content">
           <input
@@ -89,13 +116,10 @@ function RecruitmentComponent(props) {
           </button>
           <div className="span-container">
             <span className="text-span">인기 채용 공고</span>
-            <Link to={'/recruitment'} className="btn-power">
+            <button className="btn-power" onClick={() => setgeneralBtn(true)}>
               파워공고
-            </Link>
-            <button
-              className="btn-common"
-              onClick={() => setgeneralBtn(!generalBtn)}
-            >
+            </button>
+            <button className="btn-common" onClick={() => setgeneralBtn(false)}>
               일반공고
             </button>
             <span className="more-span">더 보기</span>
@@ -151,33 +175,6 @@ function RecruitmentComponent(props) {
           {/* 광고 banner layout */}
           {generalBtn ? (
             <div className="banner-container">
-              <div className="banner-content1">
-                <ImageGallery
-                  items={images}
-                  showThumbnails={false}
-                  showFullscreenButton={false}
-                  showPlayButton={false}
-                  showBullets={true}
-                  autoPlay={true}
-                  // more info on react-image-gallery
-                />
-              </div>
-              <div className="asdf">
-                <div id="test1">
-                  <img src={long} alt="long" />
-                </div>
-                <div id="test2">
-                  <img src={long} alt="long" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div id="test3">
-                  <img src={long} alt="long" />
-                </div>
-                <div id="test4">
-                  <img src={long} alt="long" />
-                </div>
-              </div>
               <div className="asdf">
                 <div className="fjfj1">
                   <img src={squre1} alt="squre1" />
@@ -344,13 +341,15 @@ function RecruitmentComponent(props) {
                   />
                 </div>
                 <div className="detail-container">
-                  <div className="position-name">
-                    [카카오커머스] 서비스 직군 모집
-                  </div>
-                  <div className="bookmark">
-                    <div>
-                      <span>관심기업</span>
-                      <img src={icon} alt="icon_heart_active_guide" />
+                  <div className="wrapper">
+                    <div className="position-name">
+                      [카카오커머스] 서비스 직군 모집
+                    </div>
+                    <div className="bookmark">
+                      <div>
+                        <span>관심기업</span>
+                        <img src={icon} alt="icon_heart_active_guide" />
+                      </div>
                     </div>
                   </div>
                   <div className="details">
@@ -367,6 +366,8 @@ function RecruitmentComponent(props) {
                   </div>
                 </div>
               </div>
+              {postItems}
+              {/* table 로 전환하기 */}
             </>
           )}
         </div>
@@ -558,6 +559,52 @@ const JobTree = () => {
         </button>
       </div>
       {addState ? addDescription() : <div></div>}
+    </div>
+  );
+};
+const Post = (props) => {
+  return (
+    <div className="general-container">
+      <div className="general-content">
+        <div className="d-day">
+          <span>D-15</span>
+        </div>
+        <div className="fav-btn">
+          <div>
+            <span>관심기업</span>
+            <img src={icon} alt="icon_heart_active_guide" />
+          </div>
+        </div>
+        <div className="company-name">(주)카카오커머스</div>
+        <div className="date">2020.05.05 16:00</div>
+      </div>
+      <div className="vertical-line"></div>
+      <div className="logo-container">
+        <img className="company-logo" src={logo_kakao} alt="logo_kakao" />
+      </div>
+      <div className="detail-container">
+        <div className="wrapper">
+          <div className="position-name">[카카오커머스] 서비스 직군 모집</div>
+          <div className="bookmark">
+            <div>
+              <span>관심기업</span>
+              <img src={icon} alt="icon_heart_active_guide" />
+            </div>
+          </div>
+        </div>
+        <div className="details">
+          <span>경기 성남시 </span>
+          <span className="margin-only">정규직, 계약직 </span>
+          <span className="margin-only">학력무관 </span>
+          <span className="margin-only">경력2년 이상 </span>
+        </div>
+        <div className="details-second">
+          <span>#라이브커머스기획</span>
+          <span>#상품기획및소싱</span>
+          <span>#카테고리영역확대</span>
+          <span>#쇼핑몰MD</span>
+        </div>
+      </div>
     </div>
   );
 };
