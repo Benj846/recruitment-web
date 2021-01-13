@@ -1110,3 +1110,15 @@ td {
   > span {
   margin-right: 10px;
 }
+
+#recent-notice-content > .body-container > .main-content > .details {
+  margin-top: 5px;
+}
+
+#recent-notice-content > .body-container > .main-content > .details > span {
+  margin-right: 20px;
+}
+
+#recent-notice-content > .body-container > .main-content > .hash-tags {
+  margin-top: 10px;
+}

@@ -616,6 +616,7 @@ function RecentViewNotice() {
             employmentForm: '정규직, 계약직',
             education: '학력무관',
             career: '경력 2년 이상',
+            hashTag: ['#라이브커머스', '#상품기획및소싱'],
             bookmarked: true,
             companyName: '(주)카카오커머스',
             title: '서비스 직군 모집',
@@ -629,6 +630,7 @@ function RecentViewNotice() {
             employmentForm: '정규직',
             education: '학력무관',
             career: '경력무관',
+            hashTag: ['#프론트엔드', '#백엔드'],
             bookmarked: false,
             companyName: '(주)SK 플래닛',
             title: '개발 직군 모집',
@@ -642,6 +644,7 @@ function RecentViewNotice() {
             employmentForm: '정규직, 계약직',
             education: '학력무관',
             career: '경력 2년 이상',
+            hashTag: ['#안드로이드', '#ios'],
             bookmarked: false,
             companyName: '네이버페이',
             title: '경력 개발자 모집',
@@ -655,6 +658,7 @@ function RecentViewNotice() {
             employmentForm: '정규직',
             education: '학력무관',
             career: '경력 2년 이상',
+            hashTag: ['#프론트엔드', '#react' ,'#react-native'],
             bookmarked: true,
             companyName: '우아한형제들',
             title: '시니어 프론트 엔드 개발자 모집',
@@ -668,10 +672,11 @@ function RecentViewNotice() {
             employmentForm: '정규직, 계약직',
             education: '학력무관',
             career: '경력 2년 이상',
+            hashTag: ['#중고로운평화나라', '#당신의근처에'],
             bookmarked: true,
             companyName: '당근마켓',
             title: '평화로운 중고딩 모집',
-            finishDate:'2021.1.11'
+            finishDate:'2021.1.11 13:00'
         }
     ]);
 
@@ -680,8 +685,8 @@ function RecentViewNotice() {
             <section id="recent-notice-content">
                 <nav>
                     <ul className="recent-notice-breadcrumb">
-                        <li className="breadcrumb-items">북마크 &gt; </li>                        
-                        <li className="breadcrumb-items">최근 본 공고</li>
+                        <li className="breadcrumb-items">북마크 &gt;</li>                        
+                        <li className="breadcrumb-items">&nbsp;최근 본 공고</li>
                     </ul>
                 </nav>
                 <div className="preamble">
@@ -728,8 +733,16 @@ function RecentViewNotice() {
                                 <span>관심공고</span>
                                 {item.bookmarked ? 
                                 <img src={fullBookmark}/> : <img src={emptyBookmark}/>}
-                            </div>
-
+                            </div>                           
+                        </div>
+                        <div className="details">
+                            <span>{item.region} </span>
+                            <span>{item.employmentForm} </span>
+                            <span>{item.education} </span>
+                            <span>{item.career} </span>
+                        </div>
+                        <div className="hash-tags">
+                            {item.hashTag.map((tag, i)=><span key={i}>{tag}</span>)}
                         </div>
                     </div>
                 </div>)}               
