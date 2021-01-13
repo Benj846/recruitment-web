@@ -53,7 +53,7 @@ function Navbar() {
           <button className="signin-btn" onClick={toggleSigninPopup}>로그인/회원가입</button>
         </div>
         <li className="nav-item">
-              <Link to={'/mypage'} className="nav-link mypage-margin">
+              <Link to={'/mypage'} className="mypage-margin">
                 마이페이지
               </Link>
             </li>
