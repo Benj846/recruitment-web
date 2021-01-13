@@ -4,6 +4,11 @@ import '../../styles/MyPageComponent';
 import david from './images/david.jpg';
 import closeBtn from './images/close_button.svg';
 import Resume from '../resume/Resume';
+import emptyHeart from './images/empty_heart.png';
+import fullHeart from './images/full_heart.png';
+import emptyBookmark from './images/empty_bookmark.png';
+import fullBookmark from './images/full_bookmark.png';
+
 
 function MyPageComponent() {
 
@@ -605,83 +610,126 @@ function RecentViewNotice() {
     const [offerItems, setofferItems] = useState([
         {
             id: 1,
-            isRepresentative: true,
-            title: '현대자동차_마케팅_홍길동',
-            finishDate:'2020.11.30'
+            dDay: 15,
+            like: true,
+            region: '경기 성남시',
+            employmentForm: '정규직, 계약직',
+            education: '학력무관',
+            career: '경력 2년 이상',
+            bookmarked: true,
+            companyName: '(주)카카오커머스',
+            title: '서비스 직군 모집',
+            finishDate:'2021.2.12 16:00'
         },
         {
             id: 2,
-            isRepresentative: false,
-            title: '현대모비스_기획/마케팅_홍길동',
-            finishDate:'2021.1.20',
-        },   
+            dDay: 5,
+            like: false,
+            region: '서울 중구',
+            employmentForm: '정규직',
+            education: '학력무관',
+            career: '경력무관',
+            bookmarked: false,
+            companyName: '(주)SK 플래닛',
+            title: '개발 직군 모집',
+            finishDate:'2021.1.30 18:00'
+        },
         {
             id: 3,
-            isRepresentative: false,
-            title: '쿠팡_인사총무_홍길동',
-            finishDate:'2021.1.20',
-        },   
+            dDay: 10,
+            like: true,
+            region: '경기 성남시',
+            employmentForm: '정규직, 계약직',
+            education: '학력무관',
+            career: '경력 2년 이상',
+            bookmarked: false,
+            companyName: '네이버페이',
+            title: '경력 개발자 모집',
+            finishDate:'2021.4.1 14:00'
+        },
         {
             id: 4,
-            isRepresentative: false,
-            title: '네이버_마케팅_홍길동',
-            finishDate:'2021.1.30',
-        },   
+            dDay: 12,
+            like: false,
+            region: '서울 송파구',
+            employmentForm: '정규직',
+            education: '학력무관',
+            career: '경력 2년 이상',
+            bookmarked: true,
+            companyName: '우아한형제들',
+            title: '시니어 프론트 엔드 개발자 모집',
+            finishDate:'2021.3.1 15:00'
+        },
         {
             id: 5,
-            isRepresentative: false,
-            title: '카카오_마케팅_홍길동',
-            finishDate:'2021.2.1',
-        }  
+            dDay: 10,
+            like: true,
+            region: '경기 성남시',
+            employmentForm: '정규직, 계약직',
+            education: '학력무관',
+            career: '경력 2년 이상',
+            bookmarked: true,
+            companyName: '당근마켓',
+            title: '평화로운 중고딩 모집',
+            finishDate:'2021.1.11'
+        }
     ]);
 
     return(
-        <article id="resume-list-container">
-            <section id="resume-list-content">
+        <article id="recent-notice-container">
+            <section id="recent-notice-content">
                 <nav>
-                    <ul className="resume-breadcrumb">
-                        <li className="breadcrumb-items">이력서 관리 &gt; </li>                        
-                        <li className="breadcrumb-items">이력서 목록</li>
+                    <ul className="recent-notice-breadcrumb">
+                        <li className="breadcrumb-items">북마크 &gt; </li>                        
+                        <li className="breadcrumb-items">최근 본 공고</li>
                     </ul>
                 </nav>
                 <div className="preamble">
-                    <div>-공개될 대표 이력서는 1개만 가능합니다.</div>
-                    <div>-미완성 이력서는 공개되지 않습니다.</div>
-                    <div>-입사지원을 한 후 해당 이력서의 내용을 수정해도 지원한 이력서의 내용은 바뀌지 않습니다.</div>
                 </div>
                 <div className="title-content">
                     <div>
-                        <span className="title">최대 10개 중 </span>
-                        <span>{offerItems.length}</span>
-                        <span>건</span>
+                        <div>-최대 100개의 최근 본 공고내역이 조회됩니다.</div>
+                        <div>-삭제된 공고는 조회되지 않습니다.</div>                    
                     </div>
-                    <button>신규 이력서 만들기 +</button>
+                    <div>
+                        <button>전체선택</button>
+                        <button>선택삭제</button>
+                    </div>                    
                 </div>
                 {offerItems.map(item=>
-                <div className="resume-box-container" key={item.id}>
-                    <div className="resume-box-content">
-                        <div className="header">
-                            {item.isRepresentative ? 
-                            <div className="representative-resume">대표 이력서</div> : <div className="normal-resume">이력서</div>
-                            }                            
-                            <div>
-                                <span className="status">작성완료</span>
-                                <span className="modified-date">최종수정일:{item.finishDate}</span>
+                <div className="body-container" key={item.id}>
+                    <div className="company-content">                        
+                        <div className="left">
+                            <div className="top">
+                                <div className="d-day">
+                                    <span>D-</span>
+                                    <span>{item.dDay}</span>
+                                </div>
+                                <div className="like">
+                                    <span className="like-company">관심기업</span>
+                                    {item.like ? <img src={emptyHeart}/> : <img src={fullHeart}/>}                                    
+                                </div>
+                            </div>
+                            <div className="bottom"> 
+                                <div>{item.companyName}</div>
+                                <div>{item.finishDate}</div>
                             </div>
                         </div>
-                        <div>(자소서명) {item.title} </div>                        
-                        <div className="resume-bottom">
-                            <div className="left">
-                                <span>공개 설정 변경: 공개</span>
-                                <button>변경</button>
-                                <span>지원내역 보기</span>
+                        <div className="right">
+                            <div>logo</div>
+                        </div>
+                    </div>
+                    <div className="main-content">
+                        <div className="header">
+                            <div>
+                                [{item.companyName}] {item.title}
                             </div>
-                            <div className="right">
-                                <button className="export">내보내기</button>
-                                <button className="copy">복사하기</button>
-                                <button className="delet">삭제하기</button>
-                                <button className="modify">수정하기</button>
+                            <div className="bookmark-post">
+                                <span>관심공고</span>
+                                {item.bookmarked ? 
+                                <img src={fullBookmark}/> : <img src={emptyBookmark}/>}
                             </div>
+
                         </div>
                     </div>
                 </div>)}               
