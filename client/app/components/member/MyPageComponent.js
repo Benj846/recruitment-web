@@ -811,6 +811,30 @@ function BookmarkedCompanyList() {
         },
     ]);
 
+    const [recruits, setRecruits] = useState([
+        {
+            id: 1,
+            remain: 5,
+            corporation: '카카오커머스',
+            recruitDetail: '서비스 직군 모집',
+            finishDate: '2021.01.30 16:00'
+        },
+        {
+            id: 2,
+            remain: 7,
+            corporation: '카카오',
+            recruitDetail: '백엔드 개발자 모집',
+            finishDate: '2021.01.30 16:00'
+        },
+        {
+            id: 3,
+            remain: 7,
+            corporation: '카카오페이',
+            recruitDetail: '프론트엔드 개발자 모집',
+            finishDate: '2021.01.30 16:00'
+        },
+    ])
+
     return(
         <article id="bookmarked-corp-container">
             <section id="bookmarked-corp-content">
@@ -831,10 +855,10 @@ function BookmarkedCompanyList() {
                     <div>
                         <span>알람 수신 여부</span>
                         <button className="yes-or-no">여부</button>
-                    </div>                    
+                    </div>                                    
                 </div>
-                {items.map((item, index) =>
-                <div className="body-container" key={index}>
+                {items.map(item =>
+                <div className="body-container" key={item.id}>
                     <div className="corp-content">
                         <div className="summary">
                             <div className="left">
@@ -877,7 +901,22 @@ function BookmarkedCompanyList() {
                             </div>
                         </div>
                     </div>
-                    <div className="employment-content"></div>
+                    <div className="employment-content">
+                        <div className="recruit-count">진행 중 채용 공고 4건</div>
+                        {recruits.map(recruit =>
+                        <div className="row-content" key={recruit.id}>
+                            <div className="finish-guide">
+                                {recruit.remain <= 5 ? 
+                                <div className="almost">마감임박</div> :
+                                <div className="still">채용 중</div>}
+                                <div className="recruit-corporation">[{recruit.corporation}]</div>
+                                <div className="recruit-job">{recruit.recruitDetail}</div>
+                            </div>
+                            <div className="finish-date">마감일 {recruit.finishDate}</div>
+                        </div>
+                        )}
+
+                    </div>
                 </div>)}                
             </section>
         </article>
