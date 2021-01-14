@@ -3,20 +3,15 @@ import { Link } from 'react-router-dom';
 import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
-import ImageGallery from 'react-image-gallery';
-import slide_1 from '../Main/images/slide_1.png';
-import slide_2 from '../Main/images/slide_2.png';
-import slide_3 from '../Main/images/slide_3.png';
-import slide_4 from '../Main/images/slide_4.png';
-import long from '../Main/images/long.png';
 import squre1 from '../Main/images/squre1.png';
 import logo_kakao from './imgaes/logo_kakao@2x.png';
 import icon from './imgaes/icon_heart_active_guide.png';
 function RecruitmentComponent(props) {
   const [btn, setbtn] = useState(false);
   const [toggle, settoggle] = useState(JOB);
+  const [generalBtn, setgeneralBtn] = useState(true);
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-  const [generalBtn, setgeneralBtn] = useState(false);
   const JOB = 1;
   const ADDRESS = 2;
   const COMPANY = 3;
@@ -46,20 +41,23 @@ function RecruitmentComponent(props) {
     }
   };
 
-  const images = [
-    {
-      original: slide_1
-    },
-    {
-      original: slide_2
-    },
-    {
-      original: slide_3
-    },
-    {
-      original: slide_4
-    }
-  ];
+  const postItems = numbers.map((number) => <Post key={number.toString()} />);
+  const imagePosts = numbers.map((number) => (
+    <div className="asdf" key={number.toString()}>
+      <div className="fjfj1">
+        <img src={squre1} alt="squre1" />
+      </div>
+      <div className="fjfj">
+        <img src={squre1} alt="squre1" />
+      </div>
+      <div className="fjfj">
+        <img src={squre1} alt="squre1" />
+      </div>
+      <div className="fjfj">
+        <img src={squre1} alt="squre1" />
+      </div>
+    </div>
+  ));
 
   return (
     <>
@@ -71,7 +69,9 @@ function RecruitmentComponent(props) {
           <Link to={'/recruitment'} className="filter-popular">
             인기 채용 공고
           </Link>
-          <button className="filter-today">오늘 마감 공고</button>
+          <button className="filter-today" onClick={() => setgeneralBtn(true)}>
+            오늘 마감 공고
+          </button>
         </div>
         <div className="recruit-content">
           <input
@@ -89,13 +89,10 @@ function RecruitmentComponent(props) {
           </button>
           <div className="span-container">
             <span className="text-span">인기 채용 공고</span>
-            <Link to={'/recruitment'} className="btn-power">
+            <button className="btn-power" onClick={() => setgeneralBtn(true)}>
               파워공고
-            </Link>
-            <button
-              className="btn-common"
-              onClick={() => setgeneralBtn(!generalBtn)}
-            >
+            </button>
+            <button className="btn-common" onClick={() => setgeneralBtn(false)}>
               일반공고
             </button>
             <span className="more-span">더 보기</span>
@@ -150,223 +147,11 @@ function RecruitmentComponent(props) {
 
           {/* 광고 banner layout */}
           {generalBtn ? (
-            <div className="banner-container">
-              <div className="banner-content1">
-                <ImageGallery
-                  items={images}
-                  showThumbnails={false}
-                  showFullscreenButton={false}
-                  showPlayButton={false}
-                  showBullets={true}
-                  autoPlay={true}
-                  // more info on react-image-gallery
-                />
-              </div>
-              <div className="asdf">
-                <div id="test1">
-                  <img src={long} alt="long" />
-                </div>
-                <div id="test2">
-                  <img src={long} alt="long" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div id="test3">
-                  <img src={long} alt="long" />
-                </div>
-                <div id="test4">
-                  <img src={long} alt="long" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-              <div className="asdf">
-                <div className="fjfj1">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-                <div className="fjfj">
-                  <img src={squre1} alt="squre1" />
-                </div>
-              </div>
-            </div>
+            <>{imagePosts}</>
           ) : (
             <>
-              <div className="general-container">
-                <div className="general-content">
-                  <div className="d-day">
-                    <span>D-15</span>
-                  </div>
-                  <div className="fav-btn">
-                    <div>
-                      <span>관심기업</span>
-                      <img src={icon} alt="icon_heart_active_guide" />
-                    </div>
-                  </div>
-                  <div className="company-name">(주)카카오커머스</div>
-                  <div className="date">2020.05.05 16:00</div>
-                </div>
-                <div className="vertical-line"></div>
-                <div className="logo-container">
-                  <img
-                    className="company-logo"
-                    src={logo_kakao}
-                    alt="logo_kakao"
-                  />
-                </div>
-                <div className="detail-container">
-                  <div className="position-name">
-                    [카카오커머스] 서비스 직군 모집
-                  </div>
-                  <div className="bookmark">
-                    <div>
-                      <span>관심기업</span>
-                      <img src={icon} alt="icon_heart_active_guide" />
-                    </div>
-                  </div>
-                  <div className="details">
-                    <span>경기 성남시 </span>
-                    <span className="margin-only">정규직, 계약직 </span>
-                    <span className="margin-only">학력무관 </span>
-                    <span className="margin-only">경력2년 이상 </span>
-                  </div>
-                  <div className="details-second">
-                    <span>#라이브커머스기획</span>
-                    <span>#상품기획및소싱</span>
-                    <span>#카테고리영역확대</span>
-                    <span>#쇼핑몰MD</span>
-                  </div>
-                </div>
-              </div>
+              {postItems}
+              {/* table 로 전환하기 */}
             </>
           )}
         </div>
@@ -376,10 +161,41 @@ function RecruitmentComponent(props) {
   );
 }
 export default RecruitmentComponent;
+
+// JobTree component
 const JobTree = () => {
   const [selected, setSelected] = useState(false);
   const [selected3, setSelected3] = useState(false);
   const [addState, setaddState] = useState(false);
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const buttonItems = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv1"
+      onClick={() => {
+        setSelected(!selected);
+        setSelected3(false);
+        console.log("i'm level 1");
+      }}
+    >
+      lv1.선택직무
+    </button>
+  ));
+  const button2Items = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv2"
+      disabled={!selected}
+      onClick={() => setSelected3(!selected3)}
+    >
+      lv2.선택직무
+    </button>
+  ));
+  const button3Items = numbers.map((number) => (
+    <button key={number.toString()} className="lv1" disabled={!selected3}>
+      lv3.선택직무
+    </button>
+  ));
 
   const addDescription = (e) => {
     return (
@@ -391,160 +207,10 @@ const JobTree = () => {
   };
   return (
     <div className="ad-container">
+      <div className="button-container">{buttonItems}</div>
+      <div className="button-container">{button2Items}</div>
       <div className="button-container">
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무1
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무2
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무3
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무4
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무5
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무6
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무7
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무8
-        </button>
-      </div>
-      <div className="button-container">
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-      </div>
-      <div className="button-container">
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무1
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
+        {button3Items}
         <button
           className="lv1"
           disabled={!selected3}
@@ -558,6 +224,54 @@ const JobTree = () => {
         </button>
       </div>
       {addState ? addDescription() : <div></div>}
+    </div>
+  );
+};
+
+// Post component
+const Post = (props) => {
+  return (
+    <div className="general-container">
+      <div className="general-content">
+        <div className="d-day">
+          <span>D-15</span>
+        </div>
+        <div className="fav-btn">
+          <div>
+            <span>관심기업</span>
+            <img src={icon} alt="icon_heart_active_guide" />
+          </div>
+        </div>
+        <div className="company-name">(주)카카오커머스</div>
+        <div className="date">2020.05.05 16:00</div>
+      </div>
+      <div className="vertical-line"></div>
+      <div className="logo-container">
+        <img className="company-logo" src={logo_kakao} alt="logo_kakao" />
+      </div>
+      <div className="detail-container">
+        <div className="wrapper">
+          <div className="position-name">[카카오커머스] 서비스 직군 모집</div>
+          <div className="bookmark">
+            <div>
+              <span>관심기업</span>
+              <img src={icon} alt="icon_heart_active_guide" />
+            </div>
+          </div>
+        </div>
+        <div className="details">
+          <span>경기 성남시 </span>
+          <span className="margin-only">정규직, 계약직 </span>
+          <span className="margin-only">학력무관 </span>
+          <span className="margin-only">경력2년 이상 </span>
+        </div>
+        <div className="details-second">
+          <span>#라이브커머스기획</span>
+          <span>#상품기획및소싱</span>
+          <span>#카테고리영역확대</span>
+          <span>#쇼핑몰MD</span>
+        </div>
+      </div>
     </div>
   );
 };
