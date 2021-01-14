@@ -93,7 +93,7 @@ function MyPageComponent() {
     }  
 
     const menuNumber = {profile: 0, recruitOffer: 1, recruitNotice:2, etc: 3, resumeList:4, 
-                        writeResume: 5, recentViewNotice: 6};
+                        writeResume: 5, recentViewNotice: 6, bookmarkedCompanyList: 7};
     Object.freeze(menuNumber);
     const [menu, setMenu] = useState(menuNumber.profile);
 
@@ -111,6 +111,8 @@ function MyPageComponent() {
                 return <Resume />
             case menuNumber.recentViewNotice:
                 return <RecentViewNotice />
+            case menuNumber.bookmarkedCompanyList:
+                return <BookmarkedCompanyList />
         }
     }
     
@@ -138,7 +140,7 @@ function MyPageComponent() {
                 {isBookmarkClicked ? 
                 <nav className="bookmark-clicked">
                     <div className="recent-view-notice" onClick={() => setMenu(menuNumber.recentViewNotice)}>최근 본 공고</div>
-                    <div className="like-company-list">관심 기업 목록</div>
+                    <div className="like-company-list" onClick={() => setMenu(menuNumber.bookmarkedCompanyList)}>관심 기업 목록</div>
                     <div className="like-notice-list">관심 공고 목록</div>
                 </nav>
                 : null}
@@ -468,7 +470,6 @@ function RecruitNotice() {
         }
     ]);
 
-
     return(
         <article id="recruit-notice-container">
             <section id="recruit-notice-content">
@@ -746,6 +747,138 @@ function RecentViewNotice() {
                         </div>
                     </div>
                 </div>)}               
+            </section>
+        </article>
+    );
+}
+
+function BookmarkedCompanyList() {
+    const [items, setItems] = useState([
+        {
+            id:1,
+            corporationName: '(주)카카오',
+            region: '경기 성남시',
+            aveAnnualSalary: '평균 연봉 8,000만원',
+            logo: 'logo',
+            business: '인터넷 정보매개 서비스업',
+            representatives: '여민수/조수용',
+            corporationScale: '대기업(TOP100)',
+            members: '2,800명',
+            revenue: '4조',
+            operatingProfit: '3,500억',
+            isBookmarked: true
+        },
+        {
+            id:2,
+            corporationName: '(주)카카오',
+            region: '경기 성남시',
+            aveAnnualSalary: '평균 연봉 8,000만원',
+            logo: 'logo',
+            business: '인터넷 정보매개 서비스업',
+            representatives: '여민수/조수용',
+            corporationScale: '대기업(TOP100)',
+            members: '2,800명',
+            revenue: '4조',
+            operatingProfit: '3,500억',
+            isBookmarked: true
+        },
+        {
+            id:3,
+            corporationName: '(주)카카오',
+            region: '경기 성남시',
+            aveAnnualSalary: '평균 연봉 8,000만원',
+            logo: 'logo',
+            business: '인터넷 정보매개 서비스업',
+            representatives: '여민수/조수용',
+            corporationScale: '대기업(TOP100)',
+            members: '2,800명',
+            revenue: '4조',
+            operatingProfit: '3,500억',
+            isBookmarked: true
+        },        {
+            id:4,
+            corporationName: '(주)카카오',
+            region: '경기 성남시',
+            aveAnnualSalary: '평균 연봉 8,000만원',
+            logo: 'logo',
+            business: '인터넷 정보매개 서비스업',
+            representatives: '여민수/조수용',
+            corporationScale: '대기업(TOP100)',
+            members: '2,800명',
+            revenue: '4조',
+            operatingProfit: '3,500억',
+            isBookmarked: true
+        },
+    ]);
+
+    return(
+        <article id="bookmarked-corp-container">
+            <section id="bookmarked-corp-content">
+                <nav>
+                    <ul className="bookmarked-corp-breadcrumb">
+                        <li className="breadcrumb-items">북마크 &gt;</li>                        
+                        <li className="breadcrumb-items">&nbsp;관심 기업 목록</li>
+                    </ul>
+                </nav>
+                <div className="preamble">
+                </div>
+                <div className="title-content">
+                    <div>
+                        <span>총 </span>
+                        <span>{items.length}</span>                            
+                        <span>건</span>
+                    </div>
+                    <div>
+                        <span>알람 수신 여부</span>
+                        <button className="yes-or-no">여부</button>
+                    </div>                    
+                </div>
+                {items.map((item, index) =>
+                <div className="body-container" key={index}>
+                    <div className="corp-content">
+                        <div className="summary">
+                            <div className="left">
+                                <div>{item.corporationName}</div>
+                                <div>{item.region}</div>
+                                <div>{item.aveAnnualSalary}</div>
+                            </div>
+                            <div className="right">
+                                <div>{item.logo}</div>
+                            </div>
+                        </div>
+                        <div className="detail">
+                            <div className="left">
+                                <div className="first-col">
+                                    <div>업종</div>
+                                    <div>기업규모</div>
+                                    <div>매출액</div>
+                                </div>
+                                <div className="second-col">
+                                    <div>{item.business}</div>
+                                    <div>{item.corporationScale}</div>
+                                    <div>{item.revenue}</div>
+                                </div>
+                                <div className="third-col">
+                                    <div>대표자명</div>
+                                    <div>직원수</div>
+                                    <div>영업이익</div>
+                                </div>
+                                <div className="fourth-col">
+                                    <div>{item.representatives}</div>
+                                    <div>{item.members}</div>
+                                    <div>{item.operatingProfit}</div>
+                                </div>
+                            </div>
+                            <div className="right">                                
+                                <span>
+                                    관심기업
+                                    <img src={fullHeart}/>
+                                </span>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div className="employment-content"></div>
+                </div>)}                
             </section>
         </article>
     );
