@@ -1233,7 +1233,16 @@ function BookmarkedRecruitList() {
 
 function AccountManagement() {
   const [input, setInput] = useState(false);
-
+  const [isChangePassClicked, setChangePassClick] = useState(false);
+  const toggleChangePassClick = () => {
+    const clicked = !isChangePassClicked;
+    setChangePassClick(clicked);
+    if (clicked === true) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  };
   return (
     <>
       {input ? (
@@ -1243,8 +1252,19 @@ function AccountManagement() {
             <span>로그인 계정:fapply@gmail.com</span>
             <div className="password-content">
               <div className="password-reinput-title">비밀번호 변경</div>
-              <button>비밀번호 변경</button>
+              <button
+                className="change-password-btn"
+                onClick={toggleChangePassClick}
+              >
+                비밀번호 변경하기
+              </button>
+              <div className="leave-service-title">회원탈퇴</div>
+              <button className="leave-service-btn">Fapply 탈퇴하기</button>
             </div>
+            {console.log(isChangePassClicked)}
+            {isChangePassClicked ? (
+              <ChangePassword closePopup={toggleChangePassClick} />
+            ) : null}
           </section>
         </article>
       ) : (
@@ -1275,6 +1295,18 @@ function AccountManagement() {
         </article>
       )}
     </>
+  );
+}
+
+function ChangePassword({ closePopup }) {
+  return (
+    <div id="change-password-container">
+      <div id="change-password-content">
+        <button className="close-popup" onClick={closePopup}>
+          X
+        </button>
+      </div>
+    </div>
   );
 }
 
