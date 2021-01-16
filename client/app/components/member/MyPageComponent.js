@@ -1410,7 +1410,6 @@ function AccountManagement() {
     </>
   );
 }
-
 function LeaveReasonComponent({ closePopup, onSubmit }) {
   return (
     <div id="leave-reason-container">
