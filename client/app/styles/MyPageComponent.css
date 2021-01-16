@@ -2039,11 +2039,270 @@ td {
   background: white;
   display: flex;
   flex-direction: column;
+  padding: 15px;
 }
 
 #change-password-content > .close-popup {
   align-self: flex-end;
   background: none;
   border: none;
-  padding: 10px;
+  --padding: 10px;
+}
+
+#change-password-content > .change-password-title {
+  font: normal normal bold 18px/26px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+  margin: 0 auto;
+}
+
+#change-password-content > .new-password-title {
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  margin-top: 20px;
+}
+
+#change-password-content > .input-new-password {
+  width: 400px;
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+#change-password-content > .input-new-password::placeholder {
+  font: normal normal medium 14px/20px Noto Sans KR;
+  font-size: 14px;
+  padding-left: 15px;
+  letter-spacing: 0px;
+  color: #dddddd;
+  opacity: 1;
+}
+
+#change-password-content > .confirm-password-title {
+  margin-top: 24px;
+}
+
+#change-password-content > .confirm-password {
+  width: 400px;
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  opacity: 1;
+}
+
+#change-password-content > .confirm-password::placeholder {
+  padding-left: 15px;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #dddddd;
+  opacity: 1;
+}
+
+#change-password-content > .confirm-btn {
+  height: 50px;
+  border: none;
+  margin-top: 30px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #dddddd;
+  opacity: 1;
+}
+
+/* Account management/phone-member-copntainer-------------------------------------------------------------- */
+#mypage-container > #leave-service-container {
+  width: 1060px;
+  height: 841px;
+  --border: 2px dotted #ffaa00;
+}
+
+#leave-service-container > nav > .leave-recruit-breadcrumb {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+#leave-service-container > nav > .leave-recruit-breadcrumb > li {
+  font: normal normal bold 22px/32px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+#leave-service-container > #leave-service-content {
+  padding: 50px 90px;
+}
+
+#leave-service-content > .pre-guide-content > div {
+  font-size: 22px;
+  font: normal normal bold Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+#leave-service-content > .leave-service-btn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#leave-service-content > .leave-service-btn > button {
+  width: 160px;
+  height: 50px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  border: none;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* Account management/Leave reason-------------------------------------------------------------- */
+#leave-reason-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+#leave-reason-container > #leave-reason-content {
+  width: 440px;
+  height: 386px;
+  margin: auto auto;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+#leave-reason-content > .close-popup {
+  align-self: flex-end;
+  background: none;
+  border: none;
+}
+
+#leave-reason-content > .leave-reason-title {
+  margin: 0 auto;
+}
+
+#leave-reason-content > .select-reason {
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  opacity: 1;
+}
+
+#leave-reason-content > .reason-textarea {
+  margin-top: 20px;
+  height: 128px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  opacity: 1;
+  resize: none;
+}
+
+#leave-reason-content > .reason-textarea::placeholder {
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #dddddd;
+  opacity: 1;
+  padding: 8px;
+}
+
+#leave-reason-content > .confirm-btn {
+  margin-top: 20px;
+  height: 50px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border: 1px solid #009999;
+  border-radius: 3px;
+  border: none;
+  font: normal normal medium 13px/19px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* Account management/leave-completed-------------------------------------------------------------- */
+#mypage-container > #leave-completed-container {
+  width: 1060px;
+  height: 841px;
+  --border: 2px dotted #ffaa00;
+}
+
+#leave-completed-container > nav > .leave-completed-breadcrumb {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+#leave-completed-container > nav > .leave-completed-breadcrumb > li {
+  font: normal normal bold 22px/32px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+#leave-completed-container > #leave-completed-content {
+  --border: 1px dotted orange;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#leave-completed-content > .completed-box {
+  width: 300px;
+  --border: 1px dotted black;
+  align-self: flex-start;
+  margin-top: 100px;
+}
+
+#leave-completed-content > .completed-box > div {
+  font: normal normal medium 16px/24px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+}
+
+#leave-completed-content > .completed-box > div:nth-of-type(1) {
+  font: normal normal bold 22px/32px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+#leave-completed-content > .completed-box > div:nth-of-type(2) {
+  margin-top: 30px;
+}
+
+#leave-completed-content > .completed-box .back-to-main {
+  width: 100%;
+  height: 56px;
+  margin-top: 40px;
+  background: transparent linear-gradient(106deg, #009999 0%, #7f37c7 100%) 0%
+    0% no-repeat padding-box;
+  border: none;
+  font: normal normal bold 16px/24px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
 }

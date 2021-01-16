@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Switch, Link, Route } from 'react-router-dom';
 import Select from 'react-select';
 import '../../styles/MyPageComponent';
 import david from './images/david.jpg';
@@ -8,6 +9,7 @@ import emptyHeart from './images/empty_heart.png';
 import fullHeart from './images/full_heart.png';
 import emptyBookmark from './images/empty_bookmark.png';
 import fullBookmark from './images/full_bookmark.png';
+import MainComponent from '../Main/MainComponent';
 
 function MyPageComponent() {
   const API_HOST = 'http://localhost:3333';
@@ -1232,8 +1234,21 @@ function BookmarkedRecruitList() {
 }
 
 function AccountManagement() {
-  const [input, setInput] = useState(false);
+  const [a, setA] = useState({
+    asdklfjasdkl: '',
+    asklfasjd: ''
+  });
+  const [showInputPassClicked, setShowInputPassClick] = useState(true);
+  const [showPhoneMember, setShowPhoneMember] = useState(false);
   const [isChangePassClicked, setChangePassClick] = useState(false);
+  const [showLeavedClicked, setShowLeavedClicked] = useState(false);
+  const [showLeaveCompledted, setShowLeaveCompledted] = useState(false);
+
+  const toggleInputPassword = () => {
+    setShowInputPassClick(!showInputPassClicked);
+    setShowPhoneMember(!showPhoneMember);
+  };
+
   const toggleChangePassClick = () => {
     const clicked = !isChangePassClicked;
     setChangePassClick(clicked);
@@ -1243,31 +1258,34 @@ function AccountManagement() {
       document.body.style.overflow = 'visible';
     }
   };
+  const toggleLeaveService = () => {
+    setShowPhoneMember(!showPhoneMember);
+    setShowLeavedClicked(!showLeavedClicked);
+  };
+  const [showLeavePopup, setShowLeavePopup] = useState(false);
+  const toggleLeavePopup = () => {
+    const clicked = !showLeavePopup;
+    setShowLeavePopup(clicked);
+    if (clicked === true) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  };
+
+  const onSubmit = () => {
+    // close LeavePopup
+    const clicked = !showLeavePopup;
+    setShowLeavePopup(clicked);
+    setShowLeavedClicked(!showLeavedClicked);
+    setShowLeaveCompledted(!showLeaveCompledted);
+  };
+
+  const goToMain = () => {};
+
   return (
     <>
-      {input ? (
-        <article id="phone-member-container">
-          <section id="phone-member-content">
-            <span>계정관리</span>
-            <span>로그인 계정:fapply@gmail.com</span>
-            <div className="password-content">
-              <div className="password-reinput-title">비밀번호 변경</div>
-              <button
-                className="change-password-btn"
-                onClick={toggleChangePassClick}
-              >
-                비밀번호 변경하기
-              </button>
-              <div className="leave-service-title">회원탈퇴</div>
-              <button className="leave-service-btn">Fapply 탈퇴하기</button>
-            </div>
-            {console.log(isChangePassClicked)}
-            {isChangePassClicked ? (
-              <ChangePassword closePopup={toggleChangePassClick} />
-            ) : null}
-          </section>
-        </article>
-      ) : (
+      {showInputPassClicked ? (
         <article id="account-management-container">
           <section id="account-management-content">
             <div>계정관리</div>
@@ -1282,29 +1300,165 @@ function AccountManagement() {
                 className="reinput-password"
               />
               <div className="reinput-password-btn">
-                <button
-                  onClick={() => {
-                    setInput(true);
-                  }}
-                >
-                  입력하기
-                </button>
+                <button onClick={toggleInputPassword}>입력하기</button>
               </div>
             </div>
           </section>
         </article>
-      )}
+      ) : null}
+      {showPhoneMember ? (
+        <article id="phone-member-container">
+          <section id="phone-member-content">
+            <span>계정관리</span>
+            <span>로그인 계정:fapply@gmail.com</span>
+            <div className="password-content">
+              <div className="password-reinput-title">비밀번호 변경</div>
+              <button
+                className="change-password-btn"
+                onClick={toggleChangePassClick}
+              >
+                비밀번호 변경하기
+              </button>
+              <div className="leave-service-title">회원탈퇴</div>
+              <button
+                className="leave-service-btn"
+                onClick={toggleLeaveService}
+              >
+                Fapply 탈퇴하기
+              </button>
+            </div>
+            {isChangePassClicked ? (
+              <ChangePasswordComponent closePopup={toggleChangePassClick} />
+            ) : null}
+          </section>
+        </article>
+      ) : null}
+      {showLeavedClicked ? (
+        <article id="leave-service-container">
+          <nav>
+            <ul className="leave-recruit-breadcrumb">
+              <li className="breadcrumb-items">계정관리 &gt;</li>
+              <li className="breadcrumb-items">&nbsp;회원탈퇴</li>
+            </ul>
+          </nav>
+          <section id="leave-service-content">
+            <div className="pre-guide-content">
+              <div>탈퇴하시기 전에</div>
+              <div>아래의 내용을 확인해주세요</div>
+            </div>
+            <div className="guide-content">
+              <div>
+                - 탈퇴 시 회원님의 모든 정보와 이력서가 영구적으로 삭제되며,
+                다시는 복구할 수 없습니다.
+              </div>
+              <div>
+                - 이력서의 저장을 원하실 경우, 탈퇴 전에 이력서 관리 페이지에서
+                다운로드 해주세요.
+              </div>
+              <div>
+                - 이미 제출된 정보는 전달받은 자의 소유로 간주되어 자동으로
+                삭제되지 않으며, 탈퇴 시 수정이나 삭제가 불가능합니다.
+              </div>
+              <div>
+                - 패플라이 회원에서 탈퇴하실 경우, 추천 보상금을 받으실 수
+                없습니다. 잔여 보상금이 있으면 탈퇴 이전에 정산해주세요.
+              </div>
+              <div>
+                - 기업에 대한 지원 내역은 관련 법령에 의거하여 탈퇴 후 최장
+                5년간 저장됩니다.
+              </div>
+              <div>
+                - 이상의 내용을 확인한 뒤 탈퇴를 원할 경우, 아래의 버튼을
+                클릭해주세요.
+              </div>
+            </div>
+            <div className="leave-service-btn">
+              <button onClick={toggleLeavePopup}>탈퇴하기</button>
+            </div>
+            {showLeavePopup ? (
+              <LeaveReasonComponent
+                closePopup={toggleLeavePopup}
+                onSubmit={onSubmit}
+              />
+            ) : null}
+          </section>
+        </article>
+      ) : null}
+      {showLeaveCompledted ? (
+        <article id="leave-completed-container">
+          <nav>
+            <ul className="leave-completed-breadcrumb">
+              <li className="breadcrumb-items">계정관리 &gt;</li>
+              <li className="breadcrumb-items">&nbsp;회원탈퇴</li>
+            </ul>
+          </nav>
+          <section id="leave-completed-content">
+            <div className="completed-box">
+              <div>탈퇴가 완료되었습니다.</div>
+              <div>패플라이를 이용해주셔서 감사합니다.</div>
+              <div>더 나은 패플라이가 되겠습니다</div>
+              <Link to={'/'}>
+                <button className="back-to-main">메인으로 돌아가기</button>
+              </Link>
+              <Switch>
+                <Route exact path="/" component={MainComponent} />
+              </Switch>
+            </div>
+          </section>
+        </article>
+      ) : null}{' '}
     </>
   );
 }
 
-function ChangePassword({ closePopup }) {
+function LeaveReasonComponent({ closePopup, onSubmit }) {
+  return (
+    <div id="leave-reason-container">
+      <div id="leave-reason-content">
+        <button className="close-popup" onClick={closePopup}>
+          X
+        </button>
+        <div className="leave-reason-title">탈퇴 사유를 알려주세요</div>
+        <select className="select-reason" defaultValue="placeholder">
+          <option value="placeholder" className="default" disabled={true}>
+            탈퇴 사유 선택하기
+          </option>
+          <option value="completed">패플라이에서구직이 완료 되었습니다.</option>
+          <option value="not-enough">채용공고가 부족합니다.</option>
+          <option value="security-problem">개인정보 유출이 우려됩니다.</option>
+          <option value="too-much-noti">홍보성 알림이 너무 많습니다.</option>
+          <option value="completed-through-other">
+            타사를 통해 구직이 완료되었습니다.
+          </option>
+        </select>
+        <textarea
+          className="reason-textarea"
+          placeholder="직접 입력(50자 이내)"
+        ></textarea>
+        <button className="confirm-btn" onClick={onSubmit}>
+          제출하기
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ChangePasswordComponent({ closePopup }) {
   return (
     <div id="change-password-container">
       <div id="change-password-content">
         <button className="close-popup" onClick={closePopup}>
           X
         </button>
+        <div className="change-password-title">비밀번호 변경</div>
+        <div className="new-password-title">신규 비밀번호</div>
+        <input
+          className="input-new-password"
+          placeholder="8-12자의 영문, 숫자, 특수문자 중 2가지 이상 조합 필수"
+        />
+        <div className="confirm-password-title">비밀번호 확인</div>
+        <input className="confirm-password" placeholder="비밀번호 재입력" />
+        <button className="confirm-btn">확인</button>
       </div>
     </div>
   );
