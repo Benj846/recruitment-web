@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 import squre1 from '../Main/images/squre1.png';
 import logo_kakao from './imgaes/logo_kakao@2x.png';
 import icon from './imgaes/icon_heart_active_guide.png';
+import { DirectiveLocation } from 'graphql';
 function RecruitmentComponent(props) {
   const [btn, setbtn] = useState(false);
   const [toggle, settoggle] = useState(JOB);
@@ -58,7 +59,6 @@ function RecruitmentComponent(props) {
       </div>
     </div>
   ));
-
   return (
     <>
       <div className="recruit-container">
@@ -146,14 +146,7 @@ function RecruitmentComponent(props) {
           )}
 
           {/* 광고 banner layout */}
-          {generalBtn ? (
-            <>{imagePosts}</>
-          ) : (
-            <>
-              {postItems}
-              {/* table 로 전환하기 */}
-            </>
-          )}
+          {generalBtn ? <>{imagePosts}</> : <>{postItems}</>}
         </div>
       </div>
       <Footer />
@@ -168,6 +161,10 @@ const JobTree = () => {
   const [selected3, setSelected3] = useState(false);
   const [addState, setaddState] = useState(false);
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const appendRef = useRef(null);
+  const addFuntion = () => {
+    return appendRef.current.append(<div>laskdjflk</div>);
+  };
   const buttonItems = numbers.map((number) => (
     <button
       key={number.toString()}
@@ -192,7 +189,12 @@ const JobTree = () => {
     </button>
   ));
   const button3Items = numbers.map((number) => (
-    <button key={number.toString()} className="lv1" disabled={!selected3}>
+    <button
+      key={number.toString()}
+      className="lv1"
+      disabled={!selected3}
+      onClick={addFuntion}
+    >
       lv3.선택직무
     </button>
   ));
@@ -209,21 +211,8 @@ const JobTree = () => {
     <div className="ad-container">
       <div className="button-container">{buttonItems}</div>
       <div className="button-container">{button2Items}</div>
-      <div className="button-container">
-        {button3Items}
-        <button
-          className="lv1"
-          disabled={!selected3}
-          // onClick={() => setaddState(!addState)}
-          onClick={() => {
-            // setaddState(!addState);
-            addDescription;
-          }}
-        >
-          lv3.선택직무
-        </button>
-      </div>
-      {addState ? addDescription() : <div></div>}
+      <div className="button-container">{button3Items}</div>
+      <div ref={appendRef} className="ad-content-append"></div>
     </div>
   );
 };
