@@ -191,6 +191,7 @@
 }
 
 .ad-container {
+  align-self: flex-start;
   display: flex;
   flex-flow: wrap row;
   width: calc(266px * 3);
@@ -394,6 +395,9 @@
   flex-flow: wrap row;
 }
 .general-content > .d-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 32px;
   margin-top: 20px;
   width: 48px;
@@ -404,8 +408,7 @@
   opacity: 1;
 }
 .d-day > span {
-  width: 30px;
-  height: 20px;
+  transform: translate(0, -1px);
   color: var(--unnamed-color-009999);
   text-align: center;
   font: normal normal medium 14px/20px Noto Sans KR;
