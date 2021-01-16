@@ -43,7 +43,6 @@ module.exports = {
           }
         }
       },
-
       // Sass files
       {
         test: /\.sass?$/,
