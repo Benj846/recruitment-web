@@ -25,7 +25,7 @@ function MainComponent(props) {
   const BANNER_BUTTON = 1;
   const AD_BUTTON = 2;
   const RECRUIT_BUTTON = 3;
-  const [btn, setbtn] = useState(RECRUIT_BUTTON);
+  const [btn, setbtn] = useState(BANNER_BUTTON);
 
   const [monthNum, setmonthNum] = useState(1);
   const [weekNum, setweekNum] = useState(1);
