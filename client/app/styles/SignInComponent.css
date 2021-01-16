@@ -13,7 +13,7 @@
   z-index: 999;
 }
 
-.signin-container .signin-content {
+.signin-container > .signin-content {
   width: 440px;
   --height: 90vh;
   height: 710px;
@@ -25,115 +25,159 @@
   background: white;
 }
 
-.signin-container .member-close-popup {
+.signin-content > .logo-close-popup {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 17px 20px 0 0;
 }
 
-.signin-container .member-close-popup div button {
-  border: 1px solid black;
+.signin-content > .logo-close-popup > .empty-space {
+  width: 95px;
+}
+
+.signin-content > .logo-close-popup > .close-button {
+  --margin: 16px 20px 0 0;
+  border: none;
   background: none;
   border-radius: 5px;
-  margin-left: 5px;
 }
 
-.signin-container .member-close-popup div button:focus {
-  outline: none;
-}
-
-.signin-container .member-close-popup div button:nth-of-type(1) {
-  background: #00bff0;
-}
-
-.signin-container .member-close-popup .close-button {
-  width: 100px;
-  height: 40px;
-  background: none;
-  border: 0px;
-}
-
-.signin-container .member-close-popup .close-button:focus {
+.signin-content > .logo-close-popup > .close-button:focus {
   outline: none;
 }
 
 .signin-content > .header {
-  --border: 1px solid red;
+  margin-top: 55px;
   text-align: center;
+  font: normal normal bold 23px/32px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
 }
 
-.signin-content .header .company-name {
+.signin-content > .header > .company-name {
   font-size: 25px;
   color: #000000;
 }
 
-.signin-content .body .title {
-  margin-left: 50px;
-  font-size: 15px;
-}
-
-.signin-content .body .input-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.signin-content .body .input-content .input-email-phone {
+.signin-content > .body {
+  --border: 1px black solid;
   width: 400px;
-  height: 35px;
+  --height: 300px;
+  margin: 63px auto;
 }
 
-.signin-content .body .input-content input::placeholder {
-  color: #909090;
-  text-align: center;
-  font-size: 12px;
-}
-
-.signin-content .body .input-content .input-password {
-  margin-top: 10px;
-  width: 400px;
-  height: 35px;
-}
-
-.signin-content .body .signin-find-idpw-content {
+.signin-content > .body > .choose-member {
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
 }
 
-.signin-content .body .signin-find-idpw-content button {
-  border: 1px solid black;
+.signin-content > .body > .choose-member button {
+  width: 230px;
+  height: 50px;
   background: none;
-  border-radius: 5px;
-  width: 195px;
-  margin: 0 5px 0 5px;
+  border: 1px solid black;
 }
 
-.signin-content .body .signin-find-idpw-content button:focus {
+.signin-content > .body > .choose-member button:focus {
   outline: none;
 }
 
-.signin-content .body .signin-throw-social-title {
-  margin: 30px 0 0 50px;
+.signin-content > .body > .input-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.signin-content .body .social-content {
+.signin-content > .body > .input-content > .input-email-phone {
+  width: 400px;
+  height: 50px;
+}
+
+.signin-content > .body > .input-content > input::placeholder {
+  color: #909090;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.signin-content > .body > .input-content > .input-password {
+  margin-top: 10px;
+  width: 400px;
+  height: 50px;
+}
+
+.signin-content > .body > .signin-find-idpw-content {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.signin-content > .body > .signin-find-idpw-content > button {
+  --border: 1px solid black;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  font: normal normal medium Noto Sans KR;
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+
+  margin: 0 5px 0 5px;
+}
+
+.signin-content > .body .signin-find-idpw-content > button:focus {
+  outline: none;
+}
+
+.signin-content > .body > .signin-find-idpw-content > .between-line {
+  --border: 1px solid #999999;
+  color: #999999;
+  opacity: 1;
+}
+
+.signin-content > .body .signin-throw-social-title {
+  margin: 30px 0 0 20px;
+}
+
+.signin-content > .body .social-content {
   display: flex;
   justify-content: center;
 }
 
-.signin-content .body .social-content div {
+.signin-content > .body .social-content div {
   border: 1px solid black;
   width: 70px;
   height: 70px;
   margin: 0 10px 0 0;
 }
 
-.signin-content .body .signup-fapply {
+.signin-content > .body .signup-fapply {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
-.signin-content .body .signup-fapply .signup-button {
+
+.signin-content > .body > .signin-button {
+  width: 400px;
+  height: 50px;
+  margin: 20px 0 0 0;
+  border: none;
+  background: transparent linear-gradient(99deg, #049397 0%, #55267f 100%) 0% 0%
+    no-repeat padding-box;
+  border-radius: 3px;
+  opacity: 1;
+  font: normal normal bold 15px/21px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+
+.signin-content > .body > .signin-button:focus {
+  outline: none;
+}
+
+.signin-content > .body .signup-fapply .signup-button {
   background: none;
   border: 1px solid black;
   border-radius: 5px;
@@ -141,8 +185,210 @@
   height: 40px;
 }
 
-.signin-content .body .signup-fapply .signup-button:focus {
+.signin-content > .body .signup-fapply .signup-button:focus {
   outline: none;
+}
+
+/* Find id pw ---------------------------------------------------------------- */
+#find-idpw-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+#find-idpw-container > .find-idpw-content {
+  width: 440px;
+  height: 710px;
+  margin: auto auto;
+  background: white;
+}
+
+.find-idpw-content > .logo-close-popup {
+  --border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.find-idpw-content > .logo-close-popup > .empty-space {
+  width: 70px;
+}
+
+.find-idpw-content > .find-buttons {
+  width: 400px;
+  --border: 1px solid black;
+  margin: 63px auto;
+}
+
+.find-idpw-content > .find-buttons button {
+  border: 1px solid black;
+  background: none;
+  width: 200px;
+  height: 40px;
+}
+
+.find-idpw-content > .find-buttons button:focus {
+  outline: none;
+}
+
+.find-idpw-content > .find-buttons > .id-btn {
+  background: #009999 0% 0% no-repeat padding-box;
+  border: none;
+  border-radius: 3px 0px 0px 3px;
+  opacity: 1;
+}
+
+.find-idpw-content > .find-buttons > .pw-btn {
+  border: 1px solid #cccccc;
+  border-radius: 0px 3px 3px 0px;
+  opacity: 1;
+}
+
+.find-idpw-content > .body {
+  width: 400px;
+  margin: 63px auto;
+}
+
+.find-idpw-content > .body > .input-content > .name {
+  width: 100%;
+  height: 50px;
+  margin: 5px 0 0 0;
+}
+
+.find-idpw-content > .body > .input-content > .name::placeholder {
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #cccccc;
+  padding: 15px;
+  opacity: 1;
+}
+
+.find-idpw-content > .body > .input-content > div {
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  font-weight: bold;
+  --margin-top: 20px;
+  opacity: 1;
+}
+
+.find-idpw-content > .body > .input-content > .phone-title-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.find-idpw-content > .body > .input-content > .phone-title-content > .title {
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.find-idpw-content > .body > .input-content > .phone-title-content > .guide {
+  font: normal normal medium 11px/16px Noto Sans KR;
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #cccccc;
+  opacity: 1;
+}
+
+/* .find-idpw-content > .body > .input-content > .phone-input-content {
+  display: flex;
+  align-items: center;
+} */
+
+.find-idpw-content > .body > .input-content > .phone-input-content > .phone {
+  margin-top: 5px;
+  width: 300px;
+  height: 50px;
+}
+
+.find-idpw-content
+  > .body
+  > .input-content
+  > .phone-input-content
+  > .phone::placeholder {
+  padding: 15px;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #cccccc;
+  opacity: 1;
+}
+
+.find-idpw-content
+  > .body
+  > .input-content
+  > .phone-input-content
+  > .verify-phone-btn {
+  width: 100px;
+  height: 50px;
+  border: none;
+  background: #009999 0% 0% no-repeat padding-box;
+  border-radius: 0px 3px 3px 0px;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.find-idpw-content > .body > .input-content > .verify-confirm-title {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.find-idpw-content > .body > .input-content > .verify-input-content {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.find-idpw-content > .body > .input-content > .verify-input-content > .number {
+  width: 300px;
+  height: 50px;
+}
+
+.find-idpw-content
+  > .body
+  > .input-content
+  > .verify-input-content
+  > .number::placeholder {
+  padding: 15px;
+  font: normal normal medium 14px/20px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #cccccc;
+  opacity: 1;
+}
+
+.find-idpw-content > .body > .input-content > .verify-input-content > .btn {
+  border: none;
+  width: 100px;
+  height: 50px;
+  background: #dddddd;
+  border-radius: 0px 3px 3px 0px;
+  opacity: 1;
+}
+
+.find-idpw-content > .body > .input-content > .submit {
+  margin-top: 90px;
+  width: 100%;
+  height: 50px;
+  background: none;
+  border: 1px solid #aaaaaa;
+  font: normal normal bold 15px/21px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
 }
 
 /* Signup ---------------------------------------------------------------- */
@@ -182,25 +428,25 @@
   margin: 50px auto;
 }
 
-.signup-content .body .check-all-title {
+.signup-content > .body .check-all-title {
   cursor: pointer;
 }
 
-.signup-content .body .personal-info-collect-title {
+.signup-content > .body .personal-info-collect-title {
   cursor: pointer;
 }
 
-.signup-content .body .age-fourteen-title {
+.signup-content > .body .age-fourteen-title {
   cursor: pointer;
 }
 
-.signup-content .body .marketing-accept-title {
+.signup-content > .body .marketing-accept-title {
   cursor: pointer;
 }
 
 .signin-container
   .signup-content
-  .body
+  > .body
   .personal-info-collect-container
   div:nth-of-type(1) {
   display: flex;
@@ -210,7 +456,7 @@
 
 .signin-container
   .signup-content
-  .body
+  > .body
   .marketing-accept-container
   div:nth-of-type(1) {
   display: flex;
@@ -218,18 +464,18 @@
   align-items: center;
 }
 
-.signup-content .body .div-line {
+.signup-content > .body > .div-line {
   width: 100%;
   border: 1px solid black;
 }
 
-.signup-content .body .next-button-content {
+.signup-content > .body .next-button-content {
   margin-top: 70px;
   display: flex;
   justify-content: center;
 }
 
-.signup-content .body .next-button-content button {
+.signup-content > .body .next-button-content button {
   background: none;
   border: 1px solid black;
   border-radius: 5px;
@@ -238,17 +484,17 @@
   margin-top: 50px;
 }
 
-.signup-content .body .next-button-content button:focus {
+.signup-content > .body .next-button-content button:focus {
   outline: none;
 }
 
-.signup-content .body .view-detail {
+.signup-content > .body .view-detail {
   font-size: 13px;
   color: #909090;
   cursor: pointer;
 }
 
-.signup-content .body .personal-info-collect-container .full {
+.signup-content > .body .personal-info-collect-container .full {
   animation-duration: 1s;
   width: 400px;
   height: 100px;
@@ -259,7 +505,7 @@
   padding: 3px;
 }
 
-.signup-content .body .personal-info-collect-container .full:focus {
+.signup-content > .body .personal-info-collect-container .full:focus {
   outline: none;
 }
 
@@ -313,7 +559,7 @@
   opacity: 1;
 }
 
-.signin-container .with-phone-email-content .body {
+.with-phone-email-content > .body {
   width: 400px;
   height: 100%;
   margin: 50px auto;
@@ -321,23 +567,23 @@
   flex-direction: column;
 }
 
-.with-phone-email-content .input-email-phone {
+.with-phone-email-content > .body > .input-email-phone {
   border: 1px solid black;
   height: 45px;
   background: none;
   margin-bottom: 6px;
 }
 
-.with-phone-email-content .input-email-phone::placeholder {
+.with-phone-email-content > .body > .input-email-phone::placeholder {
   --text-align: center;
   padding-left: 10px;
 }
 
-.with-phone-email-content .input-email-phone:focus {
+.with-phone-email-content > .body > .input-email-phone:focus {
   outline: none;
 }
 
-.with-phone-email-content .submit-email-phone {
+.with-phone-email-content .body > .submit-email-phone {
   background: none;
   border: 1px solid black;
   height: 45px;
@@ -346,16 +592,20 @@
   margin-bottom: 20px;
 }
 
-.with-phone-email-content .submit-email-phone:focus {
+.with-phone-email-content > .body > .div-line {
+  width: 100%;
+}
+
+.with-phone-email-content > .body > .submit-email-phone:focus {
   --outline: none;
 }
 
-.with-phone-email-content .social-channels {
+.with-phone-email-content > .body > .social-channels {
   margin-top: 20px;
   margin: 0 auto;
 }
 
-.with-phone-email-content .social-channels button {
+.with-phone-email-content > .body > .social-channels > button {
   background: none;
   border: 1px solid black;
   border-radius: 50px;
@@ -751,4 +1001,72 @@
   color: #aaaaaa;
   margin: 5px auto 0px auto;
   text-decoration: underline;
+}
+
+/*---------------------------------------------------------------------------------------*/
+/* Signup end ---------------------------------------------------------------- */
+.signin-content .signup-end-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.signup-end-container > .signup-end-content {
+  display: flex;
+  justify-content: center;
+  width: 440px;
+  height: 710px;
+  --height: 95vh;
+  margin: 0 auto;
+  background: white;
+}
+
+.signup-end-content > .header {
+  width: 400px;
+  max-height: 200px;
+  text-align: center;
+  --border: 1px solid red;
+  margin-top: 187px;
+}
+
+.signup-end-content > .header > .preamble-one {
+  text-align: center;
+  font: normal normal bold 18px/28px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+.signup-end-content > .header > .preamble-two {
+  margin-top: 21px;
+  text-align: center;
+  font: normal normal medium 15px/22px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #999999;
+  opacity: 1;
+}
+
+.signup-end-content > .header > .go-signup {
+  width: 100%;
+  height: 50px;
+  background: transparent linear-gradient(99deg, #049397 0%, #55267f 100%) 0% 0%
+    no-repeat padding-box;
+  border-radius: 3px;
+  font: normal normal bold 15px/21px Noto Sans KR;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+  border: none;
+  margin-top: 67px;
+}
+
+.signup-end-content > .header > .go-signup:focus {
+  outline: none;
 }

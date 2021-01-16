@@ -19,13 +19,16 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// file uplaod
+
+// app.use(fileUplo);
 // REST APIs
 // app.use(bodyParser.json());
 
 // API routes
 // require('./routes')(app);
 // app.route('/test').get(function (req, res, next) {
-//   connection.query(
+//   connecttion.query(
 //     'SELECT * FROM TB_COMMON_WORK WHERE lv = 1',
 //     function (error, results, fields) {
 //       if (error) throw error;
@@ -115,6 +118,11 @@ if (isDev) {
     res.end();
   });
 }
+// app.use(express.static(path.resolve(__dirname, '../dist')));
+// app.get('*', function (req, res) {
+//   res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+//   res.end();
+// });
 app.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err);

@@ -9,6 +9,7 @@ import Career from '../career/Career';
 import Calendar from '../calendar/Calendar';
 import Test from '../Test/test';
 import SignInComponent from '../member/SignInComponent';
+import MyPageComponent from '../member/MyPageComponent';
 
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
@@ -44,6 +45,11 @@ function Navbar() {
             </Link>
           </li>
         </div>
+        <li className="nav-item">
+          <Link to={'/mypage'} className="mypage-margin">
+            마이페이지
+          </Link>
+        </li>
         <div className="utility">
           <button className="signin-btn" onClick={toggleSigninPopup}>
             로그인/회원가입

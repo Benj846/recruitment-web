@@ -163,7 +163,7 @@ const JobTree = () => {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const appendRef = useRef(null);
   const addFuntion = () => {
-    return appendRef.current.append(<div>laskdjflk</div>);
+    return appendRef.current.append();
   };
   const buttonItems = numbers.map((number) => (
     <button

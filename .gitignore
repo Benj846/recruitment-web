@@ -25,3 +25,9 @@ $RECYCLE.BIN/
 .Spotlight-V100
 .Trashes
 .prettierrc.json
+.eslintrc.json
+client/app/components/Test/test.js
+.gitignore
+client/app/components/recruitment/db.json
+.babelrc
+config/webpack.dev.js
