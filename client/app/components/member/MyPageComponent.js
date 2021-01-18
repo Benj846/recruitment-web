@@ -207,10 +207,7 @@ function MyPageComponent() {
           계정관리
         </div>
       </aside>
-      <main id="mypage-container">
-        {PrintComponent()}
-        {console.log(menuNumber.profile)}
-      </main>
+      <main id="mypage-container">{PrintComponent()}</main>
     </article>
   );
 }
