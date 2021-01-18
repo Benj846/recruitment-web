@@ -4,12 +4,12 @@ import Select from 'react-select';
 import '../../styles/MyPageComponent';
 import david from './images/david.jpg';
 import closeBtn from './images/close_button.svg';
-import Resume from '../resume/Resume';
 import emptyHeart from './images/empty_heart.png';
 import fullHeart from './images/full_heart.png';
 import emptyBookmark from './images/empty_bookmark.png';
 import fullBookmark from './images/full_bookmark.png';
 import MainComponent from '../Main/MainComponent';
+import ResumeComponent from '../resume/ResumeComponent';
 
 function MyPageComponent() {
   const API_HOST = 'http://localhost:3333';
@@ -117,7 +117,7 @@ function MyPageComponent() {
       case menuNumber.resumeList:
         return <ResumeList />;
       case menuNumber.writeResume:
-        return <Resume />;
+        return <MakeResume />;
       case menuNumber.recentViewNotice:
         return <RecentViewNotice />;
       case menuNumber.bookmarkedCompanyList:
@@ -712,6 +712,14 @@ function ResumeList() {
           </div>
         ))}
       </section>
+    </article>
+  );
+}
+
+function MakeResume() {
+  return (
+    <article id="make-resume-container">
+      <ResumeComponent />
     </article>
   );
 }
