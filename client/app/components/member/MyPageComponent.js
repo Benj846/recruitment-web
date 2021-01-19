@@ -716,7 +716,15 @@ function ResumeList() {
 function MakeResume() {
   return (
     <article id="make-resume-container">
-      <ResumeComponent />
+      <nav>
+        <ul className="recent-notice-breadcrumb">
+          <li className="breadcrumb-items">북마크 &gt;</li>
+          <li className="breadcrumb-items">&nbsp;최근 본 공고</li>
+        </ul>
+      </nav>
+      <section id="resume-container">
+        <ResumeComponent />
+      </section>
     </article>
   );
 }

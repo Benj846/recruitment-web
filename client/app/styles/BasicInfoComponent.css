@@ -1,3 +1,7 @@
+/* .root {
+  margin: 100px 100px 0px 100px;
+} */
+
 .resume-title {
   /* top: 210px;
   left: 520px; */
@@ -40,9 +44,6 @@
   opacity: 1;
   margin-top: 6px;
   margin-bottom: 30px;
-}
-.root {
-  margin: 100px 100px 0px 100px;
 }
 
 .basic-info-container .form {

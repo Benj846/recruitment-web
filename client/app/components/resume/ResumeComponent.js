@@ -7,10 +7,11 @@ import ExamComponent from './ExamComponent';
 import SkillComponent from './SkillComponent';
 import PortfolioComponent from './PortfolioComponent';
 import SelfIntroductionComponent from './SelfIntroduction';
+import '../../styles/Resume';
 
 function ResumeComponent() {
   return (
-    <>
+    <article id="resume-content">
       <BasicInfoComponent />
       <EducationComponent />
       <CareerComponent />
@@ -19,7 +20,7 @@ function ResumeComponent() {
       <SkillComponent />
       <PortfolioComponent />
       <SelfIntroductionComponent />
-    </>
+    </article>
   );
 }
 export default ResumeComponent;
