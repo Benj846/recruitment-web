@@ -881,6 +881,15 @@ td {
   outline: none;
 }
 
+/* Resume/MakeResume ------------------------------------------------------------------- */
+#mypage-container > #make-resume-container {
+  width: 1060px;
+}
+
+#resume-container {
+  padding: 30px 98px;
+}
+
 /* Bookmark/Recent view notice ------------------------------------------------------------------- */
 #mypage-container > #recent-notice-container {
   width: 1060px;

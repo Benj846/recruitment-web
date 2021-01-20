@@ -17,7 +17,7 @@ function CareerComponent(props) {
   };
 
   return (
-    <div className="career-info">
+    <div id="career-info">
       <div className="title-container">
         <div className="title">경력사항</div>
         <div className="add-items" onClick={onCreate}>
@@ -129,7 +129,8 @@ function CareerListComponent({ ids, onRemove }) {
           <div className="job-container">
             <div className="job-content">
               <span className="job-title">직무명</span>
-              <MultiLevelSelect options={options} />
+              <button className="add-jobs">직무 추가하기</button>
+              {/* <MultiLevelSelect options={options} /> */}
             </div>
           </div>
         </div>

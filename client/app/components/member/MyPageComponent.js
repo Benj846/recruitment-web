@@ -4,12 +4,12 @@ import Select from 'react-select';
 import '../../styles/MyPageComponent';
 import david from './images/david.jpg';
 import closeBtn from './images/close_button.svg';
-import Resume from '../resume/Resume';
 import emptyHeart from './images/empty_heart.png';
 import fullHeart from './images/full_heart.png';
 import emptyBookmark from './images/empty_bookmark.png';
 import fullBookmark from './images/full_bookmark.png';
 import MainComponent from '../Main/MainComponent';
+import ResumeComponent from '../resume/ResumeComponent';
 
 function MyPageComponent() {
   const API_HOST = 'http://localhost:3333';
@@ -117,7 +117,7 @@ function MyPageComponent() {
       case menuNumber.resumeList:
         return <ResumeList />;
       case menuNumber.writeResume:
-        return <Resume />;
+        return <MakeResume />;
       case menuNumber.recentViewNotice:
         return <RecentViewNotice />;
       case menuNumber.bookmarkedCompanyList:
@@ -207,10 +207,7 @@ function MyPageComponent() {
           계정관리
         </div>
       </aside>
-      <main id="mypage-container">
-        {PrintComponent()}
-        {console.log(menuNumber.profile)}
-      </main>
+      <main id="mypage-container">{PrintComponent()}</main>
     </article>
   );
 }
@@ -711,6 +708,22 @@ function ResumeList() {
             </div>
           </div>
         ))}
+      </section>
+    </article>
+  );
+}
+
+function MakeResume() {
+  return (
+    <article id="make-resume-container">
+      <nav>
+        <ul className="recent-notice-breadcrumb">
+          <li className="breadcrumb-items">북마크 &gt;</li>
+          <li className="breadcrumb-items">&nbsp;최근 본 공고</li>
+        </ul>
+      </nav>
+      <section id="resume-container">
+        <ResumeComponent />
       </section>
     </article>
   );
@@ -1410,7 +1423,6 @@ function AccountManagement() {
     </>
   );
 }
-
 function LeaveReasonComponent({ closePopup, onSubmit }) {
   return (
     <div id="leave-reason-container">
