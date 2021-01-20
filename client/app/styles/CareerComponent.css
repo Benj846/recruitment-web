@@ -1,40 +1,17 @@
-.career-info {
+#career-info {
   margin: 80px 0 0 0;
 }
-/* .career-content .career {
-    --position: absolute;
-    border: 1px solid black;
-    --width:90vw;
-    --height:90vh;
-    --margin: 0 auto;
-} */
 
 .body-detail {
   margin: 0px 0px 35px 0px;
 }
 
-.career-info .title-container {
+#career-info .title-container {
   display: flex;
   justify-content: space-between;
 }
 
-/* .exam-info .title {
-  width: 150px;
-  height: 24px;
-  --margin: 4px;
-
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 20px/24px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
-} */
-
-.career-info .add-items {
+#career-info .add-items {
   cursor: pointer;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) 15px/19px
@@ -234,7 +211,7 @@
   height: 40px;
 } */
 
-.career-info .title {
+#career-info > .title-container > .title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
     var(--unnamed-font-family-apple-sd-gothic-neo);
@@ -246,7 +223,7 @@
   opacity: 1;
 }
 
-.employ-type .basic-single {
+#career-info > .body-detail > .employ-type > .basic-single {
   width: 340px;
   height: 40px;
   margin-right: 20px;
@@ -257,12 +234,12 @@
   margin-right: 20px;
 }
 
-.career-info .title-container {
+#career-info .title-container {
   display: flex;
   justify-content: space-between;
 }
 
-.career-info .division-line {
+#career-info .division-line {
   width: 100%;
   margin-left: 0px;
   border: 2px solid var(--unnamed-color-707070);

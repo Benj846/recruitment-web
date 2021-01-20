@@ -22,8 +22,11 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
     personalBtn.current.click();
   }, []);
 
+  const [member, setMember] = useState('personal');
+
   const setMemberBtn = (e) => {
     const className = e.target.className;
+    setMember('personal');
     if (className === 'personal') {
       personalBtn.current.style.outline = 'none';
       personalBtn.current.style.background =
@@ -83,11 +86,11 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
             <button
               className="personal"
               ref={personalBtn}
-              onFocus={setMemberBtn}
+              onClick={setMemberBtn}
             >
               개인회원
             </button>
-            <button className="company" ref={companyBtn} onFocus={setMemberBtn}>
+            <button className="company" ref={companyBtn} onClick={setMemberBtn}>
               기업회원
             </button>
           </div>
@@ -95,7 +98,7 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
             <input
               className="input-email-phone"
               name="email-phone"
-              placeholder="이메일 or 전화번호"
+              placeholder="이메일 주소 입력하기"
             />
             <input
               className="input-password"
@@ -122,7 +125,9 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
             <div className="apple"></div>
           </div>
         </div>
-        {showSignup ? <SignupComponent closePopup={closePopup} /> : null}
+        {showSignup ? (
+          <SignupComponent closePopup={closePopup} member={member} />
+        ) : null}
         {showFindIdPw ? <FindIwPwComponent closePopup={closePopup} /> : null}
       </div>
     </div>
@@ -177,7 +182,7 @@ function FindIwPwComponent({ closePopup }) {
   );
 }
 
-function SignupComponent({ closePopup }) {
+function SignupComponent({ closePopup, member }) {
   const [isPersonalInfoCilcked, setPersonalInfoCilcked] = useState(false);
   const [isMarketingInfoCilcked, setMarketingInfoCilcked] = useState(false);
   const togglePersonalInfo = () => {
@@ -251,17 +256,21 @@ function SignupComponent({ closePopup }) {
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-content">
-        <div className="logo-close-popup">
+    <div id="signup-container">
+      <div id="signup-content">
+        <div className="member-close-popup">
           <div className="empty-space"></div>
-          <img src={fapplyLogo} />
+          {member === 'personal' ? (
+            <div>개인회원 가입하기</div>
+          ) : (
+            <div>기업회원 가입하기</div>
+          )}
           <button className="close-button" onClick={closePopup}>
             <img src={closeBtn} />
           </button>
         </div>
         <div className="header">
-          <div className="company-name">Fapply</div>
+          <img src={fapplyLogo} />
           <div className="preamble-one">여러분의 소중한 커리어</div>
           <div className="preamble-two">Fapply와 함께 만들어나가요!</div>
         </div>
@@ -357,35 +366,43 @@ function SignupComponent({ closePopup }) {
             </button>
           </div>
         </div>
-        {showSignup ? <SigninWithPhoneEmail closePopup={closePopup} /> : null}
+        {showSignup ? (
+          <SigninWithEmail closePopup={closePopup} member={member} />
+        ) : null}
       </div>
     </div>
   );
 }
 
-function SigninWithPhoneEmail({ closePopup }) {
+function SigninWithEmail({ closePopup, member }) {
   const [showSignup, setShowSignup] = useState(false);
   const togglePopup = () => {
     setShowSignup(!showSignup);
   };
   return (
-    <div className="with-phone-email-container">
-      <div className="with-phone-email-content">
+    <div id="with-email-container">
+      <div id="with-email-content">
         <div className="member-close-popup">
+          <div className="empty-space"></div>
+          {member === 'personal' ? (
+            <div>개인회원 가입하기</div>
+          ) : (
+            <div>기업회원 가입하기</div>
+          )}
           <button className="close-button" onClick={closePopup}>
-            닫기
+            <img src={closeBtn} />
           </button>
         </div>
         <div className="header">
-          <div className="company-name">Fapply</div>
+          <img src={fapplyLogo} />
           <div className="preamble-one">여러분의 소중한 커리어</div>
           <div className="preamble-two">Fapply와 함께 만들어나가요!</div>
         </div>
         <div className="body">
-          <span>이메일 혹은 휴대폰 번호로 가입하기</span>
+          <span>이메일 주소로 가입하기</span>
           <input
             className="input-email-phone"
-            placeholder="이메일 혹은 휴대폰 번호 입력"
+            placeholder="이메일 입력"
           ></input>
           <button className="submit-email-phone" onClick={togglePopup}>
             다음으로 이동
@@ -406,15 +423,16 @@ function SigninWithPhoneEmail({ closePopup }) {
             </div>
           </div>
         </div>
+        {console.log(showSignup)}
         {showSignup ? (
-          <InputSignupWithPhoneEmail closePopup={closePopup} />
+          <InputSignupWithEmail closePopup={closePopup} member={member} />
         ) : null}
       </div>
     </div>
   );
 }
 
-function InputSignupWithPhoneEmail({ closePopup }) {
+function InputSignupWithEmail({ closePopup, member }) {
   const [showSignup, setShowSignup] = useState(false);
   const [isPhoneOrEmail, setPhoneOrEmail] = useState(false);
   const togglePopup = () => {
@@ -426,15 +444,17 @@ function InputSignupWithPhoneEmail({ closePopup }) {
     setPhoneOrEmail(flag);
   };
   return (
-    <div className="input-with-phone-email-container">
-      <div className="input-with-phone-email-content">
+    <div id="input-with-email-container">
+      <div id="input-with-email-content">
         <div className="member-close-popup">
-          <div>
-            <button className="personal-member">개인회원</button>
-            <button className="company-member">기업회원</button>
-          </div>
+          <div className="empty-space"></div>
+          {member === 'personal' ? (
+            <div>개인회원 가입하기</div>
+          ) : (
+            <div>기업회원 가입하기</div>
+          )}
           <button className="close-button" onClick={closePopup}>
-            닫기
+            <img src={closeBtn} />
           </button>
         </div>
         <div className="header">
@@ -456,31 +476,16 @@ function InputSignupWithPhoneEmail({ closePopup }) {
             className="input-signup-password-confirm"
             placeholder="비밀번호를 다시 한 번 입력해주세요"
           />
-          <span className="signup-password">휴대폰/이메일 인증</span>
-          <div className="select-phone-email">
-            <button className="phone" onClick={() => togglePhoneEmail(true)}>
-              휴대폰
-            </button>
-            <button className="email" onClick={() => togglePhoneEmail(false)}>
-              이메일
-            </button>
-          </div>
+          <span className="signup-password">핸드폰 인증하기</span>
           <div className="verify">
-            {isPhoneOrEmail ? (
-              <input
-                className="input-info-for-verify"
-                placeholder="휴대폰 번호를 입력해주세요"
-              ></input>
-            ) : (
-              <input
-                className="input-info-for-verify"
-                placeholder="이메일을 입력해주세요"
-              ></input>
-            )}
+            <input
+              className="input-info-for-verify"
+              placeholder="번호를 입력해주세요"
+            ></input>
             <button className="verify-btn">인증</button>
           </div>
+          <div className="verify-confirm-title">인증번호 확인</div>
           <div className="verify-confirm">
-            <div className="verify-confirm-title">인증번호 확인</div>
             <input
               className="input-info-for-verify-confirm"
               placeholder="인증번호 6자리를 입력해주세요."

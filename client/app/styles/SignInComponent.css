@@ -77,6 +77,10 @@
   opacity: 1;
 }
 
+#signin-content > .body > .choose-member > button:focus {
+  outline: none;
+}
+
 #signin-content > .body > .input-content {
   display: flex;
   flex-direction: column;
@@ -386,7 +390,7 @@
 }
 
 /* Signup ---------------------------------------------------------------- */
-#signin-content > .signup-container {
+#signin-content > #signup-container {
   display: flex;
   align-items: center;
   position: fixed;
@@ -399,7 +403,7 @@
   margin: auto;
 }
 
-.signup-container > .signup-content {
+#signup-container > #signup-content {
   width: 440px;
   --height: 90vh;
   height: 710px;
@@ -408,38 +412,52 @@
   --border: 1px solid red;
 }
 
-.signup-content > .header {
+#signup-content > .member-close-popup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#signup-content > .member-close-popup > .empty-space {
+  width: 50px;
+}
+
+#signup-content > .member-close-popup > .close-button {
+  background: none;
+  border: none;
+}
+
+#signup-content > .header {
   width: 400px;
-  --border: 1px solid black;
   text-align: center;
   margin: 50px auto;
 }
 
-.signup-content > .body {
+#signup-content > .body {
   --border: 1px black solid;
   width: 400px;
   height: 300px;
   margin: 50px auto;
 }
 
-.signup-content > .body .check-all-title {
+#signup-content > .body .check-all-title {
   cursor: pointer;
 }
 
-.signup-content > .body .personal-info-collect-title {
+#signup-content > .body .personal-info-collect-title {
   cursor: pointer;
 }
 
-.signup-content > .body .age-fourteen-title {
+#signup-content > .body .age-fourteen-title {
   cursor: pointer;
 }
 
-.signup-content > .body .marketing-accept-title {
+#signup-content > .body .marketing-accept-title {
   cursor: pointer;
 }
 
 #signin-container
-  .signup-content
+  #signup-content
   > .body
   .personal-info-collect-container
   div:nth-of-type(1) {
@@ -449,7 +467,7 @@
 }
 
 #signin-container
-  .signup-content
+  #signup-content
   > .body
   .marketing-accept-container
   div:nth-of-type(1) {
@@ -458,18 +476,18 @@
   align-items: center;
 }
 
-.signup-content > .body > .div-line {
+#signup-content > .body > .div-line {
   width: 100%;
   border: 1px solid black;
 }
 
-.signup-content > .body .next-button-content {
+#signup-content > .body .next-button-content {
   margin-top: 70px;
   display: flex;
   justify-content: center;
 }
 
-.signup-content > .body .next-button-content button {
+#signup-content > .body .next-button-content button {
   background: none;
   border: 1px solid black;
   border-radius: 5px;
@@ -478,17 +496,17 @@
   margin-top: 50px;
 }
 
-.signup-content > .body .next-button-content button:focus {
+#signup-content > .body .next-button-content button:focus {
   outline: none;
 }
 
-.signup-content > .body .view-detail {
+#signup-content > .body .view-detail {
   font-size: 13px;
   color: #909090;
   cursor: pointer;
 }
 
-.signup-content > .body .personal-info-collect-container .full {
+#signup-content > .body .personal-info-collect-container .full {
   animation-duration: 1s;
   width: 400px;
   height: 100px;
@@ -499,15 +517,15 @@
   padding: 3px;
 }
 
-.signup-content > .body .personal-info-collect-container .full:focus {
+#signup-content > .body .personal-info-collect-container .full:focus {
   outline: none;
 }
 
-.signup-content .body .personal-info-collect-container .full:disabled {
+#signup-content .body .personal-info-collect-container .full:disabled {
   background: none;
 }
 
-.signup-content .body .marketing-accept-container .full {
+#signup-content .body .marketing-accept-container .full {
   width: 400px;
   height: 100px;
   resize: none;
@@ -518,7 +536,7 @@
 }
 
 /* Signup with Phone email ---------------------------------------------------------------- */
-#signin-content .with-phone-email-container {
+#signin-content #with-email-container {
   display: flex;
   align-items: center;
   position: fixed;
@@ -531,7 +549,7 @@
   margin: auto;
 }
 
-.with-phone-email-container > .with-phone-email-content {
+#with-email-container > #with-email-content {
   width: 440px;
   height: 710px;
   --height: 90vh;
@@ -539,21 +557,36 @@
   background: white;
 }
 
-.with-phone-email-content > .header {
+#with-email-content > .member-close-popup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#with-email-content > .member-close-popup > .empty-space {
+  width: 50px;
+}
+
+#with-email-content > .member-close-popup > .close-button {
+  background: none;
+  border: none;
+}
+
+#with-email-content > .header {
   --border: 1px solid black;
   width: 400px;
   margin: 50px auto;
   text-align: center;
 }
 
-.with-phone-email-content > .header > div {
+#with-email-content > .header > div {
   font: normal normal bold 23px/32px Noto Sans KR;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
 }
 
-.with-phone-email-content > .body {
+#with-email-content > .body {
   width: 400px;
   height: 100%;
   margin: 50px auto;
@@ -561,23 +594,23 @@
   flex-direction: column;
 }
 
-.with-phone-email-content > .body > .input-email-phone {
+#with-email-content > .body > .input-email-phone {
   border: 1px solid black;
   height: 45px;
   background: none;
   margin-bottom: 6px;
 }
 
-.with-phone-email-content > .body > .input-email-phone::placeholder {
+#with-email-content > .body > .input-email-phone::placeholder {
   --text-align: center;
   padding-left: 10px;
 }
 
-.with-phone-email-content > .body > .input-email-phone:focus {
+#with-email-content > .body > .input-email-phone:focus {
   outline: none;
 }
 
-.with-phone-email-content .body > .submit-email-phone {
+#with-email-content .body > .submit-email-phone {
   background: none;
   border: 1px solid black;
   height: 45px;
@@ -586,20 +619,20 @@
   margin-bottom: 20px;
 }
 
-.with-phone-email-content > .body > .div-line {
+#with-email-content > .body > .div-line {
   width: 100%;
 }
 
-.with-phone-email-content > .body > .submit-email-phone:focus {
+#with-email-content > .body > .submit-email-phone:focus {
   --outline: none;
 }
 
-.with-phone-email-content > .body > .social-channels {
+#with-email-content > .body > .social-channels {
   margin-top: 20px;
   margin: 0 auto;
 }
 
-.with-phone-email-content > .body > .social-channels > button {
+#with-email-content > .body > .social-channels > button {
   background: none;
   border: 1px solid black;
   border-radius: 50px;
@@ -608,17 +641,17 @@
   margin: 6px 4px;
 }
 
-.with-phone-email-content .body button:focus {
+#with-email-content .body button:focus {
   outline: none;
 }
 
-.with-phone-email-content .body .guide-text {
+#with-email-content .body .guide-text {
   margin-top: 40px;
   text-align: center;
   font-size: 14px;
 }
 
-.with-phone-email-content .body .guide-text div {
+#with-email-content .body .guide-text div {
   --font: normal normal medium 11px/16px Noto Sans KR;
   --letter-spacing: 0px;
   --opacity: 1;
@@ -626,7 +659,7 @@
 
 /*------------------------------------------------------------------------------------------------*/
 /* Input signup with Phone email ---------------------------------------------------------------- */
-#signin-content .input-with-phone-email-container {
+#signin-content #input-with-email-container {
   display: flex;
   align-items: center;
   position: fixed;
@@ -639,7 +672,7 @@
   margin: auto;
 }
 
-.input-with-phone-email-container > .input-with-phone-email-content {
+#input-with-email-container > #input-with-email-content {
   width: 440px;
   height: 710px;
   --height: 95vh;
@@ -647,13 +680,28 @@
   background: white;
 }
 
-.input-with-phone-email-content > .header {
+#input-with-email-content > .member-close-popup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#input-with-email-content > .member-close-popup > .empty-space {
+  width: 50px;
+}
+
+#input-with-email-content > .member-close-popup > .close-button {
+  background: none;
+  border: none;
+}
+
+#input-with-email-content > .header {
   --border: 1px solid black;
   margin: 20px auto;
   width: 400px;
 }
 
-.input-with-phone-email-content > .header > .title {
+#input-with-email-content > .header > .title {
   text-align: center;
   font: normal normal bold 18px/26px Noto Sans KR;
   letter-spacing: 0px;
@@ -661,7 +709,7 @@
   opacity: 1;
 }
 
-.input-with-phone-email-content > .body {
+#input-with-email-content > .body {
   width: 400px;
   height: 100%;
   margin: 50px auto;
@@ -669,96 +717,83 @@
   flex-direction: column;
 }
 
-#signin-container .input-with-phone-email-content .body .required {
-  color: #ff0000;
-}
-
-#signin-container .input-with-phone-email-content .body .input-signup-name {
+#input-with-email-content > .body > .input-signup-name {
   border: 1px solid #cccccc;
   height: 40px;
   margin-bottom: 15px;
   padding: 10px;
 }
 
-#signin-container
-  .input-with-phone-email-content
-  .body
-  .input-signup-name::placeholder {
+#input-with-email-content > .body > .input-signup-name::placeholder {
   color: #cccccc;
   opacity: 1;
   letter-spacing: 0px;
 }
-
-#signin-container
-  .input-with-phone-email-content
-  .body
-  .input-signup-name:focus {
+#input-with-email-content > .body > .input-signup-name:focus {
   outline: none;
 }
-
-#signin-container .input-with-phone-email-content .body .input-signup-password {
+#input-with-email-content > .body .input-signup-password {
   border: 1px solid #cccccc;
   height: 40px;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-#signin-container
-  .input-with-phone-email-content
-  .body
-  .input-signup-password::placeholder {
+#input-with-email-content > .body > .input-signup-password::placeholder {
   color: #cccccc;
   opacity: 1;
   letter-spacing: 0px;
 }
-
-#signin-container
-  .input-with-phone-email-content
-  .body
-  .input-signup-password:focus {
+#input-with-email-content > .body > .input-signup-password:focus {
   outline: none;
 }
 
-.input-with-phone-email-content .input-signup-password-confirm {
+#input-with-email-content > .body > .input-signup-password-confirm {
   border: 1px solid #cccccc;
   height: 40px;
   padding: 5px;
   margin-bottom: 10px;
 }
 
-.input-with-phone-email-content .input-signup-password-confirm::placeholder {
+#input-with-email-content
+  > .body
+  > .input-signup-password-confirm::placeholder {
   color: #cccccc;
   --font-weight: bold;
 }
 
-.input-with-phone-email-content .input-signup-password-confirm:focus {
+#input-with-email-content > .body > .input-signup-password-confirm:focus {
   outline: none;
 }
 
-.input-with-phone-email-content .select-phone-email button {
+#input-with-email-content > .body > .select-phone-email button {
   background: none;
   border: 1px solid #cccccc;
   width: 200px;
   height: 40px;
 }
 
-.input-with-phone-email-content .verify {
+#input-with-email-content > .body > .verify {
+  display: flex;
   margin-top: 10px;
 }
 
-.input-with-phone-email-content .verify .input-info-for-verify {
+#input-with-email-content > .body > .verify .input-info-for-verify {
   width: 300px;
   height: 40px;
   border: 1px solid #cccccc;
   padding: 5px;
 }
 
-.input-with-phone-email-content .verify .input-info-for-verify::placeholder {
+#input-with-email-content
+  > .body
+  > .verify
+  .input-info-for-verify::placeholder {
   color: #cccccc;
   --font-size: 15px;
 }
 
-.input-with-phone-email-content .verify .verify-btn {
+#input-with-email-content > .body > .verify .verify-btn {
   background: #dddddd 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   color: #999999;
@@ -766,34 +801,44 @@
   height: 40px;
 }
 
-.input-with-phone-email-content .verify .verify-btn:focus {
+#input-with-email-content > .body > .verify .verify-btn:focus {
   outline: none;
 }
 
-.input-with-phone-email-content .verify-confirm {
+#input-with-email-content > .body > .verify-confirm-title {
+  margin-top: 15px;
+}
+
+#input-with-email-content > .body > .verify-confirm {
+  display: flex;
   margin-top: 10px;
 }
 
-.input-with-phone-email-content .verify-confirm .input-info-for-verify-confirm {
+#input-with-email-content
+  > .body
+  > .verify-confirm
+  .input-info-for-verify-confirm {
   width: 300px;
   height: 40px;
   border: 1px solid #cccccc;
   padding: 5px;
 }
 
-.input-with-phone-email-content
-  .verify-confirm
+#input-with-email-content
+  > .body
+  > .verify-confirm
   .input-info-for-verify-confirm::placeholder {
   color: #cccccc;
 }
 
-.input-with-phone-email-content
-  .verify-confirm
+#input-with-email-content
+  > .body
+  > .verify-confirm
   .input-info-for-verify-confirm:focus {
   outline: none;
 }
 
-.input-with-phone-email-content .verify-confirm .verify-confirm-btn {
+#input-with-email-content > .body > .verify-confirm .verify-confirm-btn {
   background: #009999 0% 0% no-repeat padding-box;
   border: 1px solid #009999;
   color: #ffffff;
@@ -801,7 +846,7 @@
   height: 40px;
 }
 
-.input-with-phone-email-content .select-job-btn {
+#input-with-email-content > .body > .select-job-btn {
   height: 50px;
   border: 1px solid #aaaaaa;
   border-radius: 3px;
