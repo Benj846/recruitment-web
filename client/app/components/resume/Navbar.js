@@ -7,7 +7,7 @@ import MainComponent from '../Main/MainComponent';
 import RecruitmentComponent from '../recruitment/RecruitmentComponent';
 import Career from '../Career/Career';
 import Calendar from '../calendar/Calendar';
-import Test from '../Test/test';
+//import Test from '../Test/test';
 import SignInComponent from '../member/SignInComponent';
 import MyPageComponent from '../member/MyPageComponent';
 
