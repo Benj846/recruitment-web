@@ -384,7 +384,6 @@
   display: flex;
   width: 1060px;
   height: 128px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   opacity: 1;

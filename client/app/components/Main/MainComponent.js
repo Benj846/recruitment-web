@@ -949,8 +949,8 @@ function MainComponent(props) {
   };
   return (
     <>
-      <div className="recruit-container">
-        <div className="recruit-content">
+      <div className="main-recruit-container">
+        <div className="main-recruit-content">
           <input className="search-input" />
           <button
             className="search-btn"

@@ -5,7 +5,7 @@ import Resume from './Resume';
 import '../../styles/Navbar';
 import MainComponent from '../Main/MainComponent';
 import RecruitmentComponent from '../recruitment/RecruitmentComponent';
-import Career from '../career/Career';
+import Career from '../Career/Career';
 import Calendar from '../calendar/Calendar';
 import Test from '../Test/test';
 import SignInComponent from '../member/SignInComponent';
@@ -64,7 +64,7 @@ function Navbar() {
         <Route exact path="/career" component={Career} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/resume" component={Resume} />
-        <Route exact path="/test" component={Test} />
+        <Route exact path="/mypage" component={MyPageComponent} />
       </Switch>
     </div>
   );
