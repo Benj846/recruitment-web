@@ -149,6 +149,152 @@ function CareerListComponent({ ids, onRemove }) {
     }
   ]);
 
+  const [isLevelOneClicked, setIsLevelOneClicked] = useState(false);
+
+  const [levelTwo, setLevelTwo] = useState([
+    {
+      id: 1,
+      title: '자동차/기계'
+    },
+    {
+      id: 2,
+      title: '반도체/디스플레이'
+    },
+    {
+      id: 3,
+      title: '화학/에너지/환경'
+    },
+    {
+      id: 4,
+      title: '전기/전자/제어'
+    },
+    {
+      id: 5,
+      title: '금속/재료'
+    },
+    {
+      id: 6,
+      title: '기계설게,CAD/CAM'
+    },
+    {
+      id: 7,
+      title: '통신기술/네트워크 구축'
+    },
+    {
+      id: 8,
+      title: '통신기술/네트워크 구축'
+    },
+    {
+      id: 9,
+      title: '통신기술/네트워크 구축'
+    },
+    {
+      id: 10,
+      title: '통신기술/네트워크 구축'
+    },
+    {
+      id: 11,
+      title: '통신기술/네트워크 구축'
+    },
+    {
+      id: 12,
+      title: '통신기술/네트워크 구축'
+    },
+    {
+      id: 13,
+      title: '통신기술/네트워크 구축'
+    },
+    {
+      id: 14,
+      title: '통신기술/네트워크 구축'
+    }
+  ]);
+
+  const [isLevelTwoClicked, setIsLevelTwoClicked] = useState(false);
+
+  const [levelThree, setLevelThree] = useState([
+    {
+      id: 1,
+      title: '전기/전자회로'
+    },
+    {
+      id: 2,
+      title: '하드웨어설계'
+    },
+    {
+      id: 3,
+      title: 'PCB'
+    },
+    {
+      id: 4,
+      title: '소프트웨어설계'
+    },
+    {
+      id: 5,
+      title: '설계엔지니어'
+    },
+    {
+      id: 6,
+      title: '연구원(전기전자)'
+    },
+    {
+      id: 7,
+      title: 'R&D'
+    },
+    {
+      id: 8,
+      title: '시스템'
+    },
+    {
+      id: 9,
+      title: '신뢰성시험'
+    },
+    {
+      id: 10,
+      title: '펌웨어'
+    },
+    {
+      id: 11,
+      title: '전기설비'
+    },
+    {
+      id: 12,
+      title: '유지보수'
+    },
+    {
+      id: 13,
+      title: '연구개발비'
+    },
+    {
+      id: 14,
+      title: '전자부품 관리/전자부품 관리'
+    },
+    {
+      id: 15,
+      title: '전자부품 관리'
+    },
+    {
+      id: 16,
+      title: '전자부품 관리'
+    },
+    {
+      id: 17,
+      title: '전자부품 관리'
+    },
+    {
+      id: 18,
+      title: '전자부품 관리'
+    },
+    {
+      id: 19,
+      title: '전자부품 관리'
+    },
+    {
+      id: 20,
+      title: '전자부품 관리'
+    }
+  ]);
+
   return (
     <>
       {ids.map((id) => (
@@ -203,12 +349,37 @@ function CareerListComponent({ ids, onRemove }) {
                   <div className="level-columns">
                     <div className="level-one">
                       {levelOne.map((item) => (
-                        <div id={item.id}>{item.title}</div>
+                        <div
+                          key={item.id}
+                          onClick={() =>
+                            setIsLevelOneClicked(!isLevelOneClicked)
+                          }
+                        >
+                          {item.title}
+                        </div>
                       ))}
                     </div>
-                    <div className="level-two"></div>
-                    <div className="level-three"></div>
-                    <div className="level-four"></div>
+                    <div className="level-two">
+                      {isLevelOneClicked
+                        ? levelTwo.map((item) => (
+                            <div
+                              key={item.id}
+                              onClick={() =>
+                                setIsLevelTwoClicked(!isLevelTwoClicked)
+                              }
+                            >
+                              {item.title}
+                            </div>
+                          ))
+                        : null}
+                    </div>
+                    <div className="level-three">
+                      {isLevelTwoClicked
+                        ? levelThree.map((item) => (
+                            <div key={item.id}>{item.title}</div>
+                          ))
+                        : null}
+                    </div>
                   </div>
                   <div className="selected-items-container">
                     <div className="selected-items-content"></div>
