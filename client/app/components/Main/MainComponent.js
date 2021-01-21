@@ -14,12 +14,13 @@ import slide_3 from './images/slide_3.png';
 import slide_4 from './images/slide_4.png';
 import long from './images/long.png';
 import squre1 from './images/squre1.png';
-import squre2 from './images/squre2.png';
-import squre3 from './images/squre3.png';
-import squre4 from './images/squre4.png';
-import squre5 from './images/squre5.png';
+import squre2 from './images/squre2.jpg';
+import squre3 from './images/squre3.jpg';
+import squre4 from './images/squre4.jpg';
+import squre5 from './images/squre5.jpg';
 import logo_samsung from './images/logo_samsung.png';
 import icon_bookmark from './images/icon_bookmark.png';
+import icon_profile from './images/icon_profile@2x.png';
 
 function MainComponent(props) {
   const BANNER_BUTTON = 1;
@@ -50,7 +51,7 @@ function MainComponent(props) {
         console.log('1');
         return (
           <div className="banner-container">
-            <div className="banner-content1">
+            <div className="banner-lg-cont">
               <ImageGallery
                 items={images}
                 showThumbnails={false}
@@ -61,33 +62,33 @@ function MainComponent(props) {
                 // more info on react-image-gallery
               />
             </div>
-            <div className="asdf">
-              <div id="test1">
+            <div className="banner-md-cont">
+              <div className="banner-md bn-md-01">
                 <img src={long} alt="long" />
               </div>
-              <div id="test2">
-                <img src={long} alt="long" />
-              </div>
-            </div>
-            <div className="asdf">
-              <div id="test3">
-                <img src={long} alt="long" />
-              </div>
-              <div id="test4">
+              <div className="banner-md bn-md-02">
                 <img src={long} alt="long" />
               </div>
             </div>
-            <div className="asdf">
-              <div className="fjfj1">
+            <div className="banner-md-cont">
+              <div className="banner-md bn-md-03">
+                <img src={long} alt="long" />
+              </div>
+              <div className="banner-md bn-md-04">
+                <img src={long} alt="long" />
+              </div>
+            </div>
+            <div className="banner-sm-cont">
+              <div className="banner-sm bn-sm-01">
                 <img src={squre1} alt="squre1" />
               </div>
-              <div className="fjfj">
+              <div className="banner-sm bn-sm-02">
                 <img src={squre1} alt="squre1" />
               </div>
-              <div className="fjfj">
+              <div className="banner-sm bn-sm-03">
                 <img src={squre1} alt="squre1" />
               </div>
-              <div className="fjfj">
+              <div className="banner-sm bn-sm-04">
                 <img src={squre1} alt="squre1" />
               </div>
             </div>
@@ -951,87 +952,115 @@ function MainComponent(props) {
     <>
       <div className="recruit-container">
         <div className="recruit-content">
-          <input className="search-input" />
+          <input
+            className="search-input"
+            placeholder="찾고 계신 채용 공고가 있나요?"
+          />
           <button
             className="search-btn"
             onChange={(e) => setKeyword(e.target.value)}
           >
-            <span className="search-text">검색</span>
+            검색
           </button>
           <div className="status-div">
+            <img
+              src={icon_profile}
+              alt="Icon_profile"
+              className="icon-profile"
+            />
             <span className="text">
               이력서를 완성하고 담당자에게 전문적인 추천을 받아보세요
             </span>
-            <button className="btn"></button>
+            <button className="btn">이력서 완성하기</button>
           </div>
           <div className=""></div>
           <div className="btn-content">
-            <button className="btn1" onClick={() => setbtn(BANNER_BUTTON)}>
-              <span className="btn-text"> 배너(기본)</span>
+            <button className="btn-item" onClick={() => setbtn(BANNER_BUTTON)}>
+              <span className="btn-text">채용 공고</span>
             </button>
-            <button className="btn2" onClick={() => setbtn(AD_BUTTON)}>
-              <span className="btn-text"> 인기 공고</span>
+            <button className="btn-item" onClick={() => setbtn(AD_BUTTON)}>
+              <span className="btn-text">인기 공고</span>
             </button>
-            <button className="btn3" onClick={() => setbtn(RECRUIT_BUTTON)}>
-              <span className="btn-text"> 채용 달력</span>
+            <button className="btn-item" onClick={() => setbtn(RECRUIT_BUTTON)}>
+              <span className="btn-text">채용 달력</span>
             </button>
           </div>
           {/* 광고 banner layout */}
           {switchFuntion(btn)}
           <span className="span-content">오늘 이 공고, 놓치지 마세요!</span>
-          <div className="asdf">
-            <div className="fjfj1">
+          <div className="banner-sm-cont">
+            <div className="banner-sm day-bn-01">
               <img src={squre2} alt="squre2" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+              <duv className="corp-txt-wrap">
+                <div className="title">
+                  <span className="company-name-lar">기업명</span>
+                  <span className="closing-time">00:00에 마감</span>
+                </div>
+                <span className="company-name-mid">광고/제작/카피/CF</span>
+                <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+              </duv>
             </div>
-            <div className="fjfj">
+            <div className="banner-sm day-bn-02">
               <img src={squre3} alt="squre3" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+              <duv className="corp-txt-wrap">
+                <div className="title">
+                  <span className="company-name-lar">기업명</span>
+                  <span className="closing-time">00:00에 마감</span>
+                </div>
+                <span className="company-name-mid">광고/제작/카피/CF</span>
+                <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+              </duv>
             </div>
-            <div className="fjfj">
+            <div className="banner-sm day-bn-03">
               <img src={squre4} alt="squre4" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+              <duv className="corp-txt-wrap">
+                <div className="title">
+                  <span className="company-name-lar">기업명</span>
+                  <span className="closing-time">00:00에 마감</span>
+                </div>
+                <span className="company-name-mid">광고/제작/카피/CF</span>
+                <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+              </duv>
             </div>
-            <div className="fjfj">
+            <div className="banner-sm day-bn-04">
               <img src={squre5} alt="squre5" />
-              <span className="company-name-lar">기업명</span>
-              <span className="company-name-mid">직무명</span>
-              <span className="company-name-sm">ㅇㅇ시 ㅇㅇ구</span>
+              <duv className="corp-txt-wrap">
+                <div className="title">
+                  <span className="company-name-lar">기업명</span>
+                  <span className="closing-time">00:00에 마감</span>
+                </div>
+                <span className="company-name-mid">광고/제작/카피/CF</span>
+                <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+              </duv>
             </div>
           </div>
           <span className="span-content">이력서 작성이 어려우신가요?</span>
-          <div className="banner-content5">
-            <div className="boxed1">
+          <div className="help-cont">
+            <div className="help-item">
               <div className="circul">
                 <img src={resume} alt="resume" />
               </div>
               <span className="img-span">이력서 작성하기</span>
             </div>
-            <div className="boxed">
+            <div className="help-item">
               <div className="circul">
                 <img src={hangeul} alt="hangeul" />
               </div>
               <span className="img-span">글자수 세기</span>
             </div>
-            <div className="boxed">
+            <div className="help-item">
               <div className="circul">
                 <img src={calcu} alt="calcu" />
               </div>
               <span className="img-span">글자수 세기</span>
             </div>
-            <div className="boxed">
+            <div className="help-item">
               <div className="circul">
                 <img src={gradu} alt="gradu" />
               </div>
               <span className="img-span">학점 계산하기</span>
             </div>
-            <div className="boxed">
+            <div className="help-item">
               <div className="circul">
                 <img src={certificate} alt="certificate" />
               </div>

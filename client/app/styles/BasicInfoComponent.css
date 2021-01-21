@@ -275,14 +275,6 @@
   opacity: 1;
 }
 
-.basic-info-container .search-btn {
-  width: 70px;
-  height: 40px;
-  margin-left: 0px;
-}
-.basic-info-container .search-btn:focus {
-  outline: none;
-}
 .basic-info-container .input-addr {
   width: 180px;
   height: 40px;
