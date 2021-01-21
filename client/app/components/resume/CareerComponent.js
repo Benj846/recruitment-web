@@ -84,6 +84,71 @@ function CareerListComponent({ ids, onRemove }) {
     { value: 'slate', label: 'Slate', color: '#253858' },
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
+
+  const [selectJob, setSelectJob] = useState(false);
+  const toggleSelectJob = () => {
+    setSelectJob(!selectJob);
+  };
+
+  const [levelOne, setLevelOne] = useState([
+    {
+      id: 1,
+      title: '경영/사무'
+    },
+    {
+      id: 2,
+      title: '마케팅/광고/무역/구매/유통'
+    },
+    {
+      id: 3,
+      title: '영업/금융/고객'
+    },
+    {
+      id: 4,
+      title: '생산/제조/품질'
+    },
+    {
+      id: 5,
+      title: '연구개발/설계'
+    },
+    {
+      id: 6,
+      title: '건설'
+    },
+    {
+      id: 7,
+      title: '산업안전/설치/서비스'
+    },
+    {
+      id: 8,
+      title: '산업안전/설치/서비스'
+    },
+    {
+      id: 9,
+      title: '산업안전/설치/서비스'
+    },
+    {
+      id: 10,
+      title: '산업안전/설치/서비스'
+    },
+    {
+      id: 11,
+      title: '산업안전/설치/서비스'
+    },
+    {
+      id: 12,
+      title: '산업안전/설치/서비스'
+    },
+    {
+      id: 13,
+      title: '산업안전/설치/서비스'
+    },
+    {
+      id: 13,
+      title: '산업안전/설치/서비스'
+    }
+  ]);
+
   return (
     <>
       {ids.map((id) => (
@@ -129,8 +194,28 @@ function CareerListComponent({ ids, onRemove }) {
           <div className="job-container">
             <div className="job-content">
               <span className="job-title">직무명</span>
-              <button className="add-jobs">직무 추가하기</button>
+              <button className="add-jobs" onClick={toggleSelectJob}>
+                직무 추가하기
+              </button>
               {/* <MultiLevelSelect options={options} /> */}
+              {selectJob ? (
+                <div className="selected-job-container">
+                  <div className="level-columns">
+                    <div className="level-one">
+                      {levelOne.map((item) => (
+                        <div id={item.id}>{item.title}</div>
+                      ))}
+                    </div>
+                    <div className="level-two"></div>
+                    <div className="level-three"></div>
+                    <div className="level-four"></div>
+                  </div>
+                  <div className="selected-items-container">
+                    <div className="selected-items-content"></div>
+                    <button className="select-completed-btn">선택완료</button>
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

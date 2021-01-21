@@ -137,7 +137,8 @@
   justify-content: flex-end;
 }
 
-.job-content {
+.job-container > .job-content {
+  position: relative;
   display: flex;
   align-items: center;
   --border: 1px solid blue;
@@ -153,7 +154,7 @@
   padding: 12px 36px 12px 0px;
 }
 
-.job-title {
+.job-content > .job-title {
   margin: 0px 0px 0px 23px;
   width: 90px;
   height: 64px;
@@ -169,6 +170,122 @@
   font: normal normal medium 13px/16px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #999999;
+  opacity: 1;
+}
+
+.job-content > .add-jobs {
+  width: 669px;
+  height: 40px;
+  background: none;
+  border: 1px solid #009999;
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--버튼-색상);
+  text-align: center;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #009999;
+}
+
+.job-content > .add-jobs:focus {
+  outline: none;
+}
+
+.job-container > .job-content > .selected-job-container {
+  position: absolute;
+  --position: fixed;
+  width: 643px;
+  height: 360px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  left: 109px;
+  top: 51px;
+  --left: 520px;
+  --margin-top: 52px;
+  --left: 0px;
+  opacity: 1;
+}
+
+.job-container > .job-content > .selected-job-container > .level-columns {
+  display: flex;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-one {
+  width: 176px;
+  height: 319px;
+  border-right: 1px solid #dddddd;
+  overflow-y: auto;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-one
+  > div {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > div
+  > div {
+  font: normal normal medium 12px/15px Apple SD Gothic Neo;
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  margin: 15px 0 15px 10px;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-two {
+  width: 176px;
+  height: 319px;
+  border-right: 1px solid #dddddd;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .selected-items-container {
+  display: flex;
+  align-items: center;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .selected-items-container
+  > .selected-items-content {
+  width: 540px;
+  height: 40px;
+  border-top: 1px solid #dddddd;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .selected-items-container
+  > .select-completed-btn {
+  width: 129px;
+  height: 40px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border: 1px solid #009999;
+  text-align: center;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #ffffff;
   opacity: 1;
 }
 
