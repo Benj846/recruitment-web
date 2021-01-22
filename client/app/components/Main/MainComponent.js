@@ -33,6 +33,7 @@ function MainComponent(props) {
 
   const images = [
     {
+      overlay: `<div className="overlay"></div>`,
       original: slide_1
     },
     {
@@ -57,38 +58,47 @@ function MainComponent(props) {
                 showThumbnails={false}
                 showFullscreenButton={false}
                 showPlayButton={false}
+                showNav={false}
                 showBullets={true}
-                autoPlay={true}
+                autoPlay={false}
                 // more info on react-image-gallery
               />
             </div>
             <div className="banner-md-cont">
               <div className="banner-md bn-md-01">
+                <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
               <div className="banner-md bn-md-02">
+                <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
             </div>
             <div className="banner-md-cont">
               <div className="banner-md bn-md-03">
+                <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
               <div className="banner-md bn-md-04">
+                <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
             </div>
             <div className="banner-sm-cont">
               <div className="banner-sm bn-sm-01">
+                <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>
               <div className="banner-sm bn-sm-02">
+                <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>
               <div className="banner-sm bn-sm-03">
+                <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>
               <div className="banner-sm bn-sm-04">
+                <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>
             </div>
@@ -990,7 +1000,6 @@ function MainComponent(props) {
           <span className="span-content">오늘 이 공고, 놓치지 마세요!</span>
           <div className="banner-sm-cont">
             <div className="banner-sm day-bn-01">
-              <img src={squre2} alt="squre2" />
               <duv className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
@@ -999,9 +1008,10 @@ function MainComponent(props) {
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
               </duv>
+              <div className="overlay"></div>
+              <img src={squre2} alt="squre2" />
             </div>
             <div className="banner-sm day-bn-02">
-              <img src={squre3} alt="squre3" />
               <duv className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
@@ -1010,9 +1020,10 @@ function MainComponent(props) {
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
               </duv>
+              <div className="overlay"></div>
+              <img src={squre3} alt="squre3" />
             </div>
             <div className="banner-sm day-bn-03">
-              <img src={squre4} alt="squre4" />
               <duv className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
@@ -1021,9 +1032,10 @@ function MainComponent(props) {
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
               </duv>
+              <div className="overlay"></div>
+              <img src={squre4} alt="squre4" />
             </div>
             <div className="banner-sm day-bn-04">
-              <img src={squre5} alt="squre5" />
               <duv className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
@@ -1032,6 +1044,8 @@ function MainComponent(props) {
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
               </duv>
+              <div className="overlay"></div>
+              <img src={squre5} alt="squre5" />
             </div>
           </div>
           <span className="span-content">이력서 작성이 어려우신가요?</span>

@@ -56,24 +56,30 @@
   flex-flow: row;
   width: 1060px;
 }
-
 .banner-md-cont .banner-md {
   position: relative;
   width: 520px;
   height: 130px;
   margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
 }
-
 .banner-md-cont .banner-md:nth-child(odd) {
   margin-right: 20px;
 }
-
+.banner-md .overlay {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 .banner-sm-cont {
   display: flex;
   flex-flow: row;
   width: 1060px;
 }
-
 .banner-sm-cont .banner-sm {
   display: flex;
   position: relative;
@@ -83,25 +89,30 @@
   height: 190px;
   margin-right: 20px;
 }
-
 .banner-sm-cont .banner-sm:last-child {
   margin-right: 0;
 }
-
 .banner-sm-cont .banner-sm img {
   width: 250px;
   object-fit: cover;
   object-position: 50% 0%;
 }
-
-.corp-txt-wrap {
+.banner-sm .overlay {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.banner-sm .corp-txt-wrap {
+  z-index: 1;
   position: absolute;
   padding: 0 28px;
   bottom: 20px;
   width: 100%;
   color: #fff;
 }
-
 .corp-txt-wrap .title {
   display: flex;
   justify-content: space-between;
@@ -110,7 +121,6 @@
   padding-bottom: 4px;
   margin-bottom: 4px;
 }
-
 .corp-txt-wrap .title .company-name-lar {
   font: normal normal 700 15px/21px Noto Sans KR;
 }
@@ -131,11 +141,9 @@
   margin-top: 48px;
   margin-bottom: 16px;
 }
-
 .help-cont {
   display: flex;
 }
-
 .help-cont .help-item {
   flex: 1 1 auto;
   display: flex;
@@ -190,8 +198,40 @@
 .image-gallery-slides {
   width: 1060px;
   height: 250px;
+  position: relative;
 }
 
+.image-gallery-bullets {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 15px;
+  bottom: 10px;
+}
+
+.image-gallery-bullets .image-gallery-bullet {
+  box-shadow: none;
+  margin: 0 2px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 4px;
+}
+.image-gallery-bullets .image-gallery-bullet.active {
+  background: #fff;
+}
+.image-gallery-bullets .image-gallery-bullet:hover {
+  background: #009999;
+}
+
+.image-gallery-slides {
+  background: #000;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.image-gallery-image {
+  opacity: 0.6;
+}
 .button-container .lv1 {
   width: 249px;
   height: 50px;
