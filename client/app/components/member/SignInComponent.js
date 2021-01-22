@@ -126,7 +126,7 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
           </div>
         </div>
         {showSignup ? (
-          <SignupComponent closePopup={closePopup} member={member} />
+          <AcceptAgreement closePopup={closePopup} member={member} />
         ) : null}
         {showFindIdPw ? <FindIwPwComponent closePopup={closePopup} /> : null}
       </div>
@@ -182,7 +182,7 @@ function FindIwPwComponent({ closePopup }) {
   );
 }
 
-function SignupComponent({ closePopup, member }) {
+function AcceptAgreement({ closePopup, member }) {
   const [isPersonalInfoCilcked, setPersonalInfoCilcked] = useState(false);
   const [isMarketingInfoCilcked, setMarketingInfoCilcked] = useState(false);
   const togglePersonalInfo = () => {
@@ -367,14 +367,14 @@ function SignupComponent({ closePopup, member }) {
           </div>
         </div>
         {showSignup ? (
-          <SigninWithEmail closePopup={closePopup} member={member} />
+          <SignupWithEmail closePopup={closePopup} member={member} />
         ) : null}
       </div>
     </div>
   );
 }
 
-function SigninWithEmail({ closePopup, member }) {
+function SignupWithEmail({ closePopup, member }) {
   const [showSignup, setShowSignup] = useState(false);
   const togglePopup = () => {
     setShowSignup(!showSignup);

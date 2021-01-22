@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const connecttion = require('./database');
+const db = require('./database');
 const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
 const path = require('path');
@@ -10,7 +10,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
-const connection = require('./database');
+const db = require('./database');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3333;
@@ -18,6 +18,16 @@ const port = process.env.PORT || 3333;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.get('member/insert/data', (req, res) => {
+  db.query('SELECT * from mall_test', (err, data) => {
+    if (!err) {
+      res.send({ data: data });
+    }
+  });
+});
+
+//
 
 // file uplaod
 
@@ -46,44 +56,45 @@ app.use(express.json());
 // Webpack config
 
 // GraphQL
-const expressGraghQL = require('express-graphql').graphqlHTTP;
-const {
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLList,
-  GraphQLInt,
-  GraphQLNonNull
-} = require('graphql');
+// const expressGraghQL = require('express-graphql').graphqlHTTP;
+// const {
+//   GraphQLSchema,
+//   GraphQLObjectType,
+//   GraphQLString,
+//   GraphQLList,
+//   GraphQLInt,
+//   GraphQLNonNull
+// } = require('graphql');
 
-// const RootQueryType = new GraphQLObjectType({
-//   name: 'Query',
-//   description: 'Root Query',
-//   fields: () => ({
-//     id: {
-//       type: GraphQLNonNull(GraphQLInt)
-//     }
+// // const RootQueryType = new GraphQLObjectType({
+// //   name: 'Query',
+// //   description: 'Root Query',
+// //   fields: () => ({
+// //     id: {
+// //       type: GraphQLNonNull(GraphQLInt)
+// //     }
+// //   })
+// // });
+
+// const schema = new GraphQLSchema({
+//   query: new GraphQLObjectType({
+//     name: 'helloworld',
+//     fields: () => ({
+//       message: { type: GraphQLString, resolve: () => 'hello world' }
+//     })
 //   })
 // });
+// // const schema = new GraphQLSchema({
+// //   query: RootQueryType
+// // });
+// app.use(
+//   '/graphql/',
+//   expressGraghQL({
+//     schema: schema,
+//     graphiql: true
+//   })
+// );
 
-const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'helloworld',
-    fields: () => ({
-      message: { type: GraphQLString, resolve: () => 'hello world' }
-    })
-  })
-});
-// const schema = new GraphQLSchema({
-//   query: RootQueryType
-// });
-app.use(
-  '/graphql/',
-  expressGraghQL({
-    schema: schema,
-    graphiql: true
-  })
-);
 if (isDev) {
   const compiler = webpack(webpackConfig);
 
@@ -127,9 +138,6 @@ app.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err);
   }
-
   console.info('>>> 🌎 Open http://localhost:%s/ in your browser.', port);
-  console.log('hello');
 });
-
 module.exports = app;
