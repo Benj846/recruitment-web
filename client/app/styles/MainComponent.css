@@ -176,9 +176,104 @@
 }
 
 .calender-container {
-  background: #f0f0f0 0% 0% no-repeat padding-box;
+}
+
+.calender-container .calender-content-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calender-container .calender-span {
+  font: normal normal 700 20px/32px Noto Sans KR;
+}
+
+.calender-container .calender-span .mon,
+.calender-container .calender-span .day {
+  color: #009999;
+}
+
+.calender-container .calender-left,
+.calender-container .calender-right {
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: #fff;
+}
+
+.calender-container .calender-left .ico,
+.calender-container .calender-right .ico {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.calender-inner {
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  opacity: 1;
+}
+
+.calender-inner .calender-disp {
+  display: grid;
+  grid-template-columns: repeat(7, 150px);
+  grid-template-rows: repeat(10, 56px);
+  margin: 8px 5px;
+}
+
+.calender-inner .calender-disp .calender-item {
+  padding: 4px 12px;
+}
+.calender-inner .calender-disp .calender-item .img-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.calender-inner .calender-disp .calender-item .img-inner {
+  display: flex;
+  align-items: center;
+}
+
+.calender-inner .calender-disp .calender-item .img-inner .bookmark {
+  width: 8px;
+  height: 12px;
+  display: block;
+  margin-right: 4px;
+}
+.calender-inner .calender-disp .calender-item .img-inner .closing-time {
+  font: normal normal 700 10px/15px Noto Sans KR;
+  color: #009999;
+}
+.calender-inner .calender-disp .calender-item .logo {
+  width: 48px;
+  margin-top: 3px;
+}
+
+.calender-inner .calender-disp .calender-item .txt-wrap {
+  display: flex;
+  flex-flow: wrap column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: -4px;
+}
+.calender-inner .calender-disp .calender-item .txt-wrap .corp-name {
+  display: block;
+  width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: normal normal 500 10px/15px Noto Sans KR;
+  color: #707070;
+}
+.calender-inner .calender-disp .calender-item .txt-wrap .txt {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font: normal normal 500 10px/15px Noto Sans KR;
+  color: #aaa;
+  transform: scale(0.95);
 }
 
 .each-slide > div {
@@ -232,45 +327,33 @@
 .image-gallery-image {
   opacity: 0.6;
 }
-.button-container .lv1 {
-  width: 249px;
-  height: 50px;
+.main-btn-cont {
+  display: flex;
+  flex-flow: wrap row;
+  width: 1060px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.main-btn-cont .main-btn-wrap {
+  width: 250px;
+  border-right: 1px solid #ccc;
+}
+.main-btn-cont .main-btn-wrap button {
   display: block;
-  outline: none;
-  cursor: pointer;
+  width: 100%;
+  height: 56px;
+  border: 0;
+  background: #fff;
+  color: #ddd;
+  font: normal normal 700 15px/22px Noto Sans KR;
+  text-align: left;
+  padding-left: 24px;
 }
-.button-container .lv2 {
-  width: 249px;
-  height: 50px;
-  display: block;
-  outline: none;
-  cursor: pointer;
+.main-btn-cont .main-btn-wrap.active button {
+  color: #707070;
 }
-.calender-disp {
-  display: grid;
-  grid-template-columns: repeat(7, 150px);
-  grid-template-rows: repeat(10, 56px);
-  border-radius: 5px 5px 0px 0px;
-  opacity: 1;
-}
-
-.calender-disp > div > button {
-  width: 8px;
-  height: 12px;
-}
-.calender-disp .logo {
-  width: 48px;
-  height: 18px;
-}
-.calender-disp > div > p {
-  font-size: 13px;
-}
-.calender-disp > div > p > span {
-  font-size: 10px;
-}
-.calender-disp-span {
-  display: block;
-}
-.bookmark {
-  width: 10px;
+.main-btn-cont .main-btn-wrap button.active {
+  color: #009999;
+  background: #f4faf7;
 }
