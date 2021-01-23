@@ -44,17 +44,17 @@ function RecruitmentComponent(props) {
 
   const postItems = numbers.map((number) => <Post key={number.toString()} />);
   const imagePosts = numbers.map((number) => (
-    <div className="asdf" key={number.toString()}>
-      <div className="fjfj1">
+    <div className="recruit-banner-cont" key={number.toString()}>
+      <div className="banner-sm">
         <img src={squre1} alt="squre1" />
       </div>
-      <div className="fjfj">
+      <div className="banner-sm">
         <img src={squre1} alt="squre1" />
       </div>
-      <div className="fjfj">
+      <div className="banner-sm">
         <img src={squre1} alt="squre1" />
       </div>
-      <div className="fjfj">
+      <div className="banner-sm">
         <img src={squre1} alt="squre1" />
       </div>
     </div>
@@ -87,15 +87,20 @@ function RecruitmentComponent(props) {
           <button className="filter-search2" onClick={() => setbtn(!btn)}>
             조건 검색
           </button>
-          <div className="span-container">
-            <span className="text-span">인기 채용 공고</span>
-            <button className="btn-power" onClick={() => setgeneralBtn(true)}>
+          <div className="recruit-title">
+            <span className="title">인기 채용 공고</span>
+            <button
+              className="btn-power active"
+              onClick={() => setgeneralBtn(true)}
+            >
               파워공고
             </button>
-            <button className="btn-common" onClick={() => setgeneralBtn(false)}>
+            <button
+              className="btn-common active"
+              onClick={() => setgeneralBtn(false)}
+            >
               일반공고
             </button>
-            <span className="more-span">더 보기</span>
           </div>
           {btn ? (
             <div className="search-popup">
@@ -188,16 +193,6 @@ const JobTree = () => {
       lv2.선택직무
     </button>
   ));
-  const button3Items = numbers.map((number) => (
-    <button
-      key={number.toString()}
-      className="lv1"
-      disabled={!selected3}
-      onClick={addFuntion}
-    >
-      lv3.선택직무
-    </button>
-  ));
 
   const addDescription = (e) => {
     return (
@@ -211,7 +206,7 @@ const JobTree = () => {
     <div className="ad-container">
       <div className="button-container">{buttonItems}</div>
       <div className="button-container">{button2Items}</div>
-      <div className="button-container">{button3Items}</div>
+      <div className="btn-last-cont">최종선택버튼</div>
       <div ref={appendRef} className="ad-content-append"></div>
     </div>
   );
