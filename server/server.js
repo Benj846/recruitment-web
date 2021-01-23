@@ -10,7 +10,6 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
-const db = require('./database');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3333;
@@ -19,11 +18,13 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('member/insert/data', (req, res) => {
-  db.query('SELECT * from mall_test', (err, data) => {
-    if (!err) {
-      res.send({ data: data });
+app.get('/member/count', (req, res) => {
+  db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
+    if (err) {
+      console.log(error, err);
+      throw err;
     }
+    res.send(result);
   });
 });
 
@@ -136,7 +137,7 @@ if (isDev) {
 // });
 app.listen(port, '0.0.0.0', (err) => {
   if (err) {
-    console.log(err);
+    console.log(error, err);
   }
   console.info('>>> 🌎 Open http://localhost:%s/ in your browser.', port);
 });

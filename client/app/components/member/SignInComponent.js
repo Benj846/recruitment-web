@@ -4,6 +4,7 @@ import '../../styles/SignInComponent';
 import partyPopper from './images/party-popper.png';
 import closeBtn from './images/close_button.svg';
 import fapplyLogo from './images/Fapply_logo.svg';
+const axios = require('axios');
 
 function SignInComponent({ closePopup, customStyle, showSignin }) {
   const [showSignup, setShowSignup] = useState(false);
@@ -379,6 +380,50 @@ function SignupWithEmail({ closePopup, member }) {
   const togglePopup = () => {
     setShowSignup(!showSignup);
   };
+
+  const [email, setEmail] = useState('');
+  //const emailValidateRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{3}$/i;
+  const emailValidateRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+  const [isCorrectEmailForm, setCorrectEmailForm] = useState(true);
+  const inputEmailRef = useRef();
+  const submitEmailRef = useRef();
+
+  const validateEmailForm = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    // if (value === '') {
+    //   setCorrectEmailForm(true);
+    //   return;
+    // }
+    const flag = emailValidateRegex.test(value);
+    setCorrectEmailForm(flag);
+    if (!flag && value !== '') {
+      inputEmailRef.current.style.border = '1px solid #FE5741';
+    } else if (value === '') {
+      inputEmailRef.current.style.border = '1px solid #CCCCCC';
+    } else if (flag === true) {
+      inputEmailRef.current.style.border = '1px solid #009999';
+      // axios
+      //   .get('/member/count')
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+      //   .catch((err) => {
+      //     console.log(error, err);
+      //   });
+      axios
+        .post('/member/count', {
+          email: { email }
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(error, err);
+        });
+    }
+  };
+
   return (
     <div id="with-email-container">
       <div id="with-email-content">
@@ -403,8 +448,21 @@ function SignupWithEmail({ closePopup, member }) {
           <input
             className="input-email-phone"
             placeholder="이메일 입력"
+            onChange={validateEmailForm}
+            ref={inputEmailRef}
+            value={email}
           ></input>
-          <button className="submit-email-phone" onClick={togglePopup}>
+          {isCorrectEmailForm ? null : (
+            <div className="guide-input-email">
+              올바른 이메일 형식을 입력해주세요
+            </div>
+          )}
+          <button
+            className="submit-email"
+            onClick={togglePopup}
+            disabled={true}
+            ref={submitEmailRef}
+          >
             다음으로 이동
           </button>
           <hr className="div-line" />
@@ -423,7 +481,6 @@ function SignupWithEmail({ closePopup, member }) {
             </div>
           </div>
         </div>
-        {console.log(showSignup)}
         {showSignup ? (
           <InputSignupWithEmail closePopup={closePopup} member={member} />
         ) : null}
