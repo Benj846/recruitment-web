@@ -382,8 +382,8 @@ function SignupWithEmail({ closePopup, member }) {
   };
 
   const [email, setEmail] = useState('');
-  //const emailValidateRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{3}$/i;
-  const emailValidateRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+  const emailValidateRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{3}$/i;
+  //const emailValidateRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
   const [isCorrectEmailForm, setCorrectEmailForm] = useState(true);
   const inputEmailRef = useRef();
   const submitEmailRef = useRef();
@@ -391,10 +391,6 @@ function SignupWithEmail({ closePopup, member }) {
   const validateEmailForm = (e) => {
     const value = e.target.value;
     setEmail(value);
-    // if (value === '') {
-    //   setCorrectEmailForm(true);
-    //   return;
-    // }
     const flag = emailValidateRegex.test(value);
     setCorrectEmailForm(flag);
     if (!flag && value !== '') {
@@ -411,9 +407,10 @@ function SignupWithEmail({ closePopup, member }) {
       //   .catch((err) => {
       //     console.log(error, err);
       //   });
+
       axios
-        .post('/member/count', {
-          email: { email }
+        .post('/member/insert', {
+          email: value
         })
         .then((res) => {
           console.log(res);
