@@ -9,6 +9,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
 const getCommonWork = require('./database');
+const db = require('./database');
 const { ApolloServer, gql } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 
@@ -26,6 +27,26 @@ app.use(express.json());
 //     console.log(results);
 //   });
 // });
+
+// app.get('/member/count', (req, res) => {
+//   db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
+//     if (err) {
+//       console.log(error, err);
+//       throw err;
+//     }
+//     res.send(result);
+//   });
+// });
+// RestAPI
+app.post('/member/count', (req, res) => {
+  db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
+    if (err) {
+      console.log(error, err);
+      throw err;
+    }
+    res.send(result);
+  });
+});
 
 const typeDefs = gql`
   type Work2 {
