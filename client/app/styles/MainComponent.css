@@ -91,16 +91,24 @@
   border: none;
   width: 160px;
   height: 34px;
-  background: #009999;
+  background: #fff;
+  border: 1px solid #ccc;
   border-radius: 60px;
   margin-right: 20px;
+}
+.btn-content .btn-item.active {
+  border: 0;
+  background: #009999;
 }
 .btn-content .btn-item:last-child {
   margin-right: 0;
 }
 .btn-content .btn-text {
   font: normal normal 500 15px/26px Noto Sans KR;
-  color: #ffffff;
+  color: #707070;
+}
+.btn-content .btn-item.active .btn-text {
+  color: #fff;
 }
 .banner-lg-cont {
   margin-bottom: 20px;
@@ -268,17 +276,48 @@
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
+  padding-bottom: 16px;
+}
+
+.calender-inner .list-day {
+  display: flex;
+  justify-content: space-around;
+  padding: 13px 5px 8px;
+  background: #f0f0f0;
+}
+.calender-inner .list-day .day {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.calender-inner .list-day .day:first-child .txt {
+  color: #fe5741;
+}
+.calender-inner .list-day .day:last-child .txt {
+  color: #577d95;
+}
+.calender-inner .list-day .day .txt {
+  display: block;
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #666666;
+}
+.calender-inner .list-day .day .number {
+  display: block;
+  font: normal normal 700 18px/26px Noto Sans KR;
+  color: #666666;
 }
 
 .calender-inner .calender-disp {
   display: grid;
+  grid-auto-flow: column;
   grid-template-columns: repeat(7, 150px);
-  grid-template-rows: repeat(10, 56px);
+  grid-template-rows: repeat(10, 58px);
   margin: 8px 5px;
 }
 
 .calender-inner .calender-disp .calender-item {
-  padding: 4px 12px;
+  padding: 6px 12px;
 }
 .calender-inner .calender-disp .calender-item .img-wrap {
   display: flex;
@@ -329,6 +368,21 @@
   font: normal normal 500 10px/15px Noto Sans KR;
   color: #aaa;
   transform: scale(0.95);
+}
+.calender-inner .btn-more-wrap {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 5px;
+}
+.calender-inner .btn-more-wrap .btn-more {
+  width: 48px;
+  height: 24px;
+  font: normal normal 500 11px/16px Noto Sans KR;
+  color: #999999;
+  outline: none;
+  background: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 24px;
 }
 
 .each-slide > div {
@@ -386,14 +440,16 @@
   display: flex;
   flex-flow: wrap row;
   width: 1060px;
-  height: 420px;
+  height: 560px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  overflow: auto;
+  overflow: hidden;
 }
 .main-btn-cont .main-btn-wrap {
   width: 250px;
+  height: 560px;
   border-right: 1px solid #ccc;
+  overflow: auto;
 }
 .main-btn-cont .main-btn-wrap button {
   display: block;

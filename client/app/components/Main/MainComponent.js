@@ -45,8 +45,16 @@ function MainComponent(props) {
               31,32,33,34,35,36,37,38,39,40,
               41,42,43,44,45,46,47,48,49,50,
               51,52,53,54,55,56,57,58,59,60,
-              61,62,63,64,65,66,67,68,69,70,
-              71,72,73,74,75,76,77];
+              61,62,63,64,65,66,67,68,69,70];
+  const dayOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const dayItems = dayOfWeek.map((day) => {
+    return (
+      <div className="day" key={day.toString()}>
+        <span className="txt">{`${day}`}</span>
+        <span className="number">{`11/22`}</span>
+      </div>
+    );
+  });
 
   const images = [
     {
@@ -179,7 +187,17 @@ function MainComponent(props) {
               </button>
             </div>
             <div className="calender-inner">
+              <div className="list-day">{dayItems}</div>
               <div className="calender-disp">{postslists}</div>
+              <div className="btn-more-wrap">
+                <button className="btn-more">+99</button>
+                <button className="btn-more">+99</button>
+                <button className="btn-more">+99</button>
+                <button className="btn-more">+99</button>
+                <button className="btn-more">+99</button>
+                <button className="btn-more">+99</button>
+                <button className="btn-more">+99</button>
+              </div>
             </div>
           </div>
         );
@@ -214,13 +232,22 @@ function MainComponent(props) {
           </div>
           <div className=""></div>
           <div className="btn-content">
-            <button className="btn-item" onClick={() => setbtn(BANNER_BUTTON)}>
+            <button
+              className={`btn-item ${btn === 1 ? 'active' : null}`}
+              onClick={() => setbtn(BANNER_BUTTON)}
+            >
               <span className="btn-text">채용 공고</span>
             </button>
-            <button className="btn-item" onClick={() => setbtn(AD_BUTTON)}>
+            <button
+              className={`btn-item ${btn === 2 ? 'active' : null}`}
+              onClick={() => setbtn(AD_BUTTON)}
+            >
               <span className="btn-text">인기 공고</span>
             </button>
-            <button className="btn-item" onClick={() => setbtn(RECRUIT_BUTTON)}>
+            <button
+              className={`btn-item ${btn === 3 ? 'active' : null}`}
+              onClick={() => setbtn(RECRUIT_BUTTON)}
+            >
               <span className="btn-text">채용 달력</span>
             </button>
           </div>
@@ -229,50 +256,50 @@ function MainComponent(props) {
           <span className="span-content">오늘 이 공고, 놓치지 마세요!</span>
           <div className="banner-sm-cont">
             <div className="banner-sm day-bn-01">
-              <duv className="corp-txt-wrap">
+              <div className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
                   <span className="closing-time">00:00에 마감</span>
                 </div>
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
-              </duv>
+              </div>
               <div className="overlay"></div>
               <img src={squre2} alt="squre2" />
             </div>
             <div className="banner-sm day-bn-02">
-              <duv className="corp-txt-wrap">
+              <div className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
                   <span className="closing-time">00:00에 마감</span>
                 </div>
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
-              </duv>
+              </div>
               <div className="overlay"></div>
               <img src={squre3} alt="squre3" />
             </div>
             <div className="banner-sm day-bn-03">
-              <duv className="corp-txt-wrap">
+              <div className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
                   <span className="closing-time">00:00에 마감</span>
                 </div>
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
-              </duv>
+              </div>
               <div className="overlay"></div>
               <img src={squre4} alt="squre4" />
             </div>
             <div className="banner-sm day-bn-04">
-              <duv className="corp-txt-wrap">
+              <div className="corp-txt-wrap">
                 <div className="title">
                   <span className="company-name-lar">기업명</span>
                   <span className="closing-time">00:00에 마감</span>
                 </div>
                 <span className="company-name-mid">광고/제작/카피/CF</span>
                 <span className="company-name-sm">#광고기획 #AE #광고제작</span>
-              </duv>
+              </div>
               <div className="overlay"></div>
               <img src={squre5} alt="squre5" />
             </div>
@@ -319,10 +346,17 @@ function MainComponent(props) {
 export default MainComponent;
 
 const JobTree = () => {
-  const [selected, setSelected] = useState(false);
+  const [selected2, setSelected2] = useState(false);
   const [selected3, setSelected3] = useState(false);
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const appendRef = useRef(null);
+  const [lvl1, setLvl1] = useState(0);
+  const [lvl2, setLvl2] = useState(0);
+  const [lvl3, setLvl3] = useState(0);
+  const [curLvl, setCurLvl] = useState(1);
+  const [active1, setActive1] = useState(false);
+  const [active2, setActive2] = useState(false);
+  const [active3, setActive3] = useState(false);
 
   const addFuntion = () => {
     return appendRef.current.append();
@@ -361,9 +395,14 @@ const JobTree = () => {
   const buttonItems = numbers.map((number) => (
     <button
       key={number.toString()}
-      className="lv1"
-      disabled={!selected}
-      onClick={() => setSelected3(!selected3)}
+      className={`lv1 ${lvl1 === number ? 'active' : null}`}
+      onClick={() => {
+        setLvl1(number);
+        setActive1(true);
+        setActive2(false);
+        setCurLvl(0);
+        setCurLvl(2);
+      }}
     >
       lv1.선택직무
     </button>
@@ -371,9 +410,16 @@ const JobTree = () => {
   const button2Items = numbers.map((number) => (
     <button
       key={number.toString()}
-      className="lv2"
-      disabled={!selected}
-      onClick={() => setSelected3(!selected3)}
+      className={`lv2 ${
+        lvl2 === number && curLvl >= 2 && active2 === true ? 'active' : null
+      }`}
+      disabled={curLvl >= 2 ? false : true}
+      onClick={() => {
+        setActive2(true);
+        setActive3(false);
+        setLvl2(number);
+        setCurLvl(3);
+      }}
     >
       lv2.선택직무
     </button>
@@ -381,18 +427,27 @@ const JobTree = () => {
   const button3Items = numbers.map((number) => (
     <button
       key={number.toString()}
-      className="lv1"
-      disabled={!selected3}
-      onClick={addFuntion}
+      className={`lv3 ${
+        lvl3 === number && curLvl === 3 && active3 === true ? 'active' : null
+      }`}
+      disabled={curLvl === 3 ? false : true}
+      onClick={() => {
+        setActive3(true);
+        setLvl3(number);
+      }}
     >
       lv3.선택직무
     </button>
   ));
   return (
     <div className="main-btn-cont">
-      <div className="main-btn-wrap">{buttonItems}</div>
-      <div className="main-btn-wrap">{button2Items}</div>
-      <div className="main-btn-wrap">{button3Items}</div>
+      <div className="main-btn-wrap active">{buttonItems}</div>
+      <div className={`main-btn-wrap ${curLvl > 1 ? 'active' : null}`}>
+        {button2Items}
+      </div>
+      <div className={`main-btn-wrap ${curLvl > 2 ? 'active' : null}`}>
+        {button3Items}
+      </div>
       <div ref={appendRef} className="ad-content-append"></div>
     </div>
   );
