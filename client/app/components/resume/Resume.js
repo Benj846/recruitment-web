@@ -4,11 +4,11 @@ import ResumeComponent from './ResumeComponent';
 
 function Resume() {
   return (
-    <div className="resume-body">
-      <div className="resume-main">
+    <section className="resume-body">
+      <section className="resume-main">
         <ResumeComponent />
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }
 export default Resume;

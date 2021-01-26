@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import '../../styles/EducationComponent'
+import '../../styles/EducationComponent';
 
 function EducationComponent(props) {
   const [value, setValue] = useState();
@@ -9,45 +9,51 @@ function EducationComponent(props) {
   const handleCheckBoxChange = () => {
     const checked = !isIntegratedChecked;
     setIsIntegratedChecked(checked);
-    const result = <Doctorate isIntegratedChecked={checked}/>
+    const result = <Doctorate isIntegratedChecked={checked} />;
     setValue(result);
-  }
+  };
 
-  const onChange = e => {
+  const onChange = (e) => {
     const targetValue = e.target.value;
     setIsMasterClicked(false);
     let result;
-    switch(targetValue) {
+    switch (targetValue) {
       case '고졸':
-        result = <HighSchool/>;
-        break;        
+        result = <HighSchool />;
+        break;
       case '초대졸':
-        result = <College/>
+        result = <College />;
         break;
       case '편입':
-        result = <Transfer/>
+        result = <Transfer />;
         break;
       case '학사':
-        result = <University/>
+        result = <University />;
         break;
       case '석사':
-        result = <Master/>
+        result = <Master />;
         break;
       case '박사':
-        result = <Doctorate/>
+        result = <Doctorate />;
         setIsMasterClicked(true);
-        break;        
+        break;
     }
     setValue(result);
-  }
+  };
   return (
     <div className="education-info">
       <div className="education-title">학력사항</div>
-      <hr className="division-line"/>
+      <hr className="division-line" />
       <div className="final-content">
         <div className="title">최종학력</div>
-        <select className="select-education" defaultValue="non-value" onChange={onChange}>
-          <option value="non-value" disabled="disabled">최종학력을 선택해주세요</option>
+        <select
+          className="select-education"
+          defaultValue="non-value"
+          onChange={onChange}
+        >
+          <option value="non-value" disabled="disabled">
+            최종학력을 선택해주세요
+          </option>
           <option value="고졸">고졸</option>
           <option value="초대졸">초대졸</option>
           <option value="편입">편입</option>
@@ -55,39 +61,42 @@ function EducationComponent(props) {
           <option value="석사">석사</option>
           <option value="박사">박사</option>
         </select>
-        {isMasterClicked ? 
+        {isMasterClicked ? (
           <>
             <div className="integrated" onClick={handleCheckBoxChange}>
-              <input type="checkbox" checked={isIntegratedChecked}/>
-              <span className="integrated-title" >석박사 연계과정</span>
+              <input
+                type="checkbox"
+                checked={isIntegratedChecked}
+                onChange={handleCheckBoxChange}
+              />
+              <span className="integrated-title">석박사 연계과정</span>
             </div>
-          </>: null}
+          </>
+        ) : null}
       </div>
-      <div className="added-education">
-        {value}
-      </div>
+      <div className="added-education">{value}</div>
     </div>
   );
 }
 
 function HighSchool() {
-  return(
+  return (
     <>
-      <hr className="education-division"/>
+      <hr className="education-division" />
       <div className="education-container">
         <div className="name-period-content">
-          <div className="level">
-            고등학교
-          </div>
+          <div className="level">고등학교</div>
           <div className="title">학교명</div>
           <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disa-bled="disabled">선택</option>
+            <option value="default-value" disa-bled="disabled">
+              선택
+            </option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
           <div className="in-school-period">재학기간</div>
-          <input type="date" className="in-school-period-input"/>
-          <input type="date" className="in-school-period-input"/>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
         </div>
         <div className="location">
           <div className="location-title">소재지</div>
@@ -100,7 +109,9 @@ function HighSchool() {
         <div className="major-content">
           <div className="major-name">전공분류</div>
           <select className="select-major" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">인문계열</option>
+            <option value="default-value" disabled="disabled">
+              인문계열
+            </option>
             <option value="실업계열">실업계열</option>
           </select>
         </div>
@@ -113,71 +124,73 @@ function College() {
   const [ids, setIds] = useState([]);
   const refId = useRef(0);
   const onCreate = () => {
-    const id = refId.current;    
+    const id = refId.current;
     setIds(ids.concat(id));
     setLastId(id);
     refId.current += 1;
-  }
+  };
 
-  const onRemove = selectedId => {
-    const newIds = ids.filter(id => id !== selectedId);
+  const onRemove = (selectedId) => {
+    const newIds = ids.filter((id) => id !== selectedId);
     setIds(newIds);
-    setLastId(newIds[newIds.length - 1]);    
-  }
+    setLastId(newIds[newIds.length - 1]);
+  };
 
-  return(
+  return (
     <>
-    <hr className="education-division"/>
+      <hr className="education-division" />
       <div className="education-container">
-          <div className="name-period-content">
-            <div className="level">
-              대학교
-            </div>
-            <div className="title">학교명</div>
-            <select className="title-input" defaultValue="default-value">
-              <option value="default-value" disabled="disabled">패플대학교</option>
-              <option value="2">하버드</option>
-              <option value="3">옥스퍼드</option>
-            </select>
-            <div className="in-school-period">재학기간</div>
-            <input type="date" className="in-school-period-input"/>
-            <input type="date" className="in-school-period-input"/>
-          </div>
-          <div className="location">
-            <div className="location-title">소재지</div>
-            <select className="location-input" defaultValue="default-value">
-              <option value="default-value"></option>
-              <option value="서울">서울</option>
-              <option value="인천">인천</option>
-            </select>
-          </div>
-          <div className="major-content">
-            <div className="major-name">전공분류</div>
-            <select className="select-major" defaultValue="국어국문">
-                <option value="국어국문">국어국문</option>
-                <option value="영어영문">영어영문</option>
-            </select>
-            <button className="add-major" onClick={onCreate}>전공추가</button>
-          </div>
-          <AddedMajor ids={ids} onRemove={onRemove} onCreate={onCreate}/>
+        <div className="name-period-content">
+          <div className="level">대학교</div>
+          <div className="title">학교명</div>
+          <select className="title-input" defaultValue="default-value">
+            <option value="default-value" disabled="disabled">
+              패플대학교
+            </option>
+            <option value="2">하버드</option>
+            <option value="3">옥스퍼드</option>
+          </select>
+          <div className="in-school-period">재학기간</div>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
+        </div>
+        <div className="location">
+          <div className="location-title">소재지</div>
+          <select className="location-input" defaultValue="default-value">
+            <option value="default-value"></option>
+            <option value="서울">서울</option>
+            <option value="인천">인천</option>
+          </select>
+        </div>
+        <div className="major-content">
+          <div className="major-name">전공분류</div>
+          <select className="select-major" defaultValue="국어국문">
+            <option value="국어국문">국어국문</option>
+            <option value="영어영문">영어영문</option>
+          </select>
+          <button className="add-major" onClick={onCreate}>
+            전공추가
+          </button>
+        </div>
+        <AddedMajor ids={ids} onRemove={onRemove} onCreate={onCreate} />
       </div>
-  </>
+    </>
   );
 }
 
-function AddedMajor({ids, onRemove, order}) {
-  return(
-    ids.map(id => 
-          <div key={id} className="major-content">
-            <div className="title">전공분류</div>
-            <select className="select-major" defaultValue="국어국문">
-                <option value="국어국문">국어국문</option>
-                <option value="영어영문">영어영문</option>
-            </select>
-            <button className="close-info" onClick={()=> onRemove(id, order)}>X 삭제</button>
-          </div>
-      )
-  );
+function AddedMajor({ ids, onRemove, order }) {
+  return ids.map((id) => (
+    <div key={id} className="major-content">
+      <div className="title">전공분류</div>
+      <select className="select-major" defaultValue="국어국문">
+        <option value="국어국문">국어국문</option>
+        <option value="영어영문">영어영문</option>
+      </select>
+      <button className="close-info" onClick={() => onRemove(id, order)}>
+        X 삭제
+      </button>
+    </div>
+  ));
 }
 
 function Transfer() {
@@ -186,106 +199,105 @@ function Transfer() {
   const refId = useRef([0, 0]);
   const firstArea = 0;
   const secondArea = 1;
-  const onCreate = index => {
+  const onCreate = (index) => {
     const id = refId.current[index];
     if (index === firstArea) {
       setIdsOne([...idsOne, id]);
-
-    } else if(index === secondArea){
+    } else if (index === secondArea) {
       setIdsTwo([...idsTwo, id]);
     }
     refId.current[index] += 1;
-  }
+  };
 
-  const onRemove = (selectedId, order) => {    
+  const onRemove = (selectedId, order) => {
     if (order === firstArea) {
-      const newIds = idsOne.filter(id => id !== selectedId);
+      const newIds = idsOne.filter((id) => id !== selectedId);
       setIdsOne(newIds);
-    } else if(order === secondArea) {
-      const newIds = idsTwo.filter(id => id !== selectedId);
+    } else if (order === secondArea) {
+      const newIds = idsTwo.filter((id) => id !== selectedId);
       setIdsTwo(newIds);
     }
-  }
-  
-  return(
-    <>
-      <hr className="education-division"/>
-      <div className="education-container">
-          <div className="name-period-content">
-            <div>
-              <div className="level">
-                대학교
-              </div>
-              <div className="level">
-                (편입 전)
-              </div>
-            </div>
-            <div className="title">학교명</div>
-            <select className="title-input" defaultValue="default-value">
-              <option value="default-value" disabled="disabled">패플대학교</option>
-              <option value="2">하버드</option>
-              <option value="3">옥스퍼드</option>
-            </select>
-            <div className="in-school-period">재학기간</div>
-            <input type="date" className="in-school-period-input"/>
-            <input type="date" className="in-school-period-input"/>
-          </div>
-          <div className="location">
-            <div className="location-title">소재지</div>
-            <select className="location-input" defaultValue="default-value">
-              <option value="default-value"></option>
-              <option value="서울">서울</option>
-              <option value="인천">인천</option>
-            </select>
-          </div>
-          <div className="major-content">
-            <div className="title">전공분류</div>
-            <select className="select-major" defaultValue="국어국문">
-                <option value="국어국문">국어국문</option>
-                <option value="영어영문">영어영문</option>
-            </select>
-            <button className="add-major" onClick={()=>onCreate(firstArea)}>전공추가</button>
-          </div>
-          <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove}/>        
+  };
 
-          <hr className="education-division"/>
-          <div className="name-period-content">
-            <div>
-              <div className="level">
-                대학교
-              </div>
-              <div className="level">
-                (편입 후)
-              </div>
-            </div>
-              <div className="title">학교명</div>
-              <select className="title-input" defaultValue="default-value">
-                <option value="default-value" disabled="disabled">패플대학교</option>
-                <option value="2">하버드</option>
-                <option value="3">옥스퍼드</option>
-              </select>
-              <div className="in-school-period">재학기간</div>
-              <input type="date" className="in-school-period-input"/>
-              <input type="date" className="in-school-period-input"/>
-            </div>
-            <div className="location">
-              <div className="location-title">소재지</div>
-              <select className="location-input" defaultValue="default-value">
-                <option value="default-value"></option>
-                <option value="서울">서울</option>
-                <option value="인천">인천</option>
-              </select>
-            </div>
-            <div className="major-content">
-              <div className="title">전공분류</div>
-              <select className="select-major" defaultValue="국어국문">
-                  <option value="국어국문">국어국문</option>
-                  <option value="영어영문">영어영문</option>
-              </select>
-              <button className="add-major" onClick={()=>onCreate(secondArea)}>전공추가</button>
-            </div>
-            <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove}/>
+  return (
+    <>
+      <hr className="education-division" />
+      <div className="education-container">
+        <div className="name-period-content">
+          <div>
+            <div className="level">대학교</div>
+            <div className="level">(편입 전)</div>
           </div>
+          <div className="title">학교명</div>
+          <select className="title-input" defaultValue="default-value">
+            <option value="default-value" disabled="disabled">
+              패플대학교
+            </option>
+            <option value="2">하버드</option>
+            <option value="3">옥스퍼드</option>
+          </select>
+          <div className="in-school-period">재학기간</div>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
+        </div>
+        <div className="location">
+          <div className="location-title">소재지</div>
+          <select className="location-input" defaultValue="default-value">
+            <option value="default-value"></option>
+            <option value="서울">서울</option>
+            <option value="인천">인천</option>
+          </select>
+        </div>
+        <div className="major-content">
+          <div className="title">전공분류</div>
+          <select className="select-major" defaultValue="국어국문">
+            <option value="국어국문">국어국문</option>
+            <option value="영어영문">영어영문</option>
+          </select>
+          <button className="add-major" onClick={() => onCreate(firstArea)}>
+            전공추가
+          </button>
+        </div>
+        <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
+
+        <hr className="education-division" />
+        <div className="name-period-content">
+          <div>
+            <div className="level">대학교</div>
+            <div className="level">(편입 후)</div>
+          </div>
+          <div className="title">학교명</div>
+          <select className="title-input" defaultValue="default-value">
+            <option value="default-value" disabled="disabled">
+              패플대학교
+            </option>
+            <option value="2">하버드</option>
+            <option value="3">옥스퍼드</option>
+          </select>
+          <div className="in-school-period">재학기간</div>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
+        </div>
+        <div className="location">
+          <div className="location-title">소재지</div>
+          <select className="location-input" defaultValue="default-value">
+            <option value="default-value"></option>
+            <option value="서울">서울</option>
+            <option value="인천">인천</option>
+          </select>
+        </div>
+        <div className="major-content">
+          <div className="title">전공분류</div>
+          <select className="select-major" defaultValue="국어국문">
+            <option value="국어국문">국어국문</option>
+            <option value="영어영문">영어영문</option>
+          </select>
+          <button className="add-major" onClick={() => onCreate(secondArea)}>
+            전공추가
+          </button>
+        </div>
+        <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
+      </div>
     </>
   );
 }
@@ -297,51 +309,53 @@ function University() {
     const id = refId.current;
     setIds([...ids, id]);
     refId.current += 1;
-  }
+  };
 
-  const onRemove = selectedId => {    
-      const newIds = ids.filter(id => id !== selectedId);
-      setIds(newIds);
-  }
+  const onRemove = (selectedId) => {
+    const newIds = ids.filter((id) => id !== selectedId);
+    setIds(newIds);
+  };
 
-  return(
-  <>
-    <hr className="education-division"/>
-    <div className="education-container">
+  return (
+    <>
+      <hr className="education-division" />
+      <div className="education-container">
         <div className="name-period-content">
-          <div className="level">
-            대학교
-          </div>
+          <div className="level">대학교</div>
           <div className="title">학교명</div>
           <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">선택</option>
+            <option value="default-value" disabled="disabled">
+              선택
+            </option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
           <div className="in-school-period">재학기간</div>
-          <input type="date" className="in-school-period-input"/>
-          <input type="date" className="in-school-period-input"/>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
         </div>
         <div className="location">
-            <div className="location-title">소재지</div>
-            <select className="location-input" defaultValue="default-value">
-              <option value="default-value"></option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
+          <div className="location-title">소재지</div>
+          <select className="location-input" defaultValue="default-value">
+            <option value="default-value"></option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
         </div>
 
         <div className="major-content">
-              <div className="title">전공분류</div>
-              <select className="select-major" defaultValue="국어국문">
-                  <option value="국어국문">국어국문</option>
-                  <option value="영어영문">영어영문</option>
-              </select>
-              <button className="add-major" onClick={onCreate}>전공추가</button>
-            </div>
-            <AddedMajor ids={ids} onRemove={onRemove}/>
+          <div className="title">전공분류</div>
+          <select className="select-major" defaultValue="국어국문">
+            <option value="국어국문">국어국문</option>
+            <option value="영어영문">영어영문</option>
+          </select>
+          <button className="add-major" onClick={onCreate}>
+            전공추가
+          </button>
+        </div>
+        <AddedMajor ids={ids} onRemove={onRemove} />
       </div>
-  </>
+    </>
   );
 }
 
@@ -351,44 +365,43 @@ function Master() {
   const refId = useRef([0, 0]);
   const firstArea = 0;
   const secondArea = 1;
-  const onCreate = index => {
+  const onCreate = (index) => {
     const id = refId.current[index];
     if (index === firstArea) {
       setIdsOne([...idsOne, id]);
-
-    } else if(index === secondArea){
+    } else if (index === secondArea) {
       setIdsTwo([...idsTwo, id]);
     }
     refId.current[index] += 1;
-  }
+  };
 
-  const onRemove = (selectedId, order) => {    
+  const onRemove = (selectedId, order) => {
     if (order === firstArea) {
-      const newIds = idsOne.filter(id => id !== selectedId);
+      const newIds = idsOne.filter((id) => id !== selectedId);
       setIdsOne(newIds);
-    } else if(order === secondArea) {
-      const newIds = idsTwo.filter(id => id !== selectedId);
+    } else if (order === secondArea) {
+      const newIds = idsTwo.filter((id) => id !== selectedId);
       setIdsTwo(newIds);
     }
-  }
-  
-  return(
+  };
+
+  return (
     <>
-      <hr className="education-division"/>
+      <hr className="education-division" />
       <div className="education-container">
         <div className="name-period-content">
-          <div className="level">
-            대학교
-          </div>
+          <div className="level">대학교</div>
           <div className="title">학교명</div>
           <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">패플대학교</option>
+            <option value="default-value" disabled="disabled">
+              패플대학교
+            </option>
             <option value="2">하버드</option>
             <option value="3">옥스퍼드</option>
           </select>
           <div className="in-school-period">재학기간</div>
-          <input type="date" className="in-school-period-input"/>
-          <input type="date" className="in-school-period-input"/>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
         </div>
         <div className="location">
           <div className="location-title">소재지</div>
@@ -401,27 +414,29 @@ function Master() {
         <div className="major-content">
           <div className="title">전공분류</div>
           <select className="select-major" defaultValue="국어국문">
-              <option value="국어국문">국어국문</option>
-              <option value="영어영문">영어영문</option>
+            <option value="국어국문">국어국문</option>
+            <option value="영어영문">영어영문</option>
           </select>
-          <button className="add-major" onClick={()=>onCreate(firstArea)}>전공추가</button>
+          <button className="add-major" onClick={() => onCreate(firstArea)}>
+            전공추가
+          </button>
         </div>
-        <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove}/>        
+        <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
 
-        <hr className="education-division"/>
+        <hr className="education-division" />
         <div className="name-period-content">
-          <div className="level">
-            대학교
-          </div>
+          <div className="level">대학교</div>
           <div className="title">학교명</div>
           <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">패플대학교</option>
+            <option value="default-value" disabled="disabled">
+              패플대학교
+            </option>
             <option value="2">하버드</option>
             <option value="3">옥스퍼드</option>
           </select>
           <div className="in-school-period">재학기간</div>
-          <input type="date" className="in-school-period-input"/>
-          <input type="date" className="in-school-period-input"/>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
         </div>
         <div className="location">
           <div className="location-title">소재지</div>
@@ -434,12 +449,14 @@ function Master() {
         <div className="major-content">
           <div className="title">전공분류</div>
           <select className="select-major" defaultValue="국어국문">
-              <option value="국어국문">국어국문</option>
-              <option value="영어영문">영어영문</option>
+            <option value="국어국문">국어국문</option>
+            <option value="영어영문">영어영문</option>
           </select>
-          <button className="add-major" onClick={()=>onCreate(secondArea)}>전공추가</button>
+          <button className="add-major" onClick={() => onCreate(secondArea)}>
+            전공추가
+          </button>
         </div>
-        <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove}/>
+        <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
       </div>
     </>
   );
@@ -453,49 +470,48 @@ function Doctorate({ isIntegratedChecked }) {
   const firstArea = 0;
   const secondArea = 1;
   const thirdArea = 2;
-  const onCreate = index => {
+  const onCreate = (index) => {
     const id = refId.current[index];
     if (index === firstArea) {
       setIdsOne([...idsOne, id]);
-
-    } else if(index === secondArea){
+    } else if (index === secondArea) {
       setIdsTwo([...idsTwo, id]);
     } else {
       setIdsThree([...idsThree, id]);
     }
     refId.current[index] += 1;
-  }
+  };
 
-  const onRemove = (selectedId, order) => {    
+  const onRemove = (selectedId, order) => {
     if (order === firstArea) {
-      const newIds = idsOne.filter(id => id !== selectedId);
+      const newIds = idsOne.filter((id) => id !== selectedId);
       setIdsOne(newIds);
-    } else if(order === secondArea) {
-      const newIds = idsTwo.filter(id => id !== selectedId);
+    } else if (order === secondArea) {
+      const newIds = idsTwo.filter((id) => id !== selectedId);
       setIdsTwo(newIds);
     } else {
-      const newIds = idsThree.filter(id => id !== selectedId);
+      const newIds = idsThree.filter((id) => id !== selectedId);
       setIdsThree(newIds);
     }
-  }
-  
-  return(
+  };
+
+  return (
     <>
-      <hr className="education-division"/>
+      <hr className="education-division" />
       <div className="education-container">
         <div className="name-period-content">
-          <div className="level">
-            대학교
-          </div>
+          <div className="level">대학교</div>
           <div className="title">학교명</div>
           <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">패플대학교</option>
+            <option value="default-value" disabled="disabled">
+              패플대학교
+            </option>
             <option value="2">하버드</option>
             <option value="3">옥스퍼드</option>
           </select>
           <div className="in-school-period">재학기간</div>
-          <input type="date" className="in-school-period-input"/>
-          <input type="date" className="in-school-period-input"/>
+          <input type="month" className="in-school-period-input" />
+          <input type="month" className="in-school-period-input" />
         </div>
         <div className="location">
           <div className="location-title">소재지</div>
@@ -508,116 +524,134 @@ function Doctorate({ isIntegratedChecked }) {
         <div className="major-content">
           <div className="title">전공분류</div>
           <select className="select-major" defaultValue="국어국문">
-              <option value="국어국문">국어국문</option>
-              <option value="영어영문">영어영문</option>
+            <option value="국어국문">국어국문</option>
+            <option value="영어영문">영어영문</option>
           </select>
-          <button className="add-major" onClick={()=>onCreate(firstArea)}>전공추가</button>
+          <button className="add-major" onClick={() => onCreate(firstArea)}>
+            전공추가
+          </button>
         </div>
-        <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove}/>
+        <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
 
-        {isIntegratedChecked ? 
-        <>
-          <hr className="education-division"/>
-          <div className="name-period-content">            
-            <div className="level">
-              대학교
-              <div>(석박사)</div>
+        {isIntegratedChecked ? (
+          <>
+            <hr className="education-division" />
+            <div className="name-period-content">
+              <div className="level">
+                대학교
+                <div>(석박사)</div>
+              </div>
+              <div className="title">학교명</div>
+              <select className="title-input" defaultValue="default-value">
+                <option value="default-value" disabled="disabled">
+                  패플대학교
+                </option>
+                <option value="2">하버드</option>
+                <option value="3">옥스퍼드</option>
+              </select>
+              <div className="in-school-period">재학기간</div>
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
             </div>
-            <div className="title">학교명</div>
-            <select className="title-input" defaultValue="default-value">
-              <option value="default-value" disabled="disabled">패플대학교</option>
-              <option value="2">하버드</option>
-              <option value="3">옥스퍼드</option>
-            </select>
-            <div className="in-school-period">재학기간</div>
-            <input type="date" className="in-school-period-input"/>
-            <input type="date" className="in-school-period-input"/>
-          </div>
-          <div className="location">
-            <div className="location-title">소재지</div>
-            <select className="location-input" defaultValue="default-value">
-              <option value="default-value"></option>
-              <option value="서울">서울</option>
-              <option value="인천">인천</option>
-            </select>
-          </div>
-          <div className="major-content">
-            <div className="title">전공분류</div>
-            <select className="select-major" defaultValue="국어국문">
+            <div className="location">
+              <div className="location-title">소재지</div>
+              <select className="location-input" defaultValue="default-value">
+                <option value="default-value"></option>
+                <option value="서울">서울</option>
+                <option value="인천">인천</option>
+              </select>
+            </div>
+            <div className="major-content">
+              <div className="title">전공분류</div>
+              <select className="select-major" defaultValue="국어국문">
                 <option value="국어국문">국어국문</option>
                 <option value="영어영문">영어영문</option>
-            </select>
-            <button className="add-major" onClick={()=>onCreate(secondArea)}>전공추가</button>
-          </div>
-          <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove}/>
-        </> :
-        <>
-          <hr className="education-division"/>
-          <div className="name-period-content">
-            <div className="level">
-              대학교(석사)
+              </select>
+              <button
+                className="add-major"
+                onClick={() => onCreate(secondArea)}
+              >
+                전공추가
+              </button>
             </div>
-            <div className="title">학교명</div>
-            <select className="title-input" defaultValue="default-value">
-              <option value="default-value" disabled="disabled">패플대학교</option>
-              <option value="2">하버드</option>
-              <option value="3">옥스퍼드</option>
-            </select>
-            <div className="in-school-period">재학기간</div>
-            <input type="date" className="in-school-period-input"/>
-            <input type="date" className="in-school-period-input"/>
-          </div>
-          <div className="location">
-            <div className="location-title">소재지</div>
-            <select className="location-input" defaultValue="default-value">
-              <option value="default-value"></option>
-              <option value="서울">서울</option>
-              <option value="인천">인천</option>
-            </select>
-          </div>
-          <div className="major-content">
-            <div className="title">전공분류</div>
-            <select className="select-major" defaultValue="국어국문">
+            <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
+          </>
+        ) : (
+          <>
+            <hr className="education-division" />
+            <div className="name-period-content">
+              <div className="level">대학교(석사)</div>
+              <div className="title">학교명</div>
+              <select className="title-input" defaultValue="default-value">
+                <option value="default-value" disabled="disabled">
+                  패플대학교
+                </option>
+                <option value="2">하버드</option>
+                <option value="3">옥스퍼드</option>
+              </select>
+              <div className="in-school-period">재학기간</div>
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+            <div className="location">
+              <div className="location-title">소재지</div>
+              <select className="location-input" defaultValue="default-value">
+                <option value="default-value"></option>
+                <option value="서울">서울</option>
+                <option value="인천">인천</option>
+              </select>
+            </div>
+            <div className="major-content">
+              <div className="title">전공분류</div>
+              <select className="select-major" defaultValue="국어국문">
                 <option value="국어국문">국어국문</option>
                 <option value="영어영문">영어영문</option>
-            </select>
-            <button className="add-major" onClick={()=>onCreate(secondArea)}>전공추가</button>
-          </div>
-          <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove}/>
+              </select>
+              <button
+                className="add-major"
+                onClick={() => onCreate(secondArea)}
+              >
+                전공추가
+              </button>
+            </div>
+            <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
 
-          <hr className="education-division"/>
-          <div className="name-period-content">
-            <div className="level">
-              대학교(박사)
+            <hr className="education-division" />
+            <div className="name-period-content">
+              <div className="level">대학교(박사)</div>
+              <div className="title">학교명</div>
+              <select className="title-input" defaultValue="default-value">
+                <option value="default-value" disabled="disabled">
+                  패플대학교
+                </option>
+                <option value="2">하버드</option>
+                <option value="3">옥스퍼드</option>
+              </select>
+              <div className="in-school-period">재학기간</div>
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
             </div>
-            <div className="title">학교명</div>
-            <select className="title-input" defaultValue="default-value">
-              <option value="default-value" disabled="disabled">패플대학교</option>
-              <option value="2">하버드</option>
-              <option value="3">옥스퍼드</option>
-            </select>
-            <div className="in-school-period">재학기간</div>
-            <input type="date" className="in-school-period-input"/>
-            <input type="date" className="in-school-period-input"/>
-          </div>
-          <div className="location">
-            <div className="location-title">소재지</div>
-            <select className="location-input" defaultValue="default-value">
-              <option value="default-value"></option>
-              <option value="서울">서울</option>
-              <option value="인천">인천</option>
-            </select>
-          </div>
-          <div className="major-content">
-            <div className="title">전공분류</div>
-            <select className="select-major" defaultValue="국어국문">
+            <div className="location">
+              <div className="location-title">소재지</div>
+              <select className="location-input" defaultValue="default-value">
+                <option value="default-value"></option>
+                <option value="서울">서울</option>
+                <option value="인천">인천</option>
+              </select>
+            </div>
+            <div className="major-content">
+              <div className="title">전공분류</div>
+              <select className="select-major" defaultValue="국어국문">
                 <option value="국어국문">국어국문</option>
                 <option value="영어영문">영어영문</option>
-            </select>
-            <button className="add-major" onClick={()=>onCreate(thirdArea)}>전공추가</button>
-          </div>
-          <AddedMajor ids={idsThree} order={thirdArea} onRemove={onRemove}/>
-        </>}
+              </select>
+              <button className="add-major" onClick={() => onCreate(thirdArea)}>
+                전공추가
+              </button>
+            </div>
+            <AddedMajor ids={idsThree} order={thirdArea} onRemove={onRemove} />
+          </>
+        )}
       </div>
     </>
   );

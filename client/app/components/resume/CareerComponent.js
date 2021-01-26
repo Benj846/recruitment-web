@@ -87,7 +87,20 @@ function CareerListComponent({ ids, onRemove }) {
 
   const [selectJob, setSelectJob] = useState(false);
   const toggleSelectJob = () => {
-    setSelectJob(!selectJob);
+    const clicked = !selectJob;
+    setSelectJob(clicked);
+    if (clicked === false) {
+      setIsLevelOneClicked(false);
+      setIsLevelTwoClicked(false);
+    }
+  };
+
+  const toggleLevelOne = () => {
+    //setIsLevelOneClicked(!isLevelOneClicked);
+    setIsLevelOneClicked(true);
+    if (isLevelTwoClicked === true) {
+      setIsLevelTwoClicked(false);
+    }
   };
 
   const [levelOne, setLevelOne] = useState([
@@ -144,7 +157,7 @@ function CareerListComponent({ ids, onRemove }) {
       title: '산업안전/설치/서비스'
     },
     {
-      id: 13,
+      id: 14,
       title: '산업안전/설치/서비스'
     }
   ]);
@@ -292,8 +305,60 @@ function CareerListComponent({ ids, onRemove }) {
     {
       id: 20,
       title: '전자부품 관리'
+    },
+    {
+      id: 21,
+      title: '전자부품 관리'
+    },
+    {
+      id: 22,
+      title: '전자부품 관리'
+    },
+    {
+      id: 23,
+      title: '전자부품 관리'
+    },
+    {
+      id: 24,
+      title: '생산라인 관리'
+    },
+    {
+      id: 25,
+      title: '생산라인 관리'
+    },
+    {
+      id: 26,
+      title: '생산라인 관리'
+    },
+    {
+      id: 27,
+      title: '생산라인 관리'
+    },
+    {
+      id: 28,
+      title: '생산라인 관리'
+    },
+    {
+      id: 29,
+      title: '생산라인 관리'
+    },
+    {
+      id: 30,
+      title: '생산라인 관리'
+    },
+    {
+      id: 31,
+      title: '생산라인 관리'
+    },
+    {
+      id: 32,
+      title: '전장 관리'
     }
   ]);
+
+  const setJobs = (title) => {
+    console.log(title);
+  };
 
   return (
     <>
@@ -349,12 +414,7 @@ function CareerListComponent({ ids, onRemove }) {
                   <div className="level-columns">
                     <div className="level-one">
                       {levelOne.map((item) => (
-                        <div
-                          key={item.id}
-                          onClick={() =>
-                            setIsLevelOneClicked(!isLevelOneClicked)
-                          }
-                        >
+                        <div key={item.id} onClick={toggleLevelOne}>
                           {item.title}
                         </div>
                       ))}
@@ -376,7 +436,12 @@ function CareerListComponent({ ids, onRemove }) {
                     <div className="level-three">
                       {isLevelTwoClicked
                         ? levelThree.map((item) => (
-                            <div key={item.id}>{item.title}</div>
+                            <div
+                              key={item.id}
+                              onClick={() => setJobs(item.title)}
+                            >
+                              {item.title}
+                            </div>
                           ))
                         : null}
                     </div>

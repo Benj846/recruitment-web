@@ -23,11 +23,10 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
     personalBtn.current.click();
   }, []);
 
-  const [member, setMember] = useState('personal');
+  const [member, setMember] = useState(-1);
 
   const setMemberBtn = (e) => {
     const className = e.target.className;
-    setMember('personal');
     if (className === 'personal') {
       personalBtn.current.style.outline = 'none';
       personalBtn.current.style.background =
@@ -48,6 +47,7 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
       companyBtn.current.style.borderRadius = '0px 3px 3px 0px';
       companyBtn.current.style.opacity = '1';
     } else {
+      setMember(1);
       companyBtn.current.style.outline = 'none';
       companyBtn.current.style.background =
         '#009999 0% 0% no-repeat padding-box';
@@ -261,7 +261,7 @@ function AcceptAgreement({ closePopup, member }) {
       <div id="signup-content">
         <div className="member-close-popup">
           <div className="empty-space"></div>
-          {member === 'personal' ? (
+          {member === -1 ? (
             <div>개인회원 가입하기</div>
           ) : (
             <div>기업회원 가입하기</div>
@@ -378,7 +378,20 @@ function AcceptAgreement({ closePopup, member }) {
 function SignupWithEmail({ closePopup, member }) {
   const [showSignup, setShowSignup] = useState(false);
   const togglePopup = () => {
-    setShowSignup(!showSignup);
+    axios
+      .post('/member/count', { email })
+      .then((res) => {
+        const count = res.data[0].COUNT;
+        if (count !== 0) {
+          alert('이미 존재하는 이메일입니다.');
+          return;
+        } else {
+          setShowSignup(!showSignup);
+        }
+      })
+      .catch((err) => {
+        console.log(error, err);
+      });
   };
   const emailValidateRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
   //const emailValidateRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{3}$/i;
@@ -403,25 +416,6 @@ function SignupWithEmail({ closePopup, member }) {
     } else if (flag === true) {
       inputEmailRef.current.style.border = '1px solid #009999';
       setIsNextBtnDisabled(false);
-      // axios
-      //   .get('/member/count')
-      //   .then((res) => {
-      //     console.log(res);
-      //   })
-      //   .catch((err) => {
-      //     console.log(error, err);
-      //   });
-
-      axios
-        .post('/member/insert', {
-          email: value
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(error, err);
-        });
     }
   };
 
@@ -430,7 +424,7 @@ function SignupWithEmail({ closePopup, member }) {
       <div id="with-email-content">
         <div className="member-close-popup">
           <div className="empty-space"></div>
-          {member === 'personal' ? (
+          {member === -1 ? (
             <div>개인회원 가입하기</div>
           ) : (
             <div>기업회원 가입하기</div>
@@ -483,18 +477,36 @@ function SignupWithEmail({ closePopup, member }) {
           </div>
         </div>
         {showSignup ? (
-          <InputSignupWithEmail closePopup={closePopup} member={member} />
+          <InputSignupWithEmail
+            closePopup={closePopup}
+            member={member}
+            email={email}
+          />
         ) : null}
       </div>
     </div>
   );
 }
 
-function InputSignupWithEmail({ closePopup, member }) {
+function InputSignupWithEmail({ closePopup, member, email }) {
   const [showSignup, setShowSignup] = useState(false);
   const [isPhoneOrEmail, setPhoneOrEmail] = useState(false);
+  const [memberInfo, setMemberInfo] = useState({
+    uid: email,
+    name: '',
+    pw: '',
+    usr_type: member
+  });
+
+  const onChange = (e) => {
+    setMemberInfo({ ...memberInfo, [e.target.name]: e.target.value });
+  };
+
   const togglePopup = () => {
     setShowSignup(!showSignup);
+    // console.log(email);
+    // console.log(memberInfo.name);
+    // console.log(memberInfo.password);
   };
 
   const togglePhoneEmail = (f) => {
@@ -506,7 +518,7 @@ function InputSignupWithEmail({ closePopup, member }) {
       <div id="input-with-email-content">
         <div className="member-close-popup">
           <div className="empty-space"></div>
-          {member === 'personal' ? (
+          {member === -1 ? (
             <div>개인회원 가입하기</div>
           ) : (
             <div>기업회원 가입하기</div>
@@ -523,11 +535,15 @@ function InputSignupWithEmail({ closePopup, member }) {
           <input
             className="input-signup-name"
             placeholder="이름을 입력해주세요"
+            name="name"
+            onChange={onChange}
           />
           <span className="signup-password">비밀번호</span>
           <input
             className="input-signup-password"
             placeholder="8~12자의 영문, 숫자, 특수문자 중 2가지 이상 조합 필수"
+            name="pw"
+            onChange={onChange}
           />
           <span className="signup-password">비밀번호 확인</span>
           <input
@@ -554,15 +570,44 @@ function InputSignupWithEmail({ closePopup, member }) {
             직무 선택하기
           </button>
         </div>
-        {showSignup ? <SelectTaskYouWant closePopup={closePopup} /> : null}
+        {showSignup ? (
+          <SelectTaskYouWant closePopup={closePopup} memberInfo={memberInfo} />
+        ) : null}
       </div>
     </div>
   );
 }
 
-function SelectTaskYouWant({ closePopup }) {
+function SelectTaskYouWant({ closePopup, memberInfo }) {
   const [showSignup, setShowSignup] = useState(false);
-  const togglePopup = () => {
+  useEffect(() => {
+    console.log(memberInfo);
+  }, []);
+  const completedWithTasks = () => {
+    //   axios
+    //     .post('/member/insert', {
+    //       memberInfo: {memberInfo}
+    //     })
+    //     .then((res) => {
+    //       console.log(res);
+    //     })
+    //     .catch((err) => {
+    //       console.log(error, err);
+    //     });
+    setShowSignup(!showSignup);
+  };
+
+  const completedWithoutTasks = () => {
+    axios
+      .post('/member/insert', {
+        memberInfo: memberInfo
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(error, err);
+      });
     setShowSignup(!showSignup);
   };
 
@@ -676,10 +721,10 @@ function SelectTaskYouWant({ closePopup }) {
             <div>최대 6개</div>
           </div>
           <SelectDetailJob />
-          <button className="signup-done" onClick={togglePopup}>
+          <button className="signup-done" onClick={completedWithTasks}>
             가입완료
           </button>
-          <button className="signup-later" onClick={togglePopup}>
+          <button className="signup-later" onClick={completedWithoutTasks}>
             나중에 할게요
           </button>
         </div>

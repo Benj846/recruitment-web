@@ -138,9 +138,9 @@
 }
 
 .job-container > .job-content {
-  position: relative;
   display: flex;
   align-items: center;
+  position: relative;
   --border: 1px solid blue;
   width: 790px;
   height: 64px;
@@ -215,10 +215,13 @@
   > .selected-job-container
   > .level-columns
   > .level-two {
+  /* display: flex;
+  flex-direction: column; */
   width: 176px;
   height: 319px;
   border-right: 1px solid #dddddd;
   overflow-y: auto;
+  --flex: 1 1 auto;
 }
 
 .job-container
@@ -248,6 +251,9 @@
   > .level-two
   > div {
   margin: 15px 10px 10px 10px;
+  --margin-top: 10px;
+  --flex: 1 1 0;
+  --height: 40px;
 }
 
 .job-container
@@ -256,13 +262,14 @@
   > .level-columns
   > .level-three
   > div {
-  --width: 125px;
-
-  height: 20px;
   display: flex;
+  --width: 125px;
+  height: 20px;
   align-items: center;
   justify-content: center;
-  margin: 15px;
+  --margin: 5px 15px;
+  margin: 5px 5px;
+  --flex: 1 1 auto;
 }
 
 .job-container

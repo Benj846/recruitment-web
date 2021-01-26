@@ -28,6 +28,7 @@ app.use(express.json());
 //   });
 // });
 
+// RestAPI
 // app.get('/member/count', (req, res) => {
 //   db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
 //     if (err) {
@@ -37,9 +38,30 @@ app.use(express.json());
 //     res.send(result);
 //   });
 // });
-// RestAPI
+
 app.post('/member/count', (req, res) => {
-  db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
+  let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;
+  let params = [req.body.email];
+  db.query(sql, params, (err, result, fields) => {
+    if (err) {
+      console.log(error, err);
+      throw err;
+    }
+    res.send(result);
+  });
+});
+
+app.post('/member/insert', (req, res) => {
+  let sql = `INSERT INTO TB_CMN_MEMBER(UID, LGN_TYPE, PW, NAME, USR_TYPE, PW_CHG_DATE, REG_DATE) 
+    VALUE(?, ?, ?, ?, ?, 0, 0)`;
+  let params = [
+    req.body.memberInfo.uid,
+    0,
+    req.body.memberInfo.pw,
+    req.body.memberInfo.name,
+    req.body.memberInfo.usr_type
+  ];
+  db.query(sql, params, (err, result, fields) => {
     if (err) {
       console.log(error, err);
       throw err;
