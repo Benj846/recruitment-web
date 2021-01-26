@@ -130,7 +130,7 @@ function MyPageComponent() {
   };
 
   return (
-    <article id="mypage-wrapper">
+    <section id="mypage-wrapper">
       <aside className="mypage-skyscraper">
         <div className="profile" onClick={() => setMenu(menuNumber.profile)}>
           프로필/관심직무 관리
@@ -208,7 +208,7 @@ function MyPageComponent() {
         </div>
       </aside>
       <main id="mypage-container">{PrintComponent()}</main>
-    </article>
+    </section>
   );
 }
 
@@ -245,8 +245,8 @@ function Profile() {
   };
 
   return (
-    <article id="profile-container">
-      <section className="profile-content">
+    <section id="profile-container">
+      <article className="profile-content">
         <div className="profile-title">나의 프로필</div>
         <hr className="div-line" />
         <div className="info">
@@ -329,8 +329,8 @@ function Profile() {
             <button className="save-btn">변경사항 저장</button>
           </div>
         </div>
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
@@ -442,8 +442,8 @@ function RecruitOffer() {
   ]);
 
   return (
-    <article id="recruit-offer-container">
-      <section id="recruit-offer-content">
+    <section id="recruit-offer-container">
+      <article id="recruit-offer-content">
         <div className="title-content">
           <div className="title">
             <span className="main">채용제안</span>
@@ -482,8 +482,8 @@ function RecruitOffer() {
           </tbody>
         </table>
         <div className="pager">1 2 3 4 5 6 7 8 9 10</div>
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
@@ -571,8 +571,8 @@ function RecruitNotice() {
   ]);
 
   return (
-    <article id="recruit-notice-container">
-      <section id="recruit-notice-content">
+    <section id="recruit-notice-container">
+      <article id="recruit-notice-content">
         <div className="header">
           <div className="title">
             <span className="main">채용공고</span>
@@ -611,8 +611,8 @@ function RecruitNotice() {
           </tbody>
         </table>
         <div className="pager">1 2 3 4 5 6 7 8 9 10</div>
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
@@ -651,8 +651,8 @@ function ResumeList() {
   ]);
 
   return (
-    <article id="resume-list-container">
-      <section id="resume-list-content">
+    <section id="resume-list-container">
+      <article id="resume-list-content">
         <nav>
           <ul className="resume-breadcrumb">
             <li className="breadcrumb-items">이력서 관리 &gt; </li>
@@ -708,24 +708,24 @@ function ResumeList() {
             </div>
           </div>
         ))}
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
 function MakeResume() {
   return (
-    <article id="make-resume-container">
+    <section id="make-resume-container">
       <nav>
         <ul className="recent-notice-breadcrumb">
           <li className="breadcrumb-items">북마크 &gt;</li>
           <li className="breadcrumb-items">&nbsp;최근 본 공고</li>
         </ul>
       </nav>
-      <section id="resume-container">
+      <article id="resume-container">
         <ResumeComponent />
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
@@ -804,8 +804,8 @@ function RecentViewNotice() {
   ]);
 
   return (
-    <article id="recent-notice-container">
-      <section id="recent-notice-content">
+    <section id="recent-notice-container">
+      <article id="recent-notice-content">
         <nav>
           <ul className="recent-notice-breadcrumb">
             <li className="breadcrumb-items">북마크 &gt;</li>
@@ -878,8 +878,8 @@ function RecentViewNotice() {
             </div>
           </div>
         ))}
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
@@ -968,8 +968,8 @@ function BookmarkedCompanyList() {
   ]);
 
   return (
-    <article id="bookmarked-corp-container">
-      <section id="bookmarked-corp-content">
+    <section id="bookmarked-corp-container">
+      <article id="bookmarked-corp-content">
         <nav>
           <ul className="bookmarked-corp-breadcrumb">
             <li className="breadcrumb-items">북마크 &gt;</li>
@@ -1053,8 +1053,8 @@ function BookmarkedCompanyList() {
             </div>
           </div>
         ))}
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
@@ -1133,8 +1133,8 @@ function BookmarkedRecruitList() {
   ]);
 
   return (
-    <article id="bookmarked-recruit-container">
-      <section id="bookmarked-recruit-content">
+    <section id="bookmarked-recruit-container">
+      <article id="bookmarked-recruit-content">
         <nav>
           <ul className="bookmarked-recruit-breadcrumb">
             <li className="breadcrumb-items">북마크 &gt;</li>
@@ -1241,8 +1241,8 @@ function BookmarkedRecruitList() {
             </div>
           </div>
         ))}
-      </section>
-    </article>
+      </article>
+    </section>
   );
 }
 
@@ -1299,8 +1299,8 @@ function AccountManagement() {
   return (
     <>
       {showInputPassClicked ? (
-        <article id="account-management-container">
-          <section id="account-management-content">
+        <section id="account-management-container">
+          <article id="account-management-content">
             <div>계정관리</div>
             <div className="password-content">
               <div className="password-reinput-title">패스워드 재입력</div>
@@ -1316,12 +1316,12 @@ function AccountManagement() {
                 <button onClick={toggleInputPassword}>입력하기</button>
               </div>
             </div>
-          </section>
-        </article>
+          </article>
+        </section>
       ) : null}
       {showPhoneMember ? (
-        <article id="phone-member-container">
-          <section id="phone-member-content">
+        <section id="phone-member-container">
+          <article id="phone-member-content">
             <span>계정관리</span>
             <span>로그인 계정:fapply@gmail.com</span>
             <div className="password-content">
@@ -1343,18 +1343,18 @@ function AccountManagement() {
             {isChangePassClicked ? (
               <ChangePasswordComponent closePopup={toggleChangePassClick} />
             ) : null}
-          </section>
-        </article>
+          </article>
+        </section>
       ) : null}
       {showLeavedClicked ? (
-        <article id="leave-service-container">
+        <section id="leave-service-container">
           <nav>
             <ul className="leave-recruit-breadcrumb">
               <li className="breadcrumb-items">계정관리 &gt;</li>
               <li className="breadcrumb-items">&nbsp;회원탈퇴</li>
             </ul>
           </nav>
-          <section id="leave-service-content">
+          <article id="leave-service-content">
             <div className="pre-guide-content">
               <div>탈퇴하시기 전에</div>
               <div>아래의 내용을 확인해주세요</div>
@@ -1394,18 +1394,18 @@ function AccountManagement() {
                 onSubmit={onSubmit}
               />
             ) : null}
-          </section>
-        </article>
+          </article>
+        </section>
       ) : null}
       {showLeaveCompledted ? (
-        <article id="leave-completed-container">
+        <section id="leave-completed-container">
           <nav>
             <ul className="leave-completed-breadcrumb">
               <li className="breadcrumb-items">계정관리 &gt;</li>
               <li className="breadcrumb-items">&nbsp;회원탈퇴</li>
             </ul>
           </nav>
-          <section id="leave-completed-content">
+          <article id="leave-completed-content">
             <div className="completed-box">
               <div>탈퇴가 완료되었습니다.</div>
               <div>패플라이를 이용해주셔서 감사합니다.</div>
@@ -1417,16 +1417,16 @@ function AccountManagement() {
                 <Route exact path="/" component={MainComponent} />
               </Switch>
             </div>
-          </section>
-        </article>
+          </article>
+        </section>
       ) : null}{' '}
     </>
   );
 }
 function LeaveReasonComponent({ closePopup, onSubmit }) {
   return (
-    <div id="leave-reason-container">
-      <div id="leave-reason-content">
+    <section id="leave-reason-container">
+      <article id="leave-reason-content">
         <button className="close-popup" onClick={closePopup}>
           X
         </button>
@@ -1450,15 +1450,15 @@ function LeaveReasonComponent({ closePopup, onSubmit }) {
         <button className="confirm-btn" onClick={onSubmit}>
           제출하기
         </button>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }
 
 function ChangePasswordComponent({ closePopup }) {
   return (
-    <div id="change-password-container">
-      <div id="change-password-content">
+    <section id="change-password-container">
+      <article id="change-password-content">
         <button className="close-popup" onClick={closePopup}>
           X
         </button>
@@ -1471,8 +1471,8 @@ function ChangePasswordComponent({ closePopup }) {
         <div className="confirm-password-title">비밀번호 확인</div>
         <input className="confirm-password" placeholder="비밀번호 재입력" />
         <button className="confirm-btn">확인</button>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }
 

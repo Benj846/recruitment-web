@@ -18,13 +18,24 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/member/count', (req, res) => {
-  db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
-    if (err) {
-      console.log(error, err);
-      throw err;
-    }
-    res.send(result);
+// app.get('/member/count', (req, res) => {
+//   db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
+//     if (err) {
+//       console.log(error, err);
+//       throw err;
+//     }
+//     res.send(result);
+//   });
+// });
+
+app.post('/member/insert', (req, res) => {
+  let sql = `INSERT INTO TB_CMN_MEMBER (LGN_TYPE, UID, PW, NAME, PW_CHG_DATE, REG_DATE) 
+    value(0, ?, "0000", "kim", sysdate(), sysdate())`;
+  let email = req.body.email;
+  console.log(email);
+  let params = [email];
+  db.query(sql, params, (err, rows, fields) => {
+    res.send(rows);
   });
 });
 
