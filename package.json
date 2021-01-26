@@ -2,7 +2,7 @@
   "name": "MERN-boilerplate",
   "version": "1.0.0",
   "description": "MERN stack project boilerplate",
-  "author": "Eugene Cheung",
+  "author": "Ben & Theo & Nine",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arkon/MERN-boilerplate.git"
@@ -12,15 +12,18 @@
   "scripts": {
     "start": "node server",
     "startDev": "nodemon server",
-    "start:webpack": "webpack -p --progress --profile --colors && node server"
+    "start:webpack": "webpack -p --progress --profile --colors && node server",
+    "startG": "nodemon --exec babel-node server.js"
   },
   "engines": {
     "node": ">=6"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.42",
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/preset-react": "^7.0.0-beta.42",
+    "apollo-boost": "^0.4.9",
+    "apollo-server-express": "^2.19.2",
     "autoprefixer": "^8.2.0",
     "axios": "^0.21.0",
     "babel-loader": "^8.0.0-beta.2",
@@ -33,6 +36,7 @@
     "express-graphql": "^0.12.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "graphql": "^15.4.0",
+    "graphql-tag": "^2.11.0",
     "html-webpack-plugin": "^3.1.0",
     "jquery": "^3.5.1",
     "mongoose": "^5.0.11",
@@ -42,6 +46,8 @@
     "popper.js": "^1.16.1",
     "postcss-loader": "^2.1.3",
     "react": "^16.2.0",
+    "react-apollo": "^3.1.5",
+    "react-boost": "^1.1.0",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.0.0",

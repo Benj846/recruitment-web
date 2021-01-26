@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { ApolloProvider, Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import ApolloClient from 'apollo-boost';
 import '../../styles/MainComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
@@ -21,6 +24,9 @@ import squre5 from './images/squre5.png';
 import logo_samsung from './images/logo_samsung.png';
 import icon_bookmark from './images/icon_bookmark.png';
 
+const client = new ApolloClient({
+  uri: 'http://localhost:3333/graphql'
+});
 function MainComponent(props) {
   const BANNER_BUTTON = 1;
   const AD_BUTTON = 2;
@@ -29,6 +35,15 @@ function MainComponent(props) {
 
   const [monthNum, setmonthNum] = useState(1);
   const [weekNum, setweekNum] = useState(1);
+  //prettier-ignore
+  const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+              11,12,13,14,15,16,17,18,19,20,
+              21,22,23,24,25,26,27,28,29,30,
+              31,32,33,34,35,36,37,38,39,40,
+              41,42,43,44,45,46,47,48,49,50,
+              51,52,53,54,55,56,57,58,59,60,
+              61,62,63,64,65,66,67,68,69,70,
+              71,72,73,74,75,76,77];
 
   const images = [
     {
@@ -99,7 +114,17 @@ function MainComponent(props) {
 
       case 3:
         console.log('3');
-
+        const postslists = id.map((id) => (
+          <div key={id.toString()}>
+            <img src={icon_bookmark} alt="Icon_bookmark" className="bookmark" />
+            <span>15:00</span>
+            <img src={logo_samsung} alt="img" className="logo" />
+            <p>
+              <span className="calender-disp-span">삼성전자</span>
+              <span>2020년 보험 영업</span>
+            </p>
+          </div>
+        ));
         return (
           <div className="calender-container">
             <div className="calender-content-date">
@@ -119,827 +144,7 @@ function MainComponent(props) {
                 right
               </button>
             </div>
-            <div className="calender-disp">
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-              <div>
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span>15:00</span>
-                <img src={logo_samsung} alt="img" className="logo" />
-                <p>
-                  <span className="calender-disp-span">삼성전자</span>
-                  <span>2020년 보험 영업</span>
-                </p>
-              </div>
-            </div>
+            <div className="calender-disp">{postslists}</div>
             <div className="ad-container"></div>
           </div>
         );
@@ -1049,185 +254,79 @@ export default MainComponent;
 const JobTree = () => {
   const [selected, setSelected] = useState(false);
   const [selected3, setSelected3] = useState(false);
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const appendRef = useRef(null);
+
+  const addFuntion = () => {
+    return appendRef.current.append();
+  };
+  // const buttonItems = numbers.map((number) => (
+  //   <ApolloProvider client={client} key={number.toString()}>
+  //     <Query
+  //       query={gql`
+  //         {
+  //           getCommonWork(id: ID!) {
+  //             ID
+  //             VAL
+  //           }
+  //         }
+  //       `}
+  //     >
+  //       {({ loading, error, data }) => {
+  //         if (loading) return <p>Loading</p>;
+  //         if (error) return <p>error ㅠㅠ</p>;
+  //         return data.getCommonWork.map(({ ID, VAL }) => (
+  //           <button
+  //             className="lv1"
+  //             onClick={() => {
+  //               setSelected(!selected);
+  //               setSelected3(false);
+  //               console.log("i'm level 1");
+  //             }}
+  //           >
+  //             {VAL}
+  //           </button>
+  //         ));
+  //       }}
+  //     </Query>
+  //   </ApolloProvider>
+  // ));
+  const buttonItems = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv1"
+      disabled={!selected}
+      onClick={() => setSelected3(!selected3)}
+    >
+      lv1.선택직무
+    </button>
+  ));
+  const button2Items = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv2"
+      disabled={!selected}
+      onClick={() => setSelected3(!selected3)}
+    >
+      lv2.선택직무
+    </button>
+  ));
+  const button3Items = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv1"
+      disabled={!selected3}
+      onClick={addFuntion}
+    >
+      lv3.선택직무
+    </button>
+  ));
   return (
     <div className="ad-container">
-      <div className="button-container">
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무1
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무2
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무3
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-      </div>
-      <div className="button-container">
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-      </div>
-      <div className="button-container">
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv1" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-      </div>
+      <div className="button-container">{buttonItems}</div>
+      <div className="button-container">{button2Items}</div>
+      <div className="button-container">{button3Items}</div>
+      <div ref={appendRef} className="ad-content-append"></div>
     </div>
   );
 };
