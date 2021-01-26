@@ -4,8 +4,12 @@ import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
 import squre1 from '../Main/images/squre1.png';
-import logo_kakao from './imgaes/logo_kakao@2x.png';
-import icon from './imgaes/icon_heart_active_guide.png';
+import logo_kakao from './images/logo_kakao@2x.png';
+import icon_heart from './images/icon_heart.png';
+import icon_heart_active from './images/icon_heart_active.png';
+import icon_bmk from './images/icon_bmk.png';
+import icon_bmk_active from './images/icon_bmk_active.png';
+
 import { DirectiveLocation } from 'graphql';
 function RecruitmentComponent(props) {
   const [btn, setbtn] = useState(false);
@@ -90,13 +94,13 @@ function RecruitmentComponent(props) {
           <div className="recruit-title">
             <span className="title">인기 채용 공고</span>
             <button
-              className="btn-power active"
+              className={`btn-power ${generalBtn ? 'active' : null}`}
               onClick={() => setgeneralBtn(true)}
             >
               파워공고
             </button>
             <button
-              className="btn-common active"
+              className={`btn-common ${generalBtn ? null : 'active'}`}
               onClick={() => setgeneralBtn(false)}
             >
               일반공고
@@ -214,46 +218,68 @@ const JobTree = () => {
 
 // Post component
 const Post = (props) => {
+  const [pinCorp, setpinCorp] = useState(false);
+  const [pinBmk, setpinBmk] = useState(false);
+
   return (
     <div className="general-container">
       <div className="general-content">
         <div className="d-day">
           <span>D-15</span>
         </div>
-        <div className="fav-btn">
-          <div>
-            <span>관심기업</span>
-            <img src={icon} alt="icon_heart_active_guide" />
-          </div>
+        <div
+          className={`fav-btn ${pinCorp ? 'active' : null}`}
+          onClick={() => {
+            setpinCorp(!pinCorp);
+          }}
+        >
+          <span className={`fav-txt ${pinCorp ? 'active' : null}`}>
+            관심기업
+          </span>
+          <img
+            className="fav-ico"
+            src={pinCorp ? icon_heart_active : icon_heart}
+            alt="icon heart"
+          />
         </div>
-        <div className="company-name">(주)카카오커머스</div>
-        <div className="date">2020.05.05 16:00</div>
+        <div className="desc">
+          <span className="company-name">(주)카카오커머스</span>
+          <span className="date">2020.05.05 16:00</span>
+        </div>
       </div>
-      <div className="vertical-line"></div>
       <div className="logo-container">
         <img className="company-logo" src={logo_kakao} alt="logo_kakao" />
       </div>
       <div className="detail-container">
         <div className="wrapper">
           <div className="position-name">[카카오커머스] 서비스 직군 모집</div>
-          <div className="bookmark">
-            <div>
-              <span>관심기업</span>
-              <img src={icon} alt="icon_heart_active_guide" />
-            </div>
+          <div
+            className={`bookmark ${pinBmk ? 'active' : null}`}
+            onClick={() => {
+              setpinBmk(!pinBmk);
+            }}
+          >
+            <span className={`bmk-txt ${pinBmk ? 'active' : null}`}>
+              관심공고
+            </span>
+            <img
+              className="bmk-ico"
+              src={pinBmk ? icon_bmk_active : icon_bmk}
+              alt="icon bookmark"
+            />
           </div>
         </div>
         <div className="details">
-          <span>경기 성남시 </span>
-          <span className="margin-only">정규직, 계약직 </span>
-          <span className="margin-only">학력무관 </span>
-          <span className="margin-only">경력2년 이상 </span>
+          <span className="txt location">경기 성남시</span>
+          <span className="txt position">정규직, 계약직</span>
+          <span className="txt greade">학력무관</span>
+          <span className="txt career">경력2년 이상</span>
         </div>
         <div className="details-second">
-          <span>#라이브커머스기획</span>
-          <span>#상품기획및소싱</span>
-          <span>#카테고리영역확대</span>
-          <span>#쇼핑몰MD</span>
+          <span className="txt">#라이브커머스기획</span>
+          <span className="txt">#상품기획및소싱</span>
+          <span className="txt">#카테고리영역확대</span>
+          <span className="txt">#쇼핑몰MD</span>
         </div>
       </div>
     </div>

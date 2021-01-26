@@ -52,6 +52,7 @@
   width: 80px;
   height: 32px;
   margin-right: 8px;
+  color: #707070;
   background: #fff 0% 0% no-repeat padding-box;
   border-radius: 32px;
   font: normal normal 700 16px/24px Noto Sans KR;
@@ -155,42 +156,34 @@
   height: 40px;
   background: #fff;
 }
-
-.added {
-  width: 929px;
-  height: 40px;
+.recruit-content .general-container {
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 0;
+  border-left: 1px solid #ddd;
 }
-.added > span {
-  margin: 10px 48px 11px 16px;
-  width: 24px;
-  height: 19px;
-  text-align: left;
-  font: normal normal bold 13px/19px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #666666;
-  opacity: 1;
+.recruit-content .general-container:last-child {
+  border: 1px solid #ddd;
 }
 .general-container {
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   width: 1060px;
   height: 128px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
 }
 .general-content {
   display: flex;
-  width: 215px;
   flex-flow: wrap row;
+  width: 215px;
+  padding: 0 16px 0 32px;
+  margin: 20px 0;
+  justify-content: space-between;
+  border-right: 1px solid #dddddd;
 }
-.general-content > .d-day {
+.general-content .d-day {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 32px;
-  margin-top: 20px;
   width: 48px;
   height: 24px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -198,7 +191,7 @@
   border-radius: 5px;
   opacity: 1;
 }
-.d-day > span {
+.general-content .d-day > span {
   transform: translate(0, -1px);
   color: var(--unnamed-color-009999);
   text-align: center;
@@ -207,134 +200,118 @@
   color: #009999;
   opacity: 1;
 }
-
-.general-content > .fav-btn {
+.general-content .fav-btn {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-left: 39px;
+  justify-content: space-between;
+  align-items: center;
   width: 80px;
   height: 24px;
-  background: #ffffff0d 0% 0% no-repeat padding-box;
+  padding: 0 4px 0 9px;
   border: 1px solid #dddddd;
   border-radius: 24px;
-  opacity: 1;
+  cursor: pointer;
 }
-.general-content > .fav-btn > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.general-content .fav-btn.active {
+  border: 1px solid #333;
 }
-
-.general-content > .fav-btn > div > span {
-  width: 41px;
-  line-height: 24px;
-  color: var(--unnamed-color-999999);
-  text-align: left;
-  font-size: 11px;
-  letter-spacing: 0px;
+.general-content .fav-btn .fav-txt {
+  font: normal normal 400 11px/24px Noto Sans KR;
   color: #999999;
-  opacity: 1;
+  transform: translate(0, -1px);
 }
-.general-container .company-name {
-  margin-left: 32px;
-  width: 116px;
+.general-content .fav-btn .fav-txt.active {
+  color: #333;
+}
+.general-content .fav-btn .fav-ico {
+  display: block;
+  width: 24px;
   height: 24px;
-  text-align: left;
-  font-weight: bold;
-  font-size: 16px;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
 }
-.general-content .date {
-  margin-left: 32px;
-  width: 110px;
-  height: 20px;
-  color: var(--unnamed-color-999999);
-  text-align: left;
-  font: normal normal normal 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
-}
-.vertical-line {
-  margin-top: 13.5px;
-  width: 0px;
-  height: 101px;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-.logo-container {
+.general-content .desc {
   display: flex;
-  justify-content: center;
+  flex-flow: wrap column;
+  margin-top: 15px;
+}
+.general-content .desc .company-name {
+  font: normal normal 700 16px/24px Noto Sans KR;
+  color: #333;
+}
+.general-content .desc .date {
+  font: normal normal 400 14px/20px Noto Sans KR;
+  color: #999;
+}
+.general-container .logo-container {
+  display: flex;
   align-items: center;
-  border-right: 1px solid #dddddd;
+  width: 124px;
+  padding: 0 32px;
+  border-right: 1px solid #ddd;
 }
-.logo-container .company-logo {
-  width: 60px;
-  height: 17px;
-  margin-left: 32px;
-  margin-right: 32px;
-}
-.general-container .position-name {
-  width: 214px;
-  height: 24px;
-  color: var(--unnamed-color-333333);
-  text-align: left;
-  font-family: 'Noto Sans KR', sans-serif;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
+.general-container .logo-container .company-logo {
+  width: 100%;
 }
 .general-container .detail-container {
-  margin-left: 32px;
+  margin: 20px 0;
+  padding: 0 24px 0 32px;
+  flex: 1 1 auto;
 }
-
-.general-container .details > span {
-  text-align: left;
-  font: normal normal normal 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #666666;
-  opacity: 1;
+.general-container .detail-container .wrapper {
+  margin-bottom: 4px;
 }
-.general-container .details .margin-only {
-  margin-left: 27px;
+.general-container .detail-container .wrapper .position-name {
+  font: normal normal 500 16px/24px Noto Sans KR;
+  color: #333;
 }
-.general-container .details-second {
-  text-align: left;
-  font: normal normal 300 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #666666;
-  opacity: 1;
-}
-
-.detail-container .wrapper .bookmark > div {
+.general-container .detail-container .wrapper .bookmark {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  margin-left: 39px;
   width: 80px;
   height: 24px;
-  background: #ffffff0d 0% 0% no-repeat padding-box;
+  padding: 0 4px 0 9px;
   border: 1px solid #dddddd;
   border-radius: 24px;
-  opacity: 1;
+  cursor: pointer;
 }
-.detail-container > .wrapper .bookmark > div > span {
-  width: 41px;
-  line-height: 24px;
-  text-align: left;
-  font-size: 11px;
-  letter-spacing: 0px;
+.general-container .detail-container .wrapper .bookmark.active {
+  border: 1px solid #333;
+}
+.general-container .detail-container .wrapper .bookmark .bmk-txt {
+  font: normal normal 400 11px/24px Noto Sans KR;
   color: #999999;
-  opacity: 1;
+  transform: translate(0, -1px);
 }
-
-.detail-container .wrapper {
-  display: flex;
+.general-container .detail-container .wrapper .bookmark .bmk-txt.active {
+  color: #333;
 }
-.wrapper .position-name {
-  margin-top: 24px;
+.general-container .detail-container .wrapper .bookmark .bmk-ico {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+.general-container .detail-container .details {
+  margin-bottom: 12px;
+}
+.general-container .detail-container .details .txt {
+  font: normal normal 400 14px/20px Noto Sans KR;
+  color: #666666;
+}
+.general-container .detail-container .details .txt:after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background: #ddd;
+  margin: 0 8px;
+}
+.general-container .detail-container .details .txt:last-child:after {
+  content: '';
+  display: none;
+}
+.general-container .detail-container .details-second {
+}
+.general-container .detail-container .details-second .txt {
+  font: normal normal 300 14px/20px Noto Sans KR;
+  color: #666666;
+  margin-right: 8px;
 }
