@@ -386,9 +386,10 @@
   display: flex;
   flex-flow: wrap row;
   width: 1060px;
+  height: 420px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
 }
 .main-btn-cont .main-btn-wrap {
   width: 250px;

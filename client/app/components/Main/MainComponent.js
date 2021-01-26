@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { ApolloProvider, Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import ApolloClient from 'apollo-boost';
 import '../../styles/MainComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
@@ -24,33 +27,26 @@ import icon_profile from './images/icon_profile@2x.png';
 import btn_prev_active from './images/btn_prev_active.png';
 import btn_next_active from './images/btn_next_active.png';
 
+const client = new ApolloClient({
+  uri: 'http://localhost:3333/graphql'
+});
 function MainComponent(props) {
   const BANNER_BUTTON = 1;
   const AD_BUTTON = 2;
   const RECRUIT_BUTTON = 3;
-  const [btn, setbtn] = useState(RECRUIT_BUTTON);
+  const [btn, setbtn] = useState(BANNER_BUTTON);
 
   const [monthNum, setmonthNum] = useState(1);
   const [weekNum, setweekNum] = useState(1);
-
-  const calenderItems = [];
-  for (let i = 0; i < 70; i++) {
-    calenderItems.push(
-      <div className="calender-item" key={i}>
-        <div className="img-wrap">
-          <div className="img-inner">
-            <img src={icon_bookmark} alt="Icon_bookmark" className="bookmark" />
-            <span className="closing-time">15:00</span>
-          </div>
-          <img src={logo_samsung} alt="img" className="logo" />
-        </div>
-        <div className="txt-wrap">
-          <span className="corp-name">삼성전자 주식회사</span>
-          <span className="txt">2020년 보험 영업</span>
-        </div>
-      </div>
-    );
-  }
+  //prettier-ignore
+  const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+              11,12,13,14,15,16,17,18,19,20,
+              21,22,23,24,25,26,27,28,29,30,
+              31,32,33,34,35,36,37,38,39,40,
+              41,42,43,44,45,46,47,48,49,50,
+              51,52,53,54,55,56,57,58,59,60,
+              61,62,63,64,65,66,67,68,69,70,
+              71,72,73,74,75,76,77];
 
   const images = [
     {
@@ -70,7 +66,7 @@ function MainComponent(props) {
   const switchFuntion = (btn) => {
     switch (btn) {
       case 1:
-        console.log('1');
+        //console.log('1');
         return (
           <div className="banner-container">
             <div className="banner-lg-cont">
@@ -131,7 +127,25 @@ function MainComponent(props) {
 
       case 3:
         console.log('3');
-
+        const postslists = id.map((id) => (
+          <div className="calender-item" key={id.toString()}>
+            <div className="img-wrap">
+              <div className="img-inner">
+                <img
+                  src={icon_bookmark}
+                  alt="Icon_bookmark"
+                  className="bookmark"
+                />
+                <span className="closing-time">15:00</span>
+              </div>
+              <img src={logo_samsung} alt="img" className="logo" />
+            </div>
+            <div className="txt-wrap">
+              <span className="corp-name">삼성전자 주식회사</span>
+              <span className="txt">2020년 보험 영업</span>
+            </div>
+          </div>
+        ));
         return (
           <div className="calender-container">
             <div className="calender-content-date">
@@ -165,7 +179,7 @@ function MainComponent(props) {
               </button>
             </div>
             <div className="calender-inner">
-              <div className="calender-disp">{calenderItems}</div>
+              <div className="calender-disp">{postslists}</div>
             </div>
           </div>
         );
@@ -307,195 +321,79 @@ export default MainComponent;
 const JobTree = () => {
   const [selected, setSelected] = useState(false);
   const [selected3, setSelected3] = useState(false);
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const appendRef = useRef(null);
+
+  const addFuntion = () => {
+    return appendRef.current.append();
+  };
+  // const buttonItems = numbers.map((number) => (
+  //   <ApolloProvider client={client} key={number.toString()}>
+  //     <Query
+  //       query={gql`
+  //         {
+  //           getCommonWork(id: ID!) {
+  //             ID
+  //             VAL
+  //           }
+  //         }
+  //       `}
+  //     >
+  //       {({ loading, error, data }) => {
+  //         if (loading) return <p>Loading</p>;
+  //         if (error) return <p>error ㅠㅠ</p>;
+  //         return data.getCommonWork.map(({ ID, VAL }) => (
+  //           <button
+  //             className="lv1"
+  //             onClick={() => {
+  //               setSelected(!selected);
+  //               setSelected3(false);
+  //               console.log("i'm level 1");
+  //             }}
+  //           >
+  //             {VAL}
+  //           </button>
+  //         ));
+  //       }}
+  //     </Query>
+  //   </ApolloProvider>
+  // ));
+  const buttonItems = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv1"
+      disabled={!selected}
+      onClick={() => setSelected3(!selected3)}
+    >
+      lv1.선택직무
+    </button>
+  ));
+  const button2Items = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv2"
+      disabled={!selected}
+      onClick={() => setSelected3(!selected3)}
+    >
+      lv2.선택직무
+    </button>
+  ));
+  const button3Items = numbers.map((number) => (
+    <button
+      key={number.toString()}
+      className="lv1"
+      disabled={!selected3}
+      onClick={addFuntion}
+    >
+      lv3.선택직무
+    </button>
+  ));
   return (
     <div className="main-btn-cont">
-      <div className="main-btn-wrap btn-wrap-01 active">
-        <button
-          className="lv1 test-01"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-            let btnWrap = document.querySelector('.main-btn-wrap.btn-wrap-02');
-            btnWrap.classList.add('active');
-            let btnEl = document.querySelector('.test-01');
-            btnEl.classList.add('active');
-          }}
-        >
-          lv1.선택직무1
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무2
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무3
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-        <button
-          className="lv1"
-          onClick={() => {
-            setSelected(!selected);
-            setSelected3(false);
-          }}
-        >
-          lv1.선택직무
-        </button>
-      </div>
-      <div className="main-btn-wrap btn-wrap-02">
-        <button
-          className="lv2 test-02"
-          disabled={!selected}
-          onClick={() => {
-            setSelected3(!selected3);
-            let btnWrap = document.querySelector('.main-btn-wrap.btn-wrap-03');
-            btnWrap.classList.add('active');
-            let btnEl = document.querySelector('.test-02');
-            btnEl.classList.add('active');
-          }}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-        <button
-          className="lv2"
-          disabled={!selected}
-          onClick={() => setSelected3(!selected3)}
-        >
-          lv2.선택직무
-        </button>
-      </div>
-      <div className="main-btn-wrap btn-wrap-03">
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-        <button className="lv3" disabled={!selected3}>
-          lv3.선택직무
-        </button>
-      </div>
+      <div className="main-btn-wrap">{buttonItems}</div>
+      <div className="main-btn-wrap">{button2Items}</div>
+      <div className="main-btn-wrap">{button3Items}</div>
+      <div ref={appendRef} className="ad-content-append"></div>
     </div>
   );
 };

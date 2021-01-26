@@ -89,7 +89,6 @@ function BasicInfoComponent() {
             // type="date"
             name="date"
             value={user.birth}
-            disabled="disabled"
           ></input>
           <span className="span-phonenum">전화번호</span>
           <input

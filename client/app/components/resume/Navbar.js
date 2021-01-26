@@ -5,14 +5,22 @@ import Resume from './Resume';
 import '../../styles/Navbar';
 import MainComponent from '../Main/MainComponent';
 import RecruitmentComponent from '../recruitment/RecruitmentComponent';
-import Career from '../career/Career';
+import Career from '../Career/Career';
 import Calendar from '../calendar/Calendar';
+//import Test from '../Test/test';
 import SignInComponent from '../member/SignInComponent';
+import MyPageComponent from '../member/MyPageComponent';
 
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
   const toggleSigninPopup = () => {
-    setShowPopup(!showPopup);
+    const clicked = !showPopup;
+    if (clicked === true) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+    setShowPopup(clicked);
   };
 
   return (
@@ -63,6 +71,7 @@ function Navbar() {
         <Route exact path="/career" component={Career} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/resume" component={Resume} />
+        <Route exact path="/mypage" component={MyPageComponent} />
       </Switch>
     </div>
   );

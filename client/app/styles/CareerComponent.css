@@ -1,40 +1,17 @@
-.career-info {
-  margin: 80px 100px 0px 100px;
+#career-info {
+  margin: 80px 0 0 0;
 }
-/* .career-content .career {
-    --position: absolute;
-    border: 1px solid black;
-    --width:90vw;
-    --height:90vh;
-    --margin: 0 auto;
-} */
 
 .body-detail {
   margin: 0px 0px 35px 0px;
 }
 
-.career-info .title-container {
+#career-info .title-container {
   display: flex;
   justify-content: space-between;
 }
 
-/* .exam-info .title {
-  width: 150px;
-  height: 24px;
-  --margin: 4px;
-
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 20px/24px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
-} */
-
-.career-info .add-items {
+#career-info .add-items {
   cursor: pointer;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) 15px/19px
@@ -104,7 +81,7 @@
 
 .employ-type .employ-period {
   border: 1px solid var(--unnamed-color-dddddd);
-  background: #e0e0e0 0% 0% no-repeat padding-box;
+  --background: #e0e0e0 0% 0% no-repeat padding-box;
   border: 1px solid #bebebe;
   opacity: 1;
   width: 160px;
@@ -124,7 +101,7 @@
 
 .employ-type .employ-period-input {
   border: 1px solid var(--unnamed-color-dddddd);
-  background: #e0e0e0 0% 0% no-repeat padding-box;
+  --background: #e0e0e0 0% 0% no-repeat padding-box;
   border: 1px solid #bebebe;
   opacity: 1;
   width: 160px;
@@ -144,7 +121,8 @@
   justify-content: flex-end;
 }
 
-.job-content {
+.job-container > .job-content {
+  position: relative;
   display: flex;
   align-items: center;
   --border: 1px solid blue;
@@ -160,7 +138,7 @@
   padding: 12px 36px 12px 0px;
 }
 
-.job-title {
+.job-content > .job-title {
   margin: 0px 0px 0px 23px;
   width: 90px;
   height: 64px;
@@ -176,6 +154,151 @@
   font: normal normal medium 13px/16px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #999999;
+  opacity: 1;
+}
+
+.job-content > .add-jobs {
+  width: 669px;
+  height: 40px;
+  background: none;
+  border: 1px solid #009999;
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--버튼-색상);
+  text-align: center;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #009999;
+}
+
+.job-content > .add-jobs:focus {
+  outline: none;
+}
+
+.job-container > .job-content > .selected-job-container {
+  position: absolute;
+  width: 643px;
+  height: 360px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  left: 109px;
+  top: 51px;
+  opacity: 1;
+}
+
+.job-container > .job-content > .selected-job-container > .level-columns {
+  display: flex;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-one,
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-two {
+  width: 176px;
+  height: 319px;
+  border-right: 1px solid #dddddd;
+  overflow-y: auto;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-three {
+  width: 289px;
+  height: 319px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-one
+  > div,
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-two
+  > div {
+  margin: 15px 10px 10px 10px;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > .level-three
+  > div {
+  --width: 125px;
+
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .level-columns
+  > div
+  > div {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font: normal normal medium 12px/15px Apple SD Gothic Neo;
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  --border: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .selected-items-container {
+  display: flex;
+  align-items: center;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .selected-items-container
+  > .selected-items-content {
+  width: 540px;
+  height: 40px;
+  border-top: 1px solid #dddddd;
+}
+
+.job-container
+  > .job-content
+  > .selected-job-container
+  > .selected-items-container
+  > .select-completed-btn {
+  width: 129px;
+  height: 40px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border: 1px solid #009999;
+  text-align: center;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #ffffff;
   opacity: 1;
 }
 
@@ -218,7 +341,7 @@
   height: 40px;
 } */
 
-.career-info .title {
+#career-info > .title-container > .title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
     var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
     var(--unnamed-font-family-apple-sd-gothic-neo);
@@ -230,7 +353,7 @@
   opacity: 1;
 }
 
-.employ-type .basic-single {
+#career-info > .body-detail > .employ-type > .basic-single {
   width: 340px;
   height: 40px;
   margin-right: 20px;
@@ -241,13 +364,13 @@
   margin-right: 20px;
 }
 
-.career-info .title-container {
+#career-info .title-container {
   display: flex;
   justify-content: space-between;
 }
 
-.career-info .division-line {
-  width: 880px;
+#career-info .division-line {
+  width: 100%;
   margin-left: 0px;
   border: 2px solid var(--unnamed-color-707070);
   border: 2px solid #707070;

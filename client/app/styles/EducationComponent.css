@@ -1,5 +1,5 @@
 .education-info {
-  margin: 80px 100px 0px 100px;
+  margin: 80px 0 0 0;
 }
 
 .education-info .education-title {
@@ -330,7 +330,7 @@ option:nth-of-type(1) {
 } */
 
 .education-info .division-line {
-  width: 880px;
+  width: 100%;
   margin-left: 0px;
   border: 2px solid var(--unnamed-color-707070);
   border: 2px solid #707070;
