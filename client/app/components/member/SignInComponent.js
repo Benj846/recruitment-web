@@ -380,13 +380,14 @@ function SignupWithEmail({ closePopup, member }) {
   const togglePopup = () => {
     setShowSignup(!showSignup);
   };
+  const emailValidateRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+  //const emailValidateRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{3}$/i;
 
   const [email, setEmail] = useState('');
-  //const emailValidateRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{3}$/i;
-  const emailValidateRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
   const [isCorrectEmailForm, setCorrectEmailForm] = useState(true);
   const inputEmailRef = useRef();
   const submitEmailRef = useRef();
+  const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(true);
 
   const validateEmailForm = (e) => {
     const value = e.target.value;
@@ -403,6 +404,7 @@ function SignupWithEmail({ closePopup, member }) {
       inputEmailRef.current.style.border = '1px solid #CCCCCC';
     } else if (flag === true) {
       inputEmailRef.current.style.border = '1px solid #009999';
+      setIsNextBtnDisabled(false);
       // axios
       //   .get('/member/count')
       //   .then((res) => {
@@ -411,16 +413,16 @@ function SignupWithEmail({ closePopup, member }) {
       //   .catch((err) => {
       //     console.log(error, err);
       //   });
-      axios
-        .post('/member/count', {
-          email: { email }
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(error, err);
-        });
+      //   axios
+      //     .post('/member/count', {
+      //       email: { email }
+      //     })
+      //     .then((res) => {
+      //       console.log(res);
+      //     })
+      //     .catch((err) => {
+      //       console.log(error, err);
+      //     });
     }
   };
 
@@ -460,7 +462,7 @@ function SignupWithEmail({ closePopup, member }) {
           <button
             className="submit-email"
             onClick={togglePopup}
-            disabled={true}
+            disabled={isNextBtnDisabled}
             ref={submitEmailRef}
           >
             다음으로 이동
