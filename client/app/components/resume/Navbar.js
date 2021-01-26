@@ -14,7 +14,13 @@ import MyPageComponent from '../member/MyPageComponent';
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
   const toggleSigninPopup = () => {
-    setShowPopup(!showPopup);
+    const clicked = !showPopup;
+    if (clicked === true) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+    setShowPopup(clicked);
   };
 
   return (

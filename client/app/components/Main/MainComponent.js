@@ -62,7 +62,7 @@ function MainComponent(props) {
   const switchFuntion = (btn) => {
     switch (btn) {
       case 1:
-        console.log('1');
+        //console.log('1');
         return (
           <div className="banner-container">
             <div className="banner-content1">
