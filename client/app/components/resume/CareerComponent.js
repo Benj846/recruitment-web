@@ -85,13 +85,24 @@ function CareerListComponent({ ids, onRemove }) {
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
 
-  const [selectJob, setSelectJob] = useState(false);
+  const [isSelectJob, setSelectJob] = useState(false);
   const toggleSelectJob = () => {
-    const clicked = !selectJob;
+    const clicked = !isSelectJob;
     setSelectJob(clicked);
     if (clicked === false) {
       setIsLevelOneClicked(false);
       setIsLevelTwoClicked(false);
+      setSelectedJob([]);
+    }
+  };
+
+  const completeJobSelection = () => {
+    const clicked = !isSelectJob;
+    setSelectJob(clicked);
+    if (clicked === false) {
+      setIsLevelOneClicked(false);
+      setIsLevelTwoClicked(false);
+      //setSelectedJob([]);
     }
   };
 
@@ -228,136 +239,186 @@ function CareerListComponent({ ids, onRemove }) {
   const [levelThree, setLevelThree] = useState([
     {
       id: 1,
-      title: '전기/전자회로'
+      title: '전기/전자회로',
+      clicked: false
     },
     {
       id: 2,
-      title: '하드웨어설계'
+      title: '하드웨어설계',
+      clicked: false
     },
     {
       id: 3,
-      title: 'PCB'
+      title: 'PCB',
+      clicked: false
     },
     {
       id: 4,
-      title: '소프트웨어설계'
+      title: '소프트웨어설계',
+      clicked: false
     },
     {
       id: 5,
-      title: '설계엔지니어'
+      title: '설계엔지니어',
+      clicked: false
     },
     {
       id: 6,
-      title: '연구원(전기전자)'
+      title: '연구원(전기전자)',
+      clicked: false
     },
     {
       id: 7,
-      title: 'R&D'
+      title: 'R&D',
+      clicked: false
     },
     {
       id: 8,
-      title: '시스템'
+      title: '시스템',
+      clicked: false
     },
     {
       id: 9,
-      title: '신뢰성시험'
+      title: '신뢰성시험',
+      clicked: false
     },
     {
       id: 10,
-      title: '펌웨어'
+      title: '펌웨어',
+      clicked: false
     },
     {
       id: 11,
-      title: '전기설비'
+      title: '전기설비',
+      clicked: false
     },
     {
       id: 12,
-      title: '유지보수'
+      title: '유지보수',
+      clicked: false
     },
     {
       id: 13,
-      title: '연구개발비'
+      title: '연구개발비',
+      clicked: false
     },
     {
       id: 14,
-      title: '전자부품 관리/전자부품 관리'
+      title: '전자부품 관리/전자부품 관리',
+      clicked: false
     },
     {
       id: 15,
-      title: '전자부품 관리'
+      title: '난너를사랑해',
+      clicked: false
     },
     {
       id: 16,
-      title: '전자부품 관리'
+      title: 'I LOVE YOU GIRL',
+      clicked: false
     },
     {
       id: 17,
-      title: '전자부품 관리'
+      title: '이세상은너뿐이야',
+      clicked: false
     },
     {
       id: 18,
-      title: '전자부품 관리'
+      title: '소리쳐 부르지만',
+      clicked: false
     },
     {
       id: 19,
-      title: '전자부품 관리'
+      title: '저 대답 없는',
+      clicked: false
     },
     {
       id: 20,
-      title: '전자부품 관리'
+      title: '노을만 붉게 타는데',
+      clicked: false
     },
     {
       id: 21,
-      title: '전자부품 관리'
+      title: '아름다웠던',
+      clicked: false
     },
     {
       id: 22,
-      title: '전자부품 관리'
+      title: '그대 모습을',
+      clicked: false
     },
     {
       id: 23,
-      title: '전자부품 관리'
+      title: '이젠 볼 수 없겠지만',
+      clicked: false
     },
     {
       id: 24,
-      title: '생산라인 관리'
+      title: '먼 산 언저리마다',
+      clicked: false
     },
     {
       id: 25,
-      title: '생산라인 관리'
+      title: '너를 남기고',
+      clicked: false
     },
     {
       id: 26,
-      title: '생산라인 관리'
+      title: '돌아서는 내게',
+      clicked: false
     },
     {
       id: 27,
-      title: '생산라인 관리'
+      title: '생산라인 관리',
+      clicked: false
     },
     {
       id: 28,
-      title: '생산라인 관리'
+      title: '시간은 그만',
+      clicked: false
     },
     {
       id: 29,
-      title: '생산라인 관리'
+      title: '놓아주라는데',
+      clicked: false
     },
     {
       id: 30,
-      title: '생산라인 관리'
+      title: '난 왜 너 닮은 목소리마저',
+      clicked: false
     },
     {
       id: 31,
-      title: '생산라인 관리'
+      title: '가슴에 품고도',
+      clicked: false
     },
     {
       id: 32,
-      title: '전장 관리'
+      title: '전장 관리',
+      clicked: false
     }
   ]);
 
-  const setJobs = (title) => {
-    console.log(title);
+  const jobId = useRef(0);
+  const [selectedJob, setSelectedJob] = useState([]);
+  const setJobs = (item) => {
+    const size = selectedJob.length;
+    if (size < 3) {
+      const job = {
+        id: jobId.current,
+        title: item.title
+      };
+      setSelectedJob([...selectedJob, job]);
+      jobId.current += 1;
+    } else if (size === 3) {
+      alert('최대 3개까지 선택할 수 있습니다.');
+    }
+  };
+
+  const onToggleJobSelected = (item) => {};
+
+  const onRemoveSelectedJob = (id) => {
+    setSelectedJob(selectedJob.filter((item) => id !== item.id));
   };
 
   return (
@@ -409,7 +470,7 @@ function CareerListComponent({ ids, onRemove }) {
                 직무 추가하기
               </button>
               {/* <MultiLevelSelect options={options} /> */}
-              {selectJob ? (
+              {isSelectJob ? (
                 <div className="selected-job-container">
                   <div className="level-columns">
                     <div className="level-one">
@@ -436,10 +497,7 @@ function CareerListComponent({ ids, onRemove }) {
                     <div className="level-three">
                       {isLevelTwoClicked
                         ? levelThree.map((item) => (
-                            <div
-                              key={item.id}
-                              onClick={() => setJobs(item.title)}
-                            >
+                            <div key={item.id} onClick={() => setJobs(item)}>
                               {item.title}
                             </div>
                           ))
@@ -447,8 +505,25 @@ function CareerListComponent({ ids, onRemove }) {
                     </div>
                   </div>
                   <div className="selected-items-container">
-                    <div className="selected-items-content"></div>
-                    <button className="select-completed-btn">선택완료</button>
+                    <div className="selected-items-content">
+                      {selectedJob.map((job) => (
+                        <div key={job.id}>
+                          <div>{job.title}</div>
+                          <div
+                            className="selected-job-close"
+                            onClick={() => onRemoveSelectedJob(job.id)}
+                          >
+                            X
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      className="select-completed-btn"
+                      onClick={completeJobSelection}
+                    >
+                      선택완료
+                    </button>
                   </div>
                 </div>
               ) : null}
