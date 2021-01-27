@@ -22,7 +22,8 @@ import squre3 from './images/squre3.jpg';
 import squre4 from './images/squre4.jpg';
 import squre5 from './images/squre5.jpg';
 import logo_samsung from './images/logo_samsung.png';
-import icon_bookmark from './images/icon_bookmark.png';
+import icon_bmk from './images/icon_bmk.png';
+import icon_bmk_active from './images/icon_bmk_active.png';
 import icon_profile from './images/icon_profile@2x.png';
 import btn_prev_active from './images/btn_prev_active.png';
 import btn_next_active from './images/btn_next_active.png';
@@ -135,25 +136,38 @@ function MainComponent(props) {
 
       case 3:
         console.log('3');
-        const postslists = id.map((id) => (
-          <div className="calender-item" key={id.toString()}>
-            <div className="img-wrap">
-              <div className="img-inner">
-                <img
-                  src={icon_bookmark}
-                  alt="Icon_bookmark"
-                  className="bookmark"
-                />
-                <span className="closing-time">15:00</span>
+        const PostsLists = () => {
+          const ImgComp = () => {
+            const [pinBmk, setPinBmk] = useState(false);
+            return (
+              <img
+                className="bmk-ico"
+                src={pinBmk ? icon_bmk_active : icon_bmk}
+                onClick={() => {
+                  setPinBmk(!pinBmk);
+                }}
+                alt="Icon_bookmark"
+              />
+            );
+          };
+          const item = id.map((id) => (
+            <div className="calender-item" key={id.toString()}>
+              <div className="img-wrap">
+                <div className="img-inner">
+                  <ImgComp />
+                  <span className="closing-time">15:00</span>
+                </div>
+                <img src={logo_samsung} alt="img" className="logo" />
               </div>
-              <img src={logo_samsung} alt="img" className="logo" />
+              <div className="txt-wrap">
+                <span className="corp-name">삼성전자 주식회사</span>
+                <span className="txt">2020년 보험 영업</span>
+              </div>
             </div>
-            <div className="txt-wrap">
-              <span className="corp-name">삼성전자 주식회사</span>
-              <span className="txt">2020년 보험 영업</span>
-            </div>
-          </div>
-        ));
+          ));
+          return item;
+        };
+
         return (
           <div className="calender-container">
             <div className="calender-content-date">
@@ -188,7 +202,9 @@ function MainComponent(props) {
             </div>
             <div className="calender-inner">
               <div className="list-day">{dayItems}</div>
-              <div className="calender-disp">{postslists}</div>
+              <div className="calender-disp">
+                <PostsLists />
+              </div>
               <div className="btn-more-wrap">
                 <button className="btn-more">+99</button>
                 <button className="btn-more">+99</button>
