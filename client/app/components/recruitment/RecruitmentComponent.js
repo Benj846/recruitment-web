@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import JobTreeComponent from './switchMenu/JobTreeComponent';
 import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
@@ -13,7 +14,7 @@ import icon_bmk_active from './images/icon_bmk_active.png';
 import { DirectiveLocation } from 'graphql';
 function RecruitmentComponent(props) {
   const [btn, setbtn] = useState(false);
-  const [toggle, settoggle] = useState(JOB);
+  const [toggle, settoggle] = useState(1);
   const [generalBtn, setgeneralBtn] = useState(true);
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
@@ -28,19 +29,19 @@ function RecruitmentComponent(props) {
   const switchfunction = () => {
     switch (toggle) {
       case JOB:
-        return <JobTree />;
+        return <JobTreeComponent />;
       case ADDRESS:
-        return <JobTree />;
+        return <JobTreeComponent />;
       case COMPANY:
-        return <JobTree />;
+        return <JobTreeComponent />;
       case FORM:
-        return <JobTree />;
+        return <JobTreeComponent />;
       case PERIOD:
-        return <JobTree />;
+        return <JobTreeComponent />;
       case EDUCATION:
-        return <JobTree />;
+        return <JobTreeComponent />;
       case TYPE:
-        return <JobTree />;
+        return <JobTreeComponent />;
       default:
         break;
     }
@@ -163,58 +164,6 @@ function RecruitmentComponent(props) {
   );
 }
 export default RecruitmentComponent;
-
-// JobTree component
-const JobTree = () => {
-  const [selected, setSelected] = useState(false);
-  const [selected3, setSelected3] = useState(false);
-  const [addState, setaddState] = useState(false);
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const appendRef = useRef(null);
-  const addFuntion = () => {
-    return appendRef.current.append();
-  };
-  const buttonItems = numbers.map((number) => (
-    <button
-      key={number.toString()}
-      className="lv1"
-      onClick={() => {
-        setSelected(!selected);
-        setSelected3(false);
-        console.log("i'm level 1");
-      }}
-    >
-      lv1.선택직무
-    </button>
-  ));
-  const button2Items = numbers.map((number) => (
-    <button
-      key={number.toString()}
-      className="lv2"
-      disabled={!selected}
-      onClick={() => setSelected3(!selected3)}
-    >
-      lv2.선택직무
-    </button>
-  ));
-
-  const addDescription = (e) => {
-    return (
-      <div className="added">
-        <span>직무</span>
-        <p>{console.log(e.target.innerText)}</p>
-      </div>
-    );
-  };
-  return (
-    <div className="ad-container">
-      <div className="button-container">{buttonItems}</div>
-      <div className="button-container">{button2Items}</div>
-      <div className="btn-last-cont">최종선택버튼</div>
-      <div ref={appendRef} className="ad-content-append"></div>
-    </div>
-  );
-};
 
 // Post component
 const Post = (props) => {

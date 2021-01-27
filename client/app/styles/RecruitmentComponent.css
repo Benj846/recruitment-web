@@ -128,34 +128,6 @@
 .search-popup .tab-content-input::placeholder {
   color: #999999;
 }
-.search-popup .ad-container {
-  display: flex;
-  flex-flow: wrap row;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-}
-.search-popup .ad-container .button-container {
-  display: flex;
-  flex-flow: wrap column;
-}
-.search-popup .ad-container .button-container button {
-  width: 266px;
-  height: 40px;
-  border: 0;
-  outline: none;
-  background: #fff;
-  font: normal normal 400 14px/20px Noto Sans KR;
-}
-.search-popup .ad-container .btn-last-cont {
-  flex: 1 1 auto;
-  background: #f9f9f9;
-}
-.search-popup .ad-container .ad-content-append {
-  width: 1058px;
-  height: 40px;
-  background: #fff;
-}
 .recruit-content .general-container {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;

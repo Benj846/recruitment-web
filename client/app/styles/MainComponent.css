@@ -451,6 +451,15 @@
   border-right: 1px solid #ccc;
   overflow: auto;
 }
+.main-btn-cont .main-btn-wrap::-webkit-scrollbar {
+  width: 3px;
+}
+.main-btn-cont .main-btn-wrap::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+.main-btn-cont .main-btn-wrap::-webkit-scrollbar-track {
+  background: #fff;
+}
 .main-btn-cont .main-btn-wrap button {
   display: block;
   width: 100%;
