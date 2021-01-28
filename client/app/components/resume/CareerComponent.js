@@ -31,47 +31,6 @@ function CareerComponent(props) {
 }
 
 function CareerListComponent({ ids, onRemove }) {
-  const options = [
-    {
-      value: '1',
-      label: '1',
-      options: [
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        },
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        },
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        }
-      ]
-    },
-    {
-      value: '1',
-      label: '1',
-      options: [
-        { value: '2', label: '2' },
-        { value: '2', label: '2' },
-        { value: '2', label: '2' }
-      ]
-    }
-  ];
   const colourOptions = [
     { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
     { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
@@ -577,7 +536,13 @@ function CareerListComponent({ ids, onRemove }) {
                 </div>
               ) : null}
               {isSelectDetailJob ? (
-                <div className="select-detail-job-container"></div>
+                <div className="select-detail-job-container">
+                  <div className="previous-selected-jobs">
+                    {printedJob.map((job) => (
+                      <div>{job.title}</div>
+                    ))}
+                  </div>
+                </div>
               ) : null}
             </div>
           </div>
