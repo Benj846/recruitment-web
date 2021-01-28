@@ -190,7 +190,7 @@
   outline: none;
 }
 
-.job-container > .job-content > .selected-job-container {
+.job-container > .job-content > .select-job-container {
   position: absolute;
   width: 643px;
   height: 360px;
@@ -201,18 +201,18 @@
   opacity: 1;
 }
 
-.job-container > .job-content > .selected-job-container > .level-columns {
+.job-container > .job-content > .select-job-container > .level-columns {
   display: flex;
 }
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > .level-one,
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > .level-two {
   /* display: flex;
@@ -226,7 +226,7 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > .level-three {
   width: 289px;
@@ -240,13 +240,13 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > .level-one
   > div,
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > .level-two
   > div {
@@ -258,10 +258,10 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > .level-three
-  > div {
+  > .job-item {
   display: flex;
   --width: 125px;
   height: 20px;
@@ -272,9 +272,19 @@
   --flex: 1 1 auto;
 }
 
+.job-container
+  > .job-content
+  > .select-job-container
+  > .level-columns
+  > .level-three
+  > .job-item.clicked {
+  border: 1px solid #333333;
+  border-radius: 15px;
+}
+
 /* .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > div
   > .level-three-item.job-clicked {
@@ -284,7 +294,7 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .level-columns
   > div
   > div {
@@ -303,7 +313,7 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .selected-items-container {
   display: flex;
   align-items: center;
@@ -311,7 +321,7 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .selected-items-container
   > .selected-items-content {
   display: flex;
@@ -327,7 +337,7 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .selected-items-container
   > .selected-items-content
   > div {
@@ -346,7 +356,7 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .selected-items-container
   > .selected-items-content
   > div
@@ -359,7 +369,7 @@
 
 .job-container
   > .job-content
-  > .selected-job-container
+  > .select-job-container
   > .selected-items-container
   > .select-completed-btn {
   width: 129px;
@@ -370,6 +380,17 @@
   font: normal normal medium 13px/16px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #ffffff;
+  opacity: 1;
+}
+
+.job-container > .job-content > .select-detail-job-container {
+  position: absolute;
+  width: 643px;
+  height: 360px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  left: 109px;
+  top: 51px;
   opacity: 1;
 }
 

@@ -85,25 +85,36 @@ function CareerListComponent({ ids, onRemove }) {
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
 
-  const [isSelectJob, setSelectJob] = useState(false);
+  const [isSelectJob, setIsSelectJob] = useState(false);
   const toggleSelectJob = () => {
     const clicked = !isSelectJob;
-    setSelectJob(clicked);
+    setIsSelectJob(clicked);
     if (clicked === false) {
       setIsLevelOneClicked(false);
       setIsLevelTwoClicked(false);
-      setSelectedJob([]);
+      setPrintedJob([]);
+      setLevelThree(
+        levelThree.map((job) =>
+          job.clicked === true ? { ...job, clicked: false } : job
+        )
+      );
     }
   };
 
+  const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
   const completeJobSelection = () => {
-    const clicked = !isSelectJob;
-    setSelectJob(clicked);
+    if (printedJob.length === 0) {
+      alert('선택된 직무가 없습니다.');
+      return;
+    }
+    let clicked = !isSelectJob;
+    setIsSelectJob(clicked);
     if (clicked === false) {
       setIsLevelOneClicked(false);
       setIsLevelTwoClicked(false);
-      //setSelectedJob([]);
     }
+    clicked = !isSelectDetailJob;
+    setIsSelectDetailJob(clicked);
   };
 
   const toggleLevelOne = () => {
@@ -400,25 +411,57 @@ function CareerListComponent({ ids, onRemove }) {
   ]);
 
   const jobId = useRef(0);
-  const [selectedJob, setSelectedJob] = useState([]);
-  const setJobs = (item) => {
-    const size = selectedJob.length;
+  const [printedJob, setPrintedJob] = useState([]);
+  const setSelectedJobs = (selected) => {
+    let isThreeClicked = false;
+    const size = printedJob.length;
     if (size < 3) {
       const job = {
         id: jobId.current,
-        title: item.title
+        title: selected.title
       };
-      setSelectedJob([...selectedJob, job]);
+      setPrintedJob([...printedJob, job]);
       jobId.current += 1;
+    } else if (selected.clicked && size === 3) {
+      isThreeClicked = true;
+      const clicked = printedJob.filter(
+        (job) => job.title === selected.title
+      )[0];
+      removePrintedJobFromLevelThree(clicked);
     } else if (size === 3) {
       alert('최대 3개까지 선택할 수 있습니다.');
+      return;
     }
+
+    if (selected.clicked && !isThreeClicked) {
+      const clickedJob = printedJob.filter(
+        (job) => job.title === selected.title
+      )[0];
+      removePrintedJobFromLevelThree(clickedJob);
+    }
+
+    setLevelThree(
+      levelThree.map((job) =>
+        job.id === selected.id ? { ...job, clicked: !job.clicked } : job
+      )
+    );
   };
 
-  const onToggleJobSelected = (item) => {};
+  const removePrintedJob = (selected) => {
+    setPrintedJob(printedJob.filter((item) => selected.title !== item.title));
+    removeClickedJobBorder(selected);
+  };
 
-  const onRemoveSelectedJob = (id) => {
-    setSelectedJob(selectedJob.filter((item) => id !== item.id));
+  const removePrintedJobFromLevelThree = (selected) => {
+    setPrintedJob(printedJob.filter((item) => selected.title !== item.title));
+  };
+
+  const removeClickedJobBorder = (selected) => {
+    setLevelThree(
+      levelThree.map((job) =>
+        job.title === selected.title ? { ...job, clicked: !job.clicked } : job
+      )
+    );
   };
 
   return (
@@ -471,7 +514,7 @@ function CareerListComponent({ ids, onRemove }) {
               </button>
               {/* <MultiLevelSelect options={options} /> */}
               {isSelectJob ? (
-                <div className="selected-job-container">
+                <div className="select-job-container">
                   <div className="level-columns">
                     <div className="level-one">
                       {levelOne.map((item) => (
@@ -497,7 +540,13 @@ function CareerListComponent({ ids, onRemove }) {
                     <div className="level-three">
                       {isLevelTwoClicked
                         ? levelThree.map((item) => (
-                            <div key={item.id} onClick={() => setJobs(item)}>
+                            <div
+                              key={item.id}
+                              onClick={() => setSelectedJobs(item)}
+                              className={`job-item ${
+                                item.clicked ? 'clicked' : null
+                              }`}
+                            >
                               {item.title}
                             </div>
                           ))
@@ -506,12 +555,12 @@ function CareerListComponent({ ids, onRemove }) {
                   </div>
                   <div className="selected-items-container">
                     <div className="selected-items-content">
-                      {selectedJob.map((job) => (
+                      {printedJob.map((job) => (
                         <div key={job.id}>
                           <div>{job.title}</div>
                           <div
                             className="selected-job-close"
-                            onClick={() => onRemoveSelectedJob(job.id)}
+                            onClick={() => removePrintedJob(job)}
                           >
                             X
                           </div>
@@ -526,6 +575,9 @@ function CareerListComponent({ ids, onRemove }) {
                     </button>
                   </div>
                 </div>
+              ) : null}
+              {isSelectDetailJob ? (
+                <div className="select-detail-job-container"></div>
               ) : null}
             </div>
           </div>
