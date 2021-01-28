@@ -539,7 +539,7 @@ function CareerListComponent({ ids, onRemove }) {
                 <div className="select-detail-job-container">
                   <div className="previous-selected-jobs">
                     {printedJob.map((job) => (
-                      <div>{job.title}</div>
+                      <div key={job.id}>{job.title}</div>
                     ))}
                   </div>
                 </div>
