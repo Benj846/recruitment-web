@@ -76,7 +76,7 @@ function BasicInfoComponent() {
                   className="input-name"
                   type="text"
                   name="name"
-                  value={user.name}
+                  defaultValue={user.name}
                   disabled="disabled"
                 ></input>
               </div>
@@ -95,7 +95,7 @@ function BasicInfoComponent() {
                   className="input-birth"
                   // type="date"
                   name="date"
-                  value={user.birth}
+                  defaultValue={user.birth}
                 ></input>
               </div>
               <div className="content-phone content-col-4">
@@ -104,12 +104,12 @@ function BasicInfoComponent() {
                   className="input-phonenum"
                   name="phoneNumber"
                   disabled="disabled"
-                  value={user.phone}
+                  defaultValue={user.phone}
                 ></input>
               </div>
             </div>
             <div className="content-addr-mili content-row">
-              <divc className="content-addr content-col-4">
+              <div className="content-addr content-col-4">
                 <span className="content-title">거주지</span>
                 <div className="input-addr-wrap">
                   <input
@@ -121,7 +121,7 @@ function BasicInfoComponent() {
                     search
                   </button>
                 </div>
-              </divc>
+              </div>
               <div className="content-mili content-col-4">
                 <span className="content-title">병역대상</span>
                 <select
@@ -164,7 +164,7 @@ function BasicInfoComponent() {
                   className="input-email"
                   type="email"
                   name="email"
-                  value={user.email}
+                  defaultValue={user.email}
                   disabled="disabled"
                 ></input>
               </div>

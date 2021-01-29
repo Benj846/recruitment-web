@@ -1,7 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Select from 'react-select';
 import MultiLevelSelect from 'react-multi-level-selector';
 import '../../styles/CareerComponent';
+//import { report } from '../../../../server/server';
+const axios = require('axios');
 
 function CareerComponent(props) {
   const [ids, setIds] = useState([]);
@@ -76,298 +78,355 @@ function CareerListComponent({ ids, onRemove }) {
     setIsSelectDetailJob(clicked);
   };
 
-  const toggleLevelOne = () => {
-    //setIsLevelOneClicked(!isLevelOneClicked);
+  useEffect(() => {
+    const getLevelOneJobs = async () => {
+      try {
+        const response = await axios.get('/work/lv1');
+        const tempArr = response.data;
+        const dataArr = tempArr.map((data, index) => ({
+          ...data,
+          index: index
+        }));
+        setLevelOne(dataArr);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getLevelOneJobs();
+  }, []);
+
+  const toggleLevelOne = (job) => {
+    getLevelTwoJobs(job.ID, 2);
     setIsLevelOneClicked(true);
     if (isLevelTwoClicked === true) {
       setIsLevelTwoClicked(false);
     }
   };
 
-  const [levelOne, setLevelOne] = useState([
-    {
-      id: 1,
-      title: '경영/사무'
-    },
-    {
-      id: 2,
-      title: '마케팅/광고/무역/구매/유통'
-    },
-    {
-      id: 3,
-      title: '영업/금융/고객'
-    },
-    {
-      id: 4,
-      title: '생산/제조/품질'
-    },
-    {
-      id: 5,
-      title: '연구개발/설계'
-    },
-    {
-      id: 6,
-      title: '건설'
-    },
-    {
-      id: 7,
-      title: '산업안전/설치/서비스'
-    },
-    {
-      id: 8,
-      title: '산업안전/설치/서비스'
-    },
-    {
-      id: 9,
-      title: '산업안전/설치/서비스'
-    },
-    {
-      id: 10,
-      title: '산업안전/설치/서비스'
-    },
-    {
-      id: 11,
-      title: '산업안전/설치/서비스'
-    },
-    {
-      id: 12,
-      title: '산업안전/설치/서비스'
-    },
-    {
-      id: 13,
-      title: '산업안전/설치/서비스'
-    },
-    {
-      id: 14,
-      title: '산업안전/설치/서비스'
+  const getLevelTwoJobs = async (id, lv) => {
+    try {
+      const response = await axios.post('/work/lv2', { id: id, lv: lv });
+      const tempArr = response.data;
+      const dataArr = tempArr.map((data, index) => ({
+        ...data,
+        index: index
+      }));
+      setLevelTwo(dataArr);
+    } catch (error) {
+      console.error(error);
     }
-  ]);
+  };
 
+  const toggleLevelTwo = (job) => {
+    getLevelThreeJobs(job.ID, 3);
+    setIsLevelTwoClicked(true);
+  };
+
+  const getLevelThreeJobs = async (id, lv) => {
+    try {
+      const response = await axios.post('/work/lv3', { id: id, lv: lv });
+      const tempArr = response.data;
+      const dataArr = tempArr.map((data, index) => ({
+        ...data,
+        index: index,
+        clicked: false
+      }));
+      //console.log(dataArr);
+      setLevelThree(dataArr);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // const [levelOne, setLevelOne] = useState([
+  //   {
+  //     id: 1,
+  //     title: '경영/사무'
+  //   },
+  //   {
+  //     id: 2,
+  //     title: '마케팅/광고/무역/구매/유통'
+  //   },
+  //   {
+  //     id: 3,
+  //     title: '영업/금융/고객'
+  //   },
+  //   {
+  //     id: 4,
+  //     title: '생산/제조/품질'
+  //   },
+  //   {
+  //     id: 5,
+  //     title: '연구개발/설계'
+  //   },
+  //   {
+  //     id: 6,
+  //     title: '건설'
+  //   },
+  //   {
+  //     id: 7,
+  //     title: '산업안전/설치/서비스'
+  //   },
+  //   {
+  //     id: 8,
+  //     title: '산업안전/설치/서비스'
+  //   },
+  //   {
+  //     id: 9,
+  //     title: '산업안전/설치/서비스'
+  //   },
+  //   {
+  //     id: 10,
+  //     title: '산업안전/설치/서비스'
+  //   },
+  //   {
+  //     id: 11,
+  //     title: '산업안전/설치/서비스'
+  //   },
+  //   {
+  //     id: 12,
+  //     title: '산업안전/설치/서비스'
+  //   },
+  //   {
+  //     id: 13,
+  //     title: '산업안전/설치/서비스'
+  //   },
+  //   {
+  //     id: 14,
+  //     title: '산업안전/설치/서비스'
+  //   }
+  // ]);
+
+  const [levelOne, setLevelOne] = useState([]);
   const [isLevelOneClicked, setIsLevelOneClicked] = useState(false);
 
-  const [levelTwo, setLevelTwo] = useState([
-    {
-      id: 1,
-      title: '자동차/기계'
-    },
-    {
-      id: 2,
-      title: '반도체/디스플레이'
-    },
-    {
-      id: 3,
-      title: '화학/에너지/환경'
-    },
-    {
-      id: 4,
-      title: '전기/전자/제어'
-    },
-    {
-      id: 5,
-      title: '금속/재료'
-    },
-    {
-      id: 6,
-      title: '기계설게,CAD/CAM'
-    },
-    {
-      id: 7,
-      title: '통신기술/네트워크 구축'
-    },
-    {
-      id: 8,
-      title: '통신기술/네트워크 구축'
-    },
-    {
-      id: 9,
-      title: '통신기술/네트워크 구축'
-    },
-    {
-      id: 10,
-      title: '통신기술/네트워크 구축'
-    },
-    {
-      id: 11,
-      title: '통신기술/네트워크 구축'
-    },
-    {
-      id: 12,
-      title: '통신기술/네트워크 구축'
-    },
-    {
-      id: 13,
-      title: '통신기술/네트워크 구축'
-    },
-    {
-      id: 14,
-      title: '통신기술/네트워크 구축'
-    }
-  ]);
+  // const [levelTwo, setLevelTwo] = useState([
+  //   {
+  //     id: 1,
+  //     title: '자동차/기계'
+  //   },
+  //   {
+  //     id: 2,
+  //     title: '반도체/디스플레이'
+  //   },
+  //   {
+  //     id: 3,
+  //     title: '화학/에너지/환경'
+  //   },
+  //   {
+  //     id: 4,
+  //     title: '전기/전자/제어'
+  //   },
+  //   {
+  //     id: 5,
+  //     title: '금속/재료'
+  //   },
+  //   {
+  //     id: 6,
+  //     title: '기계설게,CAD/CAM'
+  //   },
+  //   {
+  //     id: 7,
+  //     title: '통신기술/네트워크 구축'
+  //   },
+  //   {
+  //     id: 8,
+  //     title: '통신기술/네트워크 구축'
+  //   },
+  //   {
+  //     id: 9,
+  //     title: '통신기술/네트워크 구축'
+  //   },
+  //   {
+  //     id: 10,
+  //     title: '통신기술/네트워크 구축'
+  //   },
+  //   {
+  //     id: 11,
+  //     title: '통신기술/네트워크 구축'
+  //   },
+  //   {
+  //     id: 12,
+  //     title: '통신기술/네트워크 구축'
+  //   },
+  //   {
+  //     id: 13,
+  //     title: '통신기술/네트워크 구축'
+  //   },
+  //   {
+  //     id: 14,
+  //     title: '통신기술/네트워크 구축'
+  //   }
+  // ]);
+  const [levelTwo, setLevelTwo] = useState([]);
 
   const [isLevelTwoClicked, setIsLevelTwoClicked] = useState(false);
 
-  const [levelThree, setLevelThree] = useState([
-    {
-      id: 1,
-      title: '전기/전자회로',
-      clicked: false
-    },
-    {
-      id: 2,
-      title: '하드웨어설계',
-      clicked: false
-    },
-    {
-      id: 3,
-      title: 'PCB',
-      clicked: false
-    },
-    {
-      id: 4,
-      title: '소프트웨어설계',
-      clicked: false
-    },
-    {
-      id: 5,
-      title: '설계엔지니어',
-      clicked: false
-    },
-    {
-      id: 6,
-      title: '연구원(전기전자)',
-      clicked: false
-    },
-    {
-      id: 7,
-      title: 'R&D',
-      clicked: false
-    },
-    {
-      id: 8,
-      title: '시스템',
-      clicked: false
-    },
-    {
-      id: 9,
-      title: '신뢰성시험',
-      clicked: false
-    },
-    {
-      id: 10,
-      title: '펌웨어',
-      clicked: false
-    },
-    {
-      id: 11,
-      title: '전기설비',
-      clicked: false
-    },
-    {
-      id: 12,
-      title: '유지보수',
-      clicked: false
-    },
-    {
-      id: 13,
-      title: '연구개발비',
-      clicked: false
-    },
-    {
-      id: 14,
-      title: '전자부품 관리/전자부품 관리',
-      clicked: false
-    },
-    {
-      id: 15,
-      title: '난너를사랑해',
-      clicked: false
-    },
-    {
-      id: 16,
-      title: 'I LOVE YOU GIRL',
-      clicked: false
-    },
-    {
-      id: 17,
-      title: '이세상은너뿐이야',
-      clicked: false
-    },
-    {
-      id: 18,
-      title: '소리쳐 부르지만',
-      clicked: false
-    },
-    {
-      id: 19,
-      title: '저 대답 없는',
-      clicked: false
-    },
-    {
-      id: 20,
-      title: '노을만 붉게 타는데',
-      clicked: false
-    },
-    {
-      id: 21,
-      title: '아름다웠던',
-      clicked: false
-    },
-    {
-      id: 22,
-      title: '그대 모습을',
-      clicked: false
-    },
-    {
-      id: 23,
-      title: '이젠 볼 수 없겠지만',
-      clicked: false
-    },
-    {
-      id: 24,
-      title: '먼 산 언저리마다',
-      clicked: false
-    },
-    {
-      id: 25,
-      title: '너를 남기고',
-      clicked: false
-    },
-    {
-      id: 26,
-      title: '돌아서는 내게',
-      clicked: false
-    },
-    {
-      id: 27,
-      title: '생산라인 관리',
-      clicked: false
-    },
-    {
-      id: 28,
-      title: '시간은 그만',
-      clicked: false
-    },
-    {
-      id: 29,
-      title: '놓아주라는데',
-      clicked: false
-    },
-    {
-      id: 30,
-      title: '난 왜 너 닮은 목소리마저',
-      clicked: false
-    },
-    {
-      id: 31,
-      title: '가슴에 품고도',
-      clicked: false
-    },
-    {
-      id: 32,
-      title: '전장 관리',
-      clicked: false
-    }
-  ]);
+  // const [levelThree, setLevelThree] = useState([
+  //   {
+  //     id: 1,
+  //     title: '전기/전자회로',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 2,
+  //     title: '하드웨어설계',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'PCB',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 4,
+  //     title: '소프트웨어설계',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 5,
+  //     title: '설계엔지니어',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 6,
+  //     title: '연구원(전기전자)',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 7,
+  //     title: 'R&D',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 8,
+  //     title: '시스템',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 9,
+  //     title: '신뢰성시험',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 10,
+  //     title: '펌웨어',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 11,
+  //     title: '전기설비',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 12,
+  //     title: '유지보수',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 13,
+  //     title: '연구개발비',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 14,
+  //     title: '전자부품 관리/전자부품 관리',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 15,
+  //     title: '난너를사랑해',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 16,
+  //     title: 'I LOVE YOU GIRL',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 17,
+  //     title: '이세상은너뿐이야',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 18,
+  //     title: '소리쳐 부르지만',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 19,
+  //     title: '저 대답 없는',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 20,
+  //     title: '노을만 붉게 타는데',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 21,
+  //     title: '아름다웠던',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 22,
+  //     title: '그대 모습을',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 23,
+  //     title: '이젠 볼 수 없겠지만',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 24,
+  //     title: '먼 산 언저리마다',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 25,
+  //     title: '너를 남기고',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 26,
+  //     title: '돌아서는 내게',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 27,
+  //     title: '생산라인 관리',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 28,
+  //     title: '시간은 그만',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 29,
+  //     title: '놓아주라는데',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 30,
+  //     title: '난 왜 너 닮은 목소리마저',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 31,
+  //     title: '가슴에 품고도',
+  //     clicked: false
+  //   },
+  //   {
+  //     id: 32,
+  //     title: '전장 관리',
+  //     clicked: false
+  //   }
+  // ]);
+  const [levelThree, setLevelThree] = useState([]);
+
+  const [levelFour, setLevelFour] = useState([]);
 
   const jobId = useRef(0);
   const [printedJob, setPrintedJob] = useState([]);
@@ -377,7 +436,7 @@ function CareerListComponent({ ids, onRemove }) {
     if (size < 3) {
       const job = {
         id: jobId.current,
-        title: selected.title
+        title: selected.VAL
       };
       setPrintedJob([...printedJob, job]);
       jobId.current += 1;
@@ -401,7 +460,7 @@ function CareerListComponent({ ids, onRemove }) {
 
     setLevelThree(
       levelThree.map((job) =>
-        job.id === selected.id ? { ...job, clicked: !job.clicked } : job
+        job.index === selected.index ? { ...job, clicked: !job.clicked } : job
       )
     );
   };
@@ -418,13 +477,14 @@ function CareerListComponent({ ids, onRemove }) {
   const removeClickedJobBorder = (selected) => {
     setLevelThree(
       levelThree.map((job) =>
-        job.title === selected.title ? { ...job, clicked: !job.clicked } : job
+        job.VAL === selected.VAL ? { ...job, clicked: !job.clicked } : job
       )
     );
   };
 
   return (
     <>
+      {/* {console.log(levelFour)} */}
       {ids.map((id) => (
         <div key={id} className="body-detail">
           <div className="company-input-close">
@@ -477,8 +537,11 @@ function CareerListComponent({ ids, onRemove }) {
                   <div className="level-columns">
                     <div className="level-one">
                       {levelOne.map((item) => (
-                        <div key={item.id} onClick={toggleLevelOne}>
-                          {item.title}
+                        <div
+                          key={item.index}
+                          onClick={() => toggleLevelOne(item)}
+                        >
+                          {item.VAL}
                         </div>
                       ))}
                     </div>
@@ -486,12 +549,10 @@ function CareerListComponent({ ids, onRemove }) {
                       {isLevelOneClicked
                         ? levelTwo.map((item) => (
                             <div
-                              key={item.id}
-                              onClick={() =>
-                                setIsLevelTwoClicked(!isLevelTwoClicked)
-                              }
+                              key={item.index}
+                              onClick={() => toggleLevelTwo(item)}
                             >
-                              {item.title}
+                              {item.VAL}
                             </div>
                           ))
                         : null}
@@ -500,13 +561,13 @@ function CareerListComponent({ ids, onRemove }) {
                       {isLevelTwoClicked
                         ? levelThree.map((item) => (
                             <div
-                              key={item.id}
+                              key={item.index}
                               onClick={() => setSelectedJobs(item)}
                               className={`job-item ${
                                 item.clicked ? 'clicked' : null
                               }`}
                             >
-                              {item.title}
+                              {item.VAL}
                             </div>
                           ))
                         : null}
