@@ -2,28 +2,15 @@
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
 }
+.root select {
+  appearance: none;
+}
 .root .content-title {
   display: block;
   font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
   color: #999;
   margin: 0 20px;
   width: 70px;
-}
-.root .content-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.root .content-col-4 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.root .content-col-8 {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .root .title-wrap {
   display: flex;
@@ -52,15 +39,6 @@
 .root .text .user-name {
   font: normal normal 700 15px/19px 'Noto Sans KR', sans-serif;
   color: #009999;
-}
-.root .required:after {
-  content: '*';
-  display: block;
-  position: absolute;
-  font: normal normal 500 20px/24px 'Noto Sans KR', sans-serif;
-  color: #009999;
-  top: 3px;
-  right: -12px;
 }
 .root .basic-info-title {
   position: relative;
@@ -172,9 +150,18 @@
 }
 .root .content-addr .input-addr-wrap .search-btn {
   position: absolute;
-  widht: 60px;
+  width: 60px;
   height: 40px;
   right: 0;
+}
+.root .content-mili {
+}
+.root .content-mili .military-option {
+  appearance: none;
+  width: 400px;
+  height: 60px;
+}
+.root .content-mili .military-options {
 }
 .root .content-email {
 }

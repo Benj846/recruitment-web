@@ -606,6 +606,17 @@ function CareerDetailComponent({ id, onRemove }) {
     { value: 'slate', label: 'Slate', color: '#253858' },
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      borderBottom: `1px dotted pink`,
+      color: state.isSelected ? 'red' : 'blue'
+    }),
+    control: () => ({
+      width: 300,
+      height: 60
+    })
+  };
   // 참고
   // https://www.npmjs.com/package/react-multi-level-selector
 
@@ -628,6 +639,7 @@ function CareerDetailComponent({ id, onRemove }) {
             className="basic-single"
             classNamePrefix="select"
             name="color"
+            styles={customStyles}
             options={colourOptions}
           />
         </>

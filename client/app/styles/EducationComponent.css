@@ -1,24 +1,21 @@
 .education-info {
-  margin: 80px 0 0 0;
+  margin-top: 80px;
 }
-
 .education-info .education-title {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
+  font: normal normal 700 20px/24px Noto Sans KR;
+  color: #333333;
+}
+.education-info .education-title {
   text-align: left;
   font: normal normal bold 20px/24px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
 }
-
 .education-info .final-content {
   display: flex;
   align-items: center;
 }
-
 .education-info .title {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
@@ -31,7 +28,6 @@
   color: #999999;
   opacity: 1;
 }
-
 .education-info .select-education {
   width: 340px;
   height: 40px;
@@ -42,17 +38,14 @@
   opacity: 1;
   margin: 0px 0px 0px 24px;
 }
-
 .education-info .select-education:focus {
   outline: none;
 }
-
 .education-info .integrated {
   display: inline-block;
   margin: 0px 13px 0px 24px;
   cursor: pointer;
 }
-
 option:nth-of-type(1) {
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
@@ -65,11 +58,9 @@ option:nth-of-type(1) {
   color: #999999;
   opacity: 1;
 }
-
 .education-container {
   margin-bottom: 20px;
 }
-
 .education-division {
   border: 1px solid var(--unnamed-color-dddddd);
   border: 1px solid #dddddd;
@@ -83,7 +74,6 @@ option:nth-of-type(1) {
   align-items: center;
   margin-bottom: 10px;
 }
-
 .education-container .level {
   display: inline-block;
   width: 90px;
@@ -99,7 +89,6 @@ option:nth-of-type(1) {
   color: #999999;
   opacity: 1;
 }
-
 .education-container .name-period-content .level {
   display: block;
   width: 90px;
@@ -115,7 +104,6 @@ option:nth-of-type(1) {
   color: #999999;
   opacity: 1;
 }
-
 .education-container .name-period-content .title {
   width: 90px;
   height: 40px;
@@ -130,7 +118,6 @@ option:nth-of-type(1) {
   color: #999999;
   opacity: 1;
 }
-
 .education-container .name-period-content .title-input {
   width: 250px;
   height: 40px;
@@ -140,22 +127,18 @@ option:nth-of-type(1) {
   border: 1px solid #dddddd;
   opacity: 1;
 }
-
 .education-container .title-input {
   width: 250px;
   height: 40px;
 }
-
 .education-container .name-period-content .title-input:focus {
   outline: none;
 }
-
 .education-container .major-content {
   display: flex;
   width: 880px;
   height: 40px;
 }
-
 .major-content .title {
   display: inline-block;
   width: 90px;
@@ -172,7 +155,6 @@ option:nth-of-type(1) {
   color: #999999;
   opacity: 1;
 }
-
 .education-container .major-name {
   display: inline-block;
   width: 90px;
@@ -189,7 +171,6 @@ option:nth-of-type(1) {
   color: #999999;
   opacity: 1;
 }
-
 .education-container .major-name-input {
   width: 250px;
   height: 40px;
@@ -199,28 +180,17 @@ option:nth-of-type(1) {
   border: 1px solid #dddddd;
   opacity: 1;
 }
-
 .education-container .add-major {
   width: 69px;
   height: 40px;
   margin-left: 20px;
   padding: 0px;
-
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
-    var(--unnamed-line-spacing-16)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--버튼-색상);
   text-align: center;
   font: normal normal normal 13px/16px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #009999;
-  opacity: 1;
-  border: 1px solid var(--버튼-색상);
   border: 1px solid #009999;
 }
-
 .close-info {
   width: 69px;
   height: 40px;
@@ -230,16 +200,13 @@ option:nth-of-type(1) {
   cursor: pointer;
   text-align: center;
 }
-
 .education-container .major-name-input:focus {
   outline: none;
 }
-
 .education-container .location {
   display: flex;
   align-items: center;
 }
-
 .education-container .location {
   width: 880px;
   height: 40px;
@@ -247,40 +214,27 @@ option:nth-of-type(1) {
   align-items: center;
   margin-bottom: 10px;
 }
-
 .education-container .location-title {
   width: 90px;
   height: 40px;
   margin-left: 90px;
   margin-bottom: 10px;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
-    var(--unnamed-line-spacing-16)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--셀렉트-박스-내-색상);
   text-align: left;
   font: normal normal medium 13px/16px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #999999;
   opacity: 1;
 }
-
 .education-container .location-input {
   width: 250px;
   height: 40px;
-
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   opacity: 1;
 }
-
 .education-container .location-input:focus {
   outline: none;
 }
-
 .in-school-period-input {
   --width: 160px;
 }
@@ -320,19 +274,5 @@ option:nth-of-type(1) {
   font: normal normal medium 13px/16px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #999999;
-  opacity: 1;
-}
-
-/* .file-attach {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-} */
-
-.education-info .division-line {
-  width: 100%;
-  margin-left: 0px;
-  border: 2px solid var(--unnamed-color-707070);
-  border: 2px solid #707070;
   opacity: 1;
 }

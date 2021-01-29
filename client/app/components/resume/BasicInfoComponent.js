@@ -96,6 +96,7 @@ function BasicInfoComponent() {
                   // type="date"
                   name="date"
                   value={user.birth}
+                  disabled="disabled"
                 ></input>
               </div>
               <div className="content-phone content-col-4">
@@ -109,7 +110,7 @@ function BasicInfoComponent() {
               </div>
             </div>
             <div className="content-addr-mili content-row">
-              <divc className="content-addr content-col-4">
+              <div className="content-addr content-col-4">
                 <span className="content-title">거주지</span>
                 <div className="input-addr-wrap">
                   <input
@@ -121,7 +122,7 @@ function BasicInfoComponent() {
                     search
                   </button>
                 </div>
-              </divc>
+              </div>
               <div className="content-mili content-col-4">
                 <span className="content-title">병역대상</span>
                 <select
@@ -130,28 +131,28 @@ function BasicInfoComponent() {
                   onClick={handleSelectChange}
                 >
                   <option
-                    className="military-options"
+                    className="military-option"
                     value="choose-military"
                     disabled="disabled"
                   >
                     선택
                   </option>
-                  <option className="military-options" value="fulfilled">
+                  <option className="military-option" value="fulfilled">
                     군필
                   </option>
-                  <option className="military-options" value="social">
+                  <option className="military-option" value="social">
                     공익
                   </option>
-                  <option className="military-options" value="substitutional">
+                  <option className="military-option" value="substitutional">
                     병역특례
                   </option>
-                  <option className="military-options" value="exempted">
+                  <option className="military-option" value="exempted">
                     면제
                   </option>
-                  <option className="military-options" value="unfulfilled">
+                  <option className="military-option" value="unfulfilled">
                     미필
                   </option>
-                  <option className="military-options" value="not-applicable">
+                  <option className="military-option" value="not-applicable">
                     해당없음
                   </option>
                 </select>
