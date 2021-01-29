@@ -31,47 +31,6 @@ function CareerComponent(props) {
 }
 
 function CareerListComponent({ ids, onRemove }) {
-  const options = [
-    {
-      value: '1',
-      label: '1',
-      options: [
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        },
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        },
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        }
-      ]
-    },
-    {
-      value: '1',
-      label: '1',
-      options: [
-        { value: '2', label: '2' },
-        { value: '2', label: '2' },
-        { value: '2', label: '2' }
-      ]
-    }
-  ];
   const colourOptions = [
     { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
     { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
@@ -85,9 +44,44 @@ function CareerListComponent({ ids, onRemove }) {
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
 
-  const [selectJob, setSelectJob] = useState(false);
+  const [isSelectJob, setIsSelectJob] = useState(false);
   const toggleSelectJob = () => {
-    setSelectJob(!selectJob);
+    const clicked = !isSelectJob;
+    setIsSelectJob(clicked);
+    if (clicked === false) {
+      setIsLevelOneClicked(false);
+      setIsLevelTwoClicked(false);
+      setPrintedJob([]);
+      setLevelThree(
+        levelThree.map((job) =>
+          job.clicked === true ? { ...job, clicked: false } : job
+        )
+      );
+    }
+  };
+
+  const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
+  const completeJobSelection = () => {
+    if (printedJob.length === 0) {
+      alert('선택된 직무가 없습니다.');
+      return;
+    }
+    let clicked = !isSelectJob;
+    setIsSelectJob(clicked);
+    if (clicked === false) {
+      setIsLevelOneClicked(false);
+      setIsLevelTwoClicked(false);
+    }
+    clicked = !isSelectDetailJob;
+    setIsSelectDetailJob(clicked);
+  };
+
+  const toggleLevelOne = () => {
+    //setIsLevelOneClicked(!isLevelOneClicked);
+    setIsLevelOneClicked(true);
+    if (isLevelTwoClicked === true) {
+      setIsLevelTwoClicked(false);
+    }
   };
 
   const [levelOne, setLevelOne] = useState([
@@ -144,7 +138,7 @@ function CareerListComponent({ ids, onRemove }) {
       title: '산업안전/설치/서비스'
     },
     {
-      id: 13,
+      id: 14,
       title: '산업안전/설치/서비스'
     }
   ]);
@@ -215,85 +209,219 @@ function CareerListComponent({ ids, onRemove }) {
   const [levelThree, setLevelThree] = useState([
     {
       id: 1,
-      title: '전기/전자회로'
+      title: '전기/전자회로',
+      clicked: false
     },
     {
       id: 2,
-      title: '하드웨어설계'
+      title: '하드웨어설계',
+      clicked: false
     },
     {
       id: 3,
-      title: 'PCB'
+      title: 'PCB',
+      clicked: false
     },
     {
       id: 4,
-      title: '소프트웨어설계'
+      title: '소프트웨어설계',
+      clicked: false
     },
     {
       id: 5,
-      title: '설계엔지니어'
+      title: '설계엔지니어',
+      clicked: false
     },
     {
       id: 6,
-      title: '연구원(전기전자)'
+      title: '연구원(전기전자)',
+      clicked: false
     },
     {
       id: 7,
-      title: 'R&D'
+      title: 'R&D',
+      clicked: false
     },
     {
       id: 8,
-      title: '시스템'
+      title: '시스템',
+      clicked: false
     },
     {
       id: 9,
-      title: '신뢰성시험'
+      title: '신뢰성시험',
+      clicked: false
     },
     {
       id: 10,
-      title: '펌웨어'
+      title: '펌웨어',
+      clicked: false
     },
     {
       id: 11,
-      title: '전기설비'
+      title: '전기설비',
+      clicked: false
     },
     {
       id: 12,
-      title: '유지보수'
+      title: '유지보수',
+      clicked: false
     },
     {
       id: 13,
-      title: '연구개발비'
+      title: '연구개발비',
+      clicked: false
     },
     {
       id: 14,
-      title: '전자부품 관리/전자부품 관리'
+      title: '전자부품 관리/전자부품 관리',
+      clicked: false
     },
     {
       id: 15,
-      title: '전자부품 관리'
+      title: '난너를사랑해',
+      clicked: false
     },
     {
       id: 16,
-      title: '전자부품 관리'
+      title: 'I LOVE YOU GIRL',
+      clicked: false
     },
     {
       id: 17,
-      title: '전자부품 관리'
+      title: '이세상은너뿐이야',
+      clicked: false
     },
     {
       id: 18,
-      title: '전자부품 관리'
+      title: '소리쳐 부르지만',
+      clicked: false
     },
     {
       id: 19,
-      title: '전자부품 관리'
+      title: '저 대답 없는',
+      clicked: false
     },
     {
       id: 20,
-      title: '전자부품 관리'
+      title: '노을만 붉게 타는데',
+      clicked: false
+    },
+    {
+      id: 21,
+      title: '아름다웠던',
+      clicked: false
+    },
+    {
+      id: 22,
+      title: '그대 모습을',
+      clicked: false
+    },
+    {
+      id: 23,
+      title: '이젠 볼 수 없겠지만',
+      clicked: false
+    },
+    {
+      id: 24,
+      title: '먼 산 언저리마다',
+      clicked: false
+    },
+    {
+      id: 25,
+      title: '너를 남기고',
+      clicked: false
+    },
+    {
+      id: 26,
+      title: '돌아서는 내게',
+      clicked: false
+    },
+    {
+      id: 27,
+      title: '생산라인 관리',
+      clicked: false
+    },
+    {
+      id: 28,
+      title: '시간은 그만',
+      clicked: false
+    },
+    {
+      id: 29,
+      title: '놓아주라는데',
+      clicked: false
+    },
+    {
+      id: 30,
+      title: '난 왜 너 닮은 목소리마저',
+      clicked: false
+    },
+    {
+      id: 31,
+      title: '가슴에 품고도',
+      clicked: false
+    },
+    {
+      id: 32,
+      title: '전장 관리',
+      clicked: false
     }
   ]);
+
+  const jobId = useRef(0);
+  const [printedJob, setPrintedJob] = useState([]);
+  const setSelectedJobs = (selected) => {
+    let isThreeClicked = false;
+    const size = printedJob.length;
+    if (size < 3) {
+      const job = {
+        id: jobId.current,
+        title: selected.title
+      };
+      setPrintedJob([...printedJob, job]);
+      jobId.current += 1;
+    } else if (selected.clicked && size === 3) {
+      isThreeClicked = true;
+      const clicked = printedJob.filter(
+        (job) => job.title === selected.title
+      )[0];
+      removePrintedJobFromLevelThree(clicked);
+    } else if (size === 3) {
+      alert('최대 3개까지 선택할 수 있습니다.');
+      return;
+    }
+
+    if (selected.clicked && !isThreeClicked) {
+      const clickedJob = printedJob.filter(
+        (job) => job.title === selected.title
+      )[0];
+      removePrintedJobFromLevelThree(clickedJob);
+    }
+
+    setLevelThree(
+      levelThree.map((job) =>
+        job.id === selected.id ? { ...job, clicked: !job.clicked } : job
+      )
+    );
+  };
+
+  const removePrintedJob = (selected) => {
+    setPrintedJob(printedJob.filter((item) => selected.title !== item.title));
+    removeClickedJobBorder(selected);
+  };
+
+  const removePrintedJobFromLevelThree = (selected) => {
+    setPrintedJob(printedJob.filter((item) => selected.title !== item.title));
+  };
+
+  const removeClickedJobBorder = (selected) => {
+    setLevelThree(
+      levelThree.map((job) =>
+        job.title === selected.title ? { ...job, clicked: !job.clicked } : job
+      )
+    );
+  };
 
   return (
     <>
@@ -344,17 +472,12 @@ function CareerListComponent({ ids, onRemove }) {
                 직무 추가하기
               </button>
               {/* <MultiLevelSelect options={options} /> */}
-              {selectJob ? (
-                <div className="selected-job-container">
+              {isSelectJob ? (
+                <div className="select-job-container">
                   <div className="level-columns">
                     <div className="level-one">
                       {levelOne.map((item) => (
-                        <div
-                          key={item.id}
-                          onClick={() =>
-                            setIsLevelOneClicked(!isLevelOneClicked)
-                          }
-                        >
+                        <div key={item.id} onClick={toggleLevelOne}>
                           {item.title}
                         </div>
                       ))}
@@ -376,14 +499,48 @@ function CareerListComponent({ ids, onRemove }) {
                     <div className="level-three">
                       {isLevelTwoClicked
                         ? levelThree.map((item) => (
-                            <div key={item.id}>{item.title}</div>
+                            <div
+                              key={item.id}
+                              onClick={() => setSelectedJobs(item)}
+                              className={`job-item ${
+                                item.clicked ? 'clicked' : null
+                              }`}
+                            >
+                              {item.title}
+                            </div>
                           ))
                         : null}
                     </div>
                   </div>
                   <div className="selected-items-container">
-                    <div className="selected-items-content"></div>
-                    <button className="select-completed-btn">선택완료</button>
+                    <div className="selected-items-content">
+                      {printedJob.map((job) => (
+                        <div key={job.id}>
+                          <div>{job.title}</div>
+                          <div
+                            className="selected-job-close"
+                            onClick={() => removePrintedJob(job)}
+                          >
+                            X
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      className="select-completed-btn"
+                      onClick={completeJobSelection}
+                    >
+                      선택완료
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+              {isSelectDetailJob ? (
+                <div className="select-detail-job-container">
+                  <div className="previous-selected-jobs">
+                    {printedJob.map((job) => (
+                      <div key={job.id}>{job.title}</div>
+                    ))}
                   </div>
                 </div>
               ) : null}
