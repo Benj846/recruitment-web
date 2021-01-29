@@ -32,3 +32,4 @@ client/app/components/recruitment/db.json
 .babelrc
 config/webpack.dev.js
 yarn.lock
+package-lock.json

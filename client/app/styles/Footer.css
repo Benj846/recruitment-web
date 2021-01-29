@@ -1,46 +1,78 @@
 .footer-container {
+  margin-top: 48px;
   border-top: 1px solid #cccccc;
-  justify-content: center;
-  width: 100%;
-  height: 313px;
-  background: #f9f9fb 0% 0% no-repeat padding-box;
-  opacity: 1;
+  height: 310px;
+  background: #f9f9fb;
 }
-.p1 {
-  display: inline;
+.footer-inner {
+  max-width: 1060px;
+  margin: 0 auto;
 }
-.p2 {
-  justify-content: center;
-  display: inline;
-  margin-left: 28.5px;
-}
-.v1 {
-  margin-left: 29.5px;
-  display: inline;
-  width: 0px;
-  height: 22px;
-  border: 1px solid #cccccc;
-  opacity: 1;
-}
-.footer-content {
-  text-align: center;
-  margin-top: 18.5px;
-  margin-bottom: 18.5px;
-}
-.footer-content2 {
+.footer-menu {
   display: flex;
-  text-align: left;
-  letter-spacing: NaNpx;
-  opacity: 1;
+  padding: 18px 0;
 }
-.footer-text {
-  width: 466px;
-  height: 133px;
-  text-align: left;
-  letter-spacing: -0.26px;
-  color: #999999;
+.footer-menu .fm-list {
+  margin-right: 28px;
+  padding: 2px 28px 2px 0;
+  border-right: 1px solid #ccc;
+  font: normal normal 500 13px/14px Noto Sans KR;
+  color: #707070;
 }
-.footer-hr {
-  height: 0px;
-  border-top: 1px solid #cccccc;
+
+.footer-menu .fm-list:last-child {
+  border: none;
+}
+
+.footer-copy-wrap {
+  border-top: 1px solid #ccc;
+  padding: 44px;
+  color: #999;
+}
+
+.footer-copy-wrap .footer-inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-copy-wrap .footer-inner .footer-logo {
+  width: 100px;
+  margin: 6px 32px 0 0;
+}
+
+.footer-copy-wrap .footer-txt-wrap .corp-name {
+  font: normal normal 700 15px/23px Noto Sans KR;
+}
+.footer-copy-wrap .footer-txt-wrap .txt {
+  font: normal normal 500 13px/23px Noto Sans KR;
+}
+.footer-copy-wrap .footer-txt-wrap .copyright {
+  font: normal normal 700 13px/23px Noto Sans KR;
+  color: #ccc;
+  display: block;
+  margin-top: 24px;
+}
+
+.footer-copy-wrap .direct-wrap {
+  margin-left: auto;
+  color: #707070;
+}
+.footer-copy-wrap .direct-wrap .direct-menu {
+  margin-top: 6px;
+  width: 250px;
+  border-top: 1px solid #ccc;
+}
+
+.footer-copy-wrap .direct-menu .di-list {
+  display: flex;
+  align-items: center;
+  padding: 12px 0 12px 32px;
+  font: normal normal 500 13px/19px Noto Sans KR;
+  border-bottom: 1px solid #ccc;
+}
+.footer-copy-wrap .direct-menu .di-list .di-ico {
+  display: block;
+  margin-right: 40px;
+}
+.footer-copy-wrap .direct-menu .di-list .di-txt {
 }
