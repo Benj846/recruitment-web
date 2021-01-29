@@ -1,66 +1,50 @@
-/* .main {
-  width: 100vw;
-  background: #eeeeee 0% 0% no-repeat padding-box;
-  opacity: 1;
-} */
-/* ::-webkit-scrollbar {
-  display: none;
-} */
-
 .navbar-wrapper {
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  --box-shadow: 0px 2px 5px #00000029;
-  opacity: 1;
-  --overflow-x: auto;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
-.navbar-wrapper a {
-  color: #000000;
-  text-decoration: none;
+.navbar-wrapper .navbar {
+  position: relative;
+  z-index: 999;
 }
 
-.navbar {
-  --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  --box-shadow: 0px 2px 5px #00000029;
-  opacity: 1;
+.navbar-expand {
+  box-shadow: 0px 2px 5px #00000029;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-.nav-link {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-18) /
-    var(--unnamed-line-spacing-21)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-707070);
-  text-align: center;
-  font: normal normal medium 18px/21px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #707070;
-  opacity: 1;
-}
-.mt-3 {
-  margin-top: 0px;
-}
-.container {
-  padding-bottom: 60px;
-  --margin: 0px 50px 0px 50px;
-}
-
-/* .resume-container {
+.navbar-inner {
   display: flex;
-  justify-content: center;
-  --background: #eeeeee 0% 0% no-repeat padding-box;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1060px;
+  height: 60px;
+  margin: 0 auto;
 }
 
-.resume-content {
-  --display: flex;
-  --justify-content: center;
-  width: 1080px;
-} */
+.navbar-nav {
+  display: flex;
+  flex-flow: wrap row;
+}
+
 .navbar-brand {
-  width: 122px;
-  height: 23px;
+  width: 100px;
+  margin-right: 85px;
+}
+
+.navbar-brand .fapply_logo {
+  width: 100%;
+  display: block;
+}
+
+.nav-item {
+  margin-right: 35px;
+}
+
+.nav-item .nav-link {
+  font: normal normal 500 16px/21px 'Noto Sans KR', sans-serif;
+  text-align: center;
+  color: #707070;
 }
 
 .navbar-wrapper .nav-item {
@@ -68,14 +52,10 @@
   align-items: center;
 }
 
-.navbar-wrapper .navbar {
-  display: flex;
-  justify-content: space-between;
-}
-
 .navbar-wrapper .utility button {
   border: none;
   background: none;
+  color: #707070;
 }
 
 .navbar-wrapper .utility button:focus {

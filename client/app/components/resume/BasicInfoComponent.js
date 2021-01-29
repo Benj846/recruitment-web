@@ -49,108 +49,130 @@ function BasicInfoComponent() {
 
   return (
     <div className="root">
-      <span className="resume-title">이력서 작성하기</span>
-      <span className="resume-user">{user.career}</span>
+      <div className="title-wrap">
+        <span className="resume-title">이력서 작성하기</span>
+        <span className="resume-user">{user.career}</span>
+      </div>
       <p className="text">
-        {user.name} 님의 프로필을 입력하시고, 더 많은 채용 기회를 확보하세요!
+        <span className="user-name">{user.name}</span> 님의 프로필을 입력하시고,
+        더 많은 채용 기회를 확보하세요!
       </p>
-      <p className="basic-info-title">기본정보</p>
-      <hr className="division-line" />
 
-      <div className="basic-info-container">
-        <div className="form-container">
-          {/* <form action=""> */}
-          <div className="form-content">
-            <div className="form">{/* <image src=""></image> */}</div>
-            <button className="picture-submit">등록</button>
-            <button className="picture-delete">삭제</button>
-          </div>
-          {/* </form> */}
-        </div>
-        <div className="input-container">
-          <div className="name-gender-content">
-            <span className="span-name">이름</span>
-            <input
-              className="input-name"
-              type="text"
-              name="name"
-              value={user.name}
-              disabled="disabled"
-            ></input>
-            <span className="span-gender">성별</span>
-            <div className="gender-content">
-              <div className="male">남</div>
-              <div className="female">여</div>
+      <div className="content-wrap">
+        <span className="basic-info-title required">기본정보</span>
+        <div className="basic-info-container">
+          <div className="form-container">
+            <div className="form-content">
+              <div className="form">{/* <image src=""></image> */}</div>
+              <button className="picture-submit">등록</button>
+              <button className="picture-delete">삭제</button>
             </div>
           </div>
-          <div className="span-birth">생년월일</div>
-          <input
-            className="input-birth"
-            // type="date"
-            name="date"
-            value={user.birth}
-          ></input>
-          <span className="span-phonenum">전화번호</span>
-          <input
-            className="input-phonenum"
-            name="phoneNumber"
-            disabled="disabled"
-            value={user.phone}
-          ></input>
-          <span className="span-addr">거주지</span>
-          <input className="input-addr" type="text" name="address"></input>
-          <button className="search-btn" onClick={togglePopup}>
-            search
-          </button>
-          <span className="span-mili">병역대상</span>
-          <select
-            className="select military-options"
-            defaultValue="choose-military"
-            onClick={handleSelectChange}
-          >
-            <option
-              className="military-options"
-              value="choose-military"
-              disabled="disabled"
-            >
-              선택
-            </option>
-            <option className="military-options" value="fulfilled">
-              군필
-            </option>
-            <option className="military-options" value="social">
-              공익
-            </option>
-            <option className="military-options" value="substitutional">
-              병역특례
-            </option>
-            <option className="military-options" value="exempted">
-              면제
-            </option>
-            <option className="military-options" value="unfulfilled">
-              미필
-            </option>
-            <option className="military-options" value="not-applicable">
-              해당없음
-            </option>
-          </select>
-          <span className="span-email">이메일</span>
-
-          {/* ------------------------------------ */}
-
-          {/* ------------------------------------ */}
-
-          <input
-            className="input-email"
-            type="email"
-            name="email"
-            value={user.email}
-            disabled="disabled"
-          ></input>
-
-          {showPopup ? (
-            <Popup text="거주지를 선택해주세요." closePopup={togglePopup} />
-          ) : null}
+          <div className="input-container">
+            <div className="name-gender-content content-row">
+              <div className="content-name content-col-4">
+                <span className="content-title">이름</span>
+                <input
+                  className="input-name"
+                  type="text"
+                  name="name"
+                  value={user.name}
+                  disabled="disabled"
+                ></input>
+              </div>
+              <div className="content-gender content-col-4">
+                <span className="content-title">성별</span>
+                <div className="gender-content">
+                  <button className="male active">남</button>
+                  <button className="female">여</button>
+                </div>
+              </div>
+            </div>
+            <div className="content-birth-phonenum content-row">
+              <div className="content-birth content-col-4">
+                <span className="content-title">생년월일</span>
+                <input
+                  className="input-birth"
+                  // type="date"
+                  name="date"
+                  value={user.birth}
+                ></input>
+              </div>
+              <div className="content-phone content-col-4">
+                <span className="content-title">전화번호</span>
+                <input
+                  className="input-phonenum"
+                  name="phoneNumber"
+                  disabled="disabled"
+                  value={user.phone}
+                ></input>
+              </div>
+            </div>
+            <div className="content-addr-mili content-row">
+              <divc className="content-addr content-col-4">
+                <span className="content-title">거주지</span>
+                <div className="input-addr-wrap">
+                  <input
+                    className="input-addr"
+                    type="text"
+                    name="address"
+                  ></input>
+                  <button className="search-btn" onClick={togglePopup}>
+                    search
+                  </button>
+                </div>
+              </divc>
+              <div className="content-mili content-col-4">
+                <span className="content-title">병역대상</span>
+                <select
+                  className="select military-options"
+                  defaultValue="choose-military"
+                  onClick={handleSelectChange}
+                >
+                  <option
+                    className="military-options"
+                    value="choose-military"
+                    disabled="disabled"
+                  >
+                    선택
+                  </option>
+                  <option className="military-options" value="fulfilled">
+                    군필
+                  </option>
+                  <option className="military-options" value="social">
+                    공익
+                  </option>
+                  <option className="military-options" value="substitutional">
+                    병역특례
+                  </option>
+                  <option className="military-options" value="exempted">
+                    면제
+                  </option>
+                  <option className="military-options" value="unfulfilled">
+                    미필
+                  </option>
+                  <option className="military-options" value="not-applicable">
+                    해당없음
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div className="content-email content-row">
+              <div className="content-col-8">
+                <span className="span-email content-title">이메일</span>
+                <input
+                  className="input-email"
+                  type="email"
+                  name="email"
+                  value={user.email}
+                  disabled="disabled"
+                ></input>
+              </div>
+            </div>
+            {showPopup ? (
+              <Popup text="거주지를 선택해주세요." closePopup={togglePopup} />
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

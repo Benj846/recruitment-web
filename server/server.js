@@ -20,6 +20,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+<<<<<<< HEAD
 //Graphql testing
 // app.route('/test').get(function (req, res, next) {
 //   pool.query('select * from TB_CMN_WORK', function (error, results, fields) {
@@ -39,6 +40,8 @@ app.use(express.json());
 //   });
 // });
 
+=======
+>>>>>>> 319c19259e7b7c67df4417e578eb431aee00cd44
 app.post('/member/count', (req, res) => {
   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;
   let params = [req.body.email];
