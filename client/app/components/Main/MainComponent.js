@@ -260,47 +260,48 @@ const JobTree = () => {
   const addFuntion = () => {
     return appendRef.current.append();
   };
-  // const buttonItems = numbers.map((number) => (
-  //   <ApolloProvider client={client} key={number.toString()}>
-  //     <Query
-  //       query={gql`
-  //         {
-  //           getCommonWork(id: ID!) {
-  //             ID
-  //             VAL
-  //           }
-  //         }
-  //       `}
-  //     >
-  //       {({ loading, error, data }) => {
-  //         if (loading) return <p>Loading</p>;
-  //         if (error) return <p>error ㅠㅠ</p>;
-  //         return data.getCommonWork.map(({ ID, VAL }) => (
-  //           <button
-  //             className="lv1"
-  //             onClick={() => {
-  //               setSelected(!selected);
-  //               setSelected3(false);
-  //               console.log("i'm level 1");
-  //             }}
-  //           >
-  //             {VAL}
-  //           </button>
-  //         ));
-  //       }}
-  //     </Query>
-  //   </ApolloProvider>
-  // ));
   const buttonItems = numbers.map((number) => (
-    <button
-      key={number.toString()}
-      className="lv1"
-      disabled={!selected}
-      onClick={() => setSelected3(!selected3)}
-    >
-      lv1.선택직무
-    </button>
+    <ApolloProvider client={client}>
+      <Query
+        query={gql`
+          {
+            getCommonWork {
+              ID
+              VALb
+            }
+          }
+        `}
+      >
+        {({ loading, error, data }) => {
+          if (loading) return <p>Loading</p>;
+          if (error) return <p>error ㅠㅠ</p>;
+          return data.getCommonWork.map(({ ID, VAL }) => (
+            <button
+              key={ID}
+              className="lv1"
+              onClick={() => {
+                setSelected(!selected);
+                setSelected3(false);
+                console.log("i'm level 1");
+              }}
+            >
+              {VAL}
+            </button>
+          ));
+        }}
+      </Query>
+    </ApolloProvider>
   ));
+  // const buttonItems = numbers.map((number) => (
+  //   <button
+  //     key={number.toString()}
+  //     className="lv1"
+  //     disabled={!selected}
+  //     onClick={() => setSelected3(!selected3)}
+  //   >
+  //     lv1.선택직무
+  //   </button>
+  // ));
   const button2Items = numbers.map((number) => (
     <button
       key={number.toString()}

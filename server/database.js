@@ -1,19 +1,24 @@
 //const mysql = require('mysql2');
-const mysql = require('mysql2');
+const { default: Axios } = require('axios');
+const mysql = require('mysql2/promise');
 require('dotenv').config();
-let dbConfig = {
+const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PW,
-  database: process.env.DB_DATABASE
+  database: process.env.DB_DATABASE,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+const getCommonWork = async (LV) => {
+  const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
+  const filteredWorks = rows.filter((args) => args.LV === 1);
+  return filteredWorks;
 };
 
-// solution 1
-const pool = mysql.createPool(dbConfig);
-pool.query('select 1+1', (err, rows) => {
-  /* */
-});
+module.exports = { getCommonWork, pool };
 
+// solution 1ㅗ
 // // solution 2
 // let connection;
 // const handleDisconnect = () => {
@@ -55,4 +60,3 @@ pool.query('select 1+1', (err, rows) => {
 // });
 
 //module.exports = connection;
-module.exports = pool;

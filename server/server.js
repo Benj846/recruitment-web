@@ -1,4 +1,5 @@
 const express = require('express');
+const mysql = require('mysql2/promise');
 const bodyParser = require('body-parser');
 const historyApiFallback = require('connect-history-api-fallback');
 const path = require('path');
@@ -8,8 +9,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
-const getCommonWork = require('./database');
-const db = require('./database');
+const { getCommonWork, getWorks, pool } = require('./database');
 const { ApolloServer, gql } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 
@@ -20,14 +20,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Graphql testing
-// app.route('/test').get(function (req, res, next) {
-//   pool.query('select * from TB_CMN_WORK', function (error, results, fields) {
-//     if (error) throw error;
-//     console.log(results);
-//   });
-// });
-
+// Theo restapi code
 // app.get('/member/count', (req, res) => {
 //   db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
 //     if (err) {
@@ -38,15 +31,15 @@ app.use(express.json());
 //   });
 // });
 // RestAPI
-app.post('/member/count', (req, res) => {
-  db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
-    if (err) {
-      console.log(error, err);
-      throw err;
-    }
-    res.send(result);
-  });
-});
+// app.post('/member/count', (req, res) => {
+//   db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
+//     if (err) {
+//       console.log(error, err);
+//       throw err;
+//     }
+//     res.send(result);
+//   });
+// });
 
 const typeDefs = gql`
   type Work2 {
@@ -57,21 +50,25 @@ const typeDefs = gql`
     USE_YN: Boolean!
   }
   type Query {
-    getCommonWork(id: Int!): [Work2]
+    getCommonWork(LV: Int): [Work2]
   }
 `;
-const resolvers = {
+
+const resolvers2 = {
   Query: {
-    getCommonWork: (id) => getCommonWork(id)
+    getCommonWork: (parent, LV, context, info) => getCommonWork(LV)
   }
 };
+// const resolversTest = {
+
+// }
 // const schema = makeExecutableSchema({
 //   typeDefs: typeDefs,
 //   resolvers
 // });
-const schema = new ApolloServer({
+const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers: resolvers2,
   playground: {
     endpoint: '/graphql',
     settings: {
@@ -79,9 +76,15 @@ const schema = new ApolloServer({
     }
   }
 });
-schema.applyMiddleware({
+server.applyMiddleware({
   app
 });
+
+// app.use((req, res) => {
+//   res.status(200);
+//   res.send('Hello!');
+//   res.end();
+// });
 // The GraphQL endpoint
 // app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
