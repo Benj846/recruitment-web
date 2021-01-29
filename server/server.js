@@ -20,9 +20,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-<<<<<<< HEAD
-// Theo restapi code
-=======
 //Graphql testing
 // app.route('/test').get(function (req, res, next) {
 //   pool.query('select * from TB_CMN_WORK', function (error, results, fields) {
@@ -32,7 +29,6 @@ app.use(express.json());
 // });
 
 // RestAPI
->>>>>>> origin/theo
 // app.get('/member/count', (req, res) => {
 //   db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
 //     if (err) {
@@ -42,18 +38,6 @@ app.use(express.json());
 //     res.send(result);
 //   });
 // });
-<<<<<<< HEAD
-// RestAPI
-// app.post('/member/count', (req, res) => {
-//   db.query('SELECT COUNT(*) COUNT from TB_CMN_MEMBER', (err, result) => {
-//     if (err) {
-//       console.log(error, err);
-//       throw err;
-//     }
-//     res.send(result);
-//   });
-// });
-=======
 
 app.post('/member/count', (req, res) => {
   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;
@@ -85,7 +69,6 @@ app.post('/member/insert', (req, res) => {
     res.send(result);
   });
 });
->>>>>>> origin/theo
 
 const typeDefs = gql`
   type Work2 {
