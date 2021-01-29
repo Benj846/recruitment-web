@@ -384,7 +384,7 @@ const JobTree = () => {
           {
             getCommonWork {
               ID
-              VALb
+              VAL
             }
           }
         `}
@@ -393,13 +393,25 @@ const JobTree = () => {
           if (loading) return <p>Loading</p>;
           if (error) return <p>error ㅠㅠ</p>;
           return data.getCommonWork.map(({ ID, VAL }) => (
+            // <button
+            //   key={number.toString()}
+            //   className="lv1"
+            //   onClick={() => {
+            //     setSelected(!selected);
+            //     setSelected3(false);
+            //     console.log("i'm level 1");
+            //   }}
+            // >
+            //   {VAL}
+            // </button>
             <button
               key={ID}
-              className="lv1"
+              className={`lv1 ${lvl1 === ID ? 'active' : null}`}
               onClick={() => {
-                setSelected(!selected);
-                setSelected3(false);
-                console.log("i'm level 1");
+                setLvl1(ID);
+                setActive2(false);
+                setLvl2(ID);
+                setCurLvl(2);
               }}
             >
               {VAL}

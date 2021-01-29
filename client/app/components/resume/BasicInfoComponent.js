@@ -109,7 +109,7 @@ function BasicInfoComponent() {
               </div>
             </div>
             <div className="content-addr-mili content-row">
-              <divc className="content-addr content-col-4">
+              <div className="content-addr content-col-4">
                 <span className="content-title">거주지</span>
                 <div className="input-addr-wrap">
                   <input
@@ -121,7 +121,7 @@ function BasicInfoComponent() {
                     search
                   </button>
                 </div>
-              </divc>
+              </div>
               <div className="content-mili content-col-4">
                 <span className="content-title">병역대상</span>
                 <select
