@@ -61,7 +61,7 @@ function CareerListComponent({ ids, onRemove }) {
 
   const [isSelectJob, setIsSelectJob] = useState(false);
   const toggleSelectJob = () => {
-    const clicked = !isSelectJob;
+    let clicked = !isSelectJob;
     setIsSelectJob(clicked);
     if (clicked === false) {
       setIsLevelOneClicked(false);
@@ -72,6 +72,8 @@ function CareerListComponent({ ids, onRemove }) {
           job.clicked === true ? { ...job, clicked: false } : job
         )
       );
+      clicked = !isSelectDetailJob;
+      setIsSelectDetailJob(clicked);
     }
   };
 
@@ -496,8 +498,8 @@ function CareerListComponent({ ids, onRemove }) {
         ...data,
         clicked: false
       }));
-      console.log(dataArr);
-      //setLevelFour(dataArr);
+      //console.log(dataArr);
+      setLevelFour(dataArr);
     } catch (error) {
       console.error(error);
     }
@@ -620,7 +622,11 @@ function CareerListComponent({ ids, onRemove }) {
                       <div key={job.id}>{job.title}</div>
                     ))}
                   </div>
-                  <div></div>
+                  <div className="level-four">
+                    {levelFour.map((job) => (
+                      <div key={job.ID}>{job.VAL}</div>
+                    ))}
+                  </div>
                 </div>
               ) : null}
             </div>

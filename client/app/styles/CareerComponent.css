@@ -419,6 +419,22 @@
   color: #dddddd;
 }
 
+.job-container > .job-content > .select-detail-job-container > .level-four {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.job-container
+  > .job-content
+  > .select-detail-job-container
+  > .level-four
+  > div {
+  margin: 5px;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+  color: #333333;
+}
+
 /* .job {
   width: 664px;
   height: 40px;
