@@ -46,6 +46,19 @@ function CareerListComponent({ ids, onRemove }) {
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
 
+  useEffect(() => {
+    const getLevelOneJobs = async () => {
+      try {
+        const response = await axios.get('/work/lv1');
+        const dataArr = response.data;
+        setLevelOne(dataArr);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getLevelOneJobs();
+  }, []);
+
   const [isSelectJob, setIsSelectJob] = useState(false);
   const toggleSelectJob = () => {
     const clicked = !isSelectJob;
@@ -62,39 +75,6 @@ function CareerListComponent({ ids, onRemove }) {
     }
   };
 
-  const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
-  const completeJobSelection = () => {
-    if (printedJob.length === 0) {
-      alert('선택된 직무가 없습니다.');
-      return;
-    }
-    let clicked = !isSelectJob;
-    setIsSelectJob(clicked);
-    if (clicked === false) {
-      setIsLevelOneClicked(false);
-      setIsLevelTwoClicked(false);
-    }
-    clicked = !isSelectDetailJob;
-    setIsSelectDetailJob(clicked);
-  };
-
-  useEffect(() => {
-    const getLevelOneJobs = async () => {
-      try {
-        const response = await axios.get('/work/lv1');
-        const tempArr = response.data;
-        const dataArr = tempArr.map((data, index) => ({
-          ...data,
-          index: index
-        }));
-        setLevelOne(dataArr);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getLevelOneJobs();
-  }, []);
-
   const toggleLevelOne = (job) => {
     getLevelTwoJobs(job.ID, 2);
     setIsLevelOneClicked(true);
@@ -106,11 +86,11 @@ function CareerListComponent({ ids, onRemove }) {
   const getLevelTwoJobs = async (id, lv) => {
     try {
       const response = await axios.post('/work/lv2', { id: id, lv: lv });
-      const tempArr = response.data;
-      const dataArr = tempArr.map((data, index) => ({
-        ...data,
-        index: index
-      }));
+      const dataArr = response.data;
+      // const dataArr = tempArr.map((data) => ({
+      //   ...data,
+      //   index: index
+      // }));
       setLevelTwo(dataArr);
     } catch (error) {
       console.error(error);
@@ -126,9 +106,8 @@ function CareerListComponent({ ids, onRemove }) {
     try {
       const response = await axios.post('/work/lv3', { id: id, lv: lv });
       const tempArr = response.data;
-      const dataArr = tempArr.map((data, index) => ({
+      const dataArr = tempArr.map((data) => ({
         ...data,
-        index: index,
         clicked: false
       }));
       //console.log(dataArr);
@@ -435,6 +414,7 @@ function CareerListComponent({ ids, onRemove }) {
     const size = printedJob.length;
     if (size < 3) {
       const job = {
+        dbId: selected.ID,
         id: jobId.current,
         title: selected.VAL
       };
@@ -442,9 +422,7 @@ function CareerListComponent({ ids, onRemove }) {
       jobId.current += 1;
     } else if (selected.clicked && size === 3) {
       isThreeClicked = true;
-      const clicked = printedJob.filter(
-        (job) => job.title === selected.title
-      )[0];
+      const clicked = printedJob.filter((job) => job.title === selected.VAL)[0];
       removePrintedJobFromLevelThree(clicked);
     } else if (size === 3) {
       alert('최대 3개까지 선택할 수 있습니다.');
@@ -453,20 +431,20 @@ function CareerListComponent({ ids, onRemove }) {
 
     if (selected.clicked && !isThreeClicked) {
       const clickedJob = printedJob.filter(
-        (job) => job.title === selected.title
+        (job) => job.title === selected.VAL
       )[0];
       removePrintedJobFromLevelThree(clickedJob);
     }
 
     setLevelThree(
       levelThree.map((job) =>
-        job.index === selected.index ? { ...job, clicked: !job.clicked } : job
+        job.ID === selected.ID ? { ...job, clicked: !job.clicked } : job
       )
     );
   };
 
   const removePrintedJob = (selected) => {
-    setPrintedJob(printedJob.filter((item) => selected.title !== item.title));
+    setPrintedJob(printedJob.filter((item) => selected.VAL !== item.title));
     removeClickedJobBorder(selected);
   };
 
@@ -482,9 +460,51 @@ function CareerListComponent({ ids, onRemove }) {
     );
   };
 
+  const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
+  const completeJobSelection = () => {
+    if (printedJob.length === 0) {
+      alert('선택된 직무가 없습니다.');
+      return;
+    }
+    getLevelFourJobs();
+    let clicked = !isSelectJob;
+    setIsSelectJob(clicked);
+    if (clicked === false) {
+      setIsLevelOneClicked(false);
+      setIsLevelTwoClicked(false);
+    }
+    clicked = !isSelectDetailJob;
+    setIsSelectDetailJob(clicked);
+  };
+
+  const getLevelFourJobs = async () => {
+    try {
+      let idArr = [];
+      for (let i = 0; i < printedJob.length; ++i) {
+        for (const key in printedJob[i]) {
+          if (key === 'dbId') {
+            idArr.push(printedJob[i][key]);
+          }
+        }
+      }
+      const response = await axios.post('/work/lv4', {
+        id: idArr,
+        count: idArr.length
+      });
+      const tempArr = response.data;
+      const dataArr = tempArr.map((data) => ({
+        ...data,
+        clicked: false
+      }));
+      console.log(dataArr);
+      //setLevelFour(dataArr);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
-      {/* {console.log(levelFour)} */}
       {ids.map((id) => (
         <div key={id} className="body-detail">
           <div className="company-input-close">
@@ -537,10 +557,7 @@ function CareerListComponent({ ids, onRemove }) {
                   <div className="level-columns">
                     <div className="level-one">
                       {levelOne.map((item) => (
-                        <div
-                          key={item.index}
-                          onClick={() => toggleLevelOne(item)}
-                        >
+                        <div key={item.ID} onClick={() => toggleLevelOne(item)}>
                           {item.VAL}
                         </div>
                       ))}
@@ -549,7 +566,7 @@ function CareerListComponent({ ids, onRemove }) {
                       {isLevelOneClicked
                         ? levelTwo.map((item) => (
                             <div
-                              key={item.index}
+                              key={item.ID}
                               onClick={() => toggleLevelTwo(item)}
                             >
                               {item.VAL}
@@ -561,7 +578,7 @@ function CareerListComponent({ ids, onRemove }) {
                       {isLevelTwoClicked
                         ? levelThree.map((item) => (
                             <div
-                              key={item.index}
+                              key={item.ID}
                               onClick={() => setSelectedJobs(item)}
                               className={`job-item ${
                                 item.clicked ? 'clicked' : null
@@ -603,6 +620,7 @@ function CareerListComponent({ ids, onRemove }) {
                       <div key={job.id}>{job.title}</div>
                     ))}
                   </div>
+                  <div></div>
                 </div>
               ) : null}
             </div>

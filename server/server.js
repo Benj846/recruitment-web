@@ -65,6 +65,35 @@ app.post('/work/lv3', async (req, res, next) => {
   }
 });
 
+app.post('/work/lv4', async (req, res, next) => {
+  const { id, count } = req.body;
+  console.log(id);
+  console.log(count);
+  try {
+    let result;
+    if (count === 1) {
+      result = await pool.query(
+        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID = ?',
+        [id[0]]
+      );
+    } else if (count === 2) {
+      result = await pool.query(
+        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID IN(?, ?)',
+        [id[0], id[1]]
+      );
+    } else if (count === 3) {
+      result = await pool.query(
+        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID IN(?, ?, ?)',
+        [id[0], id[1], id[2]]
+      );
+    }
+    const [dataList, fieldPacket] = result;
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
 // app.post('/member/count', (req, res) => {
 //   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;
 //   let params = [req.body.email];
