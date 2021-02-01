@@ -184,6 +184,7 @@
   font: normal normal medium 13px/16px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #009999;
+  cursor: pointer;
 }
 
 .job-content > .add-jobs:focus {
@@ -329,10 +330,9 @@
   align-items: center;
   --justify-content: center;
   width: 540px;
+  --width: 100%;
   height: 40px;
   border-top: 1px solid #dddddd;
-  margin: 0 5px;
-  --padding: 3px;
 }
 
 .job-container
@@ -352,6 +352,7 @@
   box-sizing: border-box;
   font-size: 12px;
   padding: 5px;
+  margin: 0 5px;
 }
 
 .job-container
@@ -386,9 +387,10 @@
 .job-container > .job-content > .select-detail-job-container {
   position: absolute;
   width: 643px;
-  height: 360px;
+  height: 279px;
   background: #ffffff;
   border: 1px solid #dddddd;
+  --border-bottom: none;
   left: 109px;
   top: 51px;
   opacity: 1;
@@ -422,6 +424,9 @@
 .job-container > .job-content > .select-detail-job-container > .level-four {
   display: flex;
   flex-wrap: wrap;
+  height: 239px;
+  --border-bottom: 1px solid #dddddd;
+  overflow-y: auto;
 }
 
 .job-container
@@ -429,11 +434,140 @@
   > .select-detail-job-container
   > .level-four
   > div {
-  margin: 5px;
+  margin: 10px;
+  color: #333333;
+  font-size: 12px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.job-container
+  > .job-content
+  > .select-detail-job-container
+  > .level-four
+  > .detail-job-item.clicked {
+  border: 1px solid #aaaaaa;
+  border-radius: 15px;
+}
+
+.job-container > .job-content > .selected-four-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  border-top: none;
+  top: 330px;
+  left: 109px;
+}
+
+.job-container
+  > .job-content
+  > .selected-four-container
+  > .print-selected-four {
+  display: flex;
+  --background: #ffffff;
+  flex-wrap: wrap;
+  width: 512px;
+}
+
+.job-container
+  > .job-content
+  > .selected-four-container
+  > .print-selected-four
+  > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
   border: 1px solid #dddddd;
   border-radius: 15px;
-  color: #333333;
 }
+
+.job-container
+  > .job-content
+  > .selected-four-container
+  > .print-selected-four
+  > div
+  > .selected {
+  color: #009999;
+  margin: 0 5px;
+}
+
+.job-container
+  > .job-content
+  > .selected-four-container
+  > .print-selected-four
+  > div
+  > .close-selected {
+  margin: 0 5px;
+}
+
+/* .job-container
+  > .job-content
+  > .selected-four-container
+  > .print-selected-four
+  > div
+  > div {
+  
+} */
+
+.job-container
+  > .job-content
+  > .selected-four-container
+  > .completeDetailJobSelection {
+  align-self: flex-start;
+  width: 129px;
+  height: 40px;
+  border: 1px solid #009999;
+  background: #009999;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* .job-container
+  > .job-content
+  > .select-detail-job-container
+  > .selected-four-container {
+  display: flex;
+  align-items: center;
+}
+
+.job-container
+  > .job-content
+  > .select-detail-job-container
+  > .selected-four-container
+  > .selected-four-content {
+  display: flex;
+  width: 540px;
+  flex-wrap: wrap;
+}
+
+.job-container
+  > .job-content
+  > .select-detail-job-container
+  > .selected-four-container
+  > .completeDetailJobSelection {
+  align-self: flex-start;
+  width: 129px;
+  height: 40px;
+  border: 1px solid #009999;
+  background: #009999;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+} */
+
+/* .job-container
+  > .job-content
+  > .select-detail-job-container
+  > .selected-from-four
+  > div {
+  font-size: 13px;
+} */
 
 /* .job {
   width: 664px;

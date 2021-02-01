@@ -61,19 +61,33 @@ function CareerListComponent({ ids, onRemove }) {
 
   const [isSelectJob, setIsSelectJob] = useState(false);
   const toggleSelectJob = () => {
-    let clicked = !isSelectJob;
-    setIsSelectJob(clicked);
-    if (clicked === false) {
+    let isJobClicked = !isSelectJob;
+    let detailFlag = !isSelectDetailJob;
+    if (isJobClicked === false) {
       setIsLevelOneClicked(false);
       setIsLevelTwoClicked(false);
       setPrintedJob([]);
-      setLevelThree(
-        levelThree.map((job) =>
-          job.clicked === true ? { ...job, clicked: false } : job
-        )
-      );
-      clicked = !isSelectDetailJob;
-      setIsSelectDetailJob(clicked);
+      setLevelTwo([]);
+      setLevelThree([]);
+      setLevelFour([]);
+      // setLevelThree(
+      //   levelThree.map((job) =>
+      //     job.clicked === true ? { ...job, clicked: false } : job
+      //   )
+      // );
+      setIsSelectJob(isJobClicked);
+      //setIsSelectDetailJob(isJobClicked);
+    } else if (detailFlag === false) {
+      setIsLevelOneClicked(false);
+      setIsLevelTwoClicked(false);
+      setIsSelectJob(false);
+      setIsSelectDetailJob(false);
+      setPrintedJob([]);
+      setLevelTwo([]);
+      setLevelThree([]);
+      setLevelFour([]);
+    } else {
+      setIsSelectJob(isJobClicked);
     }
   };
 
@@ -417,6 +431,7 @@ function CareerListComponent({ ids, onRemove }) {
     if (size < 3) {
       const job = {
         dbId: selected.ID,
+        upperId: selected.UPPER_ID,
         id: jobId.current,
         title: selected.VAL
       };
@@ -462,6 +477,19 @@ function CareerListComponent({ ids, onRemove }) {
     );
   };
 
+  const setSelectedDetailJobs = (selected) => {
+    setLevelFour(
+      levelFour.map((job) =>
+        job.ID === selected.ID ? { ...job, clicked: !selected.clicked } : job
+      )
+    );
+    const job = {
+      id: selected.ID,
+      title: selected.VAL
+    };
+    setPrintedDetailJob([...printedDetailJob, job]);
+  };
+
   const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
   const completeJobSelection = () => {
     if (printedJob.length === 0) {
@@ -482,15 +510,16 @@ function CareerListComponent({ ids, onRemove }) {
   const getLevelFourJobs = async () => {
     try {
       let idArr = [];
+      let upperIdArr = [];
       for (let i = 0; i < printedJob.length; ++i) {
-        for (const key in printedJob[i]) {
-          if (key === 'dbId') {
-            idArr.push(printedJob[i][key]);
-          }
-        }
+        // for (const key in printedJob[i]) {
+        idArr.push(printedJob[i]['dbId']);
+        upperIdArr.push(printedJob[i]['upperId']);
+        //}
       }
       const response = await axios.post('/work/lv4', {
         id: idArr,
+        upperId: upperIdArr,
         count: idArr.length
       });
       const tempArr = response.data;
@@ -498,12 +527,13 @@ function CareerListComponent({ ids, onRemove }) {
         ...data,
         clicked: false
       }));
-      //console.log(dataArr);
       setLevelFour(dataArr);
     } catch (error) {
       console.error(error);
     }
   };
+
+  const [printedDetailJob, setPrintedDetailJob] = useState([]);
 
   return (
     <>
@@ -578,15 +608,15 @@ function CareerListComponent({ ids, onRemove }) {
                     </div>
                     <div className="level-three">
                       {isLevelTwoClicked
-                        ? levelThree.map((item) => (
+                        ? levelThree.map((job) => (
                             <div
-                              key={item.ID}
-                              onClick={() => setSelectedJobs(item)}
+                              key={job.ID}
+                              onClick={() => setSelectedJobs(job)}
                               className={`job-item ${
-                                item.clicked ? 'clicked' : null
+                                job.clicked ? 'clicked' : null
                               }`}
                             >
-                              {item.VAL}
+                              {job.VAL}
                             </div>
                           ))
                         : null}
@@ -616,18 +646,53 @@ function CareerListComponent({ ids, onRemove }) {
                 </div>
               ) : null}
               {isSelectDetailJob ? (
-                <div className="select-detail-job-container">
-                  <div className="previous-selected-jobs">
-                    {printedJob.map((job) => (
-                      <div key={job.id}>{job.title}</div>
-                    ))}
+                <>
+                  <div className="select-detail-job-container">
+                    <div className="previous-selected-jobs">
+                      {printedJob.map((job) => (
+                        <div key={job.id}>{job.title}</div>
+                      ))}
+                    </div>
+                    <div className="level-four">
+                      {levelFour.map((job) => (
+                        <div
+                          key={job.ID}
+                          onClick={() => setSelectedDetailJobs(job)}
+                          className={`detail-job-item ${
+                            job.clicked ? 'clicked' : null
+                          }`}
+                        >
+                          {job.VAL}
+                        </div>
+                      ))}
+                    </div>
+                    {/* <div className="selected-four-container">
+                    <div className="selected-four-content">
+                      {printedDetailJob.map((job) => (
+                        <div key={job.id}>{job.title}</div>
+                      ))}
+                    </div>
+                    <button className="completeDetailJobSelection">
+                      선택완료
+                    </button>
+                  </div> */}
                   </div>
-                  <div className="level-four">
-                    {levelFour.map((job) => (
-                      <div key={job.ID}>{job.VAL}</div>
-                    ))}
+                  <div className="selected-four-container">
+                    <div className="print-selected-four">
+                      {printedDetailJob.map((job) => (
+                        <div>
+                          <div className="selected" key={job.id}>
+                            {job.title}
+                          </div>
+                          <div className="close-selected">X</div>
+                        </div>
+                      ))}
+                    </div>
+                    <button className="completeDetailJobSelection">
+                      선택완료
+                    </button>
                   </div>
-                </div>
+                </>
               ) : null}
             </div>
           </div>
@@ -637,107 +702,4 @@ function CareerListComponent({ ids, onRemove }) {
   );
 }
 
-function CareerDetailComponent({ id, onRemove }) {
-  const options = [
-    {
-      value: '1',
-      label: '1',
-      options: [
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        },
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        },
-        {
-          value: '2',
-          label: '2',
-          options: [
-            { value: '3', label: '3' },
-            { value: '3', label: '3' }
-          ]
-        }
-      ]
-    },
-    {
-      value: '1',
-      label: '1',
-      options: [
-        { value: '2', label: '2' },
-        { value: '2', label: '2' },
-        { value: '2', label: '2' }
-      ]
-    }
-  ];
-  const colourOptions = [
-    { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
-    { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
-    { value: 'purple', label: 'Purple', color: '#5243AA' },
-    { value: 'red', label: 'Red', color: '#FF5630', isFixed: true },
-    { value: 'orange', label: 'Orange', color: '#FF8B00' },
-    { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-    { value: 'green', label: 'Green', color: '#36B37E' },
-    { value: 'forest', label: 'Forest', color: '#00875A' },
-    { value: 'slate', label: 'Slate', color: '#253858' },
-    { value: 'silver', label: 'Silver', color: '#666666' }
-  ];
-  // 참고
-  // https://www.npmjs.com/package/react-multi-level-selector
-
-  return (
-    <div className="body-detail">
-      <div className="company-input-close">
-        <div>
-          <span className="company-name">회사명</span>
-          <input className="input-style"></input>
-        </div>
-        <div className="close-info" onClick={() => onRemove(id)}>
-          X
-        </div>
-      </div>
-      {/* 고용형태 */}
-      <div className="employ-type">
-        <div className="employ-type-style">고용형태</div>
-        <>
-          <Select
-            className="basic-single"
-            classNamePrefix="select"
-            name="color"
-            options={colourOptions}
-          />
-        </>
-        <div className="employ-type-style margin-style">최종직위</div>
-        <input className="input-style"></input>
-      </div>
-      {/* 근무기간 */}
-      <div className="employ-type">
-        <div className="employ-type-style">근무기간</div>
-        <input type="date" className="employ-period zero-outline"></input>
-        <input type="date" className="employ-period zero-outline"></input>
-        <input className="employ-period-input zero-outline"></input>
-        <div className="present">
-          <input type="radio"></input>
-          <span>재직 중</span>
-        </div>
-      </div>
-      {/* 직무명 */}
-      <div className="job-container">
-        <div className="job-content">
-          <span className="job-title">직무명</span>
-          <MultiLevelSelect options={options} />
-        </div>
-      </div>
-    </div>
-  );
-}
 export default CareerComponent;

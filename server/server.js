@@ -66,25 +66,23 @@ app.post('/work/lv3', async (req, res, next) => {
 });
 
 app.post('/work/lv4', async (req, res, next) => {
-  const { id, count } = req.body;
-  console.log(id);
-  console.log(count);
+  const { id, upperId, count } = req.body;
   try {
     let result;
     if (count === 1) {
       result = await pool.query(
-        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID = ?',
-        [id[0]]
+        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID = ? OR LV=4 AND UPPER_ID = ?',
+        [id[0], upperId[0]]
       );
     } else if (count === 2) {
       result = await pool.query(
-        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID IN(?, ?)',
-        [id[0], id[1]]
+        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID IN(?, ?) OR LV=4 AND UPPER_ID IN(?, ?)',
+        [id[0], id[1], upperId[0], upperId[1]]
       );
     } else if (count === 3) {
       result = await pool.query(
-        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID IN(?, ?, ?)',
-        [id[0], id[1], id[2]]
+        'SELECT * from TB_CMN_WORK WHERE LV=4 AND UPPER_ID IN(?, ?, ?) OR LV=4 AND UPPER_ID IN(?, ?, ?)',
+        [id[0], id[1], id[2], upperId[0], upperId[1], upperId[2]]
       );
     }
     const [dataList, fieldPacket] = result;
