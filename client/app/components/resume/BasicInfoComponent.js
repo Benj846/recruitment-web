@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import '../../styles/BasicInfoComponent';
 import Popup from './PopupComponent';
+import icon_search from './logo_and_images/icon_search_40px.png';
+import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
 import SignInComponent from '../member/SignInComponent';
 
 const options = [
@@ -70,7 +72,7 @@ function BasicInfoComponent() {
           </div>
           <div className="input-container">
             <div className="name-gender-content content-row">
-              <div className="content-name content-col-4">
+              <div className="content-name content-col">
                 <span className="content-title">이름</span>
                 <input
                   className="input-name"
@@ -80,7 +82,7 @@ function BasicInfoComponent() {
                   disabled="disabled"
                 ></input>
               </div>
-              <div className="content-gender content-col-4">
+              <div className="content-gender content-col">
                 <span className="content-title">성별</span>
                 <div className="gender-content">
                   <button className="male active">남</button>
@@ -89,7 +91,7 @@ function BasicInfoComponent() {
               </div>
             </div>
             <div className="content-birth-phonenum content-row">
-              <div className="content-birth content-col-4">
+              <div className="content-birth content-col">
                 <span className="content-title">생년월일</span>
                 <input
                   className="input-birth"
@@ -99,7 +101,7 @@ function BasicInfoComponent() {
                   disabled="disabled"
                 ></input>
               </div>
-              <div className="content-phone content-col-4">
+              <div className="content-phone content-col">
                 <span className="content-title">전화번호</span>
                 <input
                   className="input-phonenum"
@@ -110,25 +112,30 @@ function BasicInfoComponent() {
               </div>
             </div>
             <div className="content-addr-mili content-row">
-              <div className="content-addr content-col-4">
+              <div className="content-addr content-col">
                 <span className="content-title">거주지</span>
                 <div className="input-addr-wrap">
                   <input
                     className="input-addr"
                     type="text"
                     name="address"
+                    onClick={togglePopup}
+                    style={{
+                      background: `url(${icon_search}) no-repeat 98% center`,
+                      backgroundSize: `32px 32px`
+                    }}
                   ></input>
-                  <button className="search-btn" onClick={togglePopup}>
-                    search
-                  </button>
                 </div>
               </div>
-              <div className="content-mili content-col-4">
+              <div className="content-mili content-col">
                 <span className="content-title">병역대상</span>
                 <select
                   className="select military-options"
                   defaultValue="choose-military"
                   onClick={handleSelectChange}
+                  style={{
+                    background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                  }}
                 >
                   <option
                     className="military-option"
@@ -159,7 +166,7 @@ function BasicInfoComponent() {
               </div>
             </div>
             <div className="content-email content-row">
-              <div className="content-col-8">
+              <div className="content-col">
                 <span className="span-email content-title">이메일</span>
                 <input
                   className="input-email"

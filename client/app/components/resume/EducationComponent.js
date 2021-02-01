@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import icon_search from './logo_and_images/icon_search_40px.png';
+import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
 import '../../styles/EducationComponent';
 
 function EducationComponent(props) {
@@ -42,25 +44,28 @@ function EducationComponent(props) {
   };
   return (
     <div className="education-info">
-      <div className="education-title">학력사항</div>
+      <span className="education-title">학력사항</span>
       <hr className="division-line" />
-      <div className="final-content">
-        <div className="title">최종학력</div>
-        <select
-          className="select-education"
-          defaultValue="non-value"
-          onChange={onChange}
-        >
-          <option value="non-value" disabled="disabled">
-            최종학력을 선택해주세요
-          </option>
-          <option value="고졸">고졸</option>
-          <option value="초대졸">초대졸</option>
-          <option value="편입">편입</option>
-          <option value="학사">학사</option>
-          <option value="석사">석사</option>
-          <option value="박사">박사</option>
-        </select>
+      <div className="first-row content-row">
+        <div className="final-content content-col">
+          <span className="content-title">최종학력</span>
+          <select
+            className="select-education"
+            defaultValue="non-value"
+            onChange={onChange}
+            style={{ background: `url(${icon_arrow_down}) no-repeat 100% 0` }}
+          >
+            <option value="non-value" disabled="disabled">
+              최종학력을 선택해주세요
+            </option>
+            <option value="고졸">고졸</option>
+            <option value="초대졸">초대졸</option>
+            <option value="편입">편입</option>
+            <option value="학사">학사</option>
+            <option value="석사">석사</option>
+            <option value="박사">박사</option>
+          </select>
+        </div>
         {isMasterClicked ? (
           <>
             <div className="integrated" onClick={handleCheckBoxChange}>
@@ -68,7 +73,9 @@ function EducationComponent(props) {
                 type="checkbox"
                 checked={isIntegratedChecked}
                 onChange={handleCheckBoxChange}
+                id="a1"
               />
+              <label className="el-checkbox-style" for="a1"></label>
               <span className="integrated-title">석박사 연계과정</span>
             </div>
           </>
@@ -82,38 +89,66 @@ function EducationComponent(props) {
 function HighSchool() {
   return (
     <>
-      <hr className="education-division" />
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">고등학교</div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disa-bled="disabled">
-              선택
-            </option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">고등학교</span>
+          </div>
+          <div className="name-school content-col">
+            <span className="content-title">학교명</span>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disa-bled="disabled">
+                선택
+              </option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="major-name">전공분류</div>
-          <select className="select-major" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              인문계열
-            </option>
-            <option value="실업계열">실업계열</option>
-          </select>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value">소재지를 선택하세요</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <select
+              className="select-major"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                인문계열
+              </option>
+              <option value="실업계열">실업계열</option>
+            </select>
+          </div>
         </div>
       </div>
     </>
@@ -138,39 +173,69 @@ function College() {
 
   return (
     <>
-      <hr className="education-division" />
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">대학교</div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              패플대학교
-            </option>
-            <option value="2">하버드</option>
-            <option value="3">옥스퍼드</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">대학교</span>
+          </div>
+          <div className="name-school content-col">
+            <span className="content-title">학교명</span>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                패플대학교
+              </option>
+              <option value="2">하버드</option>
+              <option value="3">옥스퍼드</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="인천">인천</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="major-name">전공분류</div>
-          <select className="select-major" defaultValue="국어국문">
-            <option value="국어국문">국어국문</option>
-            <option value="영어영문">영어영문</option>
-          </select>
-          <button className="add-major" onClick={onCreate}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="인천">인천</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="국어국문"
+              >
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+              </select>
+              <button className="add-major" onClick={onCreate}>
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={ids} onRemove={onRemove} onCreate={onCreate} />
       </div>
@@ -180,15 +245,17 @@ function College() {
 
 function AddedMajor({ ids, onRemove, order }) {
   return ids.map((id) => (
-    <div key={id} className="major-content">
-      <div className="title">전공분류</div>
-      <select className="select-major" defaultValue="국어국문">
-        <option value="국어국문">국어국문</option>
-        <option value="영어영문">영어영문</option>
-      </select>
-      <button className="close-info" onClick={() => onRemove(id, order)}>
-        X 삭제
-      </button>
+    <div key={id} className="major-content-add content-col">
+      <div className="content-title">전공분류</div>
+      <div className="select-add-wrap">
+        <select className="select-major" defaultValue="국어국문">
+          <option value="국어국문">국어국문</option>
+          <option value="영어영문">영어영문</option>
+        </select>
+        <button className="close-info" onClick={() => onRemove(id, order)}>
+          X 삭제
+        </button>
+      </div>
     </div>
   ));
 }
@@ -221,80 +288,139 @@ function Transfer() {
 
   return (
     <>
-      <hr className="education-division" />
       <div className="education-container">
-        <div className="name-period-content">
-          <div>
-            <div className="level">대학교</div>
-            <div className="level">(편입 전)</div>
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">대학교</span>
+            <span className="content-title">(편입 전)</span>
           </div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              패플대학교
-            </option>
-            <option value="2">하버드</option>
-            <option value="3">옥스퍼드</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+          <div className="name-school content-col">
+            <div className="content-title">학교명</div>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                패플대학교
+              </option>
+              <option value="2">하버드</option>
+              <option value="3">옥스퍼드</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="인천">인천</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select className="select-major" defaultValue="국어국문">
-            <option value="국어국문">국어국문</option>
-            <option value="영어영문">영어영문</option>
-          </select>
-          <button className="add-major" onClick={() => onCreate(firstArea)}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="인천">인천</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="국어국문"
+              >
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+              </select>
+              <button className="add-major" onClick={() => onCreate(firstArea)}>
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
 
-        <hr className="education-division" />
-        <div className="name-period-content">
-          <div>
-            <div className="level">대학교</div>
-            <div className="level">(편입 후)</div>
+        <div className="first-row content-row after-transfer">
+          <div className="level">
+            <span className="content-title">대학교</span>
+            <span className="content-title">(편입 후)</span>
           </div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              패플대학교
-            </option>
-            <option value="2">하버드</option>
-            <option value="3">옥스퍼드</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+          <div className="name-school content-col">
+            <div className="content-title">학교명</div>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                패플대학교
+              </option>
+              <option value="2">하버드</option>
+              <option value="3">옥스퍼드</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="인천">인천</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select className="select-major" defaultValue="국어국문">
-            <option value="국어국문">국어국문</option>
-            <option value="영어영문">영어영문</option>
-          </select>
-          <button className="add-major" onClick={() => onCreate(secondArea)}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="인천">인천</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="국어국문"
+              >
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+              </select>
+              <button
+                className="add-major"
+                onClick={() => onCreate(secondArea)}
+              >
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
       </div>
@@ -318,40 +444,69 @@ function University() {
 
   return (
     <>
-      <hr className="education-division" />
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">대학교</div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              선택
-            </option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">대학교</span>
+          </div>
+          <div className="name-school content-col">
+            <span className="content-title">학교명</span>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                선택
+              </option>
+              <option value="2">하버드</option>
+              <option value="3">옥스퍼드</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
-
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select className="select-major" defaultValue="국어국문">
-            <option value="국어국문">국어국문</option>
-            <option value="영어영문">영어영문</option>
-          </select>
-          <button className="add-major" onClick={onCreate}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <span className="content-title">소재지</span>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value"></option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <span className="content-title">전공분류</span>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="국어국문"
+              >
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+              </select>
+              <button className="add-major" onClick={onCreate}>
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={ids} onRemove={onRemove} />
       </div>
@@ -387,74 +542,137 @@ function Master() {
 
   return (
     <>
-      <hr className="education-division" />
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">대학교</div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              패플대학교
-            </option>
-            <option value="2">하버드</option>
-            <option value="3">옥스퍼드</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">대학교</span>
+          </div>
+          <div className="name-school content-col">
+            <div className="content-title">학교명</div>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                패플대학교
+              </option>
+              <option value="2">하버드</option>
+              <option value="3">옥스퍼드</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="인천">인천</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select className="select-major" defaultValue="국어국문">
-            <option value="국어국문">국어국문</option>
-            <option value="영어영문">영어영문</option>
-          </select>
-          <button className="add-major" onClick={() => onCreate(firstArea)}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="인천">인천</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="국어국문"
+              >
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+              </select>
+              <button className="add-major" onClick={() => onCreate(firstArea)}>
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
 
-        <hr className="education-division" />
-        <div className="name-period-content">
-          <div className="level">대학교</div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              패플대학교
-            </option>
-            <option value="2">하버드</option>
-            <option value="3">옥스퍼드</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+        <div className="first-row content-row after-transfer">
+          <div className="level">
+            <span className="content-title">대학원</span>
+          </div>
+          <div className="name-school content-col">
+            <div className="content-title">학교명</div>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              ltValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                패플대학교
+              </option>
+              <option value="2">하버드</option>
+              <option value="3">옥스퍼드</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="인천">인천</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select className="select-major" defaultValue="국어국문">
-            <option value="국어국문">국어국문</option>
-            <option value="영어영문">영어영문</option>
-          </select>
-          <button className="add-major" onClick={() => onCreate(secondArea)}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="인천">인천</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="국어국문"
+              >
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+              </select>
+              <button
+                className="add-major"
+                onClick={() => onCreate(secondArea)}
+              >
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
       </div>
@@ -497,159 +715,284 @@ function Doctorate({ isIntegratedChecked }) {
 
   return (
     <>
-      <hr className="education-division" />
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">대학교</div>
-          <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              패플대학교
-            </option>
-            <option value="2">하버드</option>
-            <option value="3">옥스퍼드</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">대학교</span>
+          </div>
+          <div className="name-school content-col">
+            <div className="content-title">학교명</div>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value" disabled="disabled">
+                패플대학교
+              </option>
+              <option value="2">하버드</option>
+              <option value="3">옥스퍼드</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input type="month" className="in-school-period-input" />
+              <input type="month" className="in-school-period-input" />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="인천">인천</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select className="select-major" defaultValue="국어국문">
-            <option value="국어국문">국어국문</option>
-            <option value="영어영문">영어영문</option>
-          </select>
-          <button className="add-major" onClick={() => onCreate(firstArea)}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+            >
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="인천">인천</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="국어국문"
+              >
+                <option value="국어국문">국어국문</option>
+                <option value="영어영문">영어영문</option>
+              </select>
+              <button className="add-major" onClick={() => onCreate(firstArea)}>
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
 
         {isIntegratedChecked ? (
           <>
-            <hr className="education-division" />
-            <div className="name-period-content">
-              <div className="level">
-                대학교
-                <div>(석박사)</div>
+            <div className="education-container">
+              <div className="first-row content-row">
+                <div className="level">
+                  <span className="content-title">대학원</span>
+                  <span className="content-title">(석박사)</span>
+                </div>
+                <div className="name-school content-col">
+                  <div className="content-title">학교명</div>
+                  <select
+                    className="title-input"
+                    style={{
+                      background: `url(${icon_search}) no-repeat 98% center`,
+                      backgroundSize: `32px 32px`
+                    }}
+                    defaultValue="default-value"
+                  >
+                    <option value="default-value" disabled="disabled">
+                      패플대학교
+                    </option>
+                    <option value="2">하버드</option>
+                    <option value="3">옥스퍼드</option>
+                  </select>
+                </div>
+                <div className="in-school-period content-col">
+                  <span className="content-title">재학기간</span>
+                  <div className="input-wrapper">
+                    <input type="month" className="in-school-period-input" />
+                    <input type="month" className="in-school-period-input" />
+                  </div>
+                </div>
               </div>
-              <div className="title">학교명</div>
-              <select className="title-input" defaultValue="default-value">
-                <option value="default-value" disabled="disabled">
-                  패플대학교
-                </option>
-                <option value="2">하버드</option>
-                <option value="3">옥스퍼드</option>
-              </select>
-              <div className="in-school-period">재학기간</div>
-              <input type="month" className="in-school-period-input" />
-              <input type="month" className="in-school-period-input" />
-            </div>
-            <div className="location">
-              <div className="location-title">소재지</div>
-              <select className="location-input" defaultValue="default-value">
-                <option value="default-value"></option>
-                <option value="서울">서울</option>
-                <option value="인천">인천</option>
-              </select>
-            </div>
-            <div className="major-content">
-              <div className="title">전공분류</div>
-              <select className="select-major" defaultValue="국어국문">
-                <option value="국어국문">국어국문</option>
-                <option value="영어영문">영어영문</option>
-              </select>
-              <button
-                className="add-major"
-                onClick={() => onCreate(secondArea)}
-              >
-                전공추가
-              </button>
+              <div className="second-row">
+                <div className="location content-col">
+                  <div className="location-title content-title">소재지</div>
+                  <select
+                    className="location-input"
+                    style={{
+                      background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                    }}
+                    defaultValue="default-value"
+                  >
+                    <option value="default-value"></option>
+                    <option value="서울">서울</option>
+                    <option value="인천">인천</option>
+                  </select>
+                </div>
+                <div className="major-content content-col">
+                  <div className="major-name content-title">전공분류</div>
+                  <div className="select-add-wrap">
+                    <select
+                      className="select-major"
+                      style={{
+                        background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                      }}
+                      defaultValue="국어국문"
+                    >
+                      <option value="국어국문">국어국문</option>
+                      <option value="영어영문">영어영문</option>
+                    </select>
+                    <button
+                      className="add-major"
+                      onClick={() => onCreate(secondArea)}
+                    >
+                      전공추가
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
             <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
           </>
         ) : (
           <>
-            <hr className="education-division" />
-            <div className="name-period-content">
-              <div className="level">대학교(석사)</div>
-              <div className="title">학교명</div>
-              <select className="title-input" defaultValue="default-value">
-                <option value="default-value" disabled="disabled">
-                  패플대학교
-                </option>
-                <option value="2">하버드</option>
-                <option value="3">옥스퍼드</option>
-              </select>
-              <div className="in-school-period">재학기간</div>
-              <input type="month" className="in-school-period-input" />
-              <input type="month" className="in-school-period-input" />
-            </div>
-            <div className="location">
-              <div className="location-title">소재지</div>
-              <select className="location-input" defaultValue="default-value">
-                <option value="default-value"></option>
-                <option value="서울">서울</option>
-                <option value="인천">인천</option>
-              </select>
-            </div>
-            <div className="major-content">
-              <div className="title">전공분류</div>
-              <select className="select-major" defaultValue="국어국문">
-                <option value="국어국문">국어국문</option>
-                <option value="영어영문">영어영문</option>
-              </select>
-              <button
-                className="add-major"
-                onClick={() => onCreate(secondArea)}
-              >
-                전공추가
-              </button>
-            </div>
-            <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
+            <div className="education-container">
+              <div className="first-row content-row">
+                <div className="level">
+                  <span className="content-title">대학원(석사)</span>
+                </div>
+                <div className="name-school content-col">
+                  <div className="content-title">학교명</div>
+                  <select
+                    className="title-input"
+                    style={{
+                      background: `url(${icon_search}) no-repeat 98% center`,
+                      backgroundSize: `32px 32px`
+                    }}
+                    defaultValue="default-value"
+                  >
+                    <option value="default-value" disabled="disabled">
+                      패플대학교
+                    </option>
+                    <option value="2">하버드</option>
+                    <option value="3">옥스퍼드</option>
+                  </select>
+                </div>
+                <div className="in-school-period content-col">
+                  <span className="content-title">재학기간</span>
+                  <div className="input-wrapper">
+                    <input type="month" className="in-school-period-input" />
+                    <input type="month" className="in-school-period-input" />
+                  </div>
+                </div>
+              </div>
+              <div className="second-row">
+                <div className="location content-col">
+                  <div className="location-title content-title">소재지</div>
+                  <select
+                    className="location-input"
+                    style={{
+                      background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                    }}
+                    defaultValue="default-value"
+                  >
+                    <option value="default-value"></option>
+                    <option value="서울">서울</option>
+                    <option value="인천">인천</option>
+                  </select>
+                </div>
+                <div className="major-content content-col">
+                  <div className="major-name content-title">전공분류</div>
+                  <div className="select-add-wrap">
+                    <select
+                      className="select-major"
+                      style={{
+                        background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                      }}
+                      defaultValue="국어국문"
+                    >
+                      <option value="국어국문">국어국문</option>
+                      <option value="영어영문">영어영문</option>
+                    </select>
+                    <button
+                      className="add-major"
+                      onClick={() => onCreate(firstArea)}
+                    >
+                      전공추가
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
 
-            <hr className="education-division" />
-            <div className="name-period-content">
-              <div className="level">대학교(박사)</div>
-              <div className="title">학교명</div>
-              <select className="title-input" defaultValue="default-value">
-                <option value="default-value" disabled="disabled">
-                  패플대학교
-                </option>
-                <option value="2">하버드</option>
-                <option value="3">옥스퍼드</option>
-              </select>
-              <div className="in-school-period">재학기간</div>
-              <input type="month" className="in-school-period-input" />
-              <input type="month" className="in-school-period-input" />
+              <div className="first-row content-row after-transfer">
+                <div className="level">
+                  <span className="content-title">대학원(박사)</span>
+                </div>
+                <div className="name-school content-col">
+                  <div className="content-title">학교명</div>
+                  <select
+                    className="title-input"
+                    style={{
+                      background: `url(${icon_search}) no-repeat 98% center`,
+                      backgroundSize: `32px 32px`
+                    }}
+                    ltValue="default-value"
+                  >
+                    <option value="default-value" disabled="disabled">
+                      패플대학교
+                    </option>
+                    <option value="2">하버드</option>
+                    <option value="3">옥스퍼드</option>
+                  </select>
+                </div>
+                <div className="in-school-period content-col">
+                  <span className="content-title">재학기간</span>
+                  <div className="input-wrapper">
+                    <input type="month" className="in-school-period-input" />
+                    <input type="month" className="in-school-period-input" />
+                  </div>
+                </div>
+              </div>
+              <div className="second-row">
+                <div className="location content-col">
+                  <div className="location-title content-title">소재지</div>
+                  <select
+                    className="location-input"
+                    style={{
+                      background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                    }}
+                    defaultValue="default-value"
+                  >
+                    <option value="default-value"></option>
+                    <option value="서울">서울</option>
+                    <option value="인천">인천</option>
+                  </select>
+                </div>
+                <div className="major-content content-col">
+                  <div className="major-name content-title">전공분류</div>
+                  <div className="select-add-wrap">
+                    <select
+                      className="select-major"
+                      style={{
+                        background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                      }}
+                      defaultValue="국어국문"
+                    >
+                      <option value="국어국문">국어국문</option>
+                      <option value="영어영문">영어영문</option>
+                    </select>
+                    <button
+                      className="add-major"
+                      onClick={() => onCreate(secondArea)}
+                    >
+                      전공추가
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <AddedMajor ids={idsTwo} order={secondArea} onRemove={onRemove} />
             </div>
-            <div className="location">
-              <div className="location-title">소재지</div>
-              <select className="location-input" defaultValue="default-value">
-                <option value="default-value"></option>
-                <option value="서울">서울</option>
-                <option value="인천">인천</option>
-              </select>
-            </div>
-            <div className="major-content">
-              <div className="title">전공분류</div>
-              <select className="select-major" defaultValue="국어국문">
-                <option value="국어국문">국어국문</option>
-                <option value="영어영문">영어영문</option>
-              </select>
-              <button className="add-major" onClick={() => onCreate(thirdArea)}>
-                전공추가
-              </button>
-            </div>
-            <AddedMajor ids={idsThree} order={thirdArea} onRemove={onRemove} />
           </>
         )}
       </div>

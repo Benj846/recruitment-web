@@ -49,6 +49,7 @@
 .recruit-title .btn-common {
   outline: none;
   border: 1px solid #ddd;
+  padding: 0;
   width: 80px;
   height: 32px;
   margin-right: 8px;
