@@ -34,14 +34,14 @@ app.get('/work/lv1', async (req, res, next) => {
 });
 
 app.post('/work/lv2', async (req, res, next) => {
-  const { id, lv } = req.body;
+  const { id } = req.body;
   try {
     const [
       dataList,
       fieldPacket
     ] = await pool.query(
-      'SELECT * from TB_CMN_WORK WHERE LV=? AND UPPER_ID=?',
-      [lv, id]
+      'SELECT * from TB_CMN_WORK WHERE LV=2 AND UPPER_ID=?',
+      [id]
     );
     res.send(dataList);
   } catch (err) {
@@ -50,14 +50,14 @@ app.post('/work/lv2', async (req, res, next) => {
 });
 
 app.post('/work/lv3', async (req, res, next) => {
-  const { id, lv } = req.body;
+  const { id } = req.body;
   try {
     const [
       dataList,
       fieldPacket
     ] = await pool.query(
-      'SELECT * from TB_CMN_WORK WHERE LV=? AND UPPER_ID=?',
-      [lv, id]
+      'SELECT * from TB_CMN_WORK WHERE LV=3 AND UPPER_ID=?',
+      [id]
     );
     res.send(dataList);
   } catch (err) {

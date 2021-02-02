@@ -91,17 +91,17 @@ function CareerListComponent({ ids, onRemove }) {
     }
   };
 
-  const toggleLevelOne = (job) => {
-    getLevelTwoJobs(job.ID, 2);
+  const toggleLevelOne = (id) => {
+    getLevelTwoJobs(id, 2);
     setIsLevelOneClicked(true);
     if (isLevelTwoClicked === true) {
       setIsLevelTwoClicked(false);
     }
   };
 
-  const getLevelTwoJobs = async (id, lv) => {
+  const getLevelTwoJobs = async (id) => {
     try {
-      const response = await axios.post('/work/lv2', { id: id, lv: lv });
+      const response = await axios.post('/work/lv2', { id: id });
       const dataArr = response.data;
       // const dataArr = tempArr.map((data) => ({
       //   ...data,
@@ -113,20 +113,19 @@ function CareerListComponent({ ids, onRemove }) {
     }
   };
 
-  const toggleLevelTwo = (job) => {
-    getLevelThreeJobs(job.ID, 3);
+  const toggleLevelTwo = (id) => {
+    getLevelThreeJobs(id);
     setIsLevelTwoClicked(true);
   };
 
-  const getLevelThreeJobs = async (id, lv) => {
+  const getLevelThreeJobs = async (id) => {
     try {
-      const response = await axios.post('/work/lv3', { id: id, lv: lv });
+      const response = await axios.post('/work/lv3', { id: id });
       const tempArr = response.data;
       const dataArr = tempArr.map((data) => ({
         ...data,
         clicked: false
       }));
-      //console.log(dataArr);
       setLevelThree(dataArr);
     } catch (error) {
       console.error(error);
@@ -478,16 +477,23 @@ function CareerListComponent({ ids, onRemove }) {
   };
 
   const setSelectedDetailJobs = (selected) => {
+    const flag = !selected.clicked;
     setLevelFour(
       levelFour.map((job) =>
-        job.ID === selected.ID ? { ...job, clicked: !selected.clicked } : job
+        job.ID === selected.ID ? { ...job, clicked: flag } : job
       )
     );
     const job = {
       id: selected.ID,
       title: selected.VAL
     };
-    setPrintedDetailJob([...printedDetailJob, job]);
+    if (flag === true) {
+      setPrintedDetailJob([...printedDetailJob, job]);
+    } else {
+      setPrintedDetailJob(
+        printedDetailJob.filter((job) => job.id !== selected.ID)
+      );
+    }
   };
 
   const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
@@ -505,6 +511,22 @@ function CareerListComponent({ ids, onRemove }) {
     }
     clicked = !isSelectDetailJob;
     setIsSelectDetailJob(clicked);
+  };
+
+  const [showJobContent, setShowJobContent] = useState(true);
+  const completeDetailJobSelection = () => {
+    setShowJobContent(!showJobContent);
+  };
+
+  const removePrintedDetailJob = (selected) => {
+    setLevelFour(
+      levelFour.map((job) =>
+        job.ID === selected.id ? { ...job, clicked: false } : job
+      )
+    );
+    setPrintedDetailJob(
+      printedDetailJob.filter((job) => job.id !== selected.id)
+    );
   };
 
   const getLevelFourJobs = async () => {
@@ -578,123 +600,148 @@ function CareerListComponent({ ids, onRemove }) {
           </div>
           {/* 직무명 */}
           <div className="job-container">
-            <div className="job-content">
-              <span className="job-title">직무명</span>
-              <button className="add-jobs" onClick={toggleSelectJob}>
-                직무 추가하기
-              </button>
-              {/* <MultiLevelSelect options={options} /> */}
-              {isSelectJob ? (
-                <div className="select-job-container">
-                  <div className="level-columns">
-                    <div className="level-one">
-                      {levelOne.map((item) => (
-                        <div key={item.ID} onClick={() => toggleLevelOne(item)}>
-                          {item.VAL}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="level-two">
-                      {isLevelOneClicked
-                        ? levelTwo.map((item) => (
-                            <div
-                              key={item.ID}
-                              onClick={() => toggleLevelTwo(item)}
-                            >
-                              {item.VAL}
-                            </div>
-                          ))
-                        : null}
-                    </div>
-                    <div className="level-three">
-                      {isLevelTwoClicked
-                        ? levelThree.map((job) => (
-                            <div
-                              key={job.ID}
-                              onClick={() => setSelectedJobs(job)}
-                              className={`job-item ${
-                                job.clicked ? 'clicked' : null
-                              }`}
-                            >
-                              {job.VAL}
-                            </div>
-                          ))
-                        : null}
-                    </div>
-                  </div>
-                  <div className="selected-items-container">
-                    <div className="selected-items-content">
-                      {printedJob.map((job) => (
-                        <div key={job.id}>
-                          <div>{job.title}</div>
+            {showJobContent ? (
+              <div className="job-content">
+                <span className="job-title">직무명</span>
+                <button className="add-jobs" onClick={toggleSelectJob}>
+                  직무 추가하기
+                </button>
+                {/* <MultiLevelSelect options={options} /> */}
+                {isSelectJob ? (
+                  <div className="select-job-container">
+                    <div className="level-columns">
+                      <div className="level-one">
+                        {levelOne.map((item) => (
                           <div
-                            className="selected-job-close"
-                            onClick={() => removePrintedJob(job)}
+                            key={item.ID}
+                            onClick={() => toggleLevelOne(item.ID)}
                           >
-                            X
+                            {item.VAL}
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
+                      <div className="level-two">
+                        {isLevelOneClicked
+                          ? levelTwo.map((item) => (
+                              <div
+                                key={item.ID}
+                                onClick={() => toggleLevelTwo(item.ID)}
+                              >
+                                {item.VAL}
+                              </div>
+                            ))
+                          : null}
+                      </div>
+                      <div className="level-three">
+                        {isLevelTwoClicked
+                          ? levelThree.map((job) => (
+                              <div
+                                key={job.ID}
+                                onClick={() => setSelectedJobs(job)}
+                                className={`job-item ${
+                                  job.clicked ? 'clicked' : null
+                                }`}
+                              >
+                                {job.VAL}
+                              </div>
+                            ))
+                          : null}
+                      </div>
                     </div>
-                    <button
-                      className="select-completed-btn"
-                      onClick={completeJobSelection}
-                    >
-                      선택완료
-                    </button>
+                    <div className="selected-items-container">
+                      <div className="selected-items-content">
+                        {printedJob.map((job) => (
+                          <div key={job.id}>
+                            <div>{job.title}</div>
+                            <div
+                              className="selected-job-close"
+                              onClick={() => removePrintedJob(job)}
+                            >
+                              X
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <button
+                        className="select-completed-btn"
+                        onClick={completeJobSelection}
+                      >
+                        선택완료
+                      </button>
+                    </div>
                   </div>
+                ) : null}
+                {isSelectDetailJob ? (
+                  <>
+                    <div className="select-detail-job-container">
+                      <div className="previous-selected-jobs">
+                        {printedJob.map((job) => (
+                          <div key={job.id}>{job.title}</div>
+                        ))}
+                      </div>
+                      <div className="level-four">
+                        {levelFour.map((job) => (
+                          <div
+                            key={job.ID}
+                            onClick={() => setSelectedDetailJobs(job)}
+                            className={`detail-job-item ${
+                              job.clicked ? 'clicked' : null
+                            }`}
+                          >
+                            {job.VAL}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="selected-four-container">
+                      <div className="print-selected-four">
+                        {printedDetailJob.map((job) => (
+                          <div key={job.id}>
+                            <div className="selected">{job.title}</div>
+                            <div
+                              className="close-selected"
+                              onClick={() => removePrintedDetailJob(job)}
+                            >
+                              X
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <button
+                        className="completeDetailJobSelection"
+                        onClick={completeDetailJobSelection}
+                      >
+                        선택완료
+                      </button>
+                    </div>
+                  </>
+                ) : null}
+              </div>
+            ) : (
+              <div className="detail-job-content">
+                <div className="job-name-content row-style">
+                  <div className="job-name-title title-style">직무명</div>
+                  <div className="three-level-jobs border-style">
+                    {printedDetailJob.map((job) => (
+                      <div key={job.id}>{job.title}</div>
+                    ))}
+                  </div>
+                  <div className="close-content">X</div>
                 </div>
-              ) : null}
-              {isSelectDetailJob ? (
-                <>
-                  <div className="select-detail-job-container">
-                    <div className="previous-selected-jobs">
-                      {printedJob.map((job) => (
-                        <div key={job.id}>{job.title}</div>
-                      ))}
-                    </div>
-                    <div className="level-four">
-                      {levelFour.map((job) => (
-                        <div
-                          key={job.ID}
-                          onClick={() => setSelectedDetailJobs(job)}
-                          className={`detail-job-item ${
-                            job.clicked ? 'clicked' : null
-                          }`}
-                        >
-                          {job.VAL}
-                        </div>
-                      ))}
-                    </div>
-                    {/* <div className="selected-four-container">
-                    <div className="selected-four-content">
-                      {printedDetailJob.map((job) => (
-                        <div key={job.id}>{job.title}</div>
-                      ))}
-                    </div>
-                    <button className="completeDetailJobSelection">
-                      선택완료
-                    </button>
-                  </div> */}
-                  </div>
-                  <div className="selected-four-container">
-                    <div className="print-selected-four">
-                      {printedDetailJob.map((job) => (
-                        <div>
-                          <div className="selected" key={job.id}>
-                            {job.title}
-                          </div>
-                          <div className="close-selected">X</div>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="completeDetailJobSelection">
-                      선택완료
-                    </button>
-                  </div>
-                </>
-              ) : null}
-            </div>
+                <div className="job-period-content row-style">
+                  <div className="job-period-name title-style">직무기간</div>
+                  <input type="month" className="start-month border-style" />
+                  <input
+                    type="month"
+                    className="end-month border-style col-style"
+                  />
+                  <input
+                    className="period-input border-style col-style"
+                    disabled={true}
+                  ></input>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ))}
