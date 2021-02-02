@@ -1,5 +1,5 @@
 .education-info {
-  padding-top: 70px;
+  margin-top: 80px;
 }
 .education-info input,
 .education-info select {
@@ -139,6 +139,7 @@
   position: absolute;
   width: 70px;
   height: 40px;
+  padding-left: 12px;
   right: -90px;
   outline: none;
   border: none;
@@ -164,6 +165,7 @@
 .education-info .integrated {
   display: flex;
   align-items: center;
+  height: 40px;
   margin-left: 20px;
   cursor: pointer;
 }

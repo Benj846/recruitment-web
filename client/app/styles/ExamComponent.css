@@ -1,42 +1,69 @@
 .exam-info {
-  margin: 80px 0 0 0;
+  margin-top: 80px;
 }
-
-.exam-info .add-items {
-  cursor: pointer;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) 15px/19px
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-009999);
-  text-align: left;
-  font: normal normal medium 15px/19px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #009999;
-  opacity: 1;
-}
-
-.exam-info .title {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 20px/24px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
-}
-.exam-wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-
-.margin-left {
-  margin-left: 20px;
-}
-
 .exam-info .title-container {
   display: flex;
   justify-content: space-between;
+}
+.exam-info .title-container .exam-title {
+  position: relative;
+  font: normal normal 700 20px/24px Noto Sans KR;
+  color: #333333;
+}
+.exam-info .title-container .add-items {
+  font: normal normal 500 15px/19px Noto Sans KR;
+  color: #009999;
+  cursor: pointer;
+}
+.exam-info section.body-detail:not(:nth-of-type(1)) {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.exam-info .body-detail .year-close {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.exam-info .body-detail .year-close .acquisition {
+  width: 250px;
+}
+.exam-info .body-detail .year-close .acquisition .acquisition-date {
+  width: 160px;
+  height: 40px;
+  padding-left: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #666666;
+}
+.exam-info .exam-wrapper .name,
+.exam-info .exam-wrapper .institution {
+  margin-right: 20px;
+}
+.exam-info .exam-wrapper .name,
+.exam-info .exam-wrapper .rating,
+.exam-info .exam-wrapper .institution,
+.exam-info .exam-wrapper .score {
+  position: relative;
+  width: 430px;
+}
+.exam-info .exam-wrapper .name .input-box,
+.exam-info .exam-wrapper .rating .input-box,
+.exam-info .exam-wrapper .institution .input-box,
+.exam-info .exam-wrapper .score .input-box {
+  width: 340px;
+  height: 40px;
+  padding-left: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #666666;
+}
+.exam-info .exam-wrapper .score:after {
+  content: '점';
+  position: absolute;
+  right: 16px;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #999;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import icon_search from './logo_and_images/icon_search_40px.png';
 import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
+import icon_close_green from './logo_and_images/icon_close_green.png';
 import '../../styles/EducationComponent';
 
 function EducationComponent(props) {
@@ -252,8 +253,12 @@ function AddedMajor({ ids, onRemove, order }) {
           <option value="국어국문">국어국문</option>
           <option value="영어영문">영어영문</option>
         </select>
-        <button className="close-info" onClick={() => onRemove(id, order)}>
-          X 삭제
+        <button
+          className="close-info"
+          style={{ background: `url(${icon_close_green}) no-repeat 0 center` }}
+          onClick={() => onRemove(id, order)}
+        >
+          삭제
         </button>
       </div>
     </div>

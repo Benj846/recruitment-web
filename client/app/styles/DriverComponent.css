@@ -1,102 +1,60 @@
 .driver-info {
-  margin: 80px 0 0 0;
+  margin-top: 80px;
 }
-
-.driver-info .add-items {
-  cursor: pointer;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) 15px/19px
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-009999);
-  text-align: left;
-  font: normal normal medium 15px/19px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #009999;
-  opacity: 1;
-}
-
-.driver-info .title {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 20px/24px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
-}
-
-.year-close {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.acquisition {
-  width: 90px;
-  height: 40px;
-  display: inline-block;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
-    var(--unnamed-line-spacing-16)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal medium 13px/16px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
-}
-
-/* .acquisition-level {
-  width: 90px;
-  height: 40px;
-  display: inline-block;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
-    var(--unnamed-line-spacing-16)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal me um 13px/16px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
-  margin-left: 20px;
-} */
-
-.acquisition-date {
-  outline: none;
-  width: 160px;
-  height: 40px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-  margin-bottom: 10px;
-  margin-right: 20px;
-}
-
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-
-.input-box {
-  outline: none;
-  width: 340px;
-  height: 40px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-
 .driver-info .title-container {
   display: flex;
   justify-content: space-between;
+}
+.driver-info .title-container .driver-title {
+  position: relative;
+  font: normal normal 700 20px/24px Noto Sans KR;
+  color: #333333;
+}
+.driver-info .title-container .add-items {
+  font: normal normal 500 15px/19px Noto Sans KR;
+  color: #009999;
+  cursor: pointer;
+}
+.driver-info section.body-detail:not(:nth-of-type(1)) {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.driver-info .body-detail .year-close {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.driver-info .body-detail .year-close .acquisition {
+  width: 250px;
+}
+.driver-info .body-detail .year-close .acquisition .acquisition-date {
+  width: 160px;
+  height: 40px;
+  padding-left: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #666666;
+}
+.driver-info .body-detail .wrapper {
+}
+.driver-info .body-detail .qualification,
+.driver-info .body-detail .rating,
+.driver-info .body-detail .institution {
+  width: 430px;
+}
+.driver-info .body-detail .qualification .input-box,
+.driver-info .body-detail .rating .input-box,
+.driver-info .body-detail .institution .input-box {
+  width: 340px;
+  height: 40px;
+  padding-left: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #666666;
+}
+.driver-info .body-detail .qualification {
+  margin-right: 20px;
 }

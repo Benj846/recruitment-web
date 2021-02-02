@@ -162,6 +162,7 @@
   color: #666666;
 }
 .root .content-email {
+  margin-bottom: 0;
 }
 .root .content-email .input-email {
   width: 610px;

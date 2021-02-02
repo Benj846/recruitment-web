@@ -130,10 +130,7 @@
   color: #999999;
 }
 .recruit-content .general-container {
-  border-top: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-bottom: 0;
-  border-left: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 .recruit-content .general-container:last-child {
   border: 1px solid #ddd;
@@ -143,6 +140,10 @@
   display: flex;
   width: 1060px;
   height: 128px;
+  margin-bottom: 8px;
+}
+.general-container:last-child {
+  margin-bottom: 0;
 }
 .general-content {
   display: flex;
@@ -229,6 +230,8 @@
   flex: 1 1 auto;
 }
 .general-container .detail-container .wrapper {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 4px;
 }
 .general-container .detail-container .wrapper .position-name {

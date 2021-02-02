@@ -1,66 +1,84 @@
 .skill-info {
-  margin: 80px 0 0 0;
+  margin-top: 80px;
 }
-
-.skill-info .add-items {
-  cursor: pointer;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) 15px/19px
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-009999);
-  text-align: left;
-  font: normal normal medium 15px/19px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #009999;
-  opacity: 1;
-}
-
-.skill-info .title {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 20px/24px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
-}
-.skill-level {
-  outline: none;
-  width: 160px;
+.skill-info input {
   height: 40px;
-  margin-left: 20px;
-  margin-right: 270px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
+  padding: 16px;
+  border: 1px solid #ddd;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #666666;
 }
-.skill-usage {
-  outline: none;
-  width: 520px;
-  height: 40px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-
-.acquisition-period {
-  width: 160px;
-  height: 40px;
-  /* UI Properties */
-  border: 1px solid var(--박스-테두리-라인-색상);
-  background: #f0f0f0 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-
 .skill-info .title-container {
   display: flex;
   justify-content: space-between;
+}
+.skill-info .title-container .skill-title {
+  position: relative;
+  font: normal normal 700 20px/24px Noto Sans KR;
+  color: #333333;
+}
+.skill-info .title-container .add-items {
+  font: normal normal 500 15px/19px Noto Sans KR;
+  color: #009999;
+  cursor: pointer;
+}
+.skill-info section.body-detail:not(:nth-of-type(1)) {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.skill-info .body-detail .year-close {
+  display: flex;
+  align-items: center;
+}
+.skill-info .body-detail .year-close .close-info {
+  margin-left: auto;
+}
+.skill-info .body-detail .year-close .period-wrap {
+  width: 610px;
+}
+.skill-info .body-detail .year-close .period-wrap .content-title {
+  margin-right: 20px;
+}
+.skill-info .body-detail .year-close .period-wrap input {
+  width: 160px;
+  margin-right: 20px;
+}
+.skill-info .body-detail .year-close .period-wrap .acquisition-period {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 160px;
+  height: 40px;
+  padding: 0 20px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #666666;
+}
+.skill-info .acquisition-period .year,
+.skill-info .acquisition-period .month {
+  margin: 0 8px;
+}
+.skill-info .body-detail .year-close .period-wrap input:last-child {
+  margin-right: 0;
+}
+.skill-info .body-detail .skill-name {
+  width: 610px;
+}
+.skill-info .body-detail .skill-name span {
+  margin-right: 20px;
+}
+.skill-info .body-detail .skill-name input:nth-of-type(1) {
+  width: 340px;
+  margin-right: 20px;
+}
+.skill-info .body-detail .skill-name input:nth-of-type(2) {
+  width: 160px;
+}
+.skill-info .body-detail .util {
+  width: 610px;
+}
+.skill-info .body-detail .util input {
+  width: 520px;
 }

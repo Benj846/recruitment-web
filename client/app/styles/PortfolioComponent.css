@@ -1,133 +1,52 @@
 .portf-info {
-  margin: 80px 0 0 0;
+  margin-top: 80px;
 }
-
-.portf-info .add-items {
-  cursor: pointer;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) 15px/19px
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-009999);
-  text-align: left;
-  font: normal normal medium 15px/19px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #009999;
-  opacity: 1;
-}
-
-.portf-info .title {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-20) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 20px/24px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
-}
-
-.url-link-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.url-link-container .url-link-content {
-  display: flex;
-  position: relative;
-}
-.url-link-container .url-link-title {
-  display: block;
-  line-height: 40px;
-  width: 90px;
+.portf-info input {
   height: 40px;
-  /* font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
-    var(--unnamed-line-spacing-16)
-    var(--unnamed-font-family-apple-sd-gothic-neo); */
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--셀렉트-박스-내-색상);
-  text-align: left;
-  font: normal normal medium 13px/16px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
+  padding-left: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font: normal normal 500 13px/16px Noto Sans KR;
+  color: #666666;
 }
-
-.url-link-container .link-input {
-  width: 520px;
-  height: 40px;
-  margin-bottom: 10px;
-  /* UI Properties */
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--박스-테두리-라인-색상);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-
-.url-link-container .close-portfolio {
-  display: inline-block;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-}
-.file-attach {
-  display: flex;
-}
-.file-attach .file-title {
-  display: inline-block;
-  align-items: center;
-  width: 90px;
-  height: 40px;
-  /* font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
-    var(--unnamed-line-spacing-16)
-    var(--unnamed-font-family-apple-sd-gothic-neo); */
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--셀렉트-박스-내-색상);
-  text-align: left;
-  font: normal normal medium 13px/16px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
-}
-
-.file-attach .file-input {
-  width: 430px;
-  height: 40px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--박스-테두리-라인-색상);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-
-.file-attach .add-file {
-  width: 70px;
-  height: 40px;
-  margin-left: 21px;
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--버튼-색상);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #009999;
-  opacity: 1;
-  font-size: 13px;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
-    var(--unnamed-line-spacing-16)
-    var(--unnamed-font-family-apple-sd-gothic-neo);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--버튼-색상);
-  text-align: center;
-  font: normal normal normal 13px/16px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #009999;
-  opacity: 1;
-}
-
 .portf-info .title-container {
   display: flex;
   justify-content: space-between;
+}
+.portf-info .title-container .portf-title {
+  position: relative;
+  font: normal normal 700 20px/24px Noto Sans KR;
+  color: #333333;
+}
+.portf-info .title-container .add-items {
+  font: normal normal 500 15px/19px Noto Sans KR;
+  color: #009999;
+  cursor: pointer;
+}
+.portf-info .url-link-container .close-portfolio {
+  margin-left: auto;
+}
+.portf-info .url-link-content {
+  width: 610px;
+}
+.portf-info .url-link-content .link-input {
+  width: 520px;
+}
+.portf-info .file-attach {
+  width: 610px;
+}
+.portf-info .file-attach span {
+  margin-right: 20px;
+}
+.portf-info .file-attach .file-input {
+  width: 430px;
+  margin-right: 20px;
+}
+.portf-info .file-attach .add-file {
+  width: 70px;
+  height: 40px;
+  border: 1px solid #009999;
+  background: #fff;
+  color: #009999;
+  font: normal normal 500 13px/16px Noto Sans KR;
 }
