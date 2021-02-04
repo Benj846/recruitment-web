@@ -16,6 +16,7 @@
 }
 .resume-main .content-title {
   display: block;
+  align-self: center;
   font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
   color: #999;
   width: 70px;
