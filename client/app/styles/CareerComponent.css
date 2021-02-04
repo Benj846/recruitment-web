@@ -173,6 +173,10 @@
 }
 
 .job-content > .add-jobs {
+  position: relative;
+}
+
+.job-content > .add-jobs > button {
   width: 669px;
   height: 40px;
   background: none;
@@ -186,35 +190,28 @@
   cursor: pointer;
 }
 
-.job-content > .add-jobs:focus {
+.job-content > .add-jobs > button:focus {
   outline: none;
 }
 
-.job-container > .job-content > .select-job-container {
+.job-container .select-job-container {
   position: absolute;
-  width: 643px;
+  width: 669px;
   height: 360px;
   background: #ffffff;
   border: 1px solid #dddddd;
-  left: 109px;
-  top: 51px;
+  border-top: none;
+  left: 0px;
+  top: 40px;
   opacity: 1;
 }
 
-.job-container > .job-content > .select-job-container > .level-columns {
+.job-container .select-job-container > .level-columns {
   display: flex;
 }
 
-.job-container
-  > .job-content
-  > .select-job-container
-  > .level-columns
-  > .level-one,
-.job-container
-  > .job-content
-  > .select-job-container
-  > .level-columns
-  > .level-two {
+.job-container .select-job-container > .level-columns > .level-one,
+.job-container .select-job-container > .level-columns > .level-two {
   /* display: flex;
   flex-direction: column; */
   width: 176px;
@@ -224,11 +221,7 @@
   --flex: 1 1 auto;
 }
 
-.job-container
-  > .job-content
-  > .select-job-container
-  > .level-columns
-  > .level-three {
+.job-container .select-job-container > .level-columns > .level-three {
   width: 289px;
   height: 319px;
   display: flex;
@@ -238,18 +231,8 @@
   overflow-y: auto;
 }
 
-.job-container
-  > .job-content
-  > .select-job-container
-  > .level-columns
-  > .level-one
-  > div,
-.job-container
-  > .job-content
-  > .select-job-container
-  > .level-columns
-  > .level-two
-  > div {
+.job-container .select-job-container > .level-columns > .level-one > div,
+.job-container .select-job-container > .level-columns > .level-two > div {
   margin: 15px 10px 10px 10px;
   --margin-top: 10px;
   --flex: 1 1 0;
@@ -257,8 +240,7 @@
 }
 
 .job-container
-  > .job-content
-  > .select-job-container
+  .select-job-container
   > .level-columns
   > .level-three
   > .job-item {
@@ -273,8 +255,7 @@
 }
 
 .job-container
-  > .job-content
-  > .select-job-container
+  .select-job-container
   > .level-columns
   > .level-three
   > .job-item.clicked {
@@ -282,12 +263,7 @@
   border-radius: 15px;
 }
 
-.job-container
-  > .job-content
-  > .select-job-container
-  > .level-columns
-  > div
-  > div {
+.job-container .select-job-container > .level-columns > div > div {
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -301,17 +277,13 @@
   cursor: pointer;
 }
 
-.job-container
-  > .job-content
-  > .select-job-container
-  > .selected-items-container {
+.job-container .select-job-container > .selected-items-container {
   display: flex;
   align-items: center;
 }
 
 .job-container
-  > .job-content
-  > .select-job-container
+  .select-job-container
   > .selected-items-container
   > .selected-items-content {
   display: flex;
@@ -325,8 +297,7 @@
 }
 
 .job-container
-  > .job-content
-  > .select-job-container
+  .select-job-container
   > .selected-items-container
   > .selected-items-content
   > div {
@@ -345,8 +316,7 @@
 }
 
 .job-container
-  > .job-content
-  > .select-job-container
+  .select-job-container
   > .selected-items-container
   > .selected-items-content
   > div
@@ -358,8 +328,7 @@
 }
 
 .job-container
-  > .job-content
-  > .select-job-container
+  .select-job-container
   > .selected-items-container
   > .select-completed-btn {
   width: 129px;
@@ -373,22 +342,19 @@
   opacity: 1;
 }
 
-.job-container > .job-content > .select-detail-job-container {
+.job-container .select-detail-job-container {
   position: absolute;
-  width: 643px;
+  width: 669px;
   height: 279px;
   background: #ffffff;
   border: 1px solid #dddddd;
-  --border-bottom: none;
-  left: 109px;
-  top: 51px;
+  border-top: none;
+  left: 0px;
+  top: 40px;
   opacity: 1;
 }
 
-.job-container
-  > .job-content
-  > .select-detail-job-container
-  > .previous-selected-jobs {
+.job-container .select-detail-job-container > .previous-selected-jobs {
   display: flex;
   align-items: center;
   width: 100%;
@@ -396,11 +362,7 @@
   border-bottom: 1px solid #dddddd;
 }
 
-.job-container
-  > .job-content
-  > .select-detail-job-container
-  > .previous-selected-jobs
-  > div {
+.job-container .select-detail-job-container > .previous-selected-jobs > div {
   box-sizing: border-box;
   padding: 2px;
   font-size: 14px;
@@ -410,7 +372,7 @@
   color: #dddddd;
 }
 
-.job-container > .job-content > .select-detail-job-container > .level-four {
+.job-container .select-detail-job-container > .level-four {
   display: flex;
   flex-wrap: wrap;
   height: 239px;
@@ -418,11 +380,7 @@
   overflow-y: auto;
 }
 
-.job-container
-  > .job-content
-  > .select-detail-job-container
-  > .level-four
-  > div {
+.job-container .select-detail-job-container > .level-four > div {
   margin: 10px;
   color: #333333;
   font-size: 12px;
@@ -431,40 +389,33 @@
 }
 
 .job-container
-  > .job-content
-  > .select-detail-job-container
+  .select-detail-job-container
   > .level-four
   > .detail-job-item.clicked {
   border: 1px solid #aaaaaa;
   border-radius: 15px;
 }
 
-.job-container > .job-content > .selected-four-container {
+.job-container .selected-four-container {
   position: absolute;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid #dddddd;
   background: #ffffff;
+  width: 669px;
   border-top: none;
-  top: 330px;
-  left: 109px;
+  top: 319px;
 }
 
-.job-container
-  > .job-content
-  > .selected-four-container
-  > .print-selected-four {
+.job-container .selected-four-container > .print-selected-four {
   display: flex;
   --background: #ffffff;
   flex-wrap: wrap;
   width: 512px;
 }
 
-.job-container
-  > .job-content
-  > .selected-four-container
-  > .print-selected-four
-  > div {
+.job-container .selected-four-container > .print-selected-four > div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -474,8 +425,7 @@
 }
 
 .job-container
-  > .job-content
-  > .selected-four-container
+  .selected-four-container
   > .print-selected-four
   > div
   > .selected {
@@ -484,8 +434,7 @@
 }
 
 .job-container
-  > .job-content
-  > .selected-four-container
+  .selected-four-container
   > .print-selected-four
   > div
   > .close-selected {
@@ -493,10 +442,7 @@
   cursor: pointer;
 }
 
-.job-container
-  > .job-content
-  > .selected-four-container
-  > .completeDetailJobSelection {
+.job-container .selected-four-container > .completeDetailJobSelection {
   align-self: flex-start;
   width: 129px;
   height: 40px;
@@ -523,26 +469,26 @@
 }
 
 /* common style -----------------------*/
-.job-container > .detail-job-content > .row-style {
+.job-container > .detail-job-content .row-style {
   display: flex;
   align-items: center;
   margin-top: 12px;
   margin-left: 23px;
 }
 
-.job-container > .detail-job-content > div > .title-style {
+.job-container > .detail-job-content .title-style {
   font: normal normal medium 11px/13px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #999999;
   opacity: 1;
 }
 
-.job-container > .detail-job-content > div > .border-style {
+.job-container > .detail-job-content .border-style {
   border: 1px solid #dddddd;
   height: 40px;
 }
 
-.job-container > .detail-job-content > div > .col-style {
+.job-container > .detail-job-content .col-style {
   margin-left: 20px;
 }
 /* common style -----------------------*/
@@ -578,6 +524,398 @@
   width: 160px;
   margin-left: 22px;
 }
+
+.job-container
+  > .detail-job-content
+  > .main-result-content
+  > .input-main-result {
+  margin-left: 22px;
+  width: 610px;
+}
+
+.job-container > .detail-job-content > .detail-job-list-container {
+  margin-top: 15px;
+  margin-left: 22px;
+  display: flex;
+}
+
+.job-container > .detail-job-content > .detail-job-list-container .detail-job {
+  margin-bottom: 10px;
+  margin-left: 23px;
+  display: flex;
+}
+
+.detail-job-content > .detail-job-list-container .detail-job-title {
+  --align-self: flex-start;
+}
+
+.job-container
+  > .detail-job-content
+  > .detail-job-list-container
+  .detail-job-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  background: #f0f0f0 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  font-size: 13px;
+}
+
+.detail-job-list-content > .detail-job > .input-detail-job-desc {
+  margin-left: 20px;
+  width: 430px;
+}
+
+.detail-job-list-content > .detail-job > .input-detail-job-desc::placeholder {
+  font-size: 12px;
+  padding-left: 15px;
+}
+
+.job-container .detail-job-list-container .add-detail-job {
+  position: relative;
+}
+
+.job-container .detail-job-list-container .add-detail-job > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #009999;
+  background: #ffffff;
+  color: #009999;
+  margin-left: 23px;
+  margin-bottom: 19px;
+  width: 610px;
+  --width: 669px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* 세부 직무 추가하기(다시 추가하는 부분) */
+.job-container .select-detail-job-container-2 {
+  position: absolute;
+  width: 610px;
+  height: 279px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-top: none;
+  left: 0px;
+  top: 40px;
+  margin-left: 23px;
+  opacity: 1;
+  z-index: 999;
+}
+
+.job-container .select-detail-job-container-2 > .previous-selected-jobs {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.job-container .select-detail-job-container-2 > .previous-selected-jobs > div {
+  box-sizing: border-box;
+  padding: 2px;
+  font-size: 14px;
+  border-radius: 15px;
+  margin: 0 5px;
+  border: 1px solid #dddddd;
+  color: #dddddd;
+}
+
+.job-container .select-detail-job-container-2 > .level-four {
+  display: flex;
+  flex-wrap: wrap;
+  height: 239px;
+  --border-bottom: 1px solid #dddddd;
+  overflow-y: auto;
+}
+
+.job-container .select-detail-job-container-2 > .level-four > div {
+  margin: 10px;
+  color: #333333;
+  font-size: 12px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.job-container
+  .select-detail-job-container-2
+  > .level-four
+  > .detail-job-item.clicked {
+  border: 1px solid #aaaaaa;
+  border-radius: 15px;
+}
+
+.job-container .selected-four-container-2 {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  width: 610px;
+  border-top: none;
+  margin-left: 23px;
+  top: 319px;
+}
+
+.job-container .selected-four-container-2 > .print-selected-four {
+  display: flex;
+  --background: #ffffff;
+  flex-wrap: wrap;
+  width: 512px;
+}
+
+.job-container .selected-four-container-2 > .print-selected-four > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+}
+
+.job-container
+  .selected-four-container-2
+  > .print-selected-four
+  > div
+  > .selected {
+  color: #009999;
+  margin: 0 5px;
+}
+
+.job-container
+  .selected-four-container-2
+  > .print-selected-four
+  > div
+  > .close-selected {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.job-container .selected-four-container-2 > .completeDetailJobSelection {
+  align-self: flex-start;
+  width: 129px;
+  height: 40px;
+  border: 1px solid #009999;
+  background: #009999;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* 직무 추가하기 */
+.body-detail > .add-jobs-2 {
+  position: relative;
+}
+
+.body-detail > .add-jobs-2 > button {
+  margin-top: 13px;
+  margin-left: 91px;
+  width: 790px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  color: #009999;
+  border: 1px solid #009999;
+  cursor: pointer;
+}
+
+/* .job-content > .add-jobs-2 {
+  position: relative;
+}
+
+.job-content > .add-jobs-2 > button {
+  width: 669px;
+  height: 40px;
+  background: none;
+  border: 1px solid #009999;
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--버튼-색상);
+  text-align: center;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #009999;
+  cursor: pointer;
+}
+
+.job-content > .add-jobs-2 > button:focus {
+  outline: none;
+} */
+
+.body-detail > .add-jobs-2 > .add-job-container {
+  position: absolute;
+  width: 790px;
+  height: 360px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-top: none;
+  left: 91px;
+  top: 40px;
+  opacity: 1;
+}
+
+.body-detail > .add-jobs-2 > .add-job-container > .level-columns {
+  display: flex;
+}
+
+.body-detail > .add-jobs-2 > .add-job-container > .level-columns > .level-one,
+.body-detail > .add-jobs-2 > .add-job-container > .level-columns > .level-two {
+  /* display: flex;
+  flex-direction: column; */
+  width: 176px;
+  height: 319px;
+  border-right: 1px solid #dddddd;
+  overflow-y: auto;
+  --flex: 1 1 auto;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .level-columns
+  > .level-three {
+  width: 289px;
+  height: 319px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .level-columns
+  > .level-one
+  > div,
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .level-columns
+  > .level-two
+  > div {
+  margin: 15px 10px 10px 10px;
+  --margin-top: 10px;
+  --flex: 1 1 0;
+  --height: 40px;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .level-columns
+  > .level-three
+  > .job-item {
+  display: flex;
+  --width: 125px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  --margin: 5px 15px;
+  margin: 5px 5px;
+  --flex: 1 1 auto;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .level-columns
+  > .level-three
+  > .job-item.clicked {
+  border: 1px solid #333333;
+  border-radius: 15px;
+}
+
+.body-detail > .add-jobs-2 > .add-job-container > .level-columns > div > div {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font: normal normal medium 12px/15px Apple SD Gothic Neo;
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+  --border: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.body-detail > .add-jobs-2 > .add-job-container > .selected-jobs-container {
+  display: flex;
+  align-items: center;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .selected-jobs-container
+  > .selected-jobs-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  --justify-content: center;
+  width: 661px;
+  --width: 100%;
+  height: 40px;
+  border-top: 1px solid #dddddd;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .selected-jobs-container
+  > .selected-jobs-content
+  > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+  height: 20px;
+  color: #009999;
+  margin: 0 2px;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding: 5px;
+  margin: 0 5px;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .selected-jobs-container
+  > .selected-jobs-content
+  > div
+  > .selected-job-close {
+  margin: 0 5px;
+  color: #dddddd;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.body-detail
+  > .add-jobs-2
+  > .add-job-container
+  > .selected-jobs-container
+  > .select-completed-btn {
+  width: 129px;
+  height: 40px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border: 1px solid #009999;
+  text-align: center;
+  font: normal normal medium 13px/16px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+/* 직무 추가하기 */
 
 #career-info > .title-container > .title {
   font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
