@@ -107,6 +107,7 @@ function CareerListComponent({ ids, onRemove }) {
       //   ...data,
       //   index: index
       // }));
+      //setLevelTwo([...levelTwo, dataArr]);
       setLevelTwo(dataArr);
     } catch (error) {
       console.error(error);
@@ -652,6 +653,7 @@ function CareerListComponent({ ids, onRemove }) {
                               ))
                             : null}
                         </div>
+                        {console.log(levelTwo)}
                         <div className="level-three">
                           {isLevelTwoClicked
                             ? levelThree.map((job) => (

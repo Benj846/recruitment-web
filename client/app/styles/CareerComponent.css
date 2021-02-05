@@ -726,28 +726,6 @@
   cursor: pointer;
 }
 
-/* .job-content > .add-jobs-2 {
-  position: relative;
-}
-
-.job-content > .add-jobs-2 > button {
-  width: 669px;
-  height: 40px;
-  background: none;
-  border: 1px solid #009999;
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--버튼-색상);
-  text-align: center;
-  font: normal normal medium 13px/16px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #009999;
-  cursor: pointer;
-}
-
-.job-content > .add-jobs-2 > button:focus {
-  outline: none;
-} */
-
 .body-detail > .add-jobs-2 > .add-job-container {
   position: absolute;
   width: 790px;
@@ -768,7 +746,8 @@
 .body-detail > .add-jobs-2 > .add-job-container > .level-columns > .level-two {
   /* display: flex;
   flex-direction: column; */
-  width: 176px;
+  --width: 176px;
+  width: 190px;
   height: 319px;
   border-right: 1px solid #dddddd;
   overflow-y: auto;
