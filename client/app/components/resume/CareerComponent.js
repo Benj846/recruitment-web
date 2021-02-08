@@ -515,9 +515,17 @@ function CareerListComponent({ ids, onRemove }) {
   };
 
   const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
-  const [selectedLevelThreeJobs, setSelectedLevelThreeJobs] = useState([]);
-  const [selectedLevelFourJobs, setSelectedLevelFourJobs] = useState([]);
+
+  //////////////[직무 추가하기]를 누를 때 유지해야 하는 상태값들(전부 2차원 배열)
+  // DB에서 가져온 4단계 직무들을 저장
   const [levelFourJobs, setLevelFourJobs] = useState([]);
+
+  // 3단계에서 선택된 직무
+  const [selectedLevelThreeJobs, setSelectedLevelThreeJobs] = useState([]);
+
+  // 4단계에서 선택된 직무
+  const [selectedLevelFourJobs, setSelectedLevelFourJobs] = useState([]);
+
   const completeJobSelection = () => {
     if (printedJob.length === 0) {
       alert('선택된 직무가 없습니다.');
@@ -601,7 +609,54 @@ function CareerListComponent({ ids, onRemove }) {
     setIsAddJobsClicked(!isAddJobsClicked);
   };
 
-  const setSelectedLevelFour = (selected, printedLevelFourJobs) => {};
+  const setSelectedLevelFour = (selected, index) => {
+    //console.log('index', index);
+    // console.log('levelFourJobs', levelFourJobs);
+    // console.log('selected', selected);
+    //console.log(selectedLevelFourJobs);
+
+    if (
+      selected.clicked === false &&
+      selectedLevelFourJobs[index].length >= 6
+    ) {
+      alert('상세직무는 최대 6개까지 선택 가능합니다');
+      return;
+    }
+    const flag = !selected.clicked;
+    // setLevelFourJobs(
+    //   levelFourJobs.map((arr, i) =>
+    //     arr.map((item) => {
+    //       index === i && item.id === selected.ID
+    //         ? { ...item, clicked: flag }
+    //         : item;
+    //     })
+    //   )
+    // );
+    const job = {
+      id: selected.ID,
+      title: selected.VAL
+    };
+    // if (flag === true) {
+    //   //setPrintedDetailJob([...printedDetailJob, job]);
+    //   //setSelectedLevelFourJobs();
+    //   setSelectedLevelFourJobs(
+    //     selectedLevelFourJobs.map((arr, i) =>
+    //       arr.map((item) => {
+    //         index === i && item.id === selected.ID ? [...item, job] : item;
+    //       })
+    //     )
+    //   );
+    // } else {
+    //   // setPrintedDetailJob(
+    //   //   printedDetailJob.filter((job) => job.id !== selected.ID)
+    //   // );
+    //   setSelectedLevelFourJobs(
+    //     selectedLevelFourJobs.filter((arr, i) =>
+    //       arr.map((item) => index === i && item.id === selected.ID)
+    //     )
+    //   );
+    // }
+  };
 
   const removePrintedLevelFour = (job) => {};
 
@@ -812,6 +867,7 @@ function CareerListComponent({ ids, onRemove }) {
                         </div>
                       </div>
                       <div className="detail-job-list-content">
+                        {console.log('levelFourJobs', levelFourJobs)}
                         {selectedLevelFourJobs[index].map((job) => (
                           <div key={job.id} className="detail-job">
                             <div className="detail-job-name border-style">
@@ -840,12 +896,9 @@ function CareerListComponent({ ids, onRemove }) {
                                 <div className="level-four">
                                   {levelFourJobs[index].map((four) => (
                                     <div
-                                      key={job.ID}
+                                      key={four.ID}
                                       onClick={() =>
-                                        setSelectedLevelFour(
-                                          four,
-                                          selectedLevelFourJobs[index]
-                                        )
+                                        setSelectedLevelFour(four, index)
                                       }
                                       className={`detail-job-item ${
                                         four.clicked ? 'clicked' : null
