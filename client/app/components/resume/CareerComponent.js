@@ -601,7 +601,7 @@ function CareerListComponent({ ids, onRemove }) {
     setIsAddJobsClicked(!isAddJobsClicked);
   };
 
-  const setSelectedLevelFour = (selected) => {};
+  const setSelectedLevelFour = (selected, printedLevelFourJobs) => {};
 
   const removePrintedLevelFour = (job) => {};
 
@@ -841,7 +841,12 @@ function CareerListComponent({ ids, onRemove }) {
                                   {levelFourJobs[index].map((four) => (
                                     <div
                                       key={job.ID}
-                                      onClick={() => setSelectedLevelFour(four, selectedLevelFourJobs[index])}
+                                      onClick={() =>
+                                        setSelectedLevelFour(
+                                          four,
+                                          selectedLevelFourJobs[index]
+                                        )
+                                      }
                                       className={`detail-job-item ${
                                         four.clicked ? 'clicked' : null
                                       }`}
