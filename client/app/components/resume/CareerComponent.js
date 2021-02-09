@@ -446,39 +446,6 @@ function CareerListComponent({ ids, onRemove }) {
     } else {
       setPrintedJob(printedJob.filter((job) => job.id !== selected.ID));
     }
-
-    // let isThreeClicked = false;
-    // const size = printedJob.length;
-    // if (size < 3) {
-    //   const job = {
-    //     dbId: selected.ID,
-    //     upperId: selected.UPPER_ID,
-    //     id: jobId.current,
-    //     title: selected.VAL
-    //   };
-    //   setPrintedJob([...printedJob, job]);
-    //   jobId.current += 1;
-    // } else if (selected.clicked && size === 3) {
-    //   isThreeClicked = true;
-    //   const clicked = printedJob.filter((job) => job.title === selected.VAL)[0];
-    //   removePrintedJobFromLevelThree(clicked);
-    // } else if (size === 3) {
-    //   alert('최대 3개까지 선택할 수 있습니다.');
-    //   return;
-    // }
-
-    // if (selected.clicked && !isThreeClicked) {
-    //   const clickedJob = printedJob.filter(
-    //     (job) => job.title === selected.VAL
-    //   )[0];
-    //   removePrintedJobFromLevelThree(clickedJob);
-    // }
-
-    // setLevelThree(
-    //   levelThree.map((job) =>
-    //     job.ID === selected.ID ? { ...job, clicked: !job.clicked } : job
-    //   )
-    // );
   };
 
   const removePrintedJob = (selected) => {
@@ -541,6 +508,7 @@ function CareerListComponent({ ids, onRemove }) {
     }
     clicked = !isSelectDetailJob;
     setIsSelectDetailJob(clicked);
+    setPrintedJob([]);
   };
 
   const [showJobContent, setShowJobContent] = useState(true);
@@ -549,6 +517,7 @@ function CareerListComponent({ ids, onRemove }) {
     setSelectedLevelFourJobs([...selectedLevelFourJobs, printedDetailJob]);
     setLevelFourJobs([...levelFourJobs, levelFour]);
     setShowJobContent(!showJobContent);
+    setPrintedDetailJob([]);
   };
 
   const [printedDetailJob, setPrintedDetailJob] = useState([]);
@@ -607,14 +576,14 @@ function CareerListComponent({ ids, onRemove }) {
   const [isAddJobsClicked, setIsAddJobsClicked] = useState(false);
   const toggleAddJobs = () => {
     setIsAddJobsClicked(!isAddJobsClicked);
+    setLevelTwo([]);
+    setLevelThree([]);
+    setLevelFour([]);
+    setPrintedJob([]);
+    setPrintedDetailJob([]);
   };
 
   const setSelectedLevelFour = (selected, index) => {
-    //console.log('index', index);
-    // console.log('levelFourJobs', levelFourJobs);
-    // console.log('selected', selected);
-    //console.log(selectedLevelFourJobs);
-
     if (
       selected.clicked === false &&
       selectedLevelFourJobs[index].length >= 6
@@ -623,45 +592,61 @@ function CareerListComponent({ ids, onRemove }) {
       return;
     }
     const flag = !selected.clicked;
-    // setLevelFourJobs(
-    //   levelFourJobs.map((arr, i) =>
-    //     arr.map((item) => {
-    //       index === i && item.id === selected.ID
-    //         ? { ...item, clicked: flag }
-    //         : item;
-    //     })
-    //   )
-    // );
+    setLevelFourJobs(
+      levelFourJobs.map((arr, i) =>
+        arr.map((item) =>
+          index === i && item.ID === selected.ID
+            ? { ...item, clicked: flag }
+            : item
+        )
+      )
+    );
     const job = {
       id: selected.ID,
       title: selected.VAL
     };
-    // if (flag === true) {
-    //   //setPrintedDetailJob([...printedDetailJob, job]);
-    //   //setSelectedLevelFourJobs();
-    //   setSelectedLevelFourJobs(
-    //     selectedLevelFourJobs.map((arr, i) =>
-    //       arr.map((item) => {
-    //         index === i && item.id === selected.ID ? [...item, job] : item;
-    //       })
-    //     )
-    //   );
-    // } else {
-    //   // setPrintedDetailJob(
-    //   //   printedDetailJob.filter((job) => job.id !== selected.ID)
-    //   // );
-    //   setSelectedLevelFourJobs(
-    //     selectedLevelFourJobs.filter((arr, i) =>
-    //       arr.map((item) => index === i && item.id === selected.ID)
-    //     )
-    //   );
-    // }
+    if (flag === true) {
+      setSelectedLevelFourJobs(
+        selectedLevelFourJobs.map((arr, i) =>
+          index === i ? [...arr, job] : arr
+        )
+      );
+    } else {
+      setSelectedLevelFourJobs(
+        selectedLevelFourJobs.map((arr, i) =>
+          arr.filter((item) => i === index && item.id !== selected.ID)
+        )
+      );
+    }
   };
 
-  const removePrintedLevelFour = (job) => {};
-
+  const removePrintedLevelFour = (selected, index) => {
+    setLevelFourJobs(
+      levelFourJobs.map((arr, i) =>
+        arr.map((item) =>
+          index === i && item.ID === selected.id
+            ? { ...item, clicked: false }
+            : item
+        )
+      )
+    );
+    // console.log('index', index);
+    // console.log('selected', selected);
+    setSelectedLevelFourJobs(
+      selectedLevelFourJobs.map((arr, i) =>
+        arr.filter((item) => i === index && item.id !== selected.id)
+      )
+    );
+  };
+  const count = useRef(0);
+  const getCount = () => {
+    const result = count.current;
+    count.current += 1;
+    return result;
+  };
   return (
     <>
+      {console.log('selectedLevelFourJobs' + getCount(), selectedLevelFourJobs)}
       {ids.map((id) => (
         <div key={id} className="body-detail">
           <div className="company-input-close">
@@ -823,6 +808,8 @@ function CareerListComponent({ ids, onRemove }) {
             ) : (
               <>
                 {/* 이 배열이 가진 length를 활용 */}
+                {/* {console.log(selectedLevelFourJobs)} */}
+                {/* {console.log(levelFourJobs)} */}
                 {selectedLevelThreeJobs.map((three, index) => (
                   <div className="detail-job-content" key={index}>
                     <div className="job-name-content row-style">
@@ -867,7 +854,7 @@ function CareerListComponent({ ids, onRemove }) {
                         </div>
                       </div>
                       <div className="detail-job-list-content">
-                        {console.log('levelFourJobs', levelFourJobs)}
+                        {/* {console.log('levelFourJobs', levelFourJobs)} */}
                         {selectedLevelFourJobs[index].map((job) => (
                           <div key={job.id} className="detail-job">
                             <div className="detail-job-name border-style">
@@ -911,21 +898,26 @@ function CareerListComponent({ ids, onRemove }) {
                               </div>
                               <div className="selected-four-container-2">
                                 <div className="print-selected-four">
-                                  {selectedLevelFourJobs[index].map((job) => (
-                                    <div key={job.id}>
-                                      <div className="selected">
-                                        {job.title}
+                                  {selectedLevelFourJobs[index].map(
+                                    (selected) => (
+                                      <div key={selected.id}>
+                                        <div className="selected">
+                                          {selected.title}
+                                        </div>
+                                        <div
+                                          className="close-selected"
+                                          onClick={() =>
+                                            removePrintedLevelFour(
+                                              selected,
+                                              index
+                                            )
+                                          }
+                                        >
+                                          X
+                                        </div>
                                       </div>
-                                      <div
-                                        className="close-selected"
-                                        onClick={() =>
-                                          removePrintedLevelFour(job)
-                                        }
-                                      >
-                                        X
-                                      </div>
-                                    </div>
-                                  ))}
+                                    )
+                                  )}
                                 </div>
                                 <button
                                   className="completeDetailJobSelection"
@@ -941,110 +933,6 @@ function CareerListComponent({ ids, onRemove }) {
                     </div>
                   </div>
                 ))}
-                {/* <div className="detail-job-content">
-                  <div className="job-name-content row-style">
-                    <div className="job-name-title title-style">직무명</div>
-                    <div className="three-level-jobs border-style">
-                      {printedJob.map((job) => (
-                        <div key={job.id}>{job.title}</div>
-                      ))}
-                    </div>
-                    <div className="close-content" onClick={closeThisContent}>
-                      X
-                    </div>
-                  </div>
-                  <div className="job-period-content row-style">
-                    <div className="job-period-name title-style">직무기간</div>
-                    <input type="month" className="start-month border-style" />
-                    <input
-                      type="month"
-                      className="end-month border-style col-style"
-                    />
-                    <input
-                      className="period-input border-style col-style"
-                      disabled={true}
-                      placeholder="    년  개월"
-                    ></input>
-                  </div>
-                  <div className="main-result-content row-style">
-                    <div className="main-result-title title-style">
-                      주요성과
-                    </div>
-                    <input className="input-main-result border-style" />
-                  </div>
-                  <div className="detail-job-list-container">
-                    <div>
-                      <div className="detail-job-title title-style">
-                        세부직무
-                      </div>
-                    </div>
-                    <div className="detail-job-list-content">
-                      {printedDetailJob.map((job) => (
-                        <div key={job.id} className="detail-job">
-                          <div className="detail-job-name border-style">
-                            {job.title}
-                          </div>
-                          <input
-                            className="input-detail-job-desc border-style"
-                            placeholder="세부 직무에 대한 키워드 입력하기(50자 내외)"
-                          />
-                        </div>
-                      ))}
-                      <div className="add-detail-job">
-                        <button onClick={toggleAdditionalDetail}>
-                          + 세부직무 추가하기
-                        </button>
-                        {showAdditionalDetail ? (
-                          <>
-                            <div className="select-detail-job-container-2">
-                              <div className="previous-selected-jobs">
-                                {printedJob.map((job) => (
-                                  <div key={job.id}>{job.title}</div>
-                                ))}
-                              </div>
-                              <div className="level-four">
-                                {levelFour.map((job) => (
-                                  <div
-                                    key={job.ID}
-                                    onClick={() => setSelectedDetailJobs(job)}
-                                    className={`detail-job-item ${
-                                      job.clicked ? 'clicked' : null
-                                    }`}
-                                  >
-                                    {job.VAL}
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                            <div className="selected-four-container-2">
-                              <div className="print-selected-four">
-                                {printedDetailJob.map((job) => (
-                                  <div key={job.id}>
-                                    <div className="selected">{job.title}</div>
-                                    <div
-                                      className="close-selected"
-                                      onClick={() =>
-                                        removePrintedDetailJob(job)
-                                      }
-                                    >
-                                      X
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                              <button
-                                className="completeDetailJobSelection"
-                                onClick={completeDetailJobSelection2}
-                              >
-                                선택완료
-                              </button>
-                            </div>
-                          </>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </>
             )}
           </div>
