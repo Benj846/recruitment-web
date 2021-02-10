@@ -140,15 +140,14 @@
   display: flex;
   align-items: center;
   position: relative;
-  --border: 1px solid blue;
+
   width: 790px;
   height: 64px;
   margin-left: 90px;
   background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  border: 1px solid var(--unnamed-color-dddddd);
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+  /* border: 1px solid #dddddd;
+  border-radius: 5px; */
   opacity: 1;
   padding: 12px 36px 12px 0px;
 }
@@ -177,7 +176,7 @@
 }
 
 .job-content > .add-jobs > button {
-  width: 669px;
+  width: 790px;
   height: 40px;
   background: none;
   border: 1px solid #009999;
@@ -196,7 +195,7 @@
 
 .job-container .select-job-container {
   position: absolute;
-  width: 669px;
+  width: 790px;
   height: 360px;
   background: #ffffff;
   border: 1px solid #dddddd;
@@ -214,7 +213,7 @@
 .job-container .select-job-container > .level-columns > .level-two {
   /* display: flex;
   flex-direction: column; */
-  width: 176px;
+  width: 200px;
   height: 319px;
   border-right: 1px solid #dddddd;
   overflow-y: auto;
@@ -290,7 +289,7 @@
   flex-wrap: wrap;
   align-items: center;
   --justify-content: center;
-  width: 540px;
+  width: 661px;
   --width: 100%;
   height: 40px;
   border-top: 1px solid #dddddd;
@@ -344,7 +343,7 @@
 
 .job-container .select-detail-job-container {
   position: absolute;
-  width: 669px;
+  width: 790px;
   height: 279px;
   background: #ffffff;
   border: 1px solid #dddddd;
@@ -403,7 +402,7 @@
   align-items: center;
   border: 1px solid #dddddd;
   background: #ffffff;
-  width: 669px;
+  width: 790px;
   border-top: none;
   top: 319px;
 }
@@ -455,56 +454,49 @@
 }
 
 /* 세부직무 선택 후 마지막 화면 ----------- */
-.job-container > .detail-job-content {
-  --position: relative;
-  --border: 1px solid blue;
+.detail-job-content {
   width: 790px;
-  --height: 64px;
-  --margin-left: 90px;
+  margin-left: 90px;
+  margin-bottom: 15px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   border-radius: 5px;
   opacity: 1;
-  --padding: 12px 36px 12px 0px;
 }
 
 /* common style -----------------------*/
-.job-container > .detail-job-content .row-style {
+.detail-job-content .row-style {
   display: flex;
   align-items: center;
   margin-top: 12px;
   margin-left: 23px;
 }
 
-.job-container > .detail-job-content .title-style {
+.detail-job-content .title-style {
   font: normal normal medium 11px/13px Apple SD Gothic Neo;
   letter-spacing: 0px;
   color: #999999;
   opacity: 1;
 }
 
-.job-container > .detail-job-content .border-style {
+.detail-job-content .border-style {
   border: 1px solid #dddddd;
   height: 40px;
 }
 
-.job-container > .detail-job-content .col-style {
+.detail-job-content .col-style {
   margin-left: 20px;
 }
 /* common style -----------------------*/
 
-.job-container > .detail-job-content > .job-name-content > .three-level-jobs {
+.detail-job-content > .job-name-content > .three-level-jobs {
   display: flex;
   align-items: center;
   width: 610px;
   margin-left: 38px;
 }
 
-.job-container
-  > .detail-job-content
-  > .job-name-content
-  > .three-level-jobs
-  > div {
+.detail-job-content > .job-name-content > .three-level-jobs > div {
   margin: 0 5px;
   border: 1px solid #dddddd;
   box-sizing: border-box;
@@ -515,31 +507,28 @@
   color: #009999;
 }
 
-.job-container > .detail-job-content > .job-name-content > .close-content {
+.detail-job-content > .job-name-content > .close-content {
   margin-left: 50px;
 }
 
-.job-container > .detail-job-content > .job-period-content > .start-month,
-.job-container > .detail-job-content > .job-period-content > .end-month {
+.detail-job-content > .job-period-content > .start-month,
+.detail-job-content > .job-period-content > .end-month {
   width: 160px;
   margin-left: 22px;
 }
 
-.job-container
-  > .detail-job-content
-  > .main-result-content
-  > .input-main-result {
+.detail-job-content > .main-result-content > .input-main-result {
   margin-left: 22px;
   width: 610px;
 }
 
-.job-container > .detail-job-content > .detail-job-list-container {
+.detail-job-content > .detail-job-list-container {
   margin-top: 15px;
   margin-left: 22px;
   display: flex;
 }
 
-.job-container > .detail-job-content > .detail-job-list-container .detail-job {
+.detail-job-content > .detail-job-list-container .detail-job {
   margin-bottom: 10px;
   margin-left: 23px;
   display: flex;
@@ -549,10 +538,7 @@
   --align-self: flex-start;
 }
 
-.job-container
-  > .detail-job-content
-  > .detail-job-list-container
-  .detail-job-name {
+.detail-job-content > .detail-job-list-container .detail-job-name {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -572,11 +558,11 @@
   padding-left: 15px;
 }
 
-.job-container .detail-job-list-container .add-detail-job {
+.detail-job-list-container .add-detail-job {
   position: relative;
 }
 
-.job-container .detail-job-list-container .add-detail-job > button {
+.detail-job-list-container .add-detail-job > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -592,7 +578,7 @@
 }
 
 /* 세부 직무 추가하기(다시 추가하는 부분) */
-.job-container .select-detail-job-container-2 {
+.add-detail-job .select-detail-job-container-2 {
   position: absolute;
   width: 610px;
   height: 279px;
@@ -606,7 +592,7 @@
   z-index: 999;
 }
 
-.job-container .select-detail-job-container-2 > .previous-selected-jobs {
+.add-detail-job .select-detail-job-container-2 > .previous-selected-jobs {
   display: flex;
   align-items: center;
   width: 100%;
@@ -614,7 +600,7 @@
   border-bottom: 1px solid #dddddd;
 }
 
-.job-container .select-detail-job-container-2 > .previous-selected-jobs > div {
+.add-detail-job .select-detail-job-container-2 > .previous-selected-jobs > div {
   box-sizing: border-box;
   padding: 2px;
   font-size: 14px;
@@ -624,7 +610,7 @@
   color: #dddddd;
 }
 
-.job-container .select-detail-job-container-2 > .level-four {
+.add-detail-job .select-detail-job-container-2 > .level-four {
   display: flex;
   flex-wrap: wrap;
   height: 239px;
@@ -632,7 +618,7 @@
   overflow-y: auto;
 }
 
-.job-container .select-detail-job-container-2 > .level-four > div {
+.add-detail-job .select-detail-job-container-2 > .level-four > div {
   margin: 10px;
   color: #333333;
   font-size: 12px;
@@ -640,7 +626,7 @@
   cursor: pointer;
 }
 
-.job-container
+.add-detail-job
   .select-detail-job-container-2
   > .level-four
   > .detail-job-item.clicked {
@@ -648,7 +634,7 @@
   border-radius: 15px;
 }
 
-.job-container .selected-four-container-2 {
+.add-detail-job .selected-four-container-2 {
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -661,14 +647,14 @@
   top: 319px;
 }
 
-.job-container .selected-four-container-2 > .print-selected-four {
+.add-detail-job .selected-four-container-2 > .print-selected-four {
   display: flex;
   --background: #ffffff;
   flex-wrap: wrap;
   width: 512px;
 }
 
-.job-container .selected-four-container-2 > .print-selected-four > div {
+.add-detail-job .selected-four-container-2 > .print-selected-four > div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -677,7 +663,7 @@
   border-radius: 15px;
 }
 
-.job-container
+.add-detail-job
   .selected-four-container-2
   > .print-selected-four
   > div
@@ -686,7 +672,7 @@
   margin: 0 5px;
 }
 
-.job-container
+.add-detail-job
   .selected-four-container-2
   > .print-selected-four
   > div
@@ -695,7 +681,7 @@
   cursor: pointer;
 }
 
-.job-container .selected-four-container-2 > .completeDetailJobSelection {
+.add-detail-job .selected-four-container-2 > .completeDetailJobSelection {
   align-self: flex-start;
   width: 129px;
   height: 40px;
@@ -708,7 +694,7 @@
 }
 
 /* 직무 추가하기 */
-.body-detail > .add-jobs-2 {
+/* .body-detail > .add-jobs-2 {
   position: relative;
 }
 
@@ -744,8 +730,6 @@
 
 .body-detail > .add-jobs-2 > .add-job-container > .level-columns > .level-one,
 .body-detail > .add-jobs-2 > .add-job-container > .level-columns > .level-two {
-  /* display: flex;
-  flex-direction: column; */
   --width: 176px;
   width: 190px;
   height: 319px;
@@ -893,7 +877,7 @@
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
-}
+} */
 /* 직무 추가하기 */
 
 #career-info > .title-container > .title {
