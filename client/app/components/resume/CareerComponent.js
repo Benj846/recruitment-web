@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Select from 'react-select';
 import MultiLevelSelect from 'react-multi-level-selector';
+import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
 import '../../styles/CareerComponent';
 
 function CareerComponent(props) {
@@ -43,6 +44,58 @@ function CareerListComponent({ ids, onRemove }) {
     { value: 'slate', label: 'Slate', color: '#253858' },
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
+  const customStyles = {
+    container: (provided) => ({
+      ...provided,
+      font: `normal normal 500 13px/16px 'Noto Sans KR', sans-serif`,
+      cursor: 'pointer'
+    }),
+    control: (provided, state) => ({
+      outline: 0,
+      border: `1px solid ${state.isFocused ? '#009999' : '#ddd'}`,
+      height: 40,
+      display: 'flex',
+      alignItems: 'center',
+      background: `url(${icon_arrow_down}) no-repeat 100% center`
+    }),
+    placeholder: () => ({
+      color: '#666'
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      paddingLeft: 16
+    }),
+    dropdownIndicator: () => ({
+      display: 'none'
+    }),
+    indicatorSeparator: () => ({
+      display: 'none'
+    }),
+    menuList: (provided) => ({
+      ...provided,
+      padding: 0
+    }),
+    menu: (provided) => ({
+      ...provided,
+      padding: 0,
+      margin: 0,
+      borderRadius: 0,
+      border: '1px solid #ddd',
+      boxShadow: 'none'
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      background: '#fff',
+      color: state.isSelected ? '#009999' : '#666',
+      padding: '12px 16px'
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = 'opacity 300ms';
+
+      return { ...provided, opacity, transition };
+    }
+  };
 
   const [isSelectJob, setIsSelectJob] = useState(false);
   const toggleSelectJob = () => {
@@ -444,6 +497,9 @@ function CareerListComponent({ ids, onRemove }) {
                 className="basic-single"
                 classNamePrefix="select"
                 name="color"
+                isSearchable={false}
+                placeholder={'최종학력을 선택해주세요'}
+                styles={customStyles}
                 options={colourOptions}
               />
             </>
@@ -606,19 +662,6 @@ function CareerDetailComponent({ id, onRemove }) {
     { value: 'slate', label: 'Slate', color: '#253858' },
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      borderBottom: `1px dotted pink`,
-      color: state.isSelected ? 'red' : 'blue'
-    }),
-    control: () => ({
-      width: 300,
-      height: 60
-    })
-  };
-  // 참고
-  // https://www.npmjs.com/package/react-multi-level-selector
 
   return (
     <div className="body-detail">
@@ -639,7 +682,6 @@ function CareerDetailComponent({ id, onRemove }) {
             className="basic-single"
             classNamePrefix="select"
             name="color"
-            styles={customStyles}
             options={colourOptions}
           />
         </>
