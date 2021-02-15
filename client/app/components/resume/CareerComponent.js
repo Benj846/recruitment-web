@@ -65,6 +65,9 @@ function CareerListComponent({ ids, onRemove }) {
       ...provided,
       paddingLeft: 16
     }),
+    svalueContainer: () => ({
+      margin: 0
+    }),
     dropdownIndicator: () => ({
       display: 'none'
     }),
@@ -89,12 +92,9 @@ function CareerListComponent({ ids, onRemove }) {
       color: state.isSelected ? '#009999' : '#666',
       padding: '12px 16px'
     }),
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-
-      return { ...provided, opacity, transition };
-    }
+    singleValue: (provided, state) => ({
+      margin: 0
+    })
   };
 
   const [isSelectJob, setIsSelectJob] = useState(false);
