@@ -2,20 +2,39 @@ import React, { useState, useRef, useEffect } from 'react';
 import Select from 'react-select';
 import MultiLevelSelect from 'react-multi-level-selector';
 import '../../styles/CareerComponent';
-//import { report } from '../../../../server/server';
 const axios = require('axios');
 
-function CareerComponent(props) {
+function CareerComponent() {
   const [ids, setIds] = useState([]);
+  const [isSelectJob, setIsSelectJob] = useState([]);
+  const [isSelectDetailJob, setIsSelectDetailJob] = useState([]);
   const refId = useRef(0);
   const onCreate = () => {
     const id = refId.current;
     setIds(ids.concat(id));
     refId.current += 1;
+    setIsSelectJob([...isSelectJob, { id: id, flag: false }]);
+    setIsSelectDetailJob([...isSelectDetailJob, { id: id, flag: false }]);
   };
 
   const onRemove = (selectedId) => {
     setIds(ids.filter((id) => id !== selectedId));
+  };
+
+  const onToggleSelectJob = (id, flagValue) => {
+    setIsSelectJob(
+      isSelectJob.map((job) =>
+        job.id === id ? { ...job, flag: flagValue } : job
+      )
+    );
+  };
+
+  const onToggleSelectDetailJob = (id, flagValue) => {
+    setIsSelectDetailJob(
+      isSelectDetailJob.map((job) =>
+        job.id === id ? { ...job, flag: flagValue } : job
+      )
+    );
   };
 
   return (
@@ -27,12 +46,26 @@ function CareerComponent(props) {
         </div>
       </div>
       <hr className="division-line" />
-      <CareerListComponent ids={ids} onRemove={onRemove} />
+      <CareerListComponent
+        ids={ids}
+        isSelectJob={isSelectJob}
+        isSelectDetailJob={isSelectDetailJob}
+        onToggleSelectJob={onToggleSelectJob}
+        onToggleSelectDetailJob={onToggleSelectDetailJob}
+        onRemove={onRemove}
+      />
     </div>
   );
 }
 
-function CareerListComponent({ ids, onRemove }) {
+function CareerListComponent({
+  ids,
+  isSelectJob,
+  isSelectDetailJob,
+  onToggleSelectJob,
+  onToggleSelectDetailJob,
+  onRemove
+}) {
   const colourOptions = [
     { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
     { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
@@ -46,22 +79,41 @@ function CareerListComponent({ ids, onRemove }) {
     { value: 'silver', label: 'Silver', color: '#666666' }
   ];
 
+  // useEffect(() => {
+  //   const getLevelOneJobs = async () => {
+  //     try {
+  //       const response = await axios.get('/work/lv1');
+  //       const dataArr = response.data;
+  //       setLevelOne(dataArr);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   getLevelOneJobs();
+  // }, []);
+
   useEffect(() => {
-    const getLevelOneJobs = async () => {
-      try {
-        const response = await axios.get('/work/lv1');
-        const dataArr = response.data;
-        setLevelOne(dataArr);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     getLevelOneJobs();
   }, []);
+  const getLevelOneJobs = async () => {
+    try {
+      const response = await axios.get('/work/lv1');
+      const dataArr = response.data;
+      setLevelOne(dataArr);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  const [isSelectJob, setIsSelectJob] = useState(false);
-  const toggleSelectJob = () => {
-    let isDetailClicked = !isSelectDetailJob;
+  //const [isSelectJob, setIsSelectJob] = useState(false);
+  //const [isSelectJob, setIsSelectJob] = useState([]);
+  const toggleSelectJob = (id) => {
+    //let isDetailClicked = !isSelectDetailJob[id].flag;
+    let jobSelected = isSelectJob.find((job) => job.id === id);
+    let detailSelected = isSelectDetailJob.find((job) => job.id === id);
+    let isDetailClicked = !detailSelected.flag;
+    let isJobClicked = jobSelected.flag;
+
     setPrintedJob([]);
     setLevelTwo([]);
     setLevelThree([]);
@@ -69,10 +121,12 @@ function CareerListComponent({ ids, onRemove }) {
     setIsLevelOneClicked(false);
     setIsLevelTwoClicked(false);
 
-    if (!isDetailClicked && !isSelectJob) {
-      setIsSelectDetailJob(false);
+    if (!isDetailClicked && !isJobClicked) {
+      //setIsSelectDetailJob(false);
+      onToggleSelectDetailJob(id, false);
     } else {
-      setIsSelectJob(!isSelectJob);
+      //setIsSelectJob(!isSelectJob);
+      onToggleSelectJob(id, !isJobClicked);
     }
   };
   const toggleLevelOne = (id) => {
@@ -117,126 +171,9 @@ function CareerListComponent({ ids, onRemove }) {
     }
   };
 
-  // const [levelOne, setLevelOne] = useState([
-  //   {
-  //     id: 1,
-  //     title: '경영/사무'
-  //   },
-  //   {
-  //     id: 2,
-  //     title: '마케팅/광고/무역/구매/유통'
-  //   },
-  //   {
-  //     id: 3,
-  //     title: '영업/금융/고객'
-  //   },
-  //   {
-  //     id: 4,
-  //     title: '생산/제조/품질'
-  //   },
-  //   {
-  //     id: 5,
-  //     title: '연구개발/설계'
-  //   },
-  //   {
-  //     id: 6,
-  //     title: '건설'
-  //   },
-  //   {
-  //     id: 7,
-  //     title: '산업안전/설치/서비스'
-  //   },
-  //   {
-  //     id: 8,
-  //     title: '산업안전/설치/서비스'
-  //   },
-  //   {
-  //     id: 9,
-  //     title: '산업안전/설치/서비스'
-  //   },
-  //   {
-  //     id: 10,
-  //     title: '산업안전/설치/서비스'
-  //   },
-  //   {
-  //     id: 11,
-  //     title: '산업안전/설치/서비스'
-  //   },
-  //   {
-  //     id: 12,
-  //     title: '산업안전/설치/서비스'
-  //   },
-  //   {
-  //     id: 13,
-  //     title: '산업안전/설치/서비스'
-  //   },
-  //   {
-  //     id: 14,
-  //     title: '산업안전/설치/서비스'
-  //   }
-  // ]);
-
   const [levelOne, setLevelOne] = useState([]);
   const [isLevelOneClicked, setIsLevelOneClicked] = useState(false);
 
-  // const [levelTwo, setLevelTwo] = useState([
-  //   {
-  //     id: 1,
-  //     title: '자동차/기계'
-  //   },
-  //   {
-  //     id: 2,
-  //     title: '반도체/디스플레이'
-  //   },
-  //   {
-  //     id: 3,
-  //     title: '화학/에너지/환경'
-  //   },
-  //   {
-  //     id: 4,
-  //     title: '전기/전자/제어'
-  //   },
-  //   {
-  //     id: 5,
-  //     title: '금속/재료'
-  //   },
-  //   {
-  //     id: 6,
-  //     title: '기계설게,CAD/CAM'
-  //   },
-  //   {
-  //     id: 7,
-  //     title: '통신기술/네트워크 구축'
-  //   },
-  //   {
-  //     id: 8,
-  //     title: '통신기술/네트워크 구축'
-  //   },
-  //   {
-  //     id: 9,
-  //     title: '통신기술/네트워크 구축'
-  //   },
-  //   {
-  //     id: 10,
-  //     title: '통신기술/네트워크 구축'
-  //   },
-  //   {
-  //     id: 11,
-  //     title: '통신기술/네트워크 구축'
-  //   },
-  //   {
-  //     id: 12,
-  //     title: '통신기술/네트워크 구축'
-  //   },
-  //   {
-  //     id: 13,
-  //     title: '통신기술/네트워크 구축'
-  //   },
-  //   {
-  //     id: 14,
-  //     title: '통신기술/네트워크 구축'
-  //   }
-  // ]);
   const [levelTwo, setLevelTwo] = useState([]);
 
   const [isLevelTwoClicked, setIsLevelTwoClicked] = useState(false);
@@ -465,7 +402,7 @@ function CareerListComponent({ ids, onRemove }) {
     }
   };
 
-  const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
+  //const [isSelectDetailJob, setIsSelectDetailJob] = useState(false);
 
   //////////////[직무 추가하기]를 누를 때 유지해야 하는 상태값들(전부 2차원 배열)
   // DB에서 가져온 4단계 직무들을 저장
@@ -477,34 +414,51 @@ function CareerListComponent({ ids, onRemove }) {
   // 4단계에서 선택된 직무
   const [selectedLevelFourJobs, setSelectedLevelFourJobs] = useState([]);
 
-  const completeJobSelection = () => {
+  const completeJobSelection = (id) => {
     if (printedJob.length === 0) {
       alert('선택된 직무가 없습니다.');
       return;
     }
     // setSelectedLevelThreeJobs([...selectedLevelThreeJobs, printedJob]);
+    // let clicked = !isSelectJob;
+    // setIsSelectJob(clicked);
+    // if (clicked === false) {
+    //   setIsLevelOneClicked(false);
+    //   setIsLevelTwoClicked(false);
+    // }
+    // clicked = !isSelectDetailJob;
+    // setIsSelectDetailJob(clicked);
+
     getLevelFourJobs();
-    let clicked = !isSelectJob;
-    setIsSelectJob(clicked);
-    if (clicked === false) {
+
+    let jobSelected = isSelectJob.find((job) => job.id === id);
+    let isJobClicked = !jobSelected.flag;
+
+    onToggleSelectJob(id, isJobClicked);
+    if (isJobClicked === false) {
       setIsLevelOneClicked(false);
       setIsLevelTwoClicked(false);
     }
-    clicked = !isSelectDetailJob;
-    setIsSelectDetailJob(clicked);
-    //setPrintedJob([]);
+    let detailSelected = isSelectDetailJob.find((job) => job.id === id);
+    let isDetailClicked = !detailSelected.flag;
+    onToggleSelectDetailJob(id, isDetailClicked);
   };
 
   const [showJobContent, setShowJobContent] = useState(true);
-  const completeDetailJobSelection = () => {
+  const completeDetailJobSelection = (id) => {
     // 배열에 추가
     setSelectedLevelThreeJobs([...selectedLevelThreeJobs, printedJob]);
     setSelectedLevelFourJobs([...selectedLevelFourJobs, printedDetailJob]);
     setLevelFourJobs([...levelFourJobs, levelFour]);
     setShowJobContent(!showJobContent);
     setPrintedDetailJob([]);
-    setIsSelectJob(false);
-    setIsSelectDetailJob(false);
+    onToggleSelectJob(id, false);
+    onToggleSelectDetailJob(id, false);
+    // setIsSelectJob(false);
+    // setIsSelectDetailJob(false);
+
+    // 세부 직무 추가하기 flag를 담은 배열을 여기에서 추가
+    setShowAdditionalDetail([...showAdditionalDetail, { flag: false }]);
   };
 
   const [printedDetailJob, setPrintedDetailJob] = useState([]);
@@ -544,15 +498,24 @@ function CareerListComponent({ ids, onRemove }) {
     }
   };
 
-  const [showAdditionalDetail, setShowAdditionalDetail] = useState(false);
-  const toggleAdditionalDetail = () => {
-    setShowAdditionalDetail(!showAdditionalDetail);
+  const [showAdditionalDetail, setShowAdditionalDetail] = useState([]);
+  const toggleAdditionalDetail = (index) => {
+    const f = !showAdditionalDetail[index].flag;
+    setShowAdditionalDetail(
+      showAdditionalDetail.map((data, i) =>
+        index === i ? { ...data, flag: f } : data
+      )
+    );
   };
 
-  const closeThisContent = () => {};
+  const closeThisContent = (index) => {
+    setSelectedLevelThreeJobs(
+      selectedLevelThreeJobs.filter((data, i) => i !== index)
+    );
+  };
 
-  const completeDetailJobSelection2 = () => {
-    toggleAdditionalDetail();
+  const completeDetailJobSelection2 = (index) => {
+    toggleAdditionalDetail(index);
   };
 
   const detailJobIdRef = useRef(0);
@@ -631,7 +594,6 @@ function CareerListComponent({ ids, onRemove }) {
   };
   return (
     <>
-      {/* {console.log('selectedLevelFourJobs' + getCount(), selectedLevelFourJobs)} */}
       {ids.map((id) => (
         <div key={id} className="body-detail">
           <div className="company-input-close">
@@ -675,9 +637,6 @@ function CareerListComponent({ ids, onRemove }) {
           {/* 추가된 직무들 */}
 
           {/* 이 배열이 가진 length를 활용 */}
-          {/* {console.log(selectedLevelFourJobs)} */}
-          {/* {console.log(levelFourJobs)} */}
-          {/* {console.log('selectedLevelThreeJobs', selectedLevelThreeJobs)} */}
           {selectedLevelThreeJobs.map((three, index) => (
             <div className="detail-job-content" key={index}>
               <div className="job-name-content row-style">
@@ -687,7 +646,10 @@ function CareerListComponent({ ids, onRemove }) {
                     <div key={job.id}>{job.title}</div>
                   ))}
                 </div>
-                <div className="close-content" onClick={closeThisContent}>
+                <div
+                  className="close-content"
+                  onClick={() => closeThisContent(index)}
+                >
                   X
                 </div>
               </div>
@@ -726,10 +688,10 @@ function CareerListComponent({ ids, onRemove }) {
                     </div>
                   ))}
                   <div className="add-detail-job">
-                    <button onClick={toggleAdditionalDetail}>
+                    <button onClick={() => toggleAdditionalDetail(index)}>
                       + 세부직무 추가하기
                     </button>
-                    {showAdditionalDetail ? (
+                    {showAdditionalDetail[index].flag ? (
                       <>
                         {/* {console.log(selectedLevelThreeJobs)}
                               {console.log(selectedLevelFourJobs)} */}
@@ -773,7 +735,7 @@ function CareerListComponent({ ids, onRemove }) {
                           </div>
                           <button
                             className="completeDetailJobSelection"
-                            onClick={completeDetailJobSelection2}
+                            onClick={() => completeDetailJobSelection2(index)}
                           >
                             선택완료
                           </button>
@@ -790,8 +752,10 @@ function CareerListComponent({ ids, onRemove }) {
           <div className="job-container">
             <div className="job-content">
               <div className="add-jobs">
-                <button onClick={toggleSelectJob}>직무 추가하기</button>
-                {isSelectJob ? (
+                <button onClick={() => toggleSelectJob(id)}>
+                  직무 추가하기
+                </button>
+                {isSelectJob.find((job) => job.id === id).flag ? (
                   <div className="select-job-container">
                     <div className="level-columns">
                       <div className="level-one">
@@ -848,14 +812,14 @@ function CareerListComponent({ ids, onRemove }) {
                       </div>
                       <button
                         className="select-completed-btn"
-                        onClick={completeJobSelection}
+                        onClick={() => completeJobSelection(id)}
                       >
                         선택완료
                       </button>
                     </div>
                   </div>
                 ) : null}
-                {isSelectDetailJob ? (
+                {isSelectDetailJob.find((detail) => detail.id === id).flag ? (
                   <>
                     <div className="select-detail-job-container">
                       <div className="previous-selected-jobs">
@@ -893,7 +857,7 @@ function CareerListComponent({ ids, onRemove }) {
                       </div>
                       <button
                         className="completeDetailJobSelection"
-                        onClick={completeDetailJobSelection}
+                        onClick={() => completeDetailJobSelection(id)}
                       >
                         선택완료
                       </button>
