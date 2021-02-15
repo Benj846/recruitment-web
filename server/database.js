@@ -12,8 +12,9 @@ const pool = mysql.createPool({
 });
 const getCommonWork = async (LV) => {
   const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
-  const filteredWorks = rows.filter((args) => args.LV === LV.LV);
-  console.log(filteredWorks);
+  // console.log(fields);
+  const filteredWorks = rows.filter((args) => args.LV === 1);
+  // console.log(filteredWorks);
   return filteredWorks;
 };
 
