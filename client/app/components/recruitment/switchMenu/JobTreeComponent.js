@@ -1,116 +1,197 @@
 import React, { useState, useRef } from 'react';
-import '../../../styles/RecruitmentComp/JobTreeComponent';
-
+import '../../../styles/JobTreeComponent';
+//import { ApolloProvider as ApolloHookProvider } from 'react-apollo-hooks';
+import { gql, useQuery } from '@apollo/client';
+const GET_LV1_WORK = gql`
+  {
+    getDefaultWork(LV: 1) {
+      ID
+      LV
+      VAL
+      UPPER_ID
+    }
+  }
+`;
+const GET_LV2_WORK = gql`
+  query getVariableLv2($lv1id: Int) {
+    getLevelWork(ID: $lv1id, LV: 2) {
+      ID
+      LV
+      VAL
+    }
+  }
+`;
+const GET_LV3_WORK = gql`
+  query getVariableLv2($lv1id: Int) {
+    getLevelWork(ID: $lv1id, LV: 3) {
+      ID
+      LV
+      VAL
+    }
+  }
+`;
+const GET_LV4_WORK = gql`
+  query getVariableLv2($lv1id: Int) {
+    getLevelWork(ID: $lv1id, LV: 4) {
+      ID
+      LV
+      VAL
+    }
+  }
+`;
 function JobTreeComponent(props) {
-  const [addState, setaddState] = useState(false);
-  const numbers = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25
-  ];
   const appendRef = useRef(null);
-  const [lvl1, setLvl1] = useState(null);
+  const [lvl1, setLvl1] = useState('');
   const [lvl2, setLvl2] = useState(null);
   const [lvl3, setLvl3] = useState(null);
   const [curLvl, setCurLvl] = useState(1);
   const [active1, setActive1] = useState(false);
   const [active2, setActive2] = useState(false);
+  const [LV_1_ID, setLV_1_ID] = useState();
+  const [LV_2_ID, setLV_2_ID] = useState();
+  const [LV_3_ID, setLV_3_ID] = useState();
+  const [LV_4_ID, setLV_4_ID] = useState();
+  const [isActive, setIsActive] = useState(false);
+  const [newArray, setNewArray] = useState();
   // const [active3, setActive3] = useState(false);
-  const addFuntion = () => {
-    return appendRef.current.append();
-  };
-  const buttonItems = numbers.map((number, i) => (
-    <button
-      key={number.toString()}
-      className={`lvl1 ${lvl1 === i ? 'active' : null}`}
-      onClick={() => {
-        setCurLvl(2);
-        setLvl1(i);
-        setActive2(false);
-      }}
-    >
-      lv1.선택직무
-    </button>
-  ));
 
-  const button2Items = numbers.map((number, i) => (
-    <button
-      key={number.toString()}
-      className={`lvl2 ${
-        lvl2 === i && active2 && curLvl >= 2 ? 'active' : null
-      }`}
-      disabled={false}
-      onClick={() => {
-        setCurLvl(3);
-        setActive2(true);
-        setLvl2(i);
-      }}
-    >
-      lv2.선택직무
-    </button>
-  ));
+  const { data, error, loading } = useQuery(GET_LV1_WORK);
 
-  const Button3Items = () => {
-    const Button = () => {
-      const [isActive, setIsActive] = useState(false);
-      return (
-        <button
-          className={`last ${isActive ? 'active' : null}`}
-          onClick={() => {
-            setIsActive(!isActive);
-          }}
-        >
-          <span className="bubble">최종 선택 버튼</span>
-        </button>
-      );
-    };
+  const {
+    data: LV2Data,
+    error: LV2Error,
+    loading: LV2Loading
+  } = useQuery(GET_LV2_WORK, { variables: { lv1id: LV_1_ID } });
 
-    const item = numbers.map((number) => <Button key={number.toString()} />);
-    return item;
+  const {
+    data: LV3Data,
+    error: LV3Error,
+    loading: LV3Loading
+  } = useQuery(GET_LV3_WORK, { variables: { lv1id: LV_2_ID } });
+
+  const {
+    data: LV4Data,
+    error: LV4Error,
+    loading: LV4Loading
+  } = useQuery(GET_LV4_WORK, { variables: { lv1id: LV_3_ID } });
+
+  const LV3Render = () => {
+    const dataAddr = LV3Data.getLevelWork.map((data) => ({
+      ...data,
+      isActive: false
+    }));
+    console.log(dataAddr);
+    setNewArray(dataAddr);
+    console.log(newArray);
   };
 
-  const addDescription = (e) => {
-    return (
-      <div className="added">
-        <span>직무</span>
-        <p>{console.log(e.target.innerText)}</p>
-      </div>
-    );
-  };
   return (
-    <div className="job-tree-cont">
-      <div className="button-container">{buttonItems}</div>
-      <div className="button-container">{button2Items}</div>
-      <div className="btn-last-cont">
-        <Button3Items />
+    <>
+      {LV3Render}
+      <div className="job-tree-cont">
+        {/* <div className="button-container">{buttonItems}</div> */}
+        {/* Level 1  */}
+        <div className="button-container">
+          {loading && 'loading'}
+          {error && `error message : ${error.message}`}
+          {!loading &&
+            data.getDefaultWork.map(({ ID, VAL }) => (
+              <button
+                key={ID}
+                className={`lvl1 ${lvl1 === ID ? 'active' : ''}`}
+                onClick={() => {
+                  setCurLvl(2);
+                  setLvl1(ID);
+                  setActive2(false);
+                  setLV_1_ID(ID);
+                }}
+              >
+                {VAL}
+                {/* {LV_1_ID} */}
+              </button>
+            ))}
+        </div>
+        {/* Level 2  */}
+        <div className="button-container">
+          {LV2Loading && 'loading'}
+          {LV2Error && `error check console ${console.log(LV2Error.message)}`}
+          {/* {console.log(LV2Data.getlv2Work)} */}
+          {!LV2Loading &&
+            LV2Data.getLevelWork.map(({ ID, VAL }) => (
+              <button
+                key={ID}
+                className={`lvl2 ${
+                  lvl2 === ID && active2 && curLvl >= 2 ? 'active' : null
+                }`}
+                disabled={false}
+                onClick={() => {
+                  setCurLvl(3);
+                  setActive2(true);
+                  setLV_2_ID(ID);
+                  setLvl2(ID);
+                }}
+              >
+                {VAL}
+                {/* {LV_2_ID} */}
+              </button>
+            ))}
+        </div>
+
+        {/* Level 3  */}
+        <div className="btn-bubble-cont">
+          {LV3Loading && 'loading'}
+          {LV3Error && `error check console ${console.log(LV3Error.message)}`}
+          {/* {console.log(LV_4_ID)} */}
+          {/* {!LV3Loading &&
+          LV3Data.getLevelWork.map(
+            (data) => ({ ...data, isActive: false }),
+            console.log(LV3Data.getLevelWork)
+          )} */}
+          {!LV3Loading &&
+            LV3Data.getLevelWork.map(({ ID, VAL, isActive }) => (
+              <button
+                key={ID}
+                className={`last ${lvl2 === ID ? 'active' : null}`}
+                // disabled={false}
+                onClick={() => {
+                  setCurLvl(3);
+                  setActive2(true);
+                  // setIsActive(!isActive);
+                  setLV_3_ID(ID);
+                  setLvl2(ID);
+                }}
+              >
+                <span className="bubble">{VAL}</span>
+              </button>
+            ))}
+          {/* {console.log('newArray ', newArray)} */}
+        </div>
+        <div className="btn-bubble-cont">
+          {LV4Loading && 'loading'}
+          {LV4Error && `error check console ${console.log(LV4Error.message)}`}
+          {!LV4Loading &&
+            LV4Data.getLevelWork.map(({ ID, VAL }) => (
+              <button
+                key={ID}
+                className={`last ${lvl2 === ID ? 'active' : null}`}
+                // disabled={false}
+                onClick={() => {
+                  setCurLvl(3);
+                  setActive2(true);
+                  // setIsActive(!isActive);
+                  setLvl2(ID);
+                }}
+              >
+                <span className="bubble">{VAL}</span>
+              </button>
+            ))}
+        </div>
+        <section ref={appendRef} className="ad-content-append">
+          <div>선택된 버블이 추가되는 영역</div>
+          <button className="btn-confirm">선택완료</button>
+        </section>
       </div>
-      <div ref={appendRef} className="ad-content-append">
-        <div>선택된 버블이 추가되는 영역</div>
-        <button className="btn-confirm">선택완료</button>
-      </div>
-    </div>
+    </>
   );
 }
 export default JobTreeComponent;
