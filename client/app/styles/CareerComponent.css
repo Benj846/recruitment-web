@@ -203,7 +203,7 @@
   left: 0px;
   top: 40px;
   opacity: 1;
-  --z-index: 999;
+  z-index: 999;
 }
 
 .job-container .select-job-container > .level-columns {
@@ -352,6 +352,7 @@
   left: 0px;
   top: 40px;
   opacity: 1;
+  z-index: 999;
 }
 
 .job-container .select-detail-job-container > .previous-selected-jobs {

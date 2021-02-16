@@ -114,6 +114,7 @@ function CareerListComponent({
     let isDetailClicked = !detailSelected.flag;
     let isJobClicked = jobSelected.flag;
 
+    setPrintedDetailJob([]);
     setPrintedJob([]);
     setLevelTwo([]);
     setLevelThree([]);
@@ -178,168 +179,6 @@ function CareerListComponent({
 
   const [isLevelTwoClicked, setIsLevelTwoClicked] = useState(false);
 
-  // const [levelThree, setLevelThree] = useState([
-  //   {
-  //     id: 1,
-  //     title: '전기/전자회로',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 2,
-  //     title: '하드웨어설계',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'PCB',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 4,
-  //     title: '소프트웨어설계',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 5,
-  //     title: '설계엔지니어',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 6,
-  //     title: '연구원(전기전자)',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 7,
-  //     title: 'R&D',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 8,
-  //     title: '시스템',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 9,
-  //     title: '신뢰성시험',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 10,
-  //     title: '펌웨어',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 11,
-  //     title: '전기설비',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 12,
-  //     title: '유지보수',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 13,
-  //     title: '연구개발비',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 14,
-  //     title: '전자부품 관리/전자부품 관리',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 15,
-  //     title: '난너를사랑해',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 16,
-  //     title: 'I LOVE YOU GIRL',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 17,
-  //     title: '이세상은너뿐이야',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 18,
-  //     title: '소리쳐 부르지만',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 19,
-  //     title: '저 대답 없는',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 20,
-  //     title: '노을만 붉게 타는데',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 21,
-  //     title: '아름다웠던',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 22,
-  //     title: '그대 모습을',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 23,
-  //     title: '이젠 볼 수 없겠지만',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 24,
-  //     title: '먼 산 언저리마다',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 25,
-  //     title: '너를 남기고',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 26,
-  //     title: '돌아서는 내게',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 27,
-  //     title: '생산라인 관리',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 28,
-  //     title: '시간은 그만',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 29,
-  //     title: '놓아주라는데',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 30,
-  //     title: '난 왜 너 닮은 목소리마저',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 31,
-  //     title: '가슴에 품고도',
-  //     clicked: false
-  //   },
-  //   {
-  //     id: 32,
-  //     title: '전장 관리',
-  //     clicked: false
-  //   }
-  // ]);
   const [levelThree, setLevelThree] = useState([]);
 
   const [levelFour, setLevelFour] = useState([]);
@@ -419,7 +258,7 @@ function CareerListComponent({
       alert('선택된 직무가 없습니다.');
       return;
     }
-    // setSelectedLevelThreeJobs([...selectedLevelThreeJobs, printedJob]);
+
     // let clicked = !isSelectJob;
     // setIsSelectJob(clicked);
     // if (clicked === false) {
@@ -428,7 +267,7 @@ function CareerListComponent({
     // }
     // clicked = !isSelectDetailJob;
     // setIsSelectDetailJob(clicked);
-
+    //setSelectedLevelThreeJobs([...selectedLevelThreeJobs, printedJob]);
     getLevelFourJobs();
 
     let jobSelected = isSelectJob.find((job) => job.id === id);
@@ -518,8 +357,8 @@ function CareerListComponent({
     toggleAdditionalDetail(index);
   };
 
-  const detailJobIdRef = useRef(0);
-  const [detailJobIds, setDetailJobIds] = useState([]);
+  // const detailJobIdRef = useRef(0);
+  // const [detailJobIds, setDetailJobIds] = useState([]);
 
   const [isAddJobsClicked, setIsAddJobsClicked] = useState(false);
   const toggleAddJobs = () => {
@@ -586,14 +425,19 @@ function CareerListComponent({
       )
     );
   };
-  const count = useRef(0);
-  const getCount = () => {
-    const result = count.current;
-    count.current += 1;
-    return result;
-  };
+  // const count = useRef(0);
+  // const getCount = () => {
+  //   const result = count.current;
+  //   count.current += 1;
+  //   return result;
+  // };
   return (
     <>
+      {/* {console.log(ids)}
+      {console.log(ids.length)} */}
+      {/* {console.log('isSelectJob', isSelectJob)}
+      {console.log('isSelectDetailJob', isSelectDetailJob)}
+      {console.log('--------------')} */}
       {ids.map((id) => (
         <div key={id} className="body-detail">
           <div className="company-input-close">
@@ -941,5 +785,4 @@ function CareerListComponent({
     </>
   );
 }
-
 export default CareerComponent;
