@@ -711,6 +711,7 @@ function CareerListComponent({
               </div>
             </div>
           </div>
+          {console.log(selectedLevelFourJobs)}
           {/* {showJobContent ? null : (
             <div className="add-jobs-2">
               <button onClick={toggleAddJobs}>직무 추가하기</button>

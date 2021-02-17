@@ -92,6 +92,22 @@ app.post('/work/lv4', async (req, res, next) => {
   }
 });
 
+app.post('/member/count', async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const [
+      dataList,
+      fieldPacket
+    ] = await pool.query(
+      'SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?',
+      [email]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+// 이 부분을 async로 고쳐야 함
 // app.post('/member/count', (req, res) => {
 //   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;
 //   let params = [req.body.email];
@@ -122,14 +138,6 @@ app.post('/work/lv4', async (req, res, next) => {
 //     return false;
 //   }
 // };
-// app.use('work/lv4', async (req, res, next)=>{
-//   try {
-//     const
-//   } catch(err) {
-//     next(err);
-//   }
-// });
-
 // app.post('/member/insert', (req, res) => {
 //   let sql = `INSERT INTO TB_CMN_MEMBER(UID, LGN_TYPE, PW, NAME, USR_TYPE, PW_CHG_DATE, REG_DATE)
 //     VALUE(?, ?, ?, ?, ?, 0, 0)`;

@@ -23,6 +23,7 @@ function SignInComponent({ closePopup, customStyle, showSignin }) {
     personalBtn.current.click();
   }, []);
 
+  // 개인: -1, 기업 인사 담당자: 1
   const [member, setMember] = useState(-1);
 
   const setMemberBtn = (e) => {
@@ -378,20 +379,37 @@ function AcceptAgreement({ closePopup, member }) {
 function SignupWithEmail({ closePopup, member }) {
   const [showSignup, setShowSignup] = useState(false);
   const togglePopup = () => {
-    axios
-      .post('/member/count', { email })
-      .then((res) => {
-        const count = res.data[0].COUNT;
-        if (count !== 0) {
-          alert('이미 존재하는 이메일입니다.');
-          return;
-        } else {
-          setShowSignup(!showSignup);
-        }
-      })
-      .catch((err) => {
-        console.log(error, err);
-      });
+    getMemberCount();
+  };
+
+  const getMemberCount = async () => {
+    try {
+      const result = await axios.post('/member/count', { email: email });
+      const count = result.data[0].COUNT;
+      if (count !== 0) {
+        alert('이미 존재하는 이메일입니다.');
+        return;
+      } else {
+        setShowSignup(!showSignup);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    // axios
+    // .post('/member/count', { email })
+    // .then((res) => {
+    //   const count = res.data[0].COUNT;
+    //   if (count !== 0) {
+    //     alert('이미 존재하는 이메일입니다.');
+    //     return;
+    //   } else {
+    //     setShowSignup(!showSignup);
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(error, err);
+    // });
   };
   const emailValidateRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
   //const emailValidateRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{3}$/i;
