@@ -20,7 +20,7 @@ const getCommonWork = async (LV) => {
 
 module.exports = { getCommonWork, pool };
 
-// solution 1ㅗ
+// solution 1
 // // solution 2
 // let connection;
 // const handleDisconnect = () => {
