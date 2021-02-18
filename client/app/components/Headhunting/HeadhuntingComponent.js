@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/HeadhuntingComponent';
 import JobTreeComponent from '../recruitment/switchMenu/JobTreeComponent';
-import ProfilePic from './image/img_profile.png';
+import profilePic from './image/img_profile.png';
 
 function HeadhuntingComponent() {
   const [btn, setbtn] = useState(false);
@@ -136,7 +136,7 @@ function HeadhuntingComponent() {
                 name="list-checkbox"
               />
               <div className="left-result">
-                <img className="list-img" src={ProfilePic} alt="" />
+                <img className="list-img" src={profilePic} alt="" />
                 <span className="name-span">이ㅇㅇ</span>
                 <span className="status-span">적극구직중</span>
               </div>
