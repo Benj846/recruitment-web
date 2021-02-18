@@ -11,7 +11,6 @@ import icon_heart_active from './images/icon_heart_active.png';
 import icon_bmk from './images/icon_bmk.png';
 import icon_bmk_active from './images/icon_bmk_active.png';
 
-import { DirectiveLocation } from 'graphql';
 function RecruitmentComponent(props) {
   const [btn, setbtn] = useState(false);
   const [toggle, settoggle] = useState(1);

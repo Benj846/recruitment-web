@@ -9,9 +9,9 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
-const { getCommonWork, getWorks, pool } = require('./database');
+const { pool } = require('./database');
+const typeDefs = require('./schema');
 const { ApolloServer, gql } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3333;
@@ -51,34 +51,38 @@ app.post('/member/insert', (req, res) => {
   });
 });
 
-const typeDefs = gql`
-  type Work2 {
-    ID: Int!
-    LV: Int!
-    VAL: String!
-    UPPER_ID: Int!
-    USE_YN: Boolean!
-  }
-  type Query {
-    getCommonWork(LV: Int): [Work2]
-  }
-`;
-
-const resolvers2 = {
+const getDefaultWork = async ({ LV, ID, UPPER_ID }) => {
+  const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
+  const filteredWorks = rows.filter((args) => args.LV === LV);
+  return filteredWorks;
+};
+const getLevelWork = async ({ LV, ID, UPPER_ID }) => {
+  const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
+  const lv2work = rows.filter((val) => val.UPPER_ID === ID && val.LV === LV);
+  return lv2work;
+};
+// const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
+// const lv2Works = rows.filter(
+//   (val) => val.UPPER_ID === UPPER_ID,
+//   console.log(UPPER_ID)
+// );
+// console.log(lv2Works);
+// name: 'benjamin',
+// id: 1
+const resolvers = {
   Query: {
-    getCommonWork: (parent, LV, context, info) => getCommonWork(LV)
+    getDefaultWork: (parent, { LV, ID, UPPER_ID }, context, info) =>
+      getDefaultWork({ LV, ID, UPPER_ID }),
+    // getlv2Work: (parent, args, context, info) => {
+    //   getlv2Work();
+    // }
+    getLevelWork: (_, { LV, ID }) => getLevelWork({ LV, ID })
+    // getlv2Work: (_, { LV, ID }) => console.log(LV)
   }
 };
-// const resolversTest = {
-
-// }
-// const schema = makeExecutableSchema({
-//   typeDefs: typeDefs,
-//   resolvers
-// });
 const server = new ApolloServer({
   typeDefs,
-  resolvers: resolvers2,
+  resolvers,
   playground: {
     endpoint: '/graphql',
     settings: {
@@ -89,80 +93,6 @@ const server = new ApolloServer({
 server.applyMiddleware({
   app
 });
-
-// app.use((req, res) => {
-//   res.status(200);
-//   res.send('Hello!');
-//   res.end();
-// });
-// The GraphQL endpoint
-// app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-
-// GraphiQL, a visual editor for queries
-// app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-
-// app.use(fileUplo);
-// REST APIs
-// app.use(bodyParser.json());
-
-// API routes
-// require('./routes')(app);
-// app.route('/test').get(function (req, res, next) {
-//   connecttion.query(
-//     'SELECT * FROM TB_COMMON_WORK WHERE lv = 1',
-//     function (error, results, fields) {
-//       if (error) throw error;
-//       console.log(results);
-//     }
-//   );
-// });
-// app.get('/status', (req, res) => res.json('working!'));
-
-// app.get('/testjson', (req, res) => {
-//   res.json({ message: 'Welcome to fapply application.' });
-// });
-
-//
-
-// GraphQL
-// const expressGraghQL = require('express-graphql').graphqlHTTP;
-// const {
-//   GraphQLSchema,
-//   GraphQLObjectType,
-//   GraphQLString,
-//   GraphQLList,
-//   GraphQLInt,
-//   GraphQLNonNull
-// } = require('graphql');
-
-// const RootQueryType = new GraphQLObjectType({
-//   name: 'Query',
-//   description: 'Root Query',
-//   fields: () => ({
-//     id: {
-//       type: GraphQLNonNull(GraphQLInt)
-//     }
-//   })
-// });
-
-// const schema = new GraphQLSchema({
-//   query: new GraphQLObjectType({
-//     name: 'helloworld',
-//     fields: () => ({
-//       message: { type: GraphQLString, resolve: () => 'hello world' }
-//     })
-//   })
-// });
-// const schema = new GraphQLSchema({
-//   query: RootQueryType
-// });
-// app.use(
-//   '/graphql/',
-//   expressGraghQL({
-//     schema: schema,
-//     graphiql: true
-//   })
-// );
 
 // Webpack config
 if (isDev) {

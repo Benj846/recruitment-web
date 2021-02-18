@@ -364,7 +364,8 @@ export default MainComponent;
 const JobTree = () => {
   const [selected2, setSelected2] = useState(false);
   const [selected3, setSelected3] = useState(false);
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  //const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const numbers = [1, 2];
   const appendRef = useRef(null);
   const [lvl1, setLvl1] = useState(0);
   const [lvl2, setLvl2] = useState(0);
@@ -382,7 +383,7 @@ const JobTree = () => {
       <Query
         query={gql`
           {
-            getCommonWork {
+            getCommonWork(LV: 1) {
               ID
               VAL
             }
@@ -391,19 +392,8 @@ const JobTree = () => {
       >
         {({ loading, error, data }) => {
           if (loading) return <p>Loading</p>;
-          if (error) return <p>error ㅠㅠ</p>;
-          return data.getCommonWork.map(({ ID, VAL }) => (
-            // <button
-            //   key={number.toString()}
-            //   className="lv1"
-            //   onClick={() => {
-            //     setSelected(!selected);
-            //     setSelected3(false);
-            //     console.log("i'm level 1");
-            //   }}
-            // >
-            //   {VAL}
-            // </button>
+          if (error) return <p>error ㅠㅠ{error.message}</p>;
+          return data.getDefaultWork.map(({ ID, VAL }) => (
             <button
               key={ID}
               className={`lv1 ${lvl1 === ID ? 'active' : null}`}
@@ -420,19 +410,6 @@ const JobTree = () => {
         }}
       </Query>
     </ApolloProvider>
-    // <button
-    //   key={number.toString()}
-    //   className={`lv1 ${lvl1 === number ? 'active' : null}`}
-    //   onClick={() => {
-    //     setLvl1(number);
-    //     setActive1(true);
-    //     setActive2(false);
-    //     setCurLvl(0);
-    //     setCurLvl(2);
-    //   }}
-    // >
-    //   lv1.선택직무
-    // </button>
   ));
   const button2Items = numbers.map((number) => (
     <button

@@ -87,9 +87,8 @@ function JobTreeComponent(props) {
 
   return (
     <>
-      {LV3Render}
+      {/* {LV3Render} */}
       <div className="job-tree-cont">
-        {/* <div className="button-container">{buttonItems}</div> */}
         {/* Level 1  */}
         <div className="button-container">
           {loading && 'loading'}
@@ -115,7 +114,6 @@ function JobTreeComponent(props) {
         <div className="button-container">
           {LV2Loading && 'loading'}
           {LV2Error && `error check console ${console.log(LV2Error.message)}`}
-          {/* {console.log(LV2Data.getlv2Work)} */}
           {!LV2Loading &&
             LV2Data.getLevelWork.map(({ ID, VAL }) => (
               <button
@@ -125,6 +123,7 @@ function JobTreeComponent(props) {
                 }`}
                 disabled={false}
                 onClick={() => {
+                  LV3Render();
                   setCurLvl(3);
                   setActive2(true);
                   setLV_2_ID(ID);
@@ -132,7 +131,6 @@ function JobTreeComponent(props) {
                 }}
               >
                 {VAL}
-                {/* {LV_2_ID} */}
               </button>
             ))}
         </div>
@@ -141,12 +139,6 @@ function JobTreeComponent(props) {
         <div className="btn-bubble-cont">
           {LV3Loading && 'loading'}
           {LV3Error && `error check console ${console.log(LV3Error.message)}`}
-          {/* {console.log(LV_4_ID)} */}
-          {/* {!LV3Loading &&
-          LV3Data.getLevelWork.map(
-            (data) => ({ ...data, isActive: false }),
-            console.log(LV3Data.getLevelWork)
-          )} */}
           {!LV3Loading &&
             LV3Data.getLevelWork.map(({ ID, VAL, isActive }) => (
               <button
@@ -164,7 +156,6 @@ function JobTreeComponent(props) {
                 <span className="bubble">{VAL}</span>
               </button>
             ))}
-          {/* {console.log('newArray ', newArray)} */}
         </div>
         <div className="btn-bubble-cont">
           {LV4Loading && 'loading'}
