@@ -1,4 +1,3 @@
-//const mysql = require('mysql2');
 const { default: Axios } = require('axios');
 const mysql = require('mysql2/promise');
 require('dotenv').config();
@@ -10,14 +9,8 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0
 });
-const getCommonWork = async (LV) => {
-  const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
-  const filteredWorks = rows.filter((args) => args.LV === 1);
-  console.log(filteredWorks);
-  return filteredWorks;
-};
 
-module.exports = { getCommonWork, pool };
+module.exports = { pool };
 
 // solution 1
 // // solution 2

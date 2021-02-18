@@ -10,6 +10,7 @@ import Calendar from '../calendar/Calendar';
 //import Test from '../Test/test';
 import SignInComponent from '../member/SignInComponent';
 import MyPageComponent from '../member/MyPageComponent';
+import HeadhuntingComponent from '../Headhunting/HeadhuntingComponent';
 
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
@@ -67,12 +68,12 @@ function Navbar() {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link to={'/calendar'} className="nav-link">
+                  <Link to={'/headhunting'} className="nav-link">
                     인재검색/채용제안
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/resume'} className="nav-link">
+                  <Link to={'/recriutmanage'} className="nav-link">
                     채용공고관리
                   </Link>
                 </li>
@@ -110,6 +111,7 @@ function Navbar() {
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/resume" component={Resume} />
         <Route exact path="/mypage" component={MyPageComponent} />
+        <Route exact path="/headhunting" component={HeadhuntingComponent} />
       </Switch>
     </div>
   );

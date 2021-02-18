@@ -33,7 +33,7 @@
   color: #009999;
   background: #f4faf7;
 }
-.job-tree-cont .btn-last-cont {
+.job-tree-cont .button-container:nth-last-of-type(0) {
   height: 320px;
   overflow-y: auto;
   flex: 1;
@@ -41,7 +41,7 @@
   flex-flow: wrap row;
   background: #fff;
 }
-.job-tree-cont .btn-last-cont .last {
+.job-tree-cont .button-container:nth-last-of-type(0) .last {
   width: 100%;
   outline: none;
   border: none;
@@ -54,7 +54,33 @@
   font: normal normal 400 12px/17px Noto Sans KR;
   color: #666666;
 }
-.job-tree-cont .btn-last-cont .last.active .bubble {
+.job-tree-cont .button-container:nth-last-of-type(0) .last.active .bubble {
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  padding: 4px 16px;
+  font: normal normal 700 12px/17px Noto Sans KR;
+}
+.job-tree-cont .btn-bubble-cont {
+  height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: wrap row;
+  background: #fff;
+}
+.job-tree-cont .btn-bubble-cont .last {
+  width: 100%;
+  outline: none;
+  border: none;
+  flex-basis: 33.33%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  font: normal normal 400 12px/17px Noto Sans KR;
+  color: #666666;
+}
+.job-tree-cont .btn-bubble-cont .last.active .bubble {
   border: 1px solid #ccc;
   border-radius: 40px;
   padding: 4px 16px;
@@ -78,4 +104,10 @@
   background: #009999;
   color: #fff;
   font: normal normal 500 13px/20px Noto Sans KR;
+}
+.job-tree-cont :nth-last-child(3) {
+  display: flex;
+  width: 516px;
+  justify-content: center;
+  align-items: center;
 }

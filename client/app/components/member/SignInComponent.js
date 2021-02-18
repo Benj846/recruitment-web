@@ -138,6 +138,7 @@ function SignInComponent({ closePopup, setLoginInfo }) {
             />
             <input
               className="input-password"
+              type="password"
               name="password"
               placeholder="비밀번호"
               onChange={onChange}
@@ -714,12 +715,14 @@ function InputSignupWithEmail({ closePopup, member, email }) {
                   className="input-signup-password"
                   placeholder="8~12자의 영문, 숫자, 특수문자 중 2가지 이상 조합 필수"
                   name="pw"
+                  type="password"
                   onChange={onChange}
                 />
                 <span className="signup-password">비밀번호 확인</span>
                 <input
                   className="input-signup-password-confirm"
                   placeholder="비밀번호를 다시 한 번 입력해주세요"
+                  type="password"
                 />
                 <span className="signup-password">핸드폰 인증하기</span>
                 <div className="verify">
@@ -872,6 +875,7 @@ function InputPasswordWithCorpMember({ closePopup, corpInfo, utype, ctype }) {
             <div>
               <input
                 className="input-password"
+                type="password"
                 placeholder="8-12자의 영문, 숫자, 특수문자 중 2가지 이상 조합 필수"
                 name="password"
                 onChange={onChangePassword}
@@ -882,6 +886,7 @@ function InputPasswordWithCorpMember({ closePopup, corpInfo, utype, ctype }) {
               <input
                 className="verify-input-password"
                 placeholder="비밀번호를 다시 한 번 입력해주세요"
+                type="password"
               />
             </div>
             <div>
