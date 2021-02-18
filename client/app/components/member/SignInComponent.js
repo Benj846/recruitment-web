@@ -147,10 +147,10 @@ function SignInComponent({ closePopup, setLoginInfo }) {
             패플라이 로그인
           </button>
           <div className="signin-find-idpw-content">
-            <button className="find-idpw" onClick={toggleFindIdPw}>
+            {/* <button className="find-idpw" onClick={toggleFindIdPw}>
               아이디/비밀번호 찾기
-            </button>
-            <div className="between-line">|</div>
+            </button> */}
+            {/* <div className="between-line">|</div> */}
             <button className="signup-button" onClick={toggleSignup}>
               회원가입
             </button>
@@ -1079,7 +1079,7 @@ function SignupEnd({ closePopup }) {
             <div>패플라이와 함께 다양한 커리어를</div>
             <div>구경하러 가보시겠어요?</div>
           </div>
-          <button className="go-signup" onClick={togglePopup}>
+          <button className="go-signup" onClick={closePopup}>
             로그인하러 가기
           </button>
           {/* <button className="go-signup">로그인하러 가기</button> */}

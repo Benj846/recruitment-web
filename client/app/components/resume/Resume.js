@@ -9,7 +9,7 @@ function Resume() {
       <section className="resume-main">
         <ResumeComponent />
       </section>
-      <ResumeFooter />
+      {/* <ResumeFooter /> */}
     </section>
   );
 }
