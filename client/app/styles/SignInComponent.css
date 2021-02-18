@@ -659,7 +659,7 @@
 }
 
 /*------------------------------------------------------------------------------------------------*/
-/* Input signup with Phone email ---------------------------------------------------------------- */
+/* Personal / Input signup with Phone email ------------------------------------------------------ */
 #signin-content #input-with-email-container {
   display: flex;
   align-items: center;
@@ -677,7 +677,7 @@
   width: 440px;
   height: 710px;
   --height: 95vh;
-  margin: 0 auto;
+  margin: 50px auto;
   background: white;
 }
 
@@ -710,7 +710,7 @@
   opacity: 1;
 }
 
-#input-with-email-content > .body {
+#input-with-email-content > .body > div {
   width: 400px;
   height: 100%;
   margin: 50px auto;
@@ -718,38 +718,58 @@
   flex-direction: column;
 }
 
-#input-with-email-content > .body > .input-signup-name {
+#input-with-email-content > .body > .company-member .corp-member {
+  display: flex;
+}
+#input-with-email-content > .body > .company-member .corp-member > button {
+  width: 230px;
+  height: 50px;
+}
+
+#input-with-email-content > .body > .personal-member .input-signup-name {
   border: 1px solid #cccccc;
   height: 40px;
   margin-bottom: 15px;
   padding: 10px;
 }
 
-#input-with-email-content > .body > .input-signup-name::placeholder {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .input-signup-name::placeholder {
   color: #cccccc;
   opacity: 1;
   letter-spacing: 0px;
 }
-#input-with-email-content > .body > .input-signup-name:focus {
+#input-with-email-content > .body > .personal-member .input-signup-name:focus {
   outline: none;
 }
-#input-with-email-content > .body .input-signup-password {
+#input-with-email-content > .body > .personal-member .input-signup-password {
   border: 1px solid #cccccc;
   height: 40px;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-#input-with-email-content > .body > .input-signup-password::placeholder {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .input-signup-password::placeholder {
   color: #cccccc;
   opacity: 1;
   letter-spacing: 0px;
 }
-#input-with-email-content > .body > .input-signup-password:focus {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .input-signup-password:focus {
   outline: none;
 }
 
-#input-with-email-content > .body > .input-signup-password-confirm {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .input-signup-password-confirm {
   border: 1px solid #cccccc;
   height: 40px;
   padding: 5px;
@@ -758,28 +778,40 @@
 
 #input-with-email-content
   > .body
+  > .personal-member
   > .input-signup-password-confirm::placeholder {
   color: #cccccc;
   --font-weight: bold;
 }
 
-#input-with-email-content > .body > .input-signup-password-confirm:focus {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .input-signup-password-confirm:focus {
   outline: none;
 }
 
-#input-with-email-content > .body > .select-phone-email button {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .select-phone-email
+  button {
   background: none;
   border: 1px solid #cccccc;
   width: 200px;
   height: 40px;
 }
 
-#input-with-email-content > .body > .verify {
+#input-with-email-content > .body > .personal-member .verify {
   display: flex;
   margin-top: 10px;
 }
 
-#input-with-email-content > .body > .verify .input-info-for-verify {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .verify
+  .input-info-for-verify {
   width: 300px;
   height: 40px;
   border: 1px solid #cccccc;
@@ -788,13 +820,14 @@
 
 #input-with-email-content
   > .body
+  > .personal-member
   > .verify
   .input-info-for-verify::placeholder {
   color: #cccccc;
   --font-size: 15px;
 }
 
-#input-with-email-content > .body > .verify .verify-btn {
+#input-with-email-content > .body > .personal-member .verify .verify-btn {
   background: #dddddd 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   color: #999999;
@@ -802,21 +835,22 @@
   height: 40px;
 }
 
-#input-with-email-content > .body > .verify .verify-btn:focus {
+#input-with-email-content > .body > .personal-member .verify .verify-btn:focus {
   outline: none;
 }
 
-#input-with-email-content > .body > .verify-confirm-title {
+#input-with-email-content > .body > .personal-member .verify-confirm-title {
   margin-top: 15px;
 }
 
-#input-with-email-content > .body > .verify-confirm {
+#input-with-email-content > .body > .personal-member .verify-confirm {
   display: flex;
   margin-top: 10px;
 }
 
 #input-with-email-content
   > .body
+  > .personal-member
   > .verify-confirm
   .input-info-for-verify-confirm {
   width: 300px;
@@ -827,6 +861,7 @@
 
 #input-with-email-content
   > .body
+  > .personal-member
   > .verify-confirm
   .input-info-for-verify-confirm::placeholder {
   color: #cccccc;
@@ -834,12 +869,17 @@
 
 #input-with-email-content
   > .body
+  > .personal-member
   > .verify-confirm
   .input-info-for-verify-confirm:focus {
   outline: none;
 }
 
-#input-with-email-content > .body > .verify-confirm .verify-confirm-btn {
+#input-with-email-content
+  > .body
+  > .personal-member
+  .verify-confirm
+  .verify-confirm-btn {
   background: #009999 0% 0% no-repeat padding-box;
   border: 1px solid #009999;
   color: #ffffff;
@@ -847,13 +887,57 @@
   height: 40px;
 }
 
-#input-with-email-content > .body > .select-job-btn {
+#input-with-email-content > .body > .personal-member .select-job-btn {
   height: 50px;
   border: 1px solid #aaaaaa;
   border-radius: 3px;
   margin-top: 30px;
   background: none;
   font: normal normal bold 15px/19px Apple SD Gothic Neo;
+}
+
+/* Corporate / Input signup with Phone email ------------------------------------------------------ */
+#input-with-email-content > .body > .company-member .name {
+  margin-top: 24px;
+}
+
+#input-with-email-content > .body > .company-member .input-company-name {
+  height: 50px;
+}
+
+#input-with-email-content
+  > .body
+  > .company-member
+  .business-registration-number-title {
+  margin-top: 24px;
+}
+
+#input-with-email-content
+  > .body
+  > .company-member
+  .input-business-registration-number {
+  height: 50px;
+}
+
+#input-with-email-content > .body > .company-member .choose-industry {
+  margin-top: 24px;
+}
+
+#input-with-email-content > .body > .company-member .company-type {
+  margin-top: 24px;
+}
+
+#input-with-email-content > .body > .company-member .next-btn {
+  margin-top: 100px;
+  height: 50px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  font: normal normal bold 15px/19px Apple SD Gothic Neo;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
 }
 
 /*---------------------------------------------------------------------------------------*/
@@ -1043,7 +1127,75 @@
   text-decoration: underline;
 }
 
-/*---------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------*/
+/* Input password with  ---------------------------------------------------------------- */
+#input-password-corp-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#input-password-corp-container > #input-password-corp-content {
+  width: 440px;
+  height: 710px;
+  margin: 0 auto;
+  background: white;
+}
+
+#input-password-corp-content > .member-close-popup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#input-password-corp-content > .member-close-popup > .empty-space {
+  width: 50px;
+}
+
+#input-password-corp-content > .member-close-popup > .close-button {
+  background: none;
+  border: none;
+}
+
+#input-password-corp-content > .body > div {
+  width: 400px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#input-password-corp-content > .body > .password-title {
+  margin-top: 24px;
+}
+
+#input-password-corp-content > .body .input-password {
+  height: 50px;
+}
+
+#input-password-corp-content > .body .password-title-confirm-title {
+  margin-top: 24px;
+}
+
+#input-password-corp-content > .body .verify-input-password {
+  height: 50px;
+}
+
+#input-password-corp-content > .body .next-btn {
+  margin-top: 30px;
+  background: none;
+  border: 1px solid #aaaaaa;
+  height: 50px;
+}
+
+/*-----------------------------------------------------------------------------*/
 /* Signup end ---------------------------------------------------------------- */
 #signin-content .signup-end-container {
   display: flex;

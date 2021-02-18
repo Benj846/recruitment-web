@@ -107,6 +107,51 @@ app.post('/member/count', async (req, res, next) => {
     console.log(res.status(500).json(err));
   }
 });
+
+app.post('/member/insert', async (req, res, next) => {
+  const { uid, name, password, utype } = req.body;
+  try {
+    const [dataList, fieldPacket] = await pool.query(
+      `INSERT INTO TB_CMN_MEMBER(UID, LGN_TYPE, PW, NAME, USR_TYPE, PW_CHG_DATE, REG_DATE)
+    VALUE(?, ?, ?, ?, ?, 0, 0)`,
+      [uid, 0, password, name, utype]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
+app.post('/corp/insert', async (req, res, next) => {
+  const { uid, name, password, ctype, utype } = req.body;
+  try {
+    const [dataList, fieldPacket] = await pool.query(
+      `INSERT INTO TB_CMN_MEMBER(UID, LGN_TYPE, CRP_TYPE, PW, NAME, USR_TYPE, PW_CHG_DATE, REG_DATE)
+    VALUE(?, ?, ?, ?, ?, ?, 0, 0)`,
+      [uid, 0, ctype, password, name, utype]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
+app.post('/member/login', async (req, res, next) => {
+  const { uid, utype } = req.body;
+  try {
+    const [
+      dataList,
+      fieldPacket
+    ] = await pool.query(
+      'SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ? AND USR_TYPE=?',
+      [uid, utype]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
 // 이 부분을 async로 고쳐야 함
 // app.post('/member/count', (req, res) => {
 //   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;

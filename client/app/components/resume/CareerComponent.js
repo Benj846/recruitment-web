@@ -92,9 +92,6 @@ function CareerListComponent({
   //   getLevelOneJobs();
   // }, []);
 
-  useEffect(() => {
-    getLevelOneJobs();
-  }, []);
   const getLevelOneJobs = async () => {
     try {
       const response = await axios.get('/work/lv1');
@@ -104,6 +101,10 @@ function CareerListComponent({
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    getLevelOneJobs();
+  }, []);
 
   //const [isSelectJob, setIsSelectJob] = useState(false);
   //const [isSelectJob, setIsSelectJob] = useState([]);
