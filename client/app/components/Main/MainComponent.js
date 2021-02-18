@@ -391,7 +391,7 @@ const JobTree = () => {
       >
         {({ loading, error, data }) => {
           if (loading) return <p>Loading</p>;
-          if (error) return <p>error ㅠㅠ</p>;
+          if (error) return <p>error</p>;
           return data.getCommonWork.map(({ ID, VAL }) => (
             // <button
             //   key={number.toString()}
