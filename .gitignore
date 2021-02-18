@@ -1,4 +1,3 @@
-.env
 # Compiled files
 dist/
 
@@ -32,4 +31,5 @@ client/app/components/recruitment/db.json
 .babelrc
 config/webpack.dev.js
 yarn.lock
+package.json
 package-lock.json

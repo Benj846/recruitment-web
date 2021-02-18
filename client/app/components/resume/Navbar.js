@@ -66,6 +66,9 @@ function Navbar() {
             <button className="signin-btn" onClick={toggleSigninPopup}>
               로그인/회원가입
             </button>
+            <Link to={'/mypage'} className="nav-link">
+              마이페이지
+            </Link>
             <button className="business-btn">기업페이지</button>
           </div>
         </div>

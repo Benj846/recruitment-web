@@ -76,7 +76,7 @@ function BasicInfoComponent() {
                   className="input-name"
                   type="text"
                   name="name"
-                  value={user.name}
+                  defaultValue={user.name}
                   disabled="disabled"
                 ></input>
               </div>
@@ -95,7 +95,7 @@ function BasicInfoComponent() {
                   className="input-birth"
                   // type="date"
                   name="date"
-                  value={user.birth}
+                  defaultValue={user.birth}
                 ></input>
               </div>
               <div className="content-phone content-col-4">
@@ -104,7 +104,7 @@ function BasicInfoComponent() {
                   className="input-phonenum"
                   name="phoneNumber"
                   disabled="disabled"
-                  value={user.phone}
+                  defaultValue={user.phone}
                 ></input>
               </div>
             </div>
@@ -164,7 +164,7 @@ function BasicInfoComponent() {
                   className="input-email"
                   type="email"
                   name="email"
-                  value={user.email}
+                  defaultValue={user.email}
                   disabled="disabled"
                 ></input>
               </div>

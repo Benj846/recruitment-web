@@ -392,8 +392,19 @@ const JobTree = () => {
       >
         {({ loading, error, data }) => {
           if (loading) return <p>Loading</p>;
-          if (error) return <p>error ㅠㅠ{error.message}</p>;
-          return data.getDefaultWork.map(({ ID, VAL }) => (
+          if (error) return <p>error</p>;
+          return data.getCommonWork.map(({ ID, VAL }) => (
+            // <button
+            //   key={number.toString()}
+            //   className="lv1"
+            //   onClick={() => {
+            //     setSelected(!selected);
+            //     setSelected3(false);
+            //     console.log("i'm level 1");
+            //   }}
+            // >
+            //   {VAL}
+            // </button>
             <button
               key={ID}
               className={`lv1 ${lvl1 === ID ? 'active' : null}`}
