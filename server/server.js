@@ -168,7 +168,17 @@ app.post('/member/count', async (req, res, next) => {
 //   });
 // });
 
-const resolvers2 = {
+const getDefaultWork = async ({ LV, ID, UPPER_ID }) => {
+  const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
+  const filteredWorks = rows.filter((args) => args.LV === LV);
+  return filteredWorks;
+};
+const getLevelWork = async ({ LV, ID, UPPER_ID }) => {
+  const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
+  const lv2work = rows.filter((val) => val.UPPER_ID === ID && val.LV === LV);
+  return lv2work;
+};
+const resolvers = {
   Query: {
     getDefaultWork: (parent, { LV, ID, UPPER_ID }, context, info) =>
       getDefaultWork({ LV, ID, UPPER_ID }),
