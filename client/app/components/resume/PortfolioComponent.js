@@ -31,7 +31,8 @@ function PortfolioComponent(props) {
             <span className="content-title">첨부파일</span>
             <input className="file-input" />
             <button className="add-file">파일추가</button>
-          </div>
+          </div>{' '}
+          */}
         </>
       );
     } else {

@@ -10,6 +10,7 @@ import Calendar from '../calendar/Calendar';
 //import Test from '../Test/test';
 import SignInComponent from '../member/SignInComponent';
 import MyPageComponent from '../member/MyPageComponent';
+import HeadhuntingComponent from '../Headhunting/HeadhuntingComponent';
 
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
@@ -22,6 +23,12 @@ function Navbar() {
     }
     setShowPopup(clicked);
   };
+
+  const [loginInfo, setLoginInfo] = useState({
+    uid: '',
+    isSuccess: false,
+    userType: 0
+  });
 
   return (
     <div className="navbar-wrapper">
@@ -45,26 +52,58 @@ function Navbar() {
                 커리어
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to={'/calendar'} className="nav-link">
-                채용달력
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/resume'} className="nav-link">
-                이력서
-              </Link>
-            </li>
+            {loginInfo.userType === 0 || loginInfo.userType === -1 ? (
+              <>
+                <li className="nav-item">
+                  <Link to={'/calendar'} className="nav-link">
+                    채용달력
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={'/resume'} className="nav-link">
+                    이력서
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link to={'/headhunting'} className="nav-link">
+                    인재검색/채용제안
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={'/recriutmanage'} className="nav-link">
+                    채용공고관리
+                  </Link>
+                </li>
+              </>
+            )}
           </div>
           <div className="utility">
             <button className="signin-btn" onClick={toggleSigninPopup}>
-              로그인/회원가입
+              {loginInfo.isSuccess
+                ? `${loginInfo.uid.substr(0, loginInfo.uid.indexOf('@'))}님`
+                : '로그인/회원가입'}
             </button>
+            {loginInfo.isSuccess ? (
+              <Link to={'/mypage'} className="nav-link">
+                마이페이지
+              </Link>
+            ) : null}
+            {/* <Link to={'/mypage'} className="nav-link">
+              마이페이지
+            </Link> */}
             <button className="business-btn">기업페이지</button>
           </div>
         </div>
       </nav>
-      {showPopup ? <SignInComponent closePopup={toggleSigninPopup} /> : null}
+      {showPopup ? (
+        <SignInComponent
+          closePopup={toggleSigninPopup}
+          setLoginInfo={setLoginInfo}
+        />
+      ) : null}
       <Switch>
         <Route exact path="/" component={MainComponent} />
         <Route exact path="/recruitment" component={RecruitmentComponent} />
@@ -72,6 +111,7 @@ function Navbar() {
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/resume" component={Resume} />
         <Route exact path="/mypage" component={MyPageComponent} />
+        <Route exact path="/headhunting" component={HeadhuntingComponent} />
       </Switch>
     </div>
   );

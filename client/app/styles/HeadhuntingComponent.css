@@ -1,0 +1,138 @@
+.headhunt-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.headhunt-container .fiter-container {
+  position: fixed;
+  top: 200px;
+  left: 10px;
+  z-index: 99;
+  width: 160px;
+  height: 168px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.headhunt-container .filter-container .filter-search {
+  border: none;
+  outline: none;
+  width: 144px;
+  height: 48px;
+  background: #009999;
+  color: #fff;
+  border-radius: 5px;
+  margin: 8px 8px;
+}
+.filter-container .filter-popular,
+.filter-container .filter-today {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  width: 160px;
+  height: 48px;
+  background: #ffffff;
+}
+.headhunt-container .headhunt-content {
+  align-self: center;
+  position: relative;
+}
+.headhunt-content .search-btn {
+  border: none;
+  outline: none;
+  width: 70px;
+  height: 50px;
+  background: #009999 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  margin: 0 20px;
+  color: #fff;
+}
+.headhunt-content .search-input {
+  outline: none;
+  width: 822px;
+  height: 50px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 0 24px;
+}
+.headhunt-container.headhunt-content-list {
+  width: 1060px;
+  align-self: center;
+}
+.btn-wapper .filter-wrapper {
+  text-align: end;
+}
+.result-list {
+  margin-top: 24px;
+  display: flex;
+}
+
+.result-list .list-checkbox {
+  display: inline-block;
+  margin-left: 16px;
+  width: 32px;
+  height: 32px;
+}
+.result-list .wrapper {
+  display: inline;
+}
+.result-list .wrapper .list-img {
+  width: 62px;
+  height: 62px;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+}
+.result-list .left-result {
+  margin-left: 23px;
+  display: flex;
+  flex-direction: column;
+}
+.left-result .status-span {
+  width: 84px;
+  height: 24px;
+  border: 1px solid #009999;
+  border-radius: 5px;
+  text-align: center;
+  color: #009999;
+}
+.middle-result .recent-company {
+  font: normal normal bold 14px/20px Noto Sans KR;
+}
+.middle-result .job-level {
+  font: normal normal medium 12px/17px Noto Sans KR;
+  color: #666666;
+}
+.middle-result .recent-login {
+  font: normal normal normal 12px/17px Noto Sans KR;
+}
+.result-list .middle-result {
+  margin-left: 33px;
+  align-items: center;
+  width: 692px;
+}
+.middle-result .result-box {
+  border: 1px solid #dddddd;
+}
+.result-list .right-result {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-result .interests {
+  width: 160px;
+  height: 48px;
+  border: 1px solid #dddddd;
+  background: #ffffff0d 0% 0% no-repeat padding-box;
+}
+.middle-result .level4-bubble {
+  display: inline-block;
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+  color: #009999;
+  font-size: 12px;
+}
