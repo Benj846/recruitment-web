@@ -76,7 +76,7 @@ function EducationComponent(props) {
                 onChange={handleCheckBoxChange}
                 id="a1"
               />
-              <label className="el-checkbox-style" for="a1"></label>
+              <label className="el-checkbox-style" htmlFor="a1"></label>
               <span className="integrated-title">석박사 연계과정</span>
             </div>
           </>
@@ -625,7 +625,7 @@ function Master() {
                 background: `url(${icon_search}) no-repeat 98% center`,
                 backgroundSize: `32px 32px`
               }}
-              ltValue="default-value"
+              defaultValue="default-value"
             >
               <option value="default-value" disabled="disabled">
                 패플대학교
@@ -942,7 +942,7 @@ function Doctorate({ isIntegratedChecked }) {
                       background: `url(${icon_search}) no-repeat 98% center`,
                       backgroundSize: `32px 32px`
                     }}
-                    ltValue="default-value"
+                    defaultValue="default-value"
                   >
                     <option value="default-value" disabled="disabled">
                       패플대학교

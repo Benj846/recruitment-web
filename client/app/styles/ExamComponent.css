@@ -23,7 +23,7 @@
 .exam-info .body-detail .year-close {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 .exam-info .body-detail .year-close .acquisition {
   width: 250px;
@@ -31,7 +31,7 @@
 .exam-info .body-detail .year-close .acquisition .acquisition-date {
   width: 160px;
   height: 40px;
-  padding-left: 16px;
+  padding: 0 16px;
   background: #fff;
   border: 1px solid #ddd;
   font: normal normal 500 13px/16px Noto Sans KR;

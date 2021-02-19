@@ -365,7 +365,7 @@ const JobTree = () => {
   const [selected2, setSelected2] = useState(false);
   const [selected3, setSelected3] = useState(false);
   //const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  const numbers = [1, 2];
+  const numbers = [1, 2, 3, 4, 5];
   const appendRef = useRef(null);
   const [lvl1, setLvl1] = useState(0);
   const [lvl2, setLvl2] = useState(0);

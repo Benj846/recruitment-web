@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Select from 'react-select';
 import MultiLevelSelect from 'react-multi-level-selector';
 import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
+import icon_close_32px from './logo_and_images/icon_close_32px.png';
 import '../../styles/CareerComponent';
 const axios = require('axios');
 
@@ -88,6 +89,7 @@ function CareerListComponent({
     control: (provided, state) => ({
       outline: 0,
       border: `1px solid ${state.isFocused ? '#009999' : '#ddd'}`,
+      width: 340,
       height: 40,
       display: 'flex',
       alignItems: 'center',
@@ -124,7 +126,7 @@ function CareerListComponent({
     option: (provided, state) => ({
       ...provided,
       background: '#fff',
-      color: state.isSelected ? '#009999' : '#666',
+      color: state.isDisabled ? '#ddd' : state.isSelected ? '#009999' : '#666',
       padding: '12px 16px'
     }),
     singleValue: (provided, state) => ({
@@ -485,6 +487,7 @@ function CareerListComponent({
   //   count.current += 1;
   //   return result;
   // };
+  const [isChecked, setIsChecked] = useState(false);
   return (
     <>
       {/* {console.log(ids)}
@@ -493,45 +496,67 @@ function CareerListComponent({
       {console.log('isSelectDetailJob', isSelectDetailJob)}
       {console.log('--------------')} */}
       {ids.map((id) => (
-        <div key={id} className="body-detail">
-          <div className="company-input-close">
-            <div>
-              <span className="company-name">회사명</span>
+        <section key={id} className="body-detail">
+          <div className="company-input-close content-row">
+            <div className="company-name content-col">
+              <span className="content-title">회사명</span>
               <input className="input-style"></input>
             </div>
-            <div className="close-info" onClick={() => onRemove(id)}>
-              X
-            </div>
+            <img
+              className="close-info"
+              src={icon_close_32px}
+              onClick={() => onRemove(id)}
+            />
           </div>
           {/* 고용형태 */}
           <div className="employ-type">
-            <div className="employ-type-style">고용형태</div>
-            <>
-              <Select
-                className="basic-single"
-                classNamePrefix="select"
-                name="color"
-                isSearchable={false}
-                placeholder={'최종학력을 선택해주세요'}
-                styles={customStyles}
-                options={colourOptions}
-              />
-            </>
-            <div className="employ-type-style margin-style">최종직위</div>
-            <input className="input-style"></input>
+            <div className="employment content-col">
+              <div className="employ-type-style content-title">고용형태</div>
+              <>
+                <Select
+                  className="basic-single"
+                  classNamePrefix="select"
+                  name="color"
+                  isSearchable={false}
+                  placeholder={'최종학력을 선택해주세요'}
+                  styles={customStyles}
+                  options={colourOptions}
+                />
+              </>
+            </div>
+            <div className="final content-col">
+              <div className="content-title">최종직위</div>
+              <input className="input-style"></input>
+            </div>
           </div>
           {/* 근무기간 */}
           <div className="employ-type">
-            <div className="employ-type-style">근무기간</div>
+            <div className="content-title period">근무기간</div>
             <input type="month" className="employ-period zero-outline"></input>
             <input type="month" className="employ-period zero-outline"></input>
-            <input
-              className="employ-period-input zero-outline"
-              disabled={true}
-            ></input>
+            <div className="acquisition-period">
+              <span className="year">00</span>
+              <span className="year-hold">년</span>
+              <span className="month">00</span>
+              <span className="month-hold">개월</span>
+            </div>
             <div className="present">
-              <input type="radio"></input>
-              <span>재직 중</span>
+              <input
+                type="checkbox"
+                id="present-check"
+                checked={isChecked}
+                readOnly
+              />
+              <label
+                className="el-checkbox-style"
+                htmlFor="present-check"
+              ></label>
+              <span
+                className="present-title"
+                onClick={() => setIsChecked(!isChecked)}
+              >
+                재직중
+              </span>
             </div>
           </div>
 
@@ -768,7 +793,7 @@ function CareerListComponent({
               </div>
             </div>
           </div>
-          {console.log(selectedLevelFourJobs)}
+          {/* {console.log(selectedLevelFourJobs)} */}
           {/* {showJobContent ? null : (
             <div className="add-jobs-2">
               <button onClick={toggleAddJobs}>직무 추가하기</button>
@@ -838,7 +863,7 @@ function CareerListComponent({
               ) : null}
             </div>
           )} */}
-        </div>
+        </section>
       ))}
     </>
   );

@@ -32,7 +32,6 @@ function PortfolioComponent(props) {
             <input className="file-input" />
             <button className="add-file">파일추가</button>
           </div>{' '}
-          */}
         </>
       );
     } else {

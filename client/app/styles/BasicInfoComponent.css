@@ -157,6 +157,10 @@
   height: 60px;
 }
 .root .content-mili .military-options {
+  width: 250px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #dddddd;
   padding-left: 16px;
   font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
   color: #666666;
