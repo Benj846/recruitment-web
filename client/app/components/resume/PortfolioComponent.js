@@ -24,11 +24,11 @@ function PortfolioComponent(props) {
               X
             </div>
           </div>
-          {/* <div className="file-attach">
+          <div className="file-attach">
             <span className="file-title">첨부파일</span>
-            <input className="file-input"/>
+            <input className="file-input" />
             <button className="add-file">파일추가</button>
-          </div> */}
+          </div>
         </>
       );
     } else {
