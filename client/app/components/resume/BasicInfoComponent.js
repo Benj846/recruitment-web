@@ -61,13 +61,13 @@ function BasicInfoComponent() {
       <div className="content-wrap">
         <span className="basic-info-title required">기본정보</span>
         <div className="basic-info-container">
-          {/* <div className="form-container">
+          <div className="form-container">
             <div className="form-content">
               <div className="form"></div>
               <button className="picture-submit">등록</button>
               <button className="picture-delete">삭제</button>
             </div>
-          </div> */}
+          </div>
           <div className="input-container">
             <div className="name-gender-content content-row">
               <div className="content-name content-col-4">
