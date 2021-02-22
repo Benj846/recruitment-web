@@ -148,10 +148,10 @@ function SignInComponent({ closePopup, setLoginInfo }) {
             패플라이 로그인
           </button>
           <div className="signin-find-idpw-content">
-            {/* <button className="find-idpw" onClick={toggleFindIdPw}>
+            <button className="find-idpw" onClick={toggleFindIdPw}>
               아이디/비밀번호 찾기
-            </button> */}
-            {/* <div className="between-line">|</div> */}
+            </button>
+            <div className="between-line">|</div>
             <button className="signup-button" onClick={toggleSignup}>
               회원가입
             </button>
