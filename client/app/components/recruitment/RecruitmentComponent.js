@@ -4,6 +4,11 @@ import JobTreeComponent from './switchMenu/JobTreeComponent';
 import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
+import ImageGallery from 'react-image-gallery';
+import slide_1 from '../Main/images/slide_1.png';
+import slide_2 from '../Main/images/slide_2.png';
+import slide_3 from '../Main/images/slide_3.png';
+import slide_4 from '../Main/images/slide_4.png';
 import squre1 from '../Main/images/squre1.png';
 import logo_kakao from './images/logo_kakao@2x.png';
 import icon_heart from './images/icon_heart.png';
@@ -45,20 +50,130 @@ function RecruitmentComponent(props) {
         break;
     }
   };
+  const images = [
+    {
+      original: slide_1,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_1} alt="" />
+        </div>
+      )
+    },
+    {
+      original: slide_2,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_2} alt="" />
+        </div>
+      )
+    },
+    {
+      original: slide_3,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_3} alt="" />
+        </div>
+      )
+    },
+    {
+      original: slide_4,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_4} alt="" />
+        </div>
+      )
+    }
+  ];
 
   const postItems = numbers.map((number) => <Post key={number.toString()} />);
   const imagePosts = numbers.map((number) => (
     <div className="recruit-banner-cont" key={number.toString()}>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
     </div>
@@ -155,7 +270,26 @@ function RecruitmentComponent(props) {
           )}
 
           {/* 광고 banner layout */}
-          {generalBtn ? <>{imagePosts}</> : <>{postItems}</>}
+          {generalBtn ? (
+            <>
+              <div className="banner-lg-cont">
+                <ImageGallery
+                  items={images}
+                  showThumbnails={false}
+                  showFullscreenButton={false}
+                  showPlayButton={false}
+                  showNav={false}
+                  showBullets={true}
+                  autoPlay={true}
+                  flickThreshold={0}
+                  // more info on react-image-gallery
+                />
+              </div>
+              {imagePosts}
+            </>
+          ) : (
+            <>{postItems}</>
+          )}
         </div>
       </div>
       <Footer />

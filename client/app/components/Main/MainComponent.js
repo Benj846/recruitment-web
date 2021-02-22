@@ -56,20 +56,78 @@ function MainComponent(props) {
       </div>
     );
   });
-
   const images = [
     {
-      overlay: `<div className="overlay"></div>`,
-      original: slide_1
+      original: slide_1,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_1} alt="" />
+        </div>
+      )
     },
     {
-      original: slide_2
+      original: slide_2,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_2} alt="" />
+        </div>
+      )
     },
     {
-      original: slide_3
+      original: slide_3,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_3} alt="" />
+        </div>
+      )
     },
     {
-      original: slide_4
+      original: slide_4,
+      renderItem: () => (
+        <div className="custom-slide">
+          <div className="text-wrap">
+            <div className="title">
+              <span className="company-name-lar">기업명</span>
+            </div>
+            <span className="company-name-mid">광고/제작/카피/CF</span>
+            <div className="detail">
+              <span className="closing-time">00:00에 마감</span>
+              <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+            </div>
+          </div>
+          <img className="image-gallery-image" src={slide_4} alt="" />
+        </div>
+      )
     }
   ];
   const switchFuntion = (btn) => {
@@ -87,43 +145,148 @@ function MainComponent(props) {
                 showNav={false}
                 showBullets={true}
                 autoPlay={true}
+                flickThreshold={0}
                 // more info on react-image-gallery
               />
             </div>
             <div className="banner-md-cont">
               <div className="banner-md bn-md-01">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                  </div>
+                  <span className="company-name-mid">채용 공고명</span>
+                  <div className="detail">
+                    <span className="closing-time">
+                      YY.MM.DD ~ YY.MM.DD 00:00
+                    </span>
+                    <span className="company-name-sm">
+                      #광고기획 #AE #광고제작
+                    </span>
+                  </div>
+                </div>
                 <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
               <div className="banner-md bn-md-02">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                  </div>
+                  <span className="company-name-mid">채용 공고명</span>
+                  <div className="detail">
+                    <span className="closing-time">
+                      YY.MM.DD ~ YY.MM.DD 00:00
+                    </span>
+                    <span className="company-name-sm">
+                      #광고기획 #AE #광고제작
+                    </span>
+                  </div>
+                </div>
                 <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
             </div>
             <div className="banner-md-cont">
               <div className="banner-md bn-md-03">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                  </div>
+                  <span className="company-name-mid">채용 공고명</span>
+                  <div className="detail">
+                    <span className="closing-time">
+                      YY.MM.DD ~ YY.MM.DD 00:00
+                    </span>
+                    <span className="company-name-sm">
+                      #광고기획 #AE #광고제작
+                    </span>
+                  </div>
+                </div>
                 <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
               <div className="banner-md bn-md-04">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                  </div>
+                  <span className="company-name-mid">채용 공고명</span>
+                  <div className="detail">
+                    <span className="closing-time">
+                      YY.MM.DD ~ YY.MM.DD 00:00
+                    </span>
+                    <span className="company-name-sm">
+                      #광고기획 #AE #광고제작
+                    </span>
+                  </div>
+                </div>
                 <div className="overlay"></div>
                 <img src={long} alt="long" />
               </div>
             </div>
             <div className="banner-sm-cont">
               <div className="banner-sm bn-sm-01">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                    <span className="closing-time">
+                      21.10.27~20.12.05 00:00
+                    </span>
+                  </div>
+                  <span className="company-name-mid">광고/제작/카피/CF</span>
+                  <span className="company-name-sm">
+                    #광고기획 #AE #광고제작
+                  </span>
+                </div>
                 <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>
               <div className="banner-sm bn-sm-02">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                    <span className="closing-time">
+                      21.10.27~20.12.05 00:00
+                    </span>
+                  </div>
+                  <span className="company-name-mid">광고/제작/카피/CF</span>
+                  <span className="company-name-sm">
+                    #광고기획 #AE #광고제작
+                  </span>
+                </div>
                 <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>
               <div className="banner-sm bn-sm-03">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                    <span className="closing-time">
+                      21.10.27~20.12.05 00:00
+                    </span>
+                  </div>
+                  <span className="company-name-mid">광고/제작/카피/CF</span>
+                  <span className="company-name-sm">
+                    #광고기획 #AE #광고제작
+                  </span>
+                </div>
                 <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>
               <div className="banner-sm bn-sm-04">
+                <div className="corp-txt-wrap">
+                  <div className="title">
+                    <span className="company-name-lar">기업명</span>
+                    <span className="closing-time">
+                      21.10.27~20.12.05 00:00
+                    </span>
+                  </div>
+                  <span className="company-name-mid">광고/제작/카피/CF</span>
+                  <span className="company-name-sm">
+                    #광고기획 #AE #광고제작
+                  </span>
+                </div>
                 <div className="overlay"></div>
                 <img src={squre1} alt="squre1" />
               </div>

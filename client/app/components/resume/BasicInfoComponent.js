@@ -66,8 +66,8 @@ function BasicInfoComponent() {
           <div className="form-container">
             <div className="form-content">
               <div className="form"></div>
-              <button className="picture-submit">등록</button>
-              <button className="picture-delete">삭제</button>
+              <label className="picture-submit">등록</label>
+              <label className="picture-delete">삭제</label>
             </div>
           </div>
           <div className="input-container">

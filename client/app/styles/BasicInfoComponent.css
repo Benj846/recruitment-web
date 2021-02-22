@@ -68,16 +68,18 @@
   background: #f0f0f0;
   border: 1px solid #dddddd;
 }
-.root .form-container button {
+.root .form-container label {
+  display: inline-block;
+  text-align: center;
   width: 80px;
   height: 40px;
   background: #009999;
   outline: none;
   border: none;
   color: #fff;
-  font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
+  font: normal normal 500 13px/40px 'Noto Sans KR', sans-serif;
 }
-.root .form-container button:nth-of-type(2) {
+.root .form-container label:nth-of-type(2) {
   background: #aaa;
 }
 .root .input-container {

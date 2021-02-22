@@ -77,14 +77,19 @@
 .recruit-banner-cont:last-child {
   margin-bottom: 0;
 }
+.recruit-banner-cont img {
+  display: block;
+}
 .recruit-banner-cont .banner-sm {
   margin-right: 20px;
 }
 .recruit-banner-cont .banner-sm:last-child {
   margin-right: 0;
 }
-.recruit-banner-cont .banner-sm img {
-  display: block;
+.recruit-banner-cont .banner-sm {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .recruit-content .search-popup {
   position: absolute;
