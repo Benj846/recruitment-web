@@ -96,10 +96,10 @@
   border-radius: 5px;
   overflow: hidden;
 }
-.recruit-content .search-popup {
+.search-popup {
   position: absolute;
   top: 58px;
-  z-index: 99;
+  z-index: 999;
   width: 1060px;
   height: 410px;
   background: #ffffff;

@@ -65,9 +65,11 @@
 .headhunt-container .headhunt-content-list .list-total-title .list-total {
   font: normal normal 700 18px/24px Noto Sans KR;
   color: #009999;
+  margin-right: 6px;
 }
 .headhunt-container .headhunt-content-list .list-total-title .list-total-txt {
   font: normal normal 500 14px/24px Noto Sans KR;
+  color: #666;
 }
 .btn-wrapper .btn-row {
   display: flex;
@@ -163,11 +165,12 @@
   font: normal normal 700 16px/24px Noto Sans KR;
   margin: 8px 0;
 }
-.left-result .left-result .status-span {
+.result-list .left-result .status-span {
   text-align: center;
   padding: 0 10px 1px;
   border-radius: 5px;
   border: 1px solid #009999;
+  font: normal normal 500 14px/20px Noto Sans KR;
   color: #009999;
 }
 .middle-result {
