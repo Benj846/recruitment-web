@@ -16,7 +16,7 @@ import slide_2 from './images/slide_2.png';
 import slide_3 from './images/slide_3.png';
 import slide_4 from './images/slide_4.png';
 import long from './images/long.png';
-import squre1 from './images/squre1.png';
+import squre1 from './images/squre1.jpg';
 import squre2 from './images/squre2.jpg';
 import squre3 from './images/squre3.jpg';
 import squre4 from './images/squre4.jpg';

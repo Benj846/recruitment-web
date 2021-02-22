@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import '../../styles/HeadhuntingComponent';
 import JobTreeComponent from '../recruitment/switchMenu/JobTreeComponent';
 import profilePic from './image/img_profile.png';
+import chevron from './image/icon_chevron_7px.png';
+import icon_career from './image/icon_career.png';
+import icon_edu from './image/icon_edu.png';
+import icon_interests from './image/icon_interests.png';
+import icon_interests_active from './image/icon_interests_active.png';
+import icon_memo from './image/icon_memo.png';
 
 function HeadhuntingComponent() {
   const [btn, setbtn] = useState(false);
@@ -104,30 +110,50 @@ function HeadhuntingComponent() {
           <div></div>
         )}
         <div className="headhunt-content-list">
-          <span className="list-total">
-            추천인재 (총 55명) 해당 추천인재는 해당 기업의 산업군에서 근무
-            경력이 있는 인재입니다.
-          </span>
-          <div className="btn-wapper">
-            <button className="select-button">전체선택</button>
-            <button className="summit-button">관심인재 등록</button>
-            <div className="filter-wrapper">
-              <input type="checkbox" />
-              <span>적극구직자만</span>
-              <input type="checkbox" />
-              <span>최근접속순</span>
-              <select name="view-list">
-                <option value="10">10개 씩</option>
-                <option value="20">20개 씩</option>
-                <option value="30">30개 씩</option>
-              </select>
+          <div className="list-total-title">
+            <span className="list-total">추천인재 (총 55명)</span>
+            <span className="list-total-txt">
+              해당 추천인재는 해당 기업의 산업군에서 근무 경력이 있는
+              인재입니다.
+            </span>
+          </div>
+          <div className="btn-wrapper">
+            <div className="btn-row">
+              <div className="btn-action">
+                <button
+                  className="select-button"
+                  style={{
+                    background: `url(${chevron}) no-repeat 96px center`
+                  }}
+                >
+                  전체선택
+                </button>
+                <button className="summit-button">관심인재 등록</button>
+              </div>
+              <div className="filter-wrapper">
+                <div className="filter filter-01">
+                  <input className="checkbox" type="checkbox" />
+                  <span className="txt">적극구직자만</span>
+                </div>
+                <div className="filter filter-02">
+                  <input className="checkbox" type="checkbox" />
+                  <span className="txt">최근접속순</span>
+                </div>
+                <select className="view-list" name="view-list">
+                  <option value="10">10개 씩</option>
+                  <option value="20">20개 씩</option>
+                  <option value="30">30개 씩</option>
+                </select>
+              </div>
             </div>
-            <div className="btn-rows">
-              <button>인재검색 결과 명</button>
-              <button>관심인재 0명</button>
-              <button>채용제안 0명</button>
-              <button>제안수락 0명</button>
-              <button>채용전형 0명</button>
+            <div className="btn-row tab-menu">
+              <button className="tab-item tab-01 active">
+                인재검색 결과 명
+              </button>
+              <button className="tab-item tab-01">관심인재 0명</button>
+              <button className="tab-item tab-01">채용제안 0명</button>
+              <button className="tab-item tab-01">제안수락 0명</button>
+              <button className="tab-item tab-01">채용전형 0명</button>
             </div>
             <div className="result-list">
               <input
@@ -141,26 +167,68 @@ function HeadhuntingComponent() {
                 <span className="status-span">적극구직중</span>
               </div>
               <div className="middle-result">
-                <span>최근회사 </span>
-                <span className="recent-company">
-                  현대엔지니어링 (2015.02 ~ 2020.06)
-                </span>
-                <span className="job-level">
-                  경영분석,사업제휴,해외법인관리
-                </span>
-                <span className="recent-login"> 최근접속일 20.12.24</span>
-                <br />
-                <span className="level4-bubble">lv4 들</span>
-                <span className="level4-bubble">lv4 들</span>
-                <span className="level4-bubble">lv4 들</span>
+                <div className="title">
+                  <span className="recent-company-title">최근회사</span>
+                  <span className="recent-company">현대엔지니어링</span>
+                  <span className="recent-company-date">
+                    (2015.02 ~ 2020.06)
+                  </span>
+                  <span className="job-level">
+                    경영분석,사업제휴,해외법인관리
+                  </span>
+                  <span className="recent-login">최근접속일 20.12.24</span>
+                </div>
+                <div className="bubble-wrap">
+                  <span className="level4-bubble">lv4 들</span>
+                  <span className="level4-bubble">lv4 들</span>
+                  <span className="level4-bubble">lv4 들</span>
+                </div>
                 <div className="result-box">
-                  <div className="total-exprience">총 경력 8년 1개월</div>
-                  <div className="edu-detail">고려대학교(학사)</div>
+                  <div className="experience-wrap">
+                    <span
+                      className="total"
+                      style={{
+                        background: `url(${icon_career}) no-repeat 0 1px`,
+                        paddingLeft: `24px`
+                      }}
+                    >
+                      총 경력 8년 1개월
+                    </span>
+                    <span className="experience">현대엔지니어(5년 11개월)</span>
+                  </div>
+                  <div className="edu-detail">
+                    <span
+                      className="name"
+                      style={{
+                        background: `url(${icon_edu}) no-repeat 0 1px`,
+                        paddingLeft: `24px`
+                      }}
+                    >
+                      고려대학교(학사)
+                    </span>
+                    <span className="major">경영경제</span>
+                  </div>
                 </div>
               </div>
               <div className="right-result">
-                <button className="interests">관심인재</button>
-                <button className="interests">메모하기</button>
+                <button
+                  className="interests"
+                  style={{
+                    background: `url(${icon_interests}) no-repeat 38px center`,
+                    paddingLeft: `22px`
+                  }}
+                >
+                  관심인재
+                </button>
+                <button
+                  className="interests"
+                  style={{
+                    background: `url(${icon_memo}) no-repeat 38px center`,
+                    paddingLeft: `22px`
+                  }}
+                >
+                  메모하기
+                </button>
                 <button className="interests">이력없음</button>
               </div>
             </div>

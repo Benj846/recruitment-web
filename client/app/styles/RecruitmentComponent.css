@@ -78,9 +78,14 @@
   margin-bottom: 0;
 }
 .recruit-banner-cont img {
-  display: block;
+  width: 250px;
+  object-fit: cover;
+  object-position: 50% 0;
 }
 .recruit-banner-cont .banner-sm {
+  display: flex;
+  height: 190px;
+  width: 250px;
   margin-right: 20px;
 }
 .recruit-banner-cont .banner-sm:last-child {
