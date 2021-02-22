@@ -10,6 +10,7 @@ function HeadhuntingComponent() {
   const [generalBtn, setgeneralBtn] = useState(true);
   const [toggle, settoggle] = useState(1);
   const [check, setCheck] = useState(false);
+  const [storeData, setStoreData] = useState();
   const JOB = 1;
   const ADDRESS = 2;
   const COMPANY = 3;
@@ -158,6 +159,7 @@ function HeadhuntingComponent() {
             {loading && <p>loading</p>}
             {error && <p>error message is : {error.message}</p>}
             {console.log(data)}
+            {/* {!loading && setStoreData(data.getRSM_CARR)} */}
             {!loading &&
               data.getRSM_CARR.map((name) => (
                 <div key={name.id} className="result-list">
@@ -165,7 +167,7 @@ function HeadhuntingComponent() {
                     className="list-checkbox"
                     type="checkbox"
                     name="list-checkbox"
-                    // onClick={setCheck(!check)}
+                    onClick={() => setCheck(!check)}
                   />
                   <div className="left-result">
                     <img className="list-img" src={profilePic} alt="" />
@@ -201,6 +203,49 @@ function HeadhuntingComponent() {
                   </div>
                 </div>
               ))}
+            {console.log(storeData)}
+            {/* {storeData.map((name) => (
+              <div key={name.id} className="result-list">
+                <input
+                  className="list-checkbox"
+                  type="checkbox"
+                  name="list-checkbox"
+                  // onClick={setCheck(!check)}
+                />
+                <div className="left-result">
+                  <img className="list-img" src={profilePic} alt="" />
+                  <span className="name-span">{name.NAME}</span>
+                  <span className="status-span">{name.WRK_STATUS}</span>
+                </div>
+                <div className="middle-result">
+                  <span>최근회사 </span>
+                  <span className="recent-company">
+                    {name.COR_NAME} ({name.CSTART_DATE} ~ {name.CEND_DATE})
+                  </span>
+                  <span className="job-level">{name.WRK_LV3}</span>
+                  <span className="recent-login">
+                    {' '}
+                    최근접속일 {name.LGN_DATE}
+                  </span>
+                  <br />
+                  <span className="level4-bubble">{name.WRK_LV4}</span>
+                  <span className="level4-bubble">{name.WRK_LV4}</span>
+                  <span className="level4-bubble">{name.WRK_LV4}</span>
+                  <div className="result-box">
+                    <div className="total-exprience">총 경력 8년 1개월</div>
+                    <div className="edu-detail">
+                      {name.UNIV_NAME}({name.TYPE})
+                      <span className="edu-detail-major">{name.MAJOR}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="right-result">
+                  <button className="interests">관심인재</button>
+                  <button className="interests">메모하기</button>
+                  <button className="interests">이력없음</button>
+                </div>
+              </div>
+            ))} */}
           </div>
         </div>
       </div>
