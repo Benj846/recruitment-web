@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import icon_search from './logo_and_images/icon_search_40px.png';
 import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
-import icon_close_green from './logo_and_images/icon_close_green.png';
+import icon_close_green from './logo_and_images/icon_close.png';
 import '../../styles/EducationComponent';
 
 function EducationComponent(props) {

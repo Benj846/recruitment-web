@@ -5,12 +5,12 @@ import Resume from './Resume';
 import '../../styles/Navbar';
 import MainComponent from '../Main/MainComponent';
 import RecruitmentComponent from '../recruitment/RecruitmentComponent';
-import Career from '../career/Career';
 import Calendar from '../calendar/Calendar';
 //import Test from '../Test/test';
 import SignInComponent from '../member/SignInComponent';
 import MyPageComponent from '../member/MyPageComponent';
 import HeadhuntingComponent from '../Headhunting/HeadhuntingComponent';
+import Career from '../Career/Career';
 
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
