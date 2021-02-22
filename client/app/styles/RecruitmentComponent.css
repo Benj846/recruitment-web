@@ -49,6 +49,7 @@
 .recruit-title .btn-common {
   outline: none;
   border: 1px solid #ddd;
+  padding: 0;
   width: 80px;
   height: 32px;
   margin-right: 8px;
@@ -76,14 +77,24 @@
 .recruit-banner-cont:last-child {
   margin-bottom: 0;
 }
+.recruit-banner-cont img {
+  width: 250px;
+  object-fit: cover;
+  object-position: 50% 0;
+}
 .recruit-banner-cont .banner-sm {
+  display: flex;
+  height: 190px;
+  width: 250px;
   margin-right: 20px;
 }
 .recruit-banner-cont .banner-sm:last-child {
   margin-right: 0;
 }
-.recruit-banner-cont .banner-sm img {
-  display: block;
+.recruit-banner-cont .banner-sm {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .recruit-content .search-popup {
   position: absolute;
@@ -129,10 +140,7 @@
   color: #999999;
 }
 .recruit-content .general-container {
-  border-top: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-bottom: 0;
-  border-left: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 .recruit-content .general-container:last-child {
   border: 1px solid #ddd;
@@ -142,6 +150,10 @@
   display: flex;
   width: 1060px;
   height: 128px;
+  margin-bottom: 8px;
+}
+.general-container:last-child {
+  margin-bottom: 0;
 }
 .general-content {
   display: flex;
@@ -228,6 +240,8 @@
   flex: 1 1 auto;
 }
 .general-container .detail-container .wrapper {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 4px;
 }
 .general-container .detail-container .wrapper .position-name {

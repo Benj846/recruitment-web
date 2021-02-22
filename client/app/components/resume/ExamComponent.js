@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import '../../styles/ExamComponent';
+import icon_close_32px from './logo_and_images/icon_close_32px.png';
 
 function ExamComponent(props) {
   const [ids, setIds] = useState([]);
@@ -18,7 +19,7 @@ function ExamComponent(props) {
   return (
     <div className="exam-info">
       <div className="title-container">
-        <div className="title">공인시험</div>
+        <div className="exam-title">공인시험</div>
         <div className="add-items" onClick={onCreate}>
           추가하기+
         </div>
@@ -33,42 +34,41 @@ function ExamListComponent({ ids, onRemove }) {
   return (
     <>
       {ids.map((id) => (
-        <div key={id} className="body-detail">
-          <div className="year-close">
-            <div>
-              <span className="acquisition">취득년월</span>
+        <section key={id} className="body-detail">
+          <div className="year-close content-row">
+            <div className="acquisition content-col">
+              <span className="content-title">취득년월</span>
               <input type="month" className="acquisition-date" />
             </div>
-            <div
+            <img
               className="close-info"
+              src={icon_close_32px}
               onClick={() => {
                 onRemove(id);
               }}
-            >
-              X
-            </div>
+            />
           </div>
-          <div className="exam-wrapper">
-            <div className="">
-              <span className="acquisition">공인시험명</span>
+          <div className="exam-wrapper content-row">
+            <div className="name content-col">
+              <span className="content-title">공인시험명</span>
               <input className="input-box" />
             </div>
-            <div>
-              <span className="acquisition">급수</span>
+            <div className="rating content-col">
+              <span className="content-title">급수</span>
               <input className="input-box" />
             </div>
           </div>
-          <div className="exam-wrapper">
-            <div>
-              <span className="acquisition">기관명</span>
+          <div className="exam-wrapper content-row">
+            <div className="institution content-col">
+              <span className="content-title">기관명</span>
               <input className="input-box" />
             </div>
-            <div>
-              <span className="acquisition">공인점수</span>
+            <div className="score content-col">
+              <span className="content-title">공인점수</span>
               <input className="input-box" />
             </div>
           </div>
-        </div>
+        </section>
       ))}
     </>
   );

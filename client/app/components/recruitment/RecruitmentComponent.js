@@ -4,7 +4,7 @@ import JobTreeComponent from './switchMenu/JobTreeComponent';
 import '../../styles/RecruitmentComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
-import squre1 from '../Main/images/squre1.png';
+import squre1 from '../Main/images/squre1.jpg';
 import logo_kakao from './images/logo_kakao@2x.png';
 import icon_heart from './images/icon_heart.png';
 import icon_heart_active from './images/icon_heart_active.png';
@@ -50,15 +50,51 @@ function RecruitmentComponent(props) {
   const imagePosts = numbers.map((number) => (
     <div className="recruit-banner-cont" key={number.toString()}>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
       <div className="banner-sm">
+        <div className="corp-txt-wrap">
+          <div className="title">
+            <span className="company-name-lar">기업명</span>
+            <span className="closing-time">21.10.27~20.12.05 00:00</span>
+          </div>
+          <span className="company-name-mid">광고/제작/카피/CF</span>
+          <span className="company-name-sm">#광고기획 #AE #광고제작</span>
+        </div>
+        <div className="overlay"></div>
         <img src={squre1} alt="squre1" />
       </div>
     </div>

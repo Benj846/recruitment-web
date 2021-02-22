@@ -2,28 +2,8 @@
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
 }
-.root .content-title {
-  display: block;
-  font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
-  color: #999;
-  margin: 0 20px;
-  width: 70px;
-}
-.root .content-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.root .content-col-4 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.root .content-col-8 {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.root select {
+  appearance: none;
 }
 .root .title-wrap {
   display: flex;
@@ -53,14 +33,16 @@
   font: normal normal 700 15px/19px 'Noto Sans KR', sans-serif;
   color: #009999;
 }
-.root .required:after {
-  content: '*';
-  display: block;
-  position: absolute;
-  font: normal normal 500 20px/24px 'Noto Sans KR', sans-serif;
-  color: #009999;
-  top: 3px;
-  right: -12px;
+.root .content-name,
+.root .content-birth,
+.root .content-addr {
+  margin-right: 20px;
+}
+.root .content-col {
+  width: 340px;
+}
+.root .content-email .content-col {
+  width: 700px;
 }
 .root .basic-info-title {
   position: relative;
@@ -76,7 +58,7 @@
 }
 .root .basic-info-container .form-container {
   display: flex;
-  margin-right: auto;
+  margin-right: 20px;
 }
 .root .form-container .form-content {
 }
@@ -86,16 +68,18 @@
   background: #f0f0f0;
   border: 1px solid #dddddd;
 }
-.root .form-container button {
+.root .form-container label {
+  display: inline-block;
+  text-align: center;
   width: 80px;
   height: 40px;
   background: #009999;
   outline: none;
   border: none;
   color: #fff;
-  font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
+  font: normal normal 500 13px/40px 'Noto Sans KR', sans-serif;
 }
-.root .form-container button:nth-of-type(2) {
+.root .form-container label:nth-of-type(2) {
   background: #aaa;
 }
 .root .input-container {
@@ -131,8 +115,6 @@
   background: #009999;
 }
 .root .content-birth-phonenum {
-  display: flex;
-  justify-content: space-between;
 }
 .root .content-birth {
 }
@@ -159,7 +141,6 @@
 .root .content-addr {
 }
 .root .content-addr .input-addr-wrap {
-  position: relative;
 }
 .root .content-addr .input-addr-wrap .input-addr {
   width: 250px;
@@ -170,16 +151,27 @@
   padding-left: 16px;
   color: #666666;
 }
-.root .content-addr .input-addr-wrap .search-btn {
-  position: absolute;
-  width: 60px;
+.root .content-mili {
+}
+.root .content-mili .military-option {
+  appearance: none;
+  width: 400px;
+  height: 60px;
+}
+.root .content-mili .military-options {
+  width: 250px;
   height: 40px;
-  right: 0;
+  background: #fff;
+  border: 1px solid #dddddd;
+  padding-left: 16px;
+  font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
+  color: #666666;
 }
 .root .content-email {
+  margin-bottom: 0;
 }
 .root .content-email .input-email {
-  flex-grow: 1;
+  width: 610px;
   height: 40px;
   background: #f0f0f0;
   border: 1px solid #dddddd;

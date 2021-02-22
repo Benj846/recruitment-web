@@ -59,80 +59,227 @@
   border-radius: 5px;
   padding: 0 24px;
 }
-.headhunt-container.headhunt-content-list {
-  width: 1060px;
-  align-self: center;
+.headhunt-container .headhunt-content-list .list-total-title {
+  margin: 24px 0 16px 0;
 }
-.btn-wapper .filter-wrapper {
-  text-align: end;
+.headhunt-container .headhunt-content-list .list-total-title .list-total {
+  font: normal normal 700 18px/24px Noto Sans KR;
+  color: #009999;
+}
+.headhunt-container .headhunt-content-list .list-total-title .list-total-txt {
+  font: normal normal 500 14px/24px Noto Sans KR;
+}
+.btn-wrapper .btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.btn-wrapper .btn-row .btn-action .select-button,
+.btn-wrapper .btn-row .btn-action .summit-button {
+  width: 128px;
+  height: 40px;
+  border: 1px solid #ddd;
+  outline: none;
+  background: #fff;
+  color: #666;
+}
+.btn-wrapper .btn-row .btn-action .select-button {
+  padding-right: 16px;
+}
+.btn-wrapper .btn-row .btn-action .summit-button {
+  margin-left: 8px;
+  border: none;
+  background: #009999;
+  color: #fff;
+}
+.btn-wrapper .btn-row .filter-wrapper {
+  display: flex;
+  align-items: center;
+}
+.btn-wrapper .btn-row .filter-wrapper .filter {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+.btn-wrapper .btn-row .filter-wrapper .filter .checkbox {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+.btn-wrapper .btn-row .filter-wrapper .filter .txt {
+  font: normal normal 500 16px/24px Noto Sans KR;
+  color: #666;
+}
+.btn-wrapper .btn-row .filter-wrapper .view-list {
+  width: 84px;
+  height: 32px;
+  color: #666;
+  border: 1px solid #ddd;
+  font: normal normal 500 14px/20px Noto Sans KR;
+}
+.btn-wrapper .btn-row.tab-menu .tab-item {
+  display: block;
+  height: 48px;
+  margin-right: -1px;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  border: 1px solid #ddd;
+  background: #fff;
+  font: normal normal 500 14px/18px Noto Sans KR;
+  color: #666;
+}
+.btn-wrapper .btn-row.tab-menu .tab-item.active {
+  border: 1px solid #009999;
+  color: #009999;
+  z-index: 1;
 }
 .result-list {
   margin-top: 24px;
+  padding-bottom: 16px;
   display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
 }
-
 .result-list .list-checkbox {
   display: inline-block;
   margin-left: 16px;
   width: 32px;
   height: 32px;
 }
-.result-list .wrapper {
-  display: inline;
-}
-.result-list .wrapper .list-img {
-  width: 62px;
-  height: 62px;
-  border: 1px solid #ffffff;
-  border-radius: 50px;
-}
 .result-list .left-result {
   margin-left: 23px;
   display: flex;
-  flex-direction: column;
+  flex-flow: wrap column;
+  align-items: center;
 }
-.left-result .status-span {
-  width: 84px;
-  height: 24px;
-  border: 1px solid #009999;
-  border-radius: 5px;
+.result-list .left-result .list-img {
+  display: block;
+}
+.result-list .left-result .name-span {
+  display: inline-block;
+  font: normal normal 700 16px/24px Noto Sans KR;
+  margin: 8px 0;
+}
+.left-result .left-result .status-span {
   text-align: center;
+  padding: 0 10px 1px;
+  border-radius: 5px;
+  border: 1px solid #009999;
   color: #009999;
 }
-.middle-result .recent-company {
-  font: normal normal bold 14px/20px Noto Sans KR;
-}
-.middle-result .job-level {
-  font: normal normal medium 12px/17px Noto Sans KR;
-  color: #666666;
-}
-.middle-result .recent-login {
-  font: normal normal normal 12px/17px Noto Sans KR;
-}
-.result-list .middle-result {
+.middle-result {
   margin-left: 33px;
-  align-items: center;
   width: 692px;
 }
-.middle-result .result-box {
-  border: 1px solid #dddddd;
-}
-.result-list .right-result {
-  margin-left: 20px;
+.middle-result .title {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
 }
-
+.middle-result .title .recent-company-title {
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #333;
+  margin-right: 8px;
+}
+.middle-result .title .recent-company {
+  font: normal normal 700 14px/20px Noto Sans KR;
+  color: #333;
+  margin-right: 8px;
+}
+.middle-result .title .recent-company-date {
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #333;
+  margin-right: 8px;
+}
+.middle-result .title .job-level {
+  font: normal normal 500 12px/18px Noto Sans KR;
+  color: #666666;
+}
+.middle-result .title .recent-login {
+  margin-left: auto;
+  font: normal normal 300 12px/18px Noto Sans KR;
+  color: #aaa;
+}
+.middle-result .bubble-wrap {
+  margin-bottom: 8px;
+}
+.middle-result .bubble-wrap .level4-bubble {
+  border: 1px solid #009999;
+  border-radius: 30px;
+  padding: 0 10px;
+  font: normal normal 500 13px/18px Noto Sans KR;
+  color: #009999;
+  margin-right: 6px;
+}
+.middle-result .bubble-wrap .level4-bubble:last-child {
+  margin-right: 0;
+}
+.middle-result .result-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px 16px;
+}
+.middle-result .result-box .experience-wrap {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-end;
+}
+.middle-result .result-box .experience-wrap .total {
+  display: flex;
+  align-items: center;
+  font: normal normal 700 14px/19px Noto Sans KR;
+  color: #009999;
+  position: relative;
+  margin-right: 18px;
+}
+.middle-result .result-box .experience-wrap .total::after {
+  content: '';
+  position: absolute;
+  display: block;
+  right: -18px;
+  margin: 0 8px;
+  width: 1px;
+  height: 14px;
+  background: #666;
+}
+.middle-result .result-box .experience-wrap .experience {
+  font: normal normal 300 12px/18px Noto Sans KR;
+  color: #666;
+}
+.middle-result .result-box .edu-detail {
+  display: flex;
+  align-items: flex-end;
+}
+.middle-result .result-box .edu-detail .name {
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #666;
+  margin-right: 8px;
+}
+.middle-result .result-box .edu-detail .major {
+  font: normal normal 300 12px/17px Noto Sans KR;
+  color: #666;
+}
+.right-result {
+  display: flex;
+  flex-flow: column;
+  margin-left: auto;
+}
 .right-result .interests {
+  display: block;
   width: 160px;
   height: 48px;
-  border: 1px solid #dddddd;
-  background: #ffffff0d 0% 0% no-repeat padding-box;
+  margin-bottom: 8px;
+  border: 0;
+  outline: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #666;
 }
-.middle-result .level4-bubble {
-  display: inline-block;
-  border: 1px solid #cccccc;
-  border-radius: 15px;
-  color: #009999;
-  font-size: 12px;
+.right-result .interests:last-child {
+  border: 0;
+  background: #efefef;
 }
