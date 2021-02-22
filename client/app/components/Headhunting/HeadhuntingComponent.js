@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import '../../styles/HeadhuntingComponent';
 import JobTreeComponent from '../recruitment/switchMenu/JobTreeComponent';
 import profilePic from './image/img_profile.png';
+import { gql, useQuery } from '@apollo/client';
 
 function HeadhuntingComponent() {
   const [btn, setbtn] = useState(false);
   const [generalBtn, setgeneralBtn] = useState(true);
   const [toggle, settoggle] = useState(1);
+  const [check, setCheck] = useState(false);
   const JOB = 1;
   const ADDRESS = 2;
   const COMPANY = 3;
@@ -35,6 +37,30 @@ function HeadhuntingComponent() {
         break;
     }
   };
+
+  const GET_TEST_WORK = gql`
+    {
+      getRSM_CARR {
+        id
+        COR_NAME
+        COR_IDX
+        CSTART_DATE
+        CEND_DATE
+        WRK_LV3
+        WRK_LV4
+        NAME
+        WRK_STATUS
+        LGN_DATE
+        UID
+        UNIV_NAME
+        UNIV_IDX1
+        UNIV_IDX2
+        TYPE
+        MAJOR
+      }
+    }
+  `;
+  const { data, loading, error } = useQuery(GET_TEST_WORK);
   return (
     <div className="headhunt-container">
       {/* <div className="filter-container">
@@ -129,41 +155,52 @@ function HeadhuntingComponent() {
               <button>제안수락 0명</button>
               <button>채용전형 0명</button>
             </div>
-            <div className="result-list">
-              <input
-                className="list-checkbox"
-                type="checkbox"
-                name="list-checkbox"
-              />
-              <div className="left-result">
-                <img className="list-img" src={profilePic} alt="" />
-                <span className="name-span">이ㅇㅇ</span>
-                <span className="status-span">적극구직중</span>
-              </div>
-              <div className="middle-result">
-                <span>최근회사 </span>
-                <span className="recent-company">
-                  현대엔지니어링 (2015.02 ~ 2020.06)
-                </span>
-                <span className="job-level">
-                  경영분석,사업제휴,해외법인관리
-                </span>
-                <span className="recent-login"> 최근접속일 20.12.24</span>
-                <br />
-                <span className="level4-bubble">lv4 들</span>
-                <span className="level4-bubble">lv4 들</span>
-                <span className="level4-bubble">lv4 들</span>
-                <div className="result-box">
-                  <div className="total-exprience">총 경력 8년 1개월</div>
-                  <div className="edu-detail">고려대학교(학사)</div>
+            {loading && <p>loading</p>}
+            {error && <p>error message is : {error.message}</p>}
+            {console.log(data)}
+            {!loading &&
+              data.getRSM_CARR.map((name) => (
+                <div key={name.id} className="result-list">
+                  <input
+                    className="list-checkbox"
+                    type="checkbox"
+                    name="list-checkbox"
+                    // onClick={setCheck(!check)}
+                  />
+                  <div className="left-result">
+                    <img className="list-img" src={profilePic} alt="" />
+                    <span className="name-span">{name.NAME}</span>
+                    <span className="status-span">{name.WRK_STATUS}</span>
+                  </div>
+                  <div className="middle-result">
+                    <span>최근회사 </span>
+                    <span className="recent-company">
+                      {name.COR_NAME} ({name.CSTART_DATE} ~ {name.CEND_DATE})
+                    </span>
+                    <span className="job-level">{name.WRK_LV3}</span>
+                    <span className="recent-login">
+                      {' '}
+                      최근접속일 {name.LGN_DATE}
+                    </span>
+                    <br />
+                    <span className="level4-bubble">{name.WRK_LV4}</span>
+                    <span className="level4-bubble">{name.WRK_LV4}</span>
+                    <span className="level4-bubble">{name.WRK_LV4}</span>
+                    <div className="result-box">
+                      <div className="total-exprience">총 경력 8년 1개월</div>
+                      <div className="edu-detail">
+                        {name.UNIV_NAME}({name.TYPE})
+                        <span className="edu-detail-major">{name.MAJOR}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="right-result">
+                    <button className="interests">관심인재</button>
+                    <button className="interests">메모하기</button>
+                    <button className="interests">이력없음</button>
+                  </div>
                 </div>
-              </div>
-              <div className="right-result">
-                <button className="interests">관심인재</button>
-                <button className="interests">메모하기</button>
-                <button className="interests">이력없음</button>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
       </div>
