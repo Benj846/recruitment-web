@@ -1,137 +1,138 @@
-.career-span-container {
-  align-self: flex-start;
-  align-items: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.career-return-wrapper {
+.career-root .career-return-wrapper {
   display: flex;
   flex-flow: wrap row;
   justify-content: center;
 }
-.career-span-container .text {
-  text-align: left;
-  font: normal normal bold 22px/32px Noto Sans KR;
-  letter-spacing: 0px;
+.career-root .career-filter {
+  align-self: flex-start;
+  position: sticky;
+  z-index: 99;
+  top: 30px;
+  width: 160px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+.career-root .career-filter .filter-buttons {
+  border: none;
+  width: 160px;
+  height: 48px;
+  background: #ffffff0d 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.career-root .career-span-container {
+  width: 1060px;
+  margin: 0 20px;
+}
+.career-root .career-span-container .text {
+  font: normal normal 700 22px/32px Noto Sans KR;
+  margin-bottom: 8px;
+}
+.career-root .career-span-container .text .txt {
   color: #333333;
-  opacity: 1;
 }
-.career-span-container .career-span-content-true {
-  text-align: left;
-  font: normal normal medium 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
+.career-root .career-span-container .text .count {
+  color: #009999;
+}
+.career-root .career-span-container .career-span-content-true {
+  display: inline-block;
+  font: normal normal 500 14px/20px Noto Sans KR;
   color: #999999;
-  opacity: 1;
+  margin-bottom: 30px;
 }
-.career-button-container .career-buttons {
+.career-root .career-button-container .career-buttons {
   width: 265px;
   height: 48px;
   background: #ffffff0d 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   opacity: 1;
 }
-.career-body {
-  width: 1060px;
-  align-self: flex-start;
-  background: #f5f5f5 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
+.career-root .career-body {
 }
-.career-body .plaintext {
+.career-root .career-body .plaintext {
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+}
+.career-root .career-body .plaintext .txt {
+  font: normal normal 400 16px/24px Noto Sans KR;
+  color: #999;
+}
+.career-root .career-body .plaintext .txt span {
   text-align: center;
-  font: normal normal normal 16px/24px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
+  display: block;
 }
-.career-body .aiJob {
+.career-root .career-body .aiJob {
   outline: none;
   border: none;
   text-align: center;
   color: #ffffff;
   width: 174px;
   height: 34px;
-  background: #009999 0% 0% no-repeat padding-box;
+  background: #009999;
+  margin-top: 22px;
   border-radius: 23px;
-  opacity: 1;
 }
-.career-filter {
-  align-self: flex-start;
-  position: sticky;
-  top: 200px;
-  left: 5px;
-  z-index: 99;
-  width: 160px;
-
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  opacity: 1;
-}
-.career-filter .filter-buttons {
-  border: none;
-  width: 160px;
-  height: 48px;
-  background: #ffffff0d 0% 0% no-repeat padding-box;
-  opacity: 1;
-}
-.career-content {
+.career-root .career-content {
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
-  width: 1060px;
-  height: 128px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-.career-content .career-span-content-false .career-status {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  margin-left: 32px;
-  margin-top: 24.5px;
-  align-self: flex-start;
-  height: 24px;
+  justify-content: space-between;
+  width: 1060px;
+  height: 126px;
+  padding: 16px 24px 16px 32px;
   background: #ffffff 0% 0% no-repeat padding-box;
+  border-top: 1px solid #ddd;
+}
+.career-root .career-content .career-span-content-false {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 216px;
+  height: 100%;
+  border-right: 1px solid #ddd;
+}
+.career-root .career-content .career-span-content-false .career-status {
+  margin-bottom: 8px;
+}
+.career-root .career-content .career-span-content-false .career-status span {
+  font: normal normal 500 14px/24px Noto Sans KR;
+  height: 24px;
+  padding: 0 10px;
+  color: #009999;
   border: 1px solid #009999;
   border-radius: 5px;
-  opacity: 1;
+  background: #ffffff;
 }
-.career-content .career-span-content-false .career-status > span {
-  color: #009999;
-}
-.career-content .career-span-content-false .career-comp-name {
-  margin-top: 8px;
-  margin-left: 32px;
-  width: 116px;
-  height: 24px;
-  text-align: left;
-  font-weight: bold;
-  font-size: 16px;
-  letter-spacing: 0px;
+.career-root .career-content .career-span-content-false .career-comp-name {
+  font: normal normal 700 16px/24px Noto Sans KR;
   color: #333333;
-  opacity: 1;
+  margin-bottom: 4px;
 }
-.career-content .career-span-content-false .date {
-  margin-top: 4px;
-  margin-left: 32px;
-  width: 110px;
-  height: 20px;
-  text-align: left;
-  font: normal normal normal 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
+.career-root .career-content .career-span-content-false .date {
+  font: normal normal 400 14px/20px Noto Sans KR;
   color: #999999;
-  opacity: 1;
 }
-.career-content .vertical-line {
+.career-root .career-content .vertical-line {
   margin-left: 60px;
 }
-.career-content .career-comp-logo {
-  margin-left: 25px;
-  align-self: center;
+.career-root .career-content .career-comp-logo {
+  display: flex;
+  align-items: center;
+  width: 134px;
+  height: 100%;
+  padding: 0 18px;
+  border-right: 1px solid #ddd;
 }
-.career-content .vertical-line2 {
+.career-root .career-content .career-comp-logo > img {
+  display: block;
+  width: 100%;
+}
+.career-root .career-content .vertical-line2 {
   margin-left: 32px;
   margin-top: 13.5px;
   width: 0px;
@@ -139,43 +140,64 @@
   border: 1px solid #dddddd;
   opacity: 1;
 }
-.career-content .span-wrapper > div {
-  margin-top: 15px;
-  margin-left: 22px;
-}
-.span-wrapper .span-day-time {
-  text-align: left;
-  letter-spacing: 0px;
-  opacity: 1;
-  color: #999999;
-}
-.span-wrapper .postname {
-  text-align: left;
-  font: normal normal bold 16px/24px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #333333;
-  opacity: 1;
-}
-.span-wrapper .area-type {
-  text-align: left;
-  font: normal normal normal 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #666666;
-  opacity: 1;
-}
-.career-content .career-content-button {
-  width: 250px;
+.career-root .career-content .span-wrapper {
+  flex-grow: 1;
   display: flex;
+  flex-flow: column;
   justify-content: center;
-  align-items: center;
-  flex-flow: wrap row;
+  height: 100%;
+  padding: 0 22px;
 }
-.career-content .career-content-button > button {
+.career-root .span-wrapper .span-day-time {
+  font: normal normal 500 14px/24px Noto Sans KR;
+  color: #999;
+  margin-bottom: 6px;
+}
+.career-root .span-wrapper .span-day-time > span:nth-of-type(2) {
+  font: normal normal 700 14px/24px Noto Sans KR;
+  color: #fe5741;
+}
+.career-root .span-wrapper .postname {
+  font: normal normal 700 16px/24px Noto Sans KR;
+  color: #333333;
+  margin-bottom: 6px;
+}
+.career-root .span-wrapper .recruit-info .area-type {
+  font: normal normal 400 14px/20px Noto Sans KR;
+  color: #666666;
+}
+.career-root .span-wrapper .recruit-info .area-type:after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background: #ddd;
+  margin: 0 8px;
+}
+.career-root .span-wrapper .recruit-info .area-type:last-child:after {
+  content: '';
+  display: none;
+}
+.career-root .career-content .career-content-button {
+  display: flex;
+}
+.career-root .career-content .career-content-button .btn-confirm {
+  margin-right: 8px;
+}
+.career-root .career-content .career-content-button .btn-confirm,
+.career-root .career-content .career-content-button .btn-history {
   outline: none;
   border: none;
-  width: 226px;
+  width: 112px;
   height: 40px;
-  background: #009999 0% 0% no-repeat padding-box;
-  opacity: 1;
-  color: #ffffff;
+  background: #fff;
+  color: #666;
+  font: normal normal 500 14px/20px Noto Sans KR;
+  border: 1px solid #ddd;
+}
+.career-root .career-return-wrapper .sky-scrapper {
+  width: 160px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 320px;
 }
