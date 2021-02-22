@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import fapply_logo from './logo_and_images/fapply_logo.svg';
 import Resume from './Resume';
@@ -11,6 +11,7 @@ import Calendar from '../calendar/Calendar';
 import SignInComponent from '../member/SignInComponent';
 import MyPageComponent from '../member/MyPageComponent';
 import HeadhuntingComponent from '../Headhunting/HeadhuntingComponent';
+const axios = require('axios');
 
 function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
@@ -29,6 +30,11 @@ function Navbar() {
     isSuccess: false,
     userType: 0
   });
+
+  // const userInfo = {
+  //   name: '',
+  //   email: ''
+  // };
 
   return (
     <div className="navbar-wrapper">
@@ -60,7 +66,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/resume'} className="nav-link">
+                  <Link to={`/resume/${loginInfo.uid}`} className="nav-link">
                     이력서
                   </Link>
                 </li>
@@ -109,7 +115,7 @@ function Navbar() {
         <Route exact path="/recruitment" component={RecruitmentComponent} />
         <Route exact path="/career" component={Career} />
         <Route exact path="/calendar" component={Calendar} />
-        <Route exact path="/resume" component={Resume} />
+        <Route exact path="/resume/:uid" component={Resume} />
         <Route exact path="/mypage" component={MyPageComponent} />
         <Route exact path="/headhunting" component={HeadhuntingComponent} />
       </Switch>

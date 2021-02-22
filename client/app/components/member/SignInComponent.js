@@ -82,7 +82,7 @@ function SignInComponent({ closePopup, setLoginInfo }) {
         uid: loginInfo.email,
         utype: utype
       });
-      console.log(result);
+      //console.log(result);
       if (result.data[0].COUNT === 1) {
         setLoginInfo({
           uid: loginInfo.email,

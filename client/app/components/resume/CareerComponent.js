@@ -4,7 +4,15 @@ import MultiLevelSelect from 'react-multi-level-selector';
 import '../../styles/CareerComponent';
 const axios = require('axios');
 
-function CareerComponent() {
+function CareerComponent({
+  resumeInfo,
+  onDefaultSet,
+  onChange,
+  onClick,
+  onClickCheckBox,
+  onSelectJobs,
+  onRemoveJobs
+}) {
   const [ids, setIds] = useState([]);
   const [isSelectJob, setIsSelectJob] = useState([]);
   const [isSelectDetailJob, setIsSelectDetailJob] = useState([]);
@@ -53,6 +61,13 @@ function CareerComponent() {
         onToggleSelectJob={onToggleSelectJob}
         onToggleSelectDetailJob={onToggleSelectDetailJob}
         onRemove={onRemove}
+        resumeInfo={resumeInfo}
+        onDefaultSet={onDefaultSet}
+        onChange={onChange}
+        onClick={onClick}
+        onClickCheckBox={onClickCheckBox}
+        onSelectJobs={onSelectJobs}
+        onRemoveJobs={onRemoveJobs}
       />
     </div>
   );
@@ -64,20 +79,24 @@ function CareerListComponent({
   isSelectDetailJob,
   onToggleSelectJob,
   onToggleSelectDetailJob,
-  onRemove
+  onRemove,
+  resumeInfo,
+  onDefaultSet,
+  onChange,
+  onClick,
+  onClickCheckBox,
+  onSelectJobs,
+  onRemoveJobs
 }) {
-  const colourOptions = [
-    { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
-    { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
-    { value: 'purple', label: 'Purple', color: '#5243AA' },
-    { value: 'red', label: 'Red', color: '#FF5630', isFixed: true },
-    { value: 'orange', label: 'Orange', color: '#FF8B00' },
-    { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-    { value: 'green', label: 'Green', color: '#36B37E' },
-    { value: 'forest', label: 'Forest', color: '#00875A' },
-    { value: 'slate', label: 'Slate', color: '#253858' },
-    { value: 'silver', label: 'Silver', color: '#666666' }
-  ];
+  // const selectOptions = [
+  //   { value: 0, label: '정규직', color: '#00B8D9' },
+  //   { value: 1, label: '계약직', color: '#0052CC' },
+  //   { value: 2, label: '파견직', color: '#5243AA' },
+  //   { value: 3, label: '프리랜서', color: '#FF5630' },
+  //   { value: 4, label: '개인사업', color: '#FF8B00' },
+  //   { value: 5, label: '병력특례', color: '#FFC400' },
+  //   { value: 6, label: '인턴', color: '#36B37E' }
+  // ];
 
   // useEffect(() => {
   //   const getLevelOneJobs = async () => {
@@ -204,8 +223,10 @@ function CareerListComponent({
     };
     if (flag === true) {
       setPrintedJob([...printedJob, job]);
+      onSelectJobs(job, 'levelThree');
     } else {
       setPrintedJob(printedJob.filter((job) => job.id !== selected.ID));
+      onRemoveJobs(job, 'levelThree');
     }
   };
 
@@ -216,6 +237,12 @@ function CareerListComponent({
       )
     );
     setPrintedJob(printedJob.filter((job) => job.id !== selected.id));
+    const job = {
+      id: selected.ID,
+      upperId: selected.UPPER_ID,
+      title: selected.VAL
+    };
+    onRemoveJobs(job, 'levelThree');
   };
 
   const setSelectedDetailJobs = (selected) => {
@@ -235,10 +262,12 @@ function CareerListComponent({
     };
     if (flag === true) {
       setPrintedDetailJob([...printedDetailJob, job]);
+      onSelectJobs(job, 'levelFour');
     } else {
       setPrintedDetailJob(
         printedDetailJob.filter((job) => job.id !== selected.ID)
       );
+      onRemoveJobs(job, 'levelFour');
     }
   };
 
@@ -312,6 +341,12 @@ function CareerListComponent({
     setPrintedDetailJob(
       printedDetailJob.filter((job) => job.id !== selected.id)
     );
+    const job = {
+      id: selected.ID,
+      upperId: selected.UPPER_ID,
+      title: selected.VAL
+    };
+    onRemoveJobs(job, 'levelFour');
   };
 
   const getLevelFourJobs = async () => {
@@ -399,12 +434,14 @@ function CareerListComponent({
           index === i ? [...arr, job] : arr
         )
       );
+      onSelectJobs(job, 'levelFour');
     } else {
       setSelectedLevelFourJobs(
         selectedLevelFourJobs.map((arr, i) =>
           arr.filter((item) => i === index && item.id !== selected.ID)
         )
       );
+      onRemoveJobs(job, 'levelFour');
     }
   };
 
@@ -418,20 +455,18 @@ function CareerListComponent({
         )
       )
     );
-    // console.log('index', index);
-    // console.log('selected', selected);
+    const job = {
+      id: selected.ID,
+      title: selected.VAL
+    };
     setSelectedLevelFourJobs(
       selectedLevelFourJobs.map((arr, i) =>
         arr.filter((item) => i === index && item.id !== selected.id)
       )
     );
+    onRemoveJobs(job, 'levelFour');
   };
-  // const count = useRef(0);
-  // const getCount = () => {
-  //   const result = count.current;
-  //   count.current += 1;
-  //   return result;
-  // };
+
   return (
     <>
       {/* {console.log(ids)}
@@ -444,7 +479,12 @@ function CareerListComponent({
           <div className="company-input-close">
             <div>
               <span className="company-name">회사명</span>
-              <input className="input-style"></input>
+              <input
+                className="input-style"
+                name="company"
+                onChange={onChange}
+                value={resumeInfo.company}
+              ></input>
             </div>
             <div className="close-info" onClick={() => onRemove(id)}>
               X
@@ -453,28 +493,61 @@ function CareerListComponent({
           {/* 고용형태 */}
           <div className="employ-type">
             <div className="employ-type-style">고용형태</div>
-            <>
+            <select defaultValue="choose" name="etype" onChange={onChange}>
+              <option value="choose" disabled={true}>
+                선택
+              </option>
+              <option value="정규직">정규직</option>
+              <option value="계약직">계약직</option>
+              <option value="파견직">파견직</option>
+              <option value="프리랜서">프리랜서</option>
+              <option value="개인사업">개인사업</option>
+              <option value="병력특례">병역특례</option>
+              <option value="인턴">인턴</option>
+            </select>
+            {/* <>
               <Select
                 className="basic-single"
                 classNamePrefix="select"
-                name="color"
-                options={colourOptions}
+                name="etype"
+                options={selectOptions}
+                onChange={onChange}
+                value={resumeInfo.etype}
               />
-            </>
+            </> */}
             <div className="employ-type-style margin-style">최종직위</div>
-            <input className="input-style"></input>
+            <input
+              className="input-style"
+              name="lposition"
+              onChange={onChange}
+            ></input>
           </div>
           {/* 근무기간 */}
           <div className="employ-type">
             <div className="employ-type-style">근무기간</div>
-            <input type="month" className="employ-period zero-outline"></input>
-            <input type="month" className="employ-period zero-outline"></input>
+            <input
+              type="month"
+              name="csdate"
+              className="employ-period zero-outline"
+              onChange={onChange}
+            ></input>
+            <input
+              type="month"
+              name="cedate"
+              className="employ-period zero-outline"
+              onChange={onChange}
+            ></input>
             <input
               className="employ-period-input zero-outline"
               disabled={true}
             ></input>
             <div className="present">
-              <input type="radio"></input>
+              <input
+                type="checkbox"
+                name="present"
+                checked={resumeInfo.present}
+                onChange={onClickCheckBox}
+              />
               <span>재직 중</span>
             </div>
           </div>
@@ -712,7 +785,7 @@ function CareerListComponent({
               </div>
             </div>
           </div>
-          {console.log(selectedLevelFourJobs)}
+          {/* {console.log(selectedLevelFourJobs)} */}
           {/* {showJobContent ? null : (
             <div className="add-jobs-2">
               <button onClick={toggleAddJobs}>직무 추가하기</button>

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../../styles/EducationComponent';
 
-function EducationComponent(props) {
+function EducationComponent({ resumeInfo, onChange, onClick }) {
   const [value, setValue] = useState();
   const [isIntegratedChecked, setIsIntegratedChecked] = useState(false);
   const [isMasterClicked, setIsMasterClicked] = useState(false);
@@ -13,33 +13,48 @@ function EducationComponent(props) {
     setValue(result);
   };
 
-  const onChange = (e) => {
-    const targetValue = e.target.value;
+  const [flag, setFlag] = useState();
+  const onChangeEdu = (e) => {
+    //const targetValue = e.target.value;
+    const flag = e.target.value;
+    setFlag(flag);
     setIsMasterClicked(false);
-    let result;
-    switch (targetValue) {
-      case '고졸':
-        result = <HighSchool />;
+  };
+
+  const printEducation = () => {
+    switch (flag) {
+      case '0':
+        return (
+          <HighSchool
+            onChange={onChange}
+            onClick={onClick}
+            resumeInfo={resumeInfo}
+          />
+        );
+      case '1':
+        return (
+          <College
+            onChange={onChange}
+            onClick={onClick}
+            resumeInfo={resumeInfo}
+          />
+        );
         break;
-      case '초대졸':
-        result = <College />;
-        break;
-      case '편입':
+      case '3':
         result = <Transfer />;
         break;
-      case '학사':
+      case '2':
         result = <University />;
         break;
-      case '석사':
+      case '4':
         result = <Master />;
         break;
-      case '박사':
-        result = <Doctorate />;
+      case '5':
         setIsMasterClicked(true);
-        break;
+        return <Doctorate />;
     }
-    setValue(result);
   };
+
   return (
     <div className="education-info">
       <div className="education-title">학력사항</div>
@@ -49,17 +64,18 @@ function EducationComponent(props) {
         <select
           className="select-education"
           defaultValue="non-value"
-          onChange={onChange}
+          onChange={onChangeEdu}
+          name="etype"
         >
           <option value="non-value" disabled="disabled">
             최종학력을 선택해주세요
           </option>
-          <option value="고졸">고졸</option>
-          <option value="초대졸">초대졸</option>
-          <option value="편입">편입</option>
-          <option value="학사">학사</option>
-          <option value="석사">석사</option>
-          <option value="박사">박사</option>
+          <option value="0">고졸</option>
+          <option value="1">초대졸</option>
+          <option value="3">편입</option>
+          <option value="2">학사</option>
+          <option value="4">석사</option>
+          <option value="5">박사</option>
         </select>
         {isMasterClicked ? (
           <>
@@ -74,12 +90,12 @@ function EducationComponent(props) {
           </>
         ) : null}
       </div>
-      <div className="added-education">{value}</div>
+      <div className="added-education">{printEducation()}</div>
     </div>
   );
 }
 
-function HighSchool() {
+function HighSchool({ onChange, onClick, resumeInfo }) {
   return (
     <>
       <hr className="education-division" />
@@ -87,23 +103,59 @@ function HighSchool() {
         <div className="name-period-content">
           <div className="level">고등학교</div>
           <div className="title">학교명</div>
-          <select className="title-input" defaultValue="default-value">
+          <select
+            className="title-input"
+            defaultValue="default-value"
+            name="high"
+            onChange={onChange}
+          >
             <option value="default-value" disa-bled="disabled">
               선택
             </option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="영동고">영동고</option>
+            <option value="경기고">경기고</option>
+            <option value="과천고">과천고</option>
+            <option value="휘문고">휘문고</option>
+            <option value="중대부고">중대부고</option>
+            <option value="현대고">현대고</option>
           </select>
           <div className="in-school-period">재학기간</div>
-          <input type="month" className="in-school-period-input" />
-          <input type="month" className="in-school-period-input" />
+          <input
+            type="month"
+            className="in-school-period-input"
+            name="edsmonth"
+            onChange={onChange}
+          ></input>
+          <input
+            type="month"
+            className="in-school-period-input"
+            name="edemonth"
+            onChange={onChange}
+          ></input>
         </div>
         <div className="location">
           <div className="location-title">소재지</div>
-          <select className="location-input" defaultValue="default-value">
+          <select
+            className="location-input"
+            defaultValue="default-value"
+            name="edregion"
+            onChange={onChange}
+          >
             <option value="default-value"></option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="서울">서울</option>
+            <option value="경기">경기</option>
+            <option value="인천">인천</option>
+            <option value="대전">대전</option>
+            <option value="세종">세종</option>
+            <option value="충남">충남</option>
+            <option value="충북">충북</option>
+            <option value="광주">광주</option>
+            <option value="전남">전남</option>
+            <option value="전북">전북</option>
+            <option value="대구">대구</option>
+            <option value="경남">경남</option>
+            <option value="경북">경북</option>
+            <option value="강원">강원</option>
           </select>
         </div>
         <div className="major-content">
@@ -120,7 +172,7 @@ function HighSchool() {
   );
 }
 
-function College() {
+function College({ onChange, onClick, resumeInfo }) {
   const [ids, setIds] = useState([]);
   const refId = useRef(0);
   const onCreate = () => {
@@ -144,9 +196,7 @@ function College() {
           <div className="level">대학교</div>
           <div className="title">학교명</div>
           <select className="title-input" defaultValue="default-value">
-            <option value="default-value" disabled="disabled">
-              패플대학교
-            </option>
+            <option value="default-value" disabled="disabled"></option>
             <option value="2">하버드</option>
             <option value="3">옥스퍼드</option>
           </select>

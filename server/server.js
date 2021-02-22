@@ -152,6 +152,19 @@ app.post('/member/login', async (req, res, next) => {
   }
 });
 
+app.post('/member/getname', async (req, res, next) => {
+  const { uid } = req.body;
+  try {
+    const [
+      dataList,
+      fieldPacket
+    ] = await pool.query('SELECT NAME from TB_CMN_MEMBER WHERE UID=?', [uid]);
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
 // 이 부분을 async로 고쳐야 함
 // app.post('/member/count', (req, res) => {
 //   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;

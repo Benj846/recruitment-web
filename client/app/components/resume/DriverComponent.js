@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../../styles/DriverComponent';
 
-function DriversComponent(props) {
+function DriversComponent({ resumeInfo, onChange, onClick }) {
   const [ids, setIds] = useState([]);
   const refId = useRef(0);
 
@@ -24,12 +24,17 @@ function DriversComponent(props) {
         </div>
       </div>
       <hr className="division-line" />
-      <DriversListComponent ids={ids} onRemove={onRemove} />
+      <DriversListComponent
+        ids={ids}
+        onRemove={onRemove}
+        onChange={onChange}
+        onClick={onClick}
+      />
     </div>
   );
 }
 
-function DriversListComponent({ ids, onRemove }) {
+function DriversListComponent({ ids, onRemove, onChange, onClick }) {
   return (
     <>
       {ids.map((id) => (
@@ -37,7 +42,12 @@ function DriversListComponent({ ids, onRemove }) {
           <div className="year-close">
             <div>
               <span className="acquisition">취득년월 </span>
-              <input type="month" className="acquisition-date" />
+              <input
+                type="month"
+                name="dmonth"
+                className="acquisition-date"
+                onChange={onChange}
+              />
             </div>
             <div className="close-info" onClick={() => onRemove(id)}>
               X
@@ -47,16 +57,16 @@ function DriversListComponent({ ids, onRemove }) {
           <div className="wrapper">
             <div className="input-wrapper">
               <span className="acquisition">자격증명</span>
-              <input className="input-box" />
+              <input name="dname" className="input-box" onChange={onChange} />
             </div>
             <div>
               <span className="acquisition">급수</span>
-              <input className="input-box" />
+              <input className="input-box" name="dlevel" onChange={onChange} />
             </div>
           </div>
           <div>
             <span className="acquisition">기관명</span>
-            <input className="input-box" />
+            <input className="input-box" name="dagency" onChange={onChange} />
           </div>
         </div>
       ))}

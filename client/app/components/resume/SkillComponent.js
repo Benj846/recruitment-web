@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../../styles/SkillComponent.css';
 
-function SkillComponent(props) {
+function SkillComponent({ resumeInfo, onChange, onClick }) {
   const [ids, setIds] = useState([]);
   const refId = useRef(0);
 
@@ -24,12 +24,18 @@ function SkillComponent(props) {
         </div>
       </div>
       <hr className="division-line" />
-      <SkillListComponent ids={ids} onRemove={onRemove} />
+      <SkillListComponent
+        ids={ids}
+        onRemove={onRemove}
+        resumeInfo={resumeInfo}
+        onChange={onChange}
+        onClick={onClick}
+      />
     </div>
   );
 }
 
-function SkillListComponent({ ids, onRemove }) {
+function SkillListComponent({ ids, onRemove, onChange, onClick }) {
   return (
     <>
       {ids.map((id) => (
@@ -37,8 +43,12 @@ function SkillListComponent({ ids, onRemove }) {
           <div className="year-close">
             <div>
               <span className="acquisition">보유기간</span>
-              <input type="month" className="acquisition-date" />
-              <input type="month" className="acquisition-date" />
+              <input
+                type="ssmonth"
+                name="ssmonth"
+                className="acquisition-date"
+              />
+              <input type="semonth" className="acquisition-date" />
               <input
                 type="number"
                 className="acquisition-period"
@@ -53,15 +63,27 @@ function SkillListComponent({ ids, onRemove }) {
           <div className="wrapper">
             <div className="input-wrapper">
               <span className="acquisition">스킬명</span>
-              <input type="" className="input-box" />
+              <input className="input-box" name="sname" onChange={onChange} />
             </div>
             <div>
-              <input type="" className="skill-level" />
+              <select
+                className="skill-level"
+                name="slevel"
+                onChange={onChange}
+                defaultValue="non-value"
+              >
+                <option value="non-value" disabled={true}>
+                  선택
+                </option>
+                <option value="상">상</option>
+                <option value="중">중</option>
+                <option value="하">하</option>
+              </select>
             </div>
           </div>
           <div>
             <span className="acquisition">활용영역</span>
-            <input type="" className="skill-usage" />
+            <input className="skill-usage" name="sarea" onChange={onChange} />
           </div>
         </div>
       ))}

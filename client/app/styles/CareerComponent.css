@@ -50,11 +50,10 @@
 }
 
 .input-style {
-  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
   width: 340px;
   height: 40px;
   border: 1px solid var(--unnamed-color-dddddd);
-  background: #eeeeee 0% 0% no-repeat padding-box;
+  --background: #eeeeee 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   outline: 0px;
   --opacity: 1;

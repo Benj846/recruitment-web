@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../../styles/PortfolioComponent';
 
-function PortfolioComponent(props) {
+function PortfolioComponent({ resumeInfo, onClick, onChange }) {
   const [isClicked, setClicked] = useState(false);
   const onAdd = () => {
     setClicked(true);
@@ -18,7 +18,11 @@ function PortfolioComponent(props) {
           <div className="url-link-container">
             <div className="url-link-content">
               <span className="url-link-title">URL 링크</span>
-              <input className="link-input" placeholder="http://" />
+              <input
+                className="link-input"
+                placeholder="http://"
+                name="plink"
+              />
             </div>
             <div className="close-portfolio" onClick={onRemove}>
               X

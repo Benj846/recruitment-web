@@ -49,7 +49,14 @@ function Popup({ text, closePopup }) {
         <div className="popup_table_wapper">
           <table className="popup_table1">
             <tbody>
-              <tr>
+              {data.map((region, i) => (
+                <tr key={i}>
+                  <td>
+                    <div>{region}</div>
+                  </td>
+                </tr>
+              ))}
+              {/* <tr>
                 <td>
                   <button className="popup_button_left">{data[0]}</button>
                   <button className="popup_button_left">{data[1]}</button>
@@ -78,7 +85,7 @@ function Popup({ text, closePopup }) {
                   <button className="popup_button_left">{data[8]}</button>
                   <button className="popup_button_left">{data[9]}</button>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
           <table className="popup_table2"></table>
