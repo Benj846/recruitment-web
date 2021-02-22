@@ -4,6 +4,11 @@ import '../../styles/SignInComponent';
 import partyPopper from './images/party-popper.png';
 import closeBtn from './images/close_button.svg';
 import fapplyLogo from './images/Fapply_logo.svg';
+import icon_fb from './images/icon_fb.svg';
+import icon_nv from './images/icon_nv.svg';
+import icon_kk from './images/icon_kk.svg';
+import icon_gg from './images/icon_gg.svg';
+import icon_ap from './images/icon_ap.svg';
 const axios = require('axios');
 
 function SignInComponent({ closePopup, setLoginInfo }) {
@@ -36,7 +41,6 @@ function SignInComponent({ closePopup, setLoginInfo }) {
       personalBtn.current.style.outline = 'none';
       personalBtn.current.style.background =
         '#009999 0% 0% no-repeat padding-box';
-      personalBtn.current.style.borderRadius = '3px 0px 0px 3px';
       personalBtn.current.style.font =
         'normal normal medium 14px/20px Noto Sans KR';
       personalBtn.current.style.letterSpacing = '0px';
@@ -49,14 +53,12 @@ function SignInComponent({ closePopup, setLoginInfo }) {
       companyBtn.current.style.background = 'none';
       companyBtn.current.style.border = '1px solid #cccccc';
       companyBtn.current.style.color = 'black';
-      companyBtn.current.style.borderRadius = '0px 3px 3px 0px';
       companyBtn.current.style.opacity = '1';
     } else {
       setUtype(-2);
       companyBtn.current.style.outline = 'none';
       companyBtn.current.style.background =
         '#009999 0% 0% no-repeat padding-box';
-      companyBtn.current.style.borderRadius = '3px 0px 0px 3px';
       companyBtn.current.style.font =
         'normal normal medium 14px/20px Noto Sans KR';
       companyBtn.current.style.letterSpacing = '0px';
@@ -69,7 +71,6 @@ function SignInComponent({ closePopup, setLoginInfo }) {
       personalBtn.current.style.background = 'none';
       personalBtn.current.style.border = '1px solid #cccccc';
       personalBtn.current.style.color = 'black';
-      personalBtn.current.style.borderRadius = '0px 3px 3px 0px';
       personalBtn.current.style.opacity = '1';
     }
   };
@@ -107,9 +108,13 @@ function SignInComponent({ closePopup, setLoginInfo }) {
     <div id="signin-container">
       <div id="signin-content">
         <div className="logo-close-popup">
-          <button className="close-button" onClick={closePopup}>
-            <img src={closeBtn} />
-          </button>
+          <button
+            className="close-button"
+            onClick={closePopup}
+            style={{
+              background: `url(${closeBtn}) no-repeat center center`
+            }}
+          ></button>
         </div>
         <img className="fapply_logo" src={fapplyLogo} />
         <div className="header">
@@ -151,18 +156,32 @@ function SignInComponent({ closePopup, setLoginInfo }) {
             <button className="find-idpw" onClick={toggleFindIdPw}>
               아이디/비밀번호 찾기
             </button>
-            <div className="between-line">|</div>
             <button className="signup-button" onClick={toggleSignup}>
               회원가입
             </button>
           </div>
-          <div className="signin-throw-social-title">채널 로그인하기</div>
+          <div className="signin-throw-social-title">1초 로그인하기</div>
           <div className="social-content">
-            <div className="naver"></div>
-            <div className="kakao"></div>
-            <div className="facebook"></div>
-            <div className="google"></div>
-            <div className="apple"></div>
+            <div
+              className="btn-social facebook"
+              style={{ background: `url(${icon_fb}) no-repeat center center` }}
+            ></div>
+            <div
+              className="btn-social naver"
+              style={{ background: `url(${icon_nv}) no-repeat center center` }}
+            ></div>
+            <div
+              className="btn-social kakao"
+              style={{ background: `url(${icon_kk}) no-repeat center center` }}
+            ></div>
+            <div
+              className="btn-social google"
+              style={{ background: `url(${icon_gg}) no-repeat center center` }}
+            ></div>
+            <div
+              className="btn-social apple"
+              style={{ background: `url(${icon_ap}) no-repeat center center` }}
+            ></div>
           </div>
         </div>
         {showSignup ? (

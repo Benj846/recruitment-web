@@ -106,9 +106,10 @@
 }
 .btn-wrapper .btn-row .filter-wrapper .filter .checkbox {
   display: inline-block;
+  margin-right: 8px;
   width: 32px;
   height: 32px;
-  margin-right: 8px;
+  border: 1px solid #ddd;
 }
 .btn-wrapper .btn-row .filter-wrapper .filter .txt {
   font: normal normal 500 16px/24px Noto Sans KR;
@@ -150,6 +151,7 @@
   margin-left: 16px;
   width: 32px;
   height: 32px;
+  border: 1px solid #ddd;
 }
 .result-list .left-result {
   margin-left: 23px;
