@@ -2,7 +2,11 @@ import React from 'react';
 import '../../styles/ResumeFooter';
 
 function ResumeFooter() {
-  return <footer className="resume-footer">Footer 외톨이</footer>;
+  return (
+    <footer className="resume-footer">
+      <button className="resume-submit">저장</button>
+    </footer>
+  );
 }
 
 export default ResumeFooter;

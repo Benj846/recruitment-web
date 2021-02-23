@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import '../../styles/SkillComponent.css';
 import icon_close_32px from './logo_and_images/icon_close_32px.png';
 
-function SkillComponent(props) {
+function SkillComponent({ resumeInfo, onChange, onClick }) {
   const [ids, setIds] = useState([]);
   const refId = useRef(0);
 
@@ -25,27 +25,40 @@ function SkillComponent(props) {
         </div>
       </div>
       <hr className="division-line" />
-      <SkillListComponent ids={ids} onRemove={onRemove} />
+      <SkillListComponent
+        ids={ids}
+        onRemove={onRemove}
+        resumeInfo={resumeInfo}
+        onChange={onChange}
+        onClick={onClick}
+      />
     </div>
   );
 }
 
-function SkillListComponent({ ids, onRemove }) {
+function SkillListComponent({ ids, onRemove, onChange, onClick }) {
   return (
     <>
       {ids.map((id) => (
         <section key={id} className="body-detail">
           <div className="year-close">
-            <div className="period-wrap content-row">
-              <span className="content-title">보유기간</span>
-              <input type="month" className="acquisition-date" />
-              <input type="month" className="acquisition-date" />
-              <div className="acquisition-period">
-                <span className="year">00</span>
-                <span className="year-hold">년</span>
-                <span className="month">00</span>
-                <span className="month-hold">개월</span>
-              </div>
+            <div>
+              <span className="acquisition">보유기간</span>
+              <input
+                type="ssmonth"
+                name="ssmonth"
+                className="acquisition-date"
+              />
+              <input type="semonth" className="acquisition-date" />
+              <input
+                type="number"
+                className="acquisition-period"
+                disabled="disabled"
+                placeholder=""
+              />
+            </div>
+            <div className="close-info" onClick={() => onRemove(id)}>
+              X
             </div>
             <img
               className="close-info"
@@ -53,14 +66,30 @@ function SkillListComponent({ ids, onRemove }) {
               onClick={() => onRemove(id)}
             />
           </div>
-          <div className="skill-name content-row">
-            <span className="content-title">스킬명</span>
-            <input type="" className="input-box" />
-            <input type="" className="skill-level" />
+          <div className="wrapper">
+            <div className="input-wrapper">
+              <span className="acquisition">스킬명</span>
+              <input className="input-box" name="sname" onChange={onChange} />
+            </div>
+            <div>
+              <select
+                className="skill-level"
+                name="slevel"
+                onChange={onChange}
+                defaultValue="non-value"
+              >
+                <option value="non-value" disabled={true}>
+                  선택
+                </option>
+                <option value="상">상</option>
+                <option value="중">중</option>
+                <option value="하">하</option>
+              </select>
+            </div>
           </div>
-          <div className="util content-col">
-            <span className="content-title">활용영역</span>
-            <input type="" className="skill-usage" />
+          <div>
+            <span className="acquisition">활용영역</span>
+            <input className="skill-usage" name="sarea" onChange={onChange} />
           </div>
         </section>
       ))}

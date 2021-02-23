@@ -15,7 +15,7 @@ function HeadhuntingComponent() {
   const [btn, setbtn] = useState(false);
   const [generalBtn, setgeneralBtn] = useState(true);
   const [toggle, settoggle] = useState(1);
-  const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(false);
   const [storeData, setStoreData] = useState();
   const JOB = 1;
   const ADDRESS = 2;

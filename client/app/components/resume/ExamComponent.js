@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import '../../styles/ExamComponent';
 import icon_close_32px from './logo_and_images/icon_close_32px.png';
 
-function ExamComponent(props) {
+function ExamComponent({ resumeInfo, onChange, onClick }) {
   const [ids, setIds] = useState([]);
   const refId = useRef(0);
 
@@ -25,20 +25,30 @@ function ExamComponent(props) {
         </div>
       </div>
       <hr className="division-line" />
-      <ExamListComponent ids={ids} onRemove={onRemove} />
+      <ExamListComponent
+        ids={ids}
+        onRemove={onRemove}
+        onChange={onChange}
+        onClick={onClick}
+      />
     </div>
   );
 }
 
-function ExamListComponent({ ids, onRemove }) {
+function ExamListComponent({ ids, onRemove, onChange, onClick }) {
   return (
     <>
       {ids.map((id) => (
-        <section key={id} className="body-detail">
-          <div className="year-close content-row">
-            <div className="acquisition content-col">
-              <span className="content-title">취득년월</span>
-              <input type="month" className="acquisition-date" />
+        <div key={id} className="body-detail">
+          <div className="year-close">
+            <div>
+              <span className="acquisition">취득년월</span>
+              <input
+                type="month"
+                className="acquisition-date"
+                name="exmonth"
+                onChange={onChange}
+              />
             </div>
             <img
               className="close-info"
@@ -48,27 +58,31 @@ function ExamListComponent({ ids, onRemove }) {
               }}
             />
           </div>
-          <div className="exam-wrapper content-row">
-            <div className="name content-col">
-              <span className="content-title">공인시험명</span>
-              <input className="input-box" />
+          <div className="exam-wrapper">
+            <div className="">
+              <span className="acquisition">공인시험명</span>
+              <input className="input-box" name="exname" onChange={onChange} />
             </div>
-            <div className="rating content-col">
-              <span className="content-title">급수</span>
-              <input className="input-box" />
-            </div>
-          </div>
-          <div className="exam-wrapper content-row">
-            <div className="institution content-col">
-              <span className="content-title">기관명</span>
-              <input className="input-box" />
-            </div>
-            <div className="score content-col">
-              <span className="content-title">공인점수</span>
-              <input className="input-box" />
+            <div>
+              <span className="acquisition">급수</span>
+              <input className="input-box" name="exlevel" onChange={onChange} />
             </div>
           </div>
-        </section>
+          <div className="exam-wrapper">
+            <div>
+              <span className="acquisition">기관명</span>
+              <input
+                className="input-box"
+                name="exagency"
+                onChange={onChange}
+              />
+            </div>
+            <div>
+              <span className="acquisition">공인점수</span>
+              <input className="input-box" name="exscore" onChange={onChange} />
+            </div>
+          </div>
+        </div>
       ))}
     </>
   );

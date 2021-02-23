@@ -1,11 +1,12 @@
 // import React, { Component } from 'react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/BasicInfoComponent';
 import Popup from './PopupComponent';
 import icon_search from './logo_and_images/icon_search_40px.png';
 import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
 import SignInComponent from '../member/SignInComponent';
-import axios from 'axios';
+// import axios from 'axios';
+const axios = require('axios');
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -13,7 +14,13 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' }
 ];
 
-function BasicInfoComponent() {
+function BasicInfoComponent({
+  uid,
+  resumeInfo,
+  onDefaultSet,
+  onChange,
+  onClick
+}) {
   const [showPopup, setShowPopup] = useState(false);
   const [showSignIn, setSignIn] = useState(false);
   const [user, setUser] = useState({
@@ -24,6 +31,34 @@ function BasicInfoComponent() {
     email: 'fapply@mail.com',
     career: '경력'
   });
+
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    email: ''
+  });
+  const getName = async () => {
+    try {
+      const response = await axios.post('/member/getname', { uid: uid });
+      const data = response.data[0];
+      // userInfo.name = data.NAME;
+      // userInfo.email = uid;
+      setUserInfo({ ...userInfo, name: data.NAME, email: uid });
+      onDefaultSet(data.NAME, uid, '서울');
+      // setResumeInfo({
+      //   ...resumeInfo,
+      //   name: data.NAME,
+      //   email: uid,
+      //   address: '서울'
+      // });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getName();
+    //onDefaultSet(name, uid, '서울');
+  }, []);
 
   const options = [
     {
@@ -44,11 +79,18 @@ function BasicInfoComponent() {
     }
   ];
 
+  // const onChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setResumeInfo({ ...resumeInfo, [name]: value });
+  // };
+
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
 
-  const handleSelectChange = () => {};
+  // const handleSelectChange = (e) => {
+  //   alert(e.target.value);
+  // };
 
   const [profileName, setProfileName] = useState([]);
   const [profilePath, setProfilePath] = useState('');
@@ -93,11 +135,11 @@ function BasicInfoComponent() {
     <div className="root">
       <div className="title-wrap">
         <span className="resume-title">이력서 작성하기</span>
-        <span className="resume-user">{user.career}</span>
+        <span className="resume-user">{userInfo.name}</span>
       </div>
       <p className="text">
-        <span className="user-name">{user.name}</span> 님의 프로필을 입력하시고,
-        더 많은 채용 기회를 확보하세요!
+        <span className="user-name">{userInfo.name}</span> 님의 프로필을
+        입력하시고, 더 많은 채용 기회를 확보하세요!
       </p>
       <div className="content-wrap">
         <span className="basic-info-title required">기본정보</span>
@@ -151,15 +193,23 @@ function BasicInfoComponent() {
                   className="input-name"
                   type="text"
                   name="name"
-                  defaultValue={user.name}
+                  defaultValue={userInfo.name}
                   disabled="disabled"
                 ></input>
               </div>
               <div className="content-gender content-col">
                 <span className="content-title">성별</span>
                 <div className="gender-content">
-                  <button className="male active">남</button>
-                  <button className="female">여</button>
+                  <button
+                    name="gender"
+                    className="male active"
+                    onClick={onClick}
+                  >
+                    남
+                  </button>
+                  <button name="gender" className="female" onClick={onClick}>
+                    여
+                  </button>
                 </div>
               </div>
             </div>
@@ -167,6 +217,7 @@ function BasicInfoComponent() {
               <div className="content-birth content-col">
                 <span className="content-title">생년월일</span>
                 <input
+                  type="text"
                   className="input-birth"
                   // type="date"
                   name="date"
@@ -177,10 +228,12 @@ function BasicInfoComponent() {
               <div className="content-phone content-col">
                 <span className="content-title">전화번호</span>
                 <input
+                  type="text"
                   className="input-phonenum"
-                  name="phoneNumber"
-                  disabled="disabled"
-                  defaultValue={user.phone}
+                  name="phone"
+                  placeholder="000-0000-0000"
+                  onChange={onChange}
+                  value={resumeInfo.phone}
                 ></input>
               </div>
             </div>
@@ -192,11 +245,7 @@ function BasicInfoComponent() {
                     className="input-addr"
                     type="text"
                     name="address"
-                    onClick={togglePopup}
-                    style={{
-                      background: `url(${icon_search}) no-repeat 98% center`,
-                      backgroundSize: `32px 32px`
-                    }}
+                    value="서울"
                   ></input>
                 </div>
               </div>
@@ -205,10 +254,8 @@ function BasicInfoComponent() {
                 <select
                   className="select military-options"
                   defaultValue="choose-military"
-                  onClick={handleSelectChange}
-                  style={{
-                    background: `url(${icon_arrow_down}) no-repeat 100% 0`
-                  }}
+                  onChange={onChange}
+                  name="military"
                 >
                   <option
                     className="military-option"
@@ -217,22 +264,22 @@ function BasicInfoComponent() {
                   >
                     선택
                   </option>
-                  <option className="military-option" value="fulfilled">
+                  <option className="military-options" value="군필">
                     군필
                   </option>
-                  <option className="military-option" value="social">
+                  <option className="military-options" value="공익">
                     공익
                   </option>
-                  <option className="military-option" value="substitutional">
+                  <option className="military-options" value="병역특례">
                     병역특례
                   </option>
-                  <option className="military-option" value="exempted">
+                  <option className="military-options" value="면제">
                     면제
                   </option>
-                  <option className="military-option" value="unfulfilled">
+                  <option className="military-options" value="미필">
                     미필
                   </option>
-                  <option className="military-option" value="not-applicable">
+                  <option className="military-options" value="해당없음">
                     해당없음
                   </option>
                 </select>
@@ -245,7 +292,7 @@ function BasicInfoComponent() {
                   className="input-email"
                   type="email"
                   name="email"
-                  defaultValue={user.email}
+                  defaultValue={userInfo.email}
                   disabled="disabled"
                 ></input>
               </div>

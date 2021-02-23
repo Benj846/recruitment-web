@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import '../../styles/PortfolioComponent';
 import icon_close_32px from './logo_and_images/icon_close_32px.png';
 
-function PortfolioComponent(props) {
+function PortfolioComponent({ resumeInfo, onClick, onChange }) {
   const [isClicked, setClicked] = useState(false);
   const onAdd = () => {
     setClicked(true);
@@ -16,10 +16,14 @@ function PortfolioComponent(props) {
     if (isClicked === true) {
       return (
         <>
-          <div className="url-link-container content-row">
-            <div className="url-link-content content-col">
-              <span className="content-title">URL 링크</span>
-              <input className="link-input" placeholder="http://" />
+          <div className="url-link-container">
+            <div className="url-link-content">
+              <span className="url-link-title">URL 링크</span>
+              <input
+                className="link-input"
+                placeholder="http://"
+                name="plink"
+              />
             </div>
             <img
               className="close-portfolio"
