@@ -244,6 +244,8 @@ function Profile() {
       }
     })
   };
+  const [whtGender, setWhtGender] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   return (
     <section id="profile-container">
@@ -259,54 +261,118 @@ function Profile() {
             </div>
           </div>
           <div className="basic">
-            <span className="name font-style">이름</span>
-            <input
-              className="input-name"
-              defaultValue={memberInfo.name}
-              disabled={true}
-            />
-            <span className="gender font-style">성별</span>
-            <button className="male">남</button>
-            <button className="female">여</button>
-            <span className="birth-title font-style">생년월일</span>
-            <input
-              className="birth"
-              disabled={true}
-              defaultValue={memberInfo.birth}
-            />
-            <span className="phone-title font-style">전화번호</span>
-            <input className="input-phone" defaultValue={memberInfo.phone} />
-            <button className="change-phone-btn" onClick={toggleChangePhone}>
-              변경
-            </button>
-            <span className="email-title font-style">이메일</span>
-            <input
-              className="input-email"
-              defaultValue={memberInfo.phone}
-              disabled={true}
-            />
-            <span className="job-status font-style">구직상태</span>
-            <Select
-              styles={customStyle}
-              placeholder="선택해주세요"
-              className="select-job-status"
-            />
+            <div className="content-name content-style">
+              <span className="name font-style">이름</span>
+              <input
+                className="input-name"
+                defaultValue={memberInfo.name}
+                disabled={true}
+              />
+            </div>
+            <div className="content-gender content-style">
+              <span className="gender font-style">성별</span>
+              <button
+                className={`male ${whtGender ? 'active' : null}`}
+                onClick={() => setWhtGender(true)}
+              >
+                남
+              </button>
+              <button
+                className={`female ${whtGender ? null : 'active'}`}
+                onClick={() => setWhtGender(false)}
+              >
+                여
+              </button>
+            </div>
+            <div className="content-birth content-style">
+              <span className="birth-title font-style">생년월일</span>
+              <input
+                className="birth"
+                disabled={true}
+                defaultValue={memberInfo.birth}
+              />
+            </div>
+            <div className="content-phone content-style">
+              <span className="phone-title font-style">전화번호</span>
+              <input className="input-phone" defaultValue={memberInfo.phone} />
+              <button className="change-phone-btn" onClick={toggleChangePhone}>
+                변경
+              </button>
+            </div>
+            <div className="content-email content-style">
+              <span className="email-title font-style">이메일</span>
+              <input
+                className="input-email"
+                defaultValue={memberInfo.phone}
+                disabled={true}
+              />
+            </div>
+            <div className="content-job content-style">
+              <span className="job-status font-style">구직상태</span>
+              <input className="job-status-input"></input>
+            </div>
             <hr className="basic-div" />
             <div className="mailing-avail">
-              <span className="font-style">수신여부</span>
+              <span className="item-name font-style">수신여부</span>
               <div className="content">
-                <span className="font-style">
-                  마케팅/이벤트 관련 SMS/MMS 수신동의
-                </span>
-                <button className="marketing-btn"></button>
-                <span className="font-style">
-                  패플라이 AI JOB 추천 메일 수신 여부
-                </span>
-                <button className="job-offer-btn"></button>
-                <span className="font-style">공지/이벤트 메일 수신 여부</span>
-                <button className="noti-event-btn"></button>
-                <span className="font-style">관심기업 관련 메일 수신 여부</span>
-                <button className="like-btn"></button>
+                <div className="item-row">
+                  <span className="font-style">
+                    마케팅/이벤트 관련 SMS/MMS 수신동의
+                  </span>
+                  <div
+                    className={`marketing-btn btn-toggle ${
+                      toggle ? 'active' : null
+                    }`}
+                    onClick={() => setToggle(!toggle)}
+                  >
+                    <div
+                      className={`ellipse ${toggle ? 'active' : null}`}
+                    ></div>
+                  </div>
+                </div>
+                <div className="item-row">
+                  <span className="font-style">
+                    패플라이 AI JOB 추천 메일 수신 여부
+                  </span>
+                  <div
+                    className={`job-offer-btn btn-toggle ${
+                      toggle ? 'active' : null
+                    }`}
+                    onClick={() => setToggle(!toggle)}
+                  >
+                    <div
+                      className={`ellipse ${toggle ? 'active' : null}`}
+                    ></div>
+                  </div>
+                </div>
+                <div className="item-row">
+                  <span className="font-style">공지/이벤트 메일 수신 여부</span>
+                  <div
+                    className={`noti-event-btn btn-toggle ${
+                      toggle ? 'active' : null
+                    }`}
+                    onClick={() => setToggle(!toggle)}
+                  >
+                    <div
+                      className={`ellipse ${toggle ? 'active' : null}`}
+                    ></div>
+                  </div>
+                </div>
+                <div className="item-row">
+                  <span className="font-style">
+                    관심기업 관련 메일 수신 여부
+                  </span>
+                  <div
+                    className={`like-btn btn-toggle ${
+                      toggle ? 'active' : null
+                    }`}
+                    onClick={() => setToggle(!toggle)}
+                  >
+                    <div
+                      className={`ellipse ${toggle ? 'active' : null}`}
+                    ></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

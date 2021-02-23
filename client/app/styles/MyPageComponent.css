@@ -20,6 +20,7 @@
   width: 1060px;
   height: 841px;
   border: 1px solid #dddddd;
+  border-radius: 5px;
 }
 
 #profile-container > .profile-content {
@@ -29,6 +30,7 @@
 
 /* Skyscraper ------------------------------------------------------------------------*/
 .mypage-skyscraper {
+  border-radius: 5px;
   border: 1px solid #dddddd;
   position: sticky;
   top: 0px;
@@ -120,6 +122,7 @@
 }
 
 #profile-container > .profile-content > .info > .pic > img {
+  display: block;
   border: 1px solid #cccccc;
 }
 
@@ -147,206 +150,143 @@
 
 #profile-container > .profile-content > .info > .basic {
   margin-left: 20px;
-  --display: flex;
+  display: flex;
+  flex-flow: wrap row;
 }
 
-#profile-container > .profile-content > .info > .basic > input {
-  padding: 16px;
+#profile-container > .profile-content > .info > .basic input {
+  display: block;
+  padding-left: 16px;
+  width: 250px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #666;
+  font: normal normal 500 14px/20px Noto Sans KR;
 }
 
-#profile-container > .profile-content > .info > .basic > .font-style {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal medium 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
+#profile-container > .profile-content > .info > .basic input:disabled {
+  background: #f0f0f0;
+}
+
+#profile-container > .profile-content > .info > .basic .font-style {
+  font: normal normal 500 14px/24px Noto Sans KR;
   color: #999999;
-  opacity: 1;
 }
 
-#profile-container > .profile-content > .info > .basic > .input-name {
-  margin-left: 64px;
-  width: 250px;
-  height: 40px;
+#profile-container > .profile-content > .info > .basic .content-style {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 340px;
+  margin-bottom: 10px;
 }
-
-#profile-container > .profile-content > .info > .basic > .gender {
-  margin-left: 20px;
-}
-
-#profile-container > .profile-content > .info > .basic > .male {
-  margin-left: 64px;
-  width: 115px;
-  height: 40px;
-  border: 1px solid #cccccc;
-}
-
-#profile-container > .profile-content > .info > .basic > .female {
-  width: 115px;
-  height: 40px;
-  border: 1px solid #cccccc;
-}
-
-#profile-container > .profile-content > .info > .basic > .birth {
-  width: 250px;
-  height: 40px;
-  margin: 10px 0 0 32px;
-}
-
-#profile-container > .profile-content > .info > .basic > .phone-title {
-  margin-left: 20px;
-}
-
-#profile-container > .profile-content > .info > .basic > .input-phone {
-  width: 230px;
-  height: 40px;
-  margin-left: 32px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-
-#profile-container > .profile-content > .info > .basic > .input-phone:focus {
-  outline: none;
-}
-
-#profile-container > .profile-content > .info > .basic > .change-phone-btn {
-  width: 50px;
-  height: 19px;
-  margin-left: -50px;
-  border: none;
-  background: none;
-
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 15px/19px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #009999;
-  opacity: 1;
-}
-
 #profile-container
   > .profile-content
   > .info
   > .basic
-  > .change-phone-btn:focus {
-  outline: none;
+  .content-style:nth-child(odd) {
+  margin-right: 20px;
 }
-
-#profile-container > .profile-content > .info > .basic > .input-email {
-  margin: 10px 0 0 48px;
-  width: 250px;
+#profile-container > .profile-content > .info > .basic .content-gender button {
+  width: 125px;
   height: 40px;
+  background: #fff;
+  color: #999;
+  border: 1px solid #ddd;
 }
-
-#profile-container > .profile-content > .info > .basic > .job-status {
-  margin-left: 20px;
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  .content-gender
+  button.active {
+  background: #009999;
+  color: #fff;
+  border: none;
 }
-
-#profile-container > .profile-content > .info > .basic > .select-job-status {
-  display: inline-flex;
-  margin-left: 32px;
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  .content-gender
+  button:nth-of-type(1) {
+  margin-left: auto;
 }
-
+#profile-container > .profile-content > .info > .basic .change-phone-btn {
+  position: absolute;
+  padding: 8px 16px;
+  right: 0;
+  background: none;
+  border: none;
+  font: normal normal 700 13px/19px Noto Sans KR;
+  color: #009999;
+}
 #profile-container > .profile-content > .info > .basic > .basic-div {
   width: 100%;
 }
-
 #profile-container > .profile-content > .info > .basic > .mailing-avail {
   display: flex;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
   > .mailing-avail
-  .font-style {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal medium 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
+  .item-name {
+  display: block;
+  width: 70px;
+  margin-right: 20px;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
   > .mailing-avail
-  > .content {
-  --border: 1px solid black;
-  width: 400px;
-  margin-left: 39px;
+  .item-row {
+  display: flex;
+  align-items: center;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
   > .mailing-avail
-  > .content
-  > button {
-  border: 1px solid black;
-  background: none;
-  width: 50px;
-  height: 20px;
+  .item-row
+  span {
+  display: block;
+  width: 250px;
+  margin-right: 20px;
 }
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > button:focus {
-  outline: none;
+#profile-container > .profile-content > .info > .basic .btn-toggle {
+  position: relative;
+  width: 32px;
+  height: 16px;
+  border-radius: 16px;
+  background: #ddd;
+  margin: 2px 24px 0 8px;
+  transition: all 0.5s;
 }
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > .marketing-btn {
-  margin-left: 50px;
+#profile-container > .profile-content > .info > .basic .btn-toggle.active {
+  background: #009999;
 }
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > .job-offer-btn {
-  margin-left: 76px;
+#profile-container > .profile-content > .info > .basic .btn-toggle .ellipse {
+  position: absolute;
+  transform: translate(2px, 2px);
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 100%;
+  transition: all 0.5s;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
-  > .mailing-avail
-  > .content
-  > .noti-event-btn {
-  margin-left: 141px;
-}
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > .like-btn {
-  margin-left: 127px;
+  .btn-toggle
+  .ellipse.active {
+  transform: translate(18px, 2px);
 }
 
 /* customize --------------------------------------------------------------------*/
