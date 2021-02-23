@@ -742,7 +742,7 @@ function University({
           <select
             className="select-major"
             defaultValue="non-value"
-            name="uni_major"
+            name="edmajor"
             onChange={onAddMajor}
           >
             <option value="non-value">선택</option>

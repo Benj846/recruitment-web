@@ -58,7 +58,7 @@ function BasicInfoComponent({
   useEffect(() => {
     getName();
     //onDefaultSet(name, uid, '서울');
-  }, []);
+  }, [userInfo.name]);
 
   const options = [
     {

@@ -87,13 +87,17 @@ function Navbar() {
             )}
           </div>
           <div className="utility">
-            <button className="signin-btn" onClick={toggleSigninPopup}>
-              {loginInfo.isSuccess
-                ? `${loginInfo.uid.substr(0, loginInfo.uid.indexOf('@'))}님`
-                : '로그인/회원가입'}
-            </button>
+            {/* <button className="signin-btn" onClick={toggleSigninPopup}> */}
             {loginInfo.isSuccess ? (
-              <Link to={'/mypage'} className="nav-link">
+              `${loginInfo.uid.substr(0, loginInfo.uid.indexOf('@'))}님 `
+            ) : (
+              <button className="signin-btn" onClick={toggleSigninPopup}>
+                로그인/회원가입
+              </button>
+            )}
+            {/* </button> */}
+            {loginInfo.isSuccess ? (
+              <Link to={`/mypage/${loginInfo.uid}`} className="nav-link">
                 마이페이지
               </Link>
             ) : null}
@@ -116,7 +120,7 @@ function Navbar() {
         <Route exact path="/career" component={Career} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/resume/:uid" component={Resume} />
-        <Route exact path="/mypage" component={MyPageComponent} />
+        <Route exact path="/mypage/:uid" component={MyPageComponent} />
         <Route exact path="/headhunting" component={HeadhuntingComponent} />
       </Switch>
     </div>

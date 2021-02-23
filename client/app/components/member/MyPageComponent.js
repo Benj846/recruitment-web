@@ -11,9 +11,10 @@ import fullBookmark from './images/full_bookmark.png';
 import icon_arrow_right from './images/icon_arrow_right_gray.png';
 import MainComponent from '../Main/MainComponent';
 import ResumeComponent from '../resume/ResumeComponent';
+import Resume from '../resume/Resume';
 import axios from 'axios';
 
-function MyPageComponent() {
+function MyPageComponent({ match }) {
   const API_HOST = 'http://localhost:3333';
   const MYPAGE_API_URL = `${API_HOST}/mypage`;
   // const fetchMypage = () => {
@@ -39,7 +40,7 @@ function MyPageComponent() {
   //         setAccountClicked(false);
   //     }
   // }
-
+  const { params } = match;
   const toggleNoticeClick = () => {
     setNoticeClicked(!isNoticeClicked);
   };
@@ -131,6 +132,8 @@ function MyPageComponent() {
     }
   };
 
+  const goToResume = () => {};
+
   return (
     <section id="mypage-wrapper">
       <aside className="mypage-skyscraper">
@@ -168,12 +171,22 @@ function MyPageComponent() {
             >
               이력서 목록
             </div>
-            <div
+            <Link to={`/resume/${params.uid}`} className="nav-link">
+              이력서
+            </Link>
+            <Switch>
+              <Route exact path="/resume/:uid" component={Resume} />
+            </Switch>
+            {/* <div
               className="edit-resume"
-              onClick={() => setMenu(menuNumber.writeResume)}
+              onClick={() => 
+                {
+                  // setMenu(menuNumber.writeResume);
+                  goToResume();
+                }}
             >
               이력서 작성
-            </div>
+            </div> */}
             <div className="career-list">경력기술서 목록</div>
           </nav>
         ) : null}

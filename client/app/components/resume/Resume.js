@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 //import { useParams } from 'react-router-dom';
 import '../../styles/Resume.css';
 import ResumeComponent from './ResumeComponent';
+import MainComponent from '../Main/MainComponent';
+import { Switch, Link, Route } from 'react-router-dom';
 import ResumeFooter from './ResumeFooter';
 const axios = require('axios');
 
@@ -175,7 +177,7 @@ function Resume({ match }) {
       email: resumeInfo.email,
       etype: parseInt(resumeInfo.etype, 10),
       university: resumeInfo.university,
-      uni_major: resumeInfo.uni_major,
+      edmajor: resumeInfo.edmajor,
       uni_region: resumeInfo.uni_region,
       uni_smonth: resumeInfo.uni_smonth,
       uni_emonth: resumeInfo.uni_emonth
@@ -311,7 +313,7 @@ function Resume({ match }) {
         />
       </section>
       <ResumeFooter onSubmit={onSubmit} />
-      {/* {console.log(resumeInfo)} */}
+      {console.log(resumeInfo)}
     </section>
   );
 }
