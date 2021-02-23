@@ -493,17 +493,17 @@ function CareerListComponent({
           {/* 고용형태 */}
           <div className="employ-type">
             <div className="employ-type-style">고용형태</div>
-            <select defaultValue="choose" name="etype" onChange={onChange}>
+            <select defaultValue="choose" name="emtype" onChange={onChange}>
               <option value="choose" disabled={true}>
                 선택
               </option>
-              <option value="정규직">정규직</option>
-              <option value="계약직">계약직</option>
-              <option value="파견직">파견직</option>
-              <option value="프리랜서">프리랜서</option>
-              <option value="개인사업">개인사업</option>
-              <option value="병력특례">병역특례</option>
-              <option value="인턴">인턴</option>
+              <option value="0">정규직</option>
+              <option value="1">계약직</option>
+              <option value="2">파견직</option>
+              <option value="3">프리랜서</option>
+              <option value="4">개인사업</option>
+              <option value="5">병역특례</option>
+              <option value="6">인턴</option>
             </select>
             {/* <>
               <Select
@@ -527,13 +527,13 @@ function CareerListComponent({
             <div className="employ-type-style">근무기간</div>
             <input
               type="month"
-              name="csdate"
+              name="csmonth"
               className="employ-period zero-outline"
               onChange={onChange}
             ></input>
             <input
               type="month"
-              name="cedate"
+              name="cemonth"
               className="employ-period zero-outline"
               onChange={onChange}
             ></input>
@@ -573,10 +573,17 @@ function CareerListComponent({
               </div>
               <div className="job-period-content row-style">
                 <div className="job-period-name title-style">직무기간</div>
-                <input type="month" className="start-month border-style" />
+                <input
+                  type="month"
+                  className="start-month border-style"
+                  name="job_smonth"
+                  onChange={onChange}
+                />
                 <input
                   type="month"
                   className="end-month border-style col-style"
+                  name="job_emonth"
+                  onChange={onChange}
                 />
                 <input
                   className="period-input border-style col-style"
@@ -586,7 +593,11 @@ function CareerListComponent({
               </div>
               <div className="main-result-content row-style">
                 <div className="main-result-title title-style">주요성과</div>
-                <input className="input-main-result border-style" />
+                <input
+                  className="input-main-result border-style"
+                  name="main_result"
+                  onChange={onChange}
+                />
               </div>
               <div className="detail-job-list-container">
                 <div>
@@ -602,6 +613,8 @@ function CareerListComponent({
                       <input
                         className="input-detail-job-desc border-style"
                         placeholder="세부 직무에 대한 키워드 입력하기(50자 내외)"
+                        onChange={onChange}
+                        // name="detail_desc"
                       />
                     </div>
                   ))}

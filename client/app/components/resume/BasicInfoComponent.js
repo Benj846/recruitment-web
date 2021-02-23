@@ -89,6 +89,10 @@ function BasicInfoComponent({
   //   alert(e.target.value);
   // };
 
+  const onSetGender = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div className="root">
       <div className="title-wrap">
@@ -145,7 +149,7 @@ function BasicInfoComponent({
                   type="text"
                   className="input-birth"
                   type="date"
-                  name="birth"
+                  name="birthmonth"
                   placeholder="yyyy-mm-dd"
                   onChange={onChange}
                   value={resumeInfo.birth}
@@ -171,7 +175,7 @@ function BasicInfoComponent({
                     className="input-addr"
                     type="text"
                     name="address"
-                    value="서울"
+                    defaultValue="서울"
                   ></input>
                   <button className="search-btn" onClick={togglePopup}>
                     search
@@ -193,22 +197,22 @@ function BasicInfoComponent({
                   >
                     선택
                   </option>
-                  <option className="military-options" value="군필">
+                  <option className="military-options" value="1">
                     군필
                   </option>
-                  <option className="military-options" value="공익">
+                  <option className="military-options" value="2">
                     공익
                   </option>
-                  <option className="military-options" value="병역특례">
+                  <option className="military-options" value="3">
                     병역특례
                   </option>
-                  <option className="military-options" value="면제">
+                  <option className="military-options" value="4">
                     면제
                   </option>
-                  <option className="military-options" value="미필">
+                  <option className="military-options" value="5">
                     미필
                   </option>
-                  <option className="military-options" value="해당없음">
+                  <option className="military-options" value="0">
                     해당없음
                   </option>
                 </select>

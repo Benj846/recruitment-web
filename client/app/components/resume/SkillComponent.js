@@ -44,17 +44,18 @@ function SkillListComponent({ ids, onRemove, onChange, onClick }) {
             <div>
               <span className="acquisition">보유기간</span>
               <input
-                type="ssmonth"
+                type="month"
                 name="ssmonth"
                 className="acquisition-date"
+                onChange={onChange}
               />
-              <input type="semonth" className="acquisition-date" />
               <input
-                type="number"
-                className="acquisition-period"
-                disabled="disabled"
-                placeholder=""
+                type="month"
+                name="semonth"
+                className="acquisition-date"
+                onChange={onChange}
               />
+              <input className="acquisition-period" disabled="disabled" />
             </div>
             <div className="close-info" onClick={() => onRemove(id)}>
               X
@@ -83,7 +84,7 @@ function SkillListComponent({ ids, onRemove, onChange, onClick }) {
           </div>
           <div>
             <span className="acquisition">활용영역</span>
-            <input className="skill-usage" name="sarea" onChange={onChange} />
+            <input className="skill-usage" name="sdesc" onChange={onChange} />
           </div>
         </div>
       ))}
