@@ -16,24 +16,27 @@
 #signin-container > #signin-content {
   width: 440px;
   --height: 90vh;
-  height: 710px;
+  height: 720px;
   margin: auto auto;
   background: white;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
 }
 
 #signin-content > .logo-close-popup {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin: 17px 20px 0 0;
+  margin: 8px 8px 0 0;
 }
 
 #signin-content > .logo-close-popup > .close-button {
   border: none;
-  background: none;
-  border-radius: 5px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
 
 #signin-content > .logo-close-popup > .close-button:focus {
@@ -41,11 +44,11 @@
 }
 
 #signin-content > .fapply_logo {
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 
 #signin-content > .header {
-  margin-top: 55px;
+  margin-top: 15px;
   text-align: center;
   font: normal normal bold 23px/32px Noto Sans KR;
   letter-spacing: 0px;
@@ -72,9 +75,13 @@
   height: 50px;
   background: none;
   border: 1px solid #cccccc;
-  color: black;
-  border-radius: 0px 3px 3px 0px;
-  opacity: 1;
+  font: normal normal 500 14px/20px Noto Sans KR;
+}
+#signin-content > .body > .choose-member > button:first-child {
+  border-radius: 3px 0 0 3px;
+}
+#signin-content > .body > .choose-member > button:last-child {
+  border-radius: 0 3px 3px 0;
 }
 
 #signin-content > .body > .choose-member > button:focus {
@@ -85,24 +92,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
-#signin-content > .body > .input-content > .input-email-phone {
+#signin-content > .body > .input-content input {
   width: 400px;
   height: 50px;
+  margin-top: 10px;
+  padding-left: 16px;
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  transition: all 0.5s;
+}
+#signin-content > .body > .input-content input:focus {
+  border: 1px solid #009999;
 }
 
 #signin-content > .body > .input-content > input::placeholder {
   color: #909090;
-  padding: 10px;
-  font-size: 13px;
-}
-
-#signin-content > .body > .input-content > .input-password {
-  margin-top: 10px;
-  width: 400px;
-  height: 50px;
+  font: normal normal 500 14px/20px Noto Sans KR;
 }
 
 #signin-content > .body > .signin-find-idpw-content {
@@ -113,16 +122,30 @@
 
 #signin-content > .body > .signin-find-idpw-content > button {
   --border: 1px solid black;
+  padding: 0;
   border: none;
   background: none;
   border-radius: 5px;
-  font: normal normal medium Noto Sans KR;
+  font: normal normal 500 11px/16px Noto Sans KR;
   font-size: 12px;
   letter-spacing: 0px;
   color: #999999;
-  opacity: 1;
-
-  margin: 0 5px 0 5px;
+}
+#signin-content > .body > .signin-find-idpw-content > button:first-child {
+  margin-right: 12px;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+#signin-content > .body > .signin-find-idpw-content > button:first-child:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background: #999;
+  top: 3px;
+  right: -6px;
 }
 
 #signin-content > .body .signin-find-idpw-content > button:focus {
@@ -136,19 +159,45 @@
 }
 
 #signin-content > .body .signin-throw-social-title {
-  margin: 30px 0 0 20px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: normal normal 500 12px/16px Noto Sans KR;
+  color: #aaa;
+  margin-top: 64px;
+}
+#signin-content > .body .signin-throw-social-title:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 36%;
+  height: 1px;
+  background: #ddd;
+}
+#signin-content > .body .signin-throw-social-title:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 36%;
+  height: 1px;
+  background: #ddd;
 }
 
 #signin-content > .body .social-content {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 
-#signin-content > .body .social-content div {
-  border: 1px solid black;
-  width: 70px;
-  height: 70px;
-  margin: 0 10px 0 0;
+#signin-content > .body .social-content .btn-social {
+  width: 40px;
+  height: 40px;
+  margin-right: 24px;
+}
+#signin-content > .body .social-content .btn-social:last-child {
+  margin-right: 0;
 }
 
 #signin-content > .body .signup-fapply {
@@ -160,7 +209,7 @@
 #signin-content > .body > .signin-button {
   width: 400px;
   height: 50px;
-  margin: 20px 0 0 0;
+  margin: 24px 0 0 0;
   border: none;
   background: transparent linear-gradient(99deg, #049397 0%, #55267f 100%) 0% 0%
     no-repeat padding-box;
@@ -423,8 +472,11 @@
 }
 
 #signup-content > .member-close-popup > .close-button {
-  background: none;
   border: none;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
 
 #signup-content > .header {
@@ -595,7 +647,7 @@
 }
 
 #with-email-content > .body > .input-email-phone {
-  border: 1px solid black;
+  border: 1px solid #ccc;
   height: 45px;
   background: none;
   margin-bottom: 6px;
@@ -612,7 +664,7 @@
 
 #with-email-content .body > .submit-email {
   background: none;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   height: 45px;
   border-radius: 5px;
   margin-top: 5px;

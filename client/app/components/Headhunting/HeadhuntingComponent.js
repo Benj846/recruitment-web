@@ -4,7 +4,8 @@ import '../../styles/HeadhuntingComponent';
 import JobTreeComponent from '../recruitment/switchMenu/JobTreeComponent';
 import profilePic from './image/img_profile.png';
 import { gql, useQuery } from '@apollo/client';
-import chevron from './image/icon_chevron_7px.png';
+import icon_chevron from './image/icon_chevron_7px.png';
+import icon_chevron_active from './image/icon_chevron_7px_active.png';
 import icon_career from './image/icon_career.png';
 import icon_edu from './image/icon_edu.png';
 import icon_interests from './image/icon_interests.png';
@@ -44,7 +45,9 @@ function HeadhuntingComponent() {
         break;
     }
   };
-
+  const [actSkChecked, setActSkChecked] = useState(false);
+  const [recentChecked, setRecentChecked] = useState(false);
+  const [listSelected, setListSelected] = useState(false);
   return (
     <div className="headhunt-container">
       {/* <div className="filter-container">
@@ -127,7 +130,7 @@ function HeadhuntingComponent() {
                 <button
                   className="select-button"
                   style={{
-                    background: `url(${chevron}) no-repeat 96px center`
+                    background: `url(${icon_chevron}) no-repeat 96px center`
                   }}
                 >
                   전체선택
@@ -144,11 +147,28 @@ function HeadhuntingComponent() {
               </div>
               <div className="filter-wrapper">
                 <div className="filter filter-01">
-                  <input className="checkbox" type="checkbox" />
+                  <div
+                    className="checkbox"
+                    onClick={() => setActSkChecked(!actSkChecked)}
+                    style={{
+                      background: actSkChecked
+                        ? `url(${icon_chevron_active}) no-repeat center center`
+                        : `url(${icon_chevron}) no-repeat center center`
+                    }}
+                    type="checkbox"
+                  ></div>
                   <span className="txt">적극구직자만</span>
                 </div>
                 <div className="filter filter-02">
-                  <input className="checkbox" type="checkbox" />
+                  <div
+                    className="checkbox"
+                    onClick={() => setRecentChecked(!recentChecked)}
+                    style={{
+                      background: recentChecked
+                        ? `url(${icon_chevron_active}) no-repeat center center`
+                        : `url(${icon_chevron}) no-repeat center center`
+                    }}
+                  ></div>
                   <span className="txt">최근접속순</span>
                 </div>
                 <select className="view-list" name="view-list">
@@ -199,10 +219,11 @@ function HeadhuntingComponent() {
 export default HeadhuntingComponent;
 
 const ResultLists = () => {
+  const [listSelected, setListSelected] = useState(false);
   const GET_TEST_WORK = gql`
     {
       getRSM_CARR {
-        id
+        ID
         COR_NAME
         COR_IDX
         CSTART_DATE
@@ -228,12 +249,18 @@ const ResultLists = () => {
       {error && <p>error message is : {error.message}</p>}
       {!loading &&
         data.getRSM_CARR.map((name) => (
-          <div key={name.id} className="result-list">
-            <input
+          <div key={name.ID} className="result-list">
+            <div
               className="list-checkbox"
               type="checkbox"
               name="list-checkbox"
-            />
+              onClick={() => setListSelected(!listSelected)}
+              style={{
+                background: listSelected
+                  ? `url(${icon_chevron_active}) no-repeat center center`
+                  : `url(${icon_chevron}) no-repeat center center`
+              }}
+            ></div>
             <div className="left-result">
               <img className="list-img" src={profilePic} alt="" />
               <span className="name-span">{name.NAME}</span>

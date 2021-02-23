@@ -8,7 +8,7 @@ const typeDefs = gql`
     USE_YN: Boolean!
   }
   type Resumelist {
-    id: Int
+    ID: Int
     COR_NAME: String
     COR_IDX: Int
     CSTART_DATE: Int

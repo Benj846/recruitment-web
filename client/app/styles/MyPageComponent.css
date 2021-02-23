@@ -1,6 +1,6 @@
 #mypage-wrapper {
   display: flex;
-  max-width: 1271px;
+  max-width: 1484px;
   margin: 0 auto;
 }
 
@@ -8,13 +8,19 @@
   /* width: 1060px;
   height: 841px;
   border: 1px solid #dddddd; */
-  margin: 0 auto;
+  margin: 0 20px;
+}
+#mypage-container .resume-main {
+  width: 1060px;
+  padding: 80px 90px;
+  box-shadow: none;
 }
 
 #mypage-container > #profile-container {
   width: 1060px;
   height: 841px;
   border: 1px solid #dddddd;
+  border-radius: 5px;
 }
 
 #profile-container > .profile-content {
@@ -24,6 +30,7 @@
 
 /* Skyscraper ------------------------------------------------------------------------*/
 .mypage-skyscraper {
+  border-radius: 5px;
   border: 1px solid #dddddd;
   position: sticky;
   top: 0px;
@@ -115,6 +122,7 @@
 }
 
 #profile-container > .profile-content > .info > .pic > img {
+  display: block;
   border: 1px solid #cccccc;
 }
 
@@ -142,206 +150,143 @@
 
 #profile-container > .profile-content > .info > .basic {
   margin-left: 20px;
-  --display: flex;
+  display: flex;
+  flex-flow: wrap row;
 }
 
-#profile-container > .profile-content > .info > .basic > input {
-  padding: 16px;
+#profile-container > .profile-content > .info > .basic input {
+  display: block;
+  padding-left: 16px;
+  width: 250px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #666;
+  font: normal normal 500 14px/20px Noto Sans KR;
 }
 
-#profile-container > .profile-content > .info > .basic > .font-style {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal medium 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
+#profile-container > .profile-content > .info > .basic input:disabled {
+  background: #f0f0f0;
+}
+
+#profile-container > .profile-content > .info > .basic .font-style {
+  font: normal normal 500 14px/24px Noto Sans KR;
   color: #999999;
-  opacity: 1;
 }
 
-#profile-container > .profile-content > .info > .basic > .input-name {
-  margin-left: 64px;
-  width: 250px;
-  height: 40px;
+#profile-container > .profile-content > .info > .basic .content-style {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 340px;
+  margin-bottom: 10px;
 }
-
-#profile-container > .profile-content > .info > .basic > .gender {
-  margin-left: 20px;
-}
-
-#profile-container > .profile-content > .info > .basic > .male {
-  margin-left: 64px;
-  width: 115px;
-  height: 40px;
-  border: 1px solid #cccccc;
-}
-
-#profile-container > .profile-content > .info > .basic > .female {
-  width: 115px;
-  height: 40px;
-  border: 1px solid #cccccc;
-}
-
-#profile-container > .profile-content > .info > .basic > .birth {
-  width: 250px;
-  height: 40px;
-  margin: 10px 0 0 32px;
-}
-
-#profile-container > .profile-content > .info > .basic > .phone-title {
-  margin-left: 20px;
-}
-
-#profile-container > .profile-content > .info > .basic > .input-phone {
-  width: 230px;
-  height: 40px;
-  margin-left: 32px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-}
-
-#profile-container > .profile-content > .info > .basic > .input-phone:focus {
-  outline: none;
-}
-
-#profile-container > .profile-content > .info > .basic > .change-phone-btn {
-  width: 50px;
-  height: 19px;
-  margin-left: -50px;
-  border: none;
-  background: none;
-
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 15px/19px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #009999;
-  opacity: 1;
-}
-
 #profile-container
   > .profile-content
   > .info
   > .basic
-  > .change-phone-btn:focus {
-  outline: none;
+  .content-style:nth-child(odd) {
+  margin-right: 20px;
 }
-
-#profile-container > .profile-content > .info > .basic > .input-email {
-  margin: 10px 0 0 48px;
-  width: 250px;
+#profile-container > .profile-content > .info > .basic .content-gender button {
+  width: 125px;
   height: 40px;
+  background: #fff;
+  color: #999;
+  border: 1px solid #ddd;
 }
-
-#profile-container > .profile-content > .info > .basic > .job-status {
-  margin-left: 20px;
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  .content-gender
+  button.active {
+  background: #009999;
+  color: #fff;
+  border: none;
 }
-
-#profile-container > .profile-content > .info > .basic > .select-job-status {
-  display: inline-flex;
-  margin-left: 32px;
+#profile-container
+  > .profile-content
+  > .info
+  > .basic
+  .content-gender
+  button:nth-of-type(1) {
+  margin-left: auto;
 }
-
+#profile-container > .profile-content > .info > .basic .change-phone-btn {
+  position: absolute;
+  padding: 8px 16px;
+  right: 0;
+  background: none;
+  border: none;
+  font: normal normal 700 13px/19px Noto Sans KR;
+  color: #009999;
+}
 #profile-container > .profile-content > .info > .basic > .basic-div {
   width: 100%;
 }
-
 #profile-container > .profile-content > .info > .basic > .mailing-avail {
   display: flex;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
   > .mailing-avail
-  .font-style {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal medium 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
-  color: #999999;
-  opacity: 1;
+  .item-name {
+  display: block;
+  width: 70px;
+  margin-right: 20px;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
   > .mailing-avail
-  > .content {
-  --border: 1px solid black;
-  width: 400px;
-  margin-left: 39px;
+  .item-row {
+  display: flex;
+  align-items: center;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
   > .mailing-avail
-  > .content
-  > button {
-  border: 1px solid black;
-  background: none;
-  width: 50px;
-  height: 20px;
+  .item-row
+  span {
+  display: block;
+  width: 250px;
+  margin-right: 20px;
 }
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > button:focus {
-  outline: none;
+#profile-container > .profile-content > .info > .basic .btn-toggle {
+  position: relative;
+  width: 32px;
+  height: 16px;
+  border-radius: 16px;
+  background: #ddd;
+  margin: 2px 24px 0 8px;
+  transition: all 0.5s;
 }
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > .marketing-btn {
-  margin-left: 50px;
+#profile-container > .profile-content > .info > .basic .btn-toggle.active {
+  background: #009999;
 }
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > .job-offer-btn {
-  margin-left: 76px;
+#profile-container > .profile-content > .info > .basic .btn-toggle .ellipse {
+  position: absolute;
+  transform: translate(2px, 2px);
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 100%;
+  transition: all 0.5s;
 }
-
 #profile-container
   > .profile-content
   > .info
   > .basic
-  > .mailing-avail
-  > .content
-  > .noti-event-btn {
-  margin-left: 141px;
-}
-
-#profile-container
-  > .profile-content
-  > .info
-  > .basic
-  > .mailing-avail
-  > .content
-  > .like-btn {
-  margin-left: 127px;
+  .btn-toggle
+  .ellipse.active {
+  transform: translate(18px, 2px);
 }
 
 /* customize --------------------------------------------------------------------*/
@@ -588,31 +533,28 @@
 
 #recruit-offer-container > #recruit-offer-content > .title-content {
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
 }
 
 #recruit-offer-content > .title-content > .title > .main {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-22) / var(--unnamed-line-spacing-32)
-    var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 22px/32px Noto Sans KR;
-  letter-spacing: 0px;
+  font: normal normal 700 22px/32px Noto Sans KR;
+  margin-right: 16px;
   color: #333333;
-  opacity: 1;
 }
 
 #recruit-offer-content > .title-content > .title > .sub {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
   text-align: left;
-  font: normal normal medium 14px/20px Noto Sans KR;
-  letter-spacing: 0px;
+  font: normal normal 500 14px/20px Noto Sans KR;
   color: #999999;
-  opacity: 1;
+}
+
+#recruit-offer-content > .title-content .select-rows {
+  border: 1px solid #ddd;
+  width: 114px;
+  height: 32px;
+  font: normal normal 400 14px/20px Noto Sans KR;
+  color: #666;
 }
 
 #recruit-offer-content > .notice-guide {
@@ -622,42 +564,44 @@
   height: 40px;
   background: #f0f0f0 0% 0% no-repeat padding-box;
   border-radius: 5px;
-  opacity: 1;
   margin-top: 16px;
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #999;
 }
 
 #recruit-offer-content > table {
-  margin-top: 5px;
-  table-layout: fixed;
-  --border-spacing: 10px;
-  --border-collapse: separate;
-  border-collapse: collapse;
-  border-radius: 5px;
   width: 1060px;
-  border: 1px solid #dddddd;
+  margin-top: 8px;
+  table-layout: fixed;
+  border-radius: 5px;
+  border-spacing: 0px;
+  border: 1px solid #ddd;
 }
 
 #recruit-offer-content > table th,
 td {
-  padding: 10px;
+  padding: 10px 16px;
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #999;
 }
 
 #recruit-offer-content > table > thead th {
   text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
 #recruit-offer-content > table > thead > th:nth-of-type(1) {
   /* text-align: left;
   padding-left: 50px; */
-  width: 20%;
+  width: 15%;
 }
 
 #recruit-offer-content > table > thead th:nth-of-type(2) {
-  width: 50%;
+  width: 55%;
 }
 
 #recruit-offer-content > table > thead th:nth-of-type(3) {
-  width: 20%;
+  width: 15%;
 }
 
 #recruit-offer-content > table > thead th:nth-of-type(4) {
@@ -665,28 +609,38 @@ td {
 }
 
 #recruit-offer-content > table > tbody {
-  --border-top-color: #dddddd;
-  border: 1px solid #dddddd;
+  text-align: left;
 }
 
 #recruit-offer-content > table > tbody > tr > td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font: normal normal 500 14px/20px Noto Sans KR;
 }
 
+#recruit-offer-content > table > tbody > tr > td:nth-of-type(1) {
+  color: #009999;
+}
+#recruit-offer-content > table > tbody > tr > td:nth-of-type(2) {
+  color: #666;
+}
 #recruit-offer-content > table > tbody > tr > td:nth-of-type(3) {
   text-align: center;
+  font: normal normal 400 14px/20px Noto Sans KR;
 }
 
 #recruit-offer-content > table > tbody > tr > td:nth-of-type(4) {
   text-align: center;
+  font: normal normal 400 14px/20px Noto Sans KR;
 }
 
 #recruit-offer-content > .pager {
   display: flex;
   justify-content: center;
   margin: 10px 0;
+  font: normal normal 400 16px/24px Noto Sans KR;
+  color: #999;
 }
 
 /* Resume/List ------------------------------------------------------------------- */
@@ -700,41 +654,35 @@ td {
   display: flex;
   list-style: none;
   padding-left: 0;
+  margin-bottom: 16px;
 }
 
 #resume-list-content > nav > .resume-breadcrumb > li {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-22) / var(--unnamed-line-spacing-32)
-    var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal bold 22px/32px Noto Sans KR;
-  letter-spacing: 0px;
+  margin-right: 12px;
+  padding-right: 20px;
+  font: normal normal 700 22px/32px Noto Sans KR;
   color: #333333;
-  opacity: 1;
 }
 
 #resume-list-content .preamble {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  font: normal normal medium Noto Sans KR;
-  font-size: 14px;
-  letter-spacing: 0px;
+  font: normal normal 500 14px/20px Noto Sans KR;
   color: #999999;
-  opacity: 1;
+  margin-bottom: 30px;
 }
 
 #resume-list-content > .title-content {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 #resume-list-content > .title-content > div {
   align-self: flex-end;
+  font: normal normal 700 22px/32px Noto Sans KR;
+  color: #333;
+}
+#resume-list-content > .title-content .count {
+  color: #009999;
 }
 
 #resume-list-content > .title-content > button {
@@ -743,10 +691,6 @@ td {
   border: none;
   background: transparent linear-gradient(106deg, #009999 0%, #7f37c7 100%) 0%
     0% no-repeat padding-box;
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
-    var(--unnamed-font-size-16) / var(--unnamed-line-spacing-24)
-    var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
   text-align: center;
   font: normal normal bold 16px/24px Noto Sans KR;
   letter-spacing: 0px;
@@ -755,16 +699,14 @@ td {
 }
 
 #resume-list-content > .resume-box-container {
-  --width: 1060px;
-  height: 149px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   opacity: 1;
 }
 
 #resume-list-content > .resume-box-container > .resume-box-content {
-  padding: 18px 32px;
+  padding: 16px 24px;
 }
 
 #resume-list-content > .resume-box-container > .resume-box-content > .header {
@@ -776,37 +718,13 @@ td {
   > .resume-box-container
   > .resume-box-content
   > .header
-  > .normal-resume,
-.representative-resume {
-  background: #ffffff 0% 0% no-repeat padding-box;
+  .representative-resume {
+  background: #fff;
   border-radius: 5px;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  --text-align: left;
-  font: normal normal medium Noto Sans KR;
-  box-sizing: border-box;
-  padding: 0 8px;
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: 0px;
-  margin-bottom: 10px;
-  opacity: 1;
-}
-
-#resume-list-content
-  > .resume-box-container
-  > .resume-box-content
-  > .header
-  > .representative-resume {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   border: 1px solid #009999;
-  width: 93px;
-  height: 24px;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  font: normal normal 500 14px/20px Noto Sans KR;
   color: #009999;
 }
 
@@ -816,8 +734,10 @@ td {
   > .header
   > .normal-resume {
   border: 1px solid #999999;
-  width: 63px;
-  height: 24px;
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  font: normal normal 500 14px/20px Noto Sans KR;
   color: #999999;
 }
 
@@ -827,16 +747,9 @@ td {
   > .header
   > div
   > .status {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-14) /
-    var(--unnamed-line-spacing-20) var(--unnamed-font-family-noto-sans-kr);
-  letter-spacing: var(--unnamed-character-spacing-0);
   text-align: right;
-  font: normal normal medium Noto Sans KR;
-  font-weight: bold;
-  letter-spacing: 0px;
+  font: normal normal 500 14px/20px Noto Sans KR;
   color: #009999;
-  opacity: 1;
 }
 
 #resume-list-content
@@ -846,6 +759,16 @@ td {
   > div
   > .modified-date {
   margin-left: 24px;
+  font: normal normal 500 14px/20px Noto Sans KR;
+  color: #999;
+}
+
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  .resume-name {
+  font: normal normal 700 20px/24px Noto Sans KR;
+  color: #333;
 }
 
 #resume-list-content
@@ -862,25 +785,114 @@ td {
   > .resume-box-container
   > .resume-box-content
   > .resume-bottom
-  > .right
-  > button {
-  margin: 0 4px;
-  width: 128px;
-  height: 40px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
+  .left {
+  display: flex;
+  align-items: center;
+  font: normal normal 500 14px/16px Noto Sans KR;
+  color: #999;
 }
-
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  .left
+  .btn-public {
+  position: relative;
+  width: 32px;
+  height: 16px;
+  border-radius: 16px;
+  background: #ddd;
+  margin: 2px 24px 0 8px;
+  transition: all 0.5s;
+}
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  .left
+  .btn-public
+  > .ellipse {
+  position: absolute;
+  transform: translate(2px, 2px);
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 100%;
+  transition: all 0.5s;
+}
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  .left
+  .btn-public.active {
+  background: #009999;
+}
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  .left
+  .btn-public
+  > .ellipse.active {
+  transform: translate(18px, 2px);
+}
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  .left
+  .btn-public:after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 2px;
+  display: block;
+  width: 1px;
+  height: 12px;
+  background: #999;
+}
 #resume-list-content
   > .resume-box-container
   > .resume-box-content
   > .resume-bottom
   > .right
-  > button:focus {
+  > button {
+  margin-right: 8px;
+  width: 128px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #dddddd;
   outline: none;
 }
-
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  > .right
+  > button:nth-of-type(3) {
+  border: none;
+  background: #aaa;
+  color: #fff;
+}
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  > .right
+  > button:nth-of-type(4) {
+  border: none;
+  background: #009999;
+  color: #fff;
+}
+#resume-list-content
+  > .resume-box-container
+  > .resume-box-content
+  > .resume-bottom
+  > .right
+  > button:last-child {
+  margin-right: 0;
+}
 /* Resume/MakeResume ------------------------------------------------------------------- */
 #mypage-container > #make-resume-container {
   width: 1060px;
