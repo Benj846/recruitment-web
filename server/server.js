@@ -273,7 +273,7 @@ app.post('/resume/insertedu', async (req, res, next) => {
         info.email,
         info.etype,
         info.university,
-        info.uni_major,
+        info.edmajor,
         info.uni_region,
         info.uni_smonth,
         info.uni_emonth
@@ -293,8 +293,8 @@ app.post('/resume/insertcareer', async (req, res, next) => {
       dataList,
       fieldPacket
     ] = await pool.query(
-      'INSERT INTO fapply.TB_IND_RSM_CARR (UID, RID, WORK_NAME, COR_NAME, EMP_TYPE, `POSITION`,' +
-        'WORK_YN, WORK_LVL4_DETAIL, ACHIEVEMENT, WSTART_DATE, WEND_DATE, CSTART_DATE, CEND_DATE)' +
+      'INSERT INTO fapply.TB_IND_RSM_CARR (UID, RID, WRK_LV3, COR_NAME, EMP_TYPE, `POSITION`,' +
+        'WORK_YN, WRK_LV4, ACHIEVEMENT, WSTART_DATE, WEND_DATE, CSTART_DATE, CEND_DATE)' +
         'VALUES(?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         info.email,
