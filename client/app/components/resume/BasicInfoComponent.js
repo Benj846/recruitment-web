@@ -221,13 +221,11 @@ function BasicInfoComponent({
               <div className="content-birth content-col">
                 <span className="content-title">생년월일</span>
                 <input
-                  type="text"
                   className="input-birth"
                   type="date"
                   name="birthmonth"
                   placeholder="yyyy-mm-dd"
                   onChange={onChange}
-                  value={resumeInfo.birthmonth}
                 ></input>
               </div>
               <div className="content-phone content-col">

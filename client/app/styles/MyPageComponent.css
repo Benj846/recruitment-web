@@ -126,6 +126,10 @@
   border: 1px solid #cccccc;
 }
 
+#profile-container > .profile-content > .info > .pic > .buttons {
+  display: flex;
+}
+
 #profile-container > .profile-content > .info > .pic > .buttons button {
   width: 80px;
   height: 40px;
@@ -137,15 +141,16 @@
 }
 
 #profile-container > .profile-content > .info > .pic > .buttons > .change-btn {
-  background: #009999 0% 0% no-repeat padding-box;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) 13px/16px Apple SD Gothic Neo;
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: center;
-  font: normal normal medium 13px/16px Apple SD Gothic Neo;
-  letter-spacing: 0px;
-  color: #ffffff;
-  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 80px;
+  height: 40px;
+  background: #009999;
+  outline: none;
+  border: none;
+  color: #fff;
 }
 
 #profile-container > .profile-content > .info > .basic {

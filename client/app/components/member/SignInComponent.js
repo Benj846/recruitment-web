@@ -1016,7 +1016,7 @@ function SelectTaskYouWant({ closePopup, memberInfo }) {
   const detailJobOptions = [
     { value: '사업기획', label: '사업기획' },
     { value: '경영혁신', label: '경영혁신' },
-    { value: '사업제휴asdf', label: '사업제휴asdfasdf' }
+    { value: '사업제휴', label: '사업제휴' }
   ];
   const SelectDetailJob = () => {
     return (

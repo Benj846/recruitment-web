@@ -103,8 +103,7 @@
   cursor: pointer;
 }
 .employ-type .present input {
-  appearance: none;
-  display: none;
+  margin-right: 8px;
 }
 .employ-type .present input[type='checkbox'] + .el-checkbox-style {
   position: relative;
