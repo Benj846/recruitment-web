@@ -10,6 +10,7 @@ import emptyBookmark from './images/empty_bookmark.png';
 import fullBookmark from './images/full_bookmark.png';
 import MainComponent from '../Main/MainComponent';
 import ResumeComponent from '../resume/ResumeComponent';
+import axios from 'axios';
 
 function MyPageComponent() {
   const API_HOST = 'http://localhost:3333';
@@ -244,6 +245,47 @@ function Profile() {
     })
   };
 
+  const [profileName, setProfileName] = useState([]);
+  const [profilePath, setProfilePath] = useState([]);
+  const [filePreview, setfilePreview] = useState('');
+  const [filePath, setFilePath] = useState(david);
+
+  const FileChange = (e) => {
+    setProfileName(e.target.files[0]);
+    setProfilePath(e.target.value);
+    setfilePreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  //DB이미지 불러오기, 1자리에 id나 email 넣어서 고객 식별
+  async function getImage() {
+    try {
+      const response = await axios.get('/api/getimage/' + 1);
+      console.log(response.data);
+      console.log(response.data[0].PIC);
+      const dataArr = response.data[0].PIC;
+      setFilePath(dataArr);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  //이미지 업데이트
+  const onClickSubmit = (e) => {
+    const formData = new FormData();
+    formData.append('profileName', profileName);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    };
+    axios.post('/api/upload', formData, config);
+  };
+
+  //이미지 삭제
+  async function deleteImage() {
+    await axios.post('/api/deleteimage');
+  }
+
   return (
     <section id="profile-container">
       <article className="profile-content">
@@ -251,10 +293,42 @@ function Profile() {
         <hr className="div-line" />
         <div className="info">
           <div className="pic">
-            <img src={david} width="160px" height="220px"></img>
+            <div style={{ display: 'flex' }}>
+              {filePreview == '' ? (
+                (getImage(),
+                (
+                  <img
+                    src={filePath}
+                    width="160px"
+                    height="220px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                ))
+              ) : (
+                <img
+                  src={filePreview}
+                  width="160px"
+                  height="220px"
+                  style={{ objectFit: 'cover' }}
+                />
+              )}
+            </div>
             <div className="buttons">
-              <button className="change-btn">변경</button>
-              <button className="delete-btn">삭제</button>
+              {/* <button className="change-btn">변경</button> */}
+              <label className="change-btn" for="change-bt">
+                변경
+              </label>
+              <input
+                id="change-bt"
+                style={{ display: 'none' }}
+                type="file"
+                name="file"
+                file={profileName}
+                onChange={FileChange}
+              />
+              <button className="delete-btn" onClick={deleteImage}>
+                삭제
+              </button>
             </div>
           </div>
           <div className="basic">
@@ -326,7 +400,9 @@ function Profile() {
           <hr className="job-div" />
           <div className="main">
             <div className="added-job">아직 등록된 관심직무가 없습니다.</div>
-            <button className="save-btn">변경사항 저장</button>
+            <button className="save-btn" onClick={onClickSubmit}>
+              변경사항 저장
+            </button>
           </div>
         </div>
       </article>

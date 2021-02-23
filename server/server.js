@@ -152,6 +152,80 @@ app.post('/member/login', async (req, res, next) => {
   }
 });
 
+const multer = require('multer');
+//DB이미지 불러오기, 1자리에 id나 email 넣어서 고객 식별
+app.use(express.static('./uploads'));
+app.get('/api/getimage/:id', async function (req, res) {
+  let id = req.params.id;
+  // let email = req.params.email;
+  let [rows, fields] = await pool.query(
+    // 'SELECT * FROM TB_CMN_MEMBER where id=' + "'" + id + "'"
+    'SELECT * FROM TB_CMN_MEMBER where id=1'
+  );
+  console.log(rows);
+  res.send(rows);
+});
+
+//파일 이름, 저장경로 설정
+const storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function (req, file, cb) {
+    cb(null, 'file' + Date.now() + path.extname(file.originalname));
+  }
+});
+var uploadWithOriginalFilename = multer({ storage: storage });
+
+//이미지 업데이트, 현재 id=1로 고정 되어있음
+app.post(
+  '/api/upload',
+  uploadWithOriginalFilename.single('profileName'),
+  function (req, res) {
+    try {
+      let sql = 'UPDATE TB_CMN_MEMBER SET PIC=? WHERE id=1';
+      let imageName = req.file.filename;
+      let params = [imageName];
+      pool.query(sql, params, (err, rows, fields) => {
+        res.send(rows);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+//이미지 삭제, 현재 id=1로 고정 되어있음
+app.post(
+  '/api/deleteimage',
+  uploadWithOriginalFilename.single('profileName'),
+  async function (req, res) {
+    let [rows, fields] = await pool.query(
+      'UPDATE TB_CMN_MEMBER SET PIC=null WHERE id=1'
+    );
+    res.send(rows);
+  }
+);
+
+// app.post(
+//   '/api/upload',
+//   uploadWithOriginalFilename.single('profileName'),
+//   function (req, res) {
+//     let sql = 'INSERT INTO TB_CMN_MEMBER (id,PIC) VALUES (null,?)';
+//     let name = req.file.filename;
+//     // let file_path = './uploads/' + req.file.filename;
+//     // let email = req.body.email;
+//     // console.log(req.body.email);
+//     // let params = [name, file_path, email];
+//     let params = [name];
+//     // console.log(req.file);
+//     // console.log(name);
+//     // console.log(file_path);
+//     pool.query(sql, params, (err, rows, fields) => {
+//       res.send(rows);
+//     });
+//   }
+// );
+//==
+
 // 이 부분을 async로 고쳐야 함
 // app.post('/member/count', (req, res) => {
 //   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;
@@ -213,31 +287,16 @@ app.post('/member/login', async (req, res, next) => {
 //   });
 // });
 
-// GraphQL implementation
-const getDefaultWork = async ({ LV }) => {
+const getDefaultWork = async ({ LV, ID, UPPER_ID }) => {
   const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
   const filteredWorks = rows.filter((args) => args.LV === LV);
   return filteredWorks;
 };
-const getLevelWork = async ({ LV, ID }) => {
+const getLevelWork = async ({ LV, ID, UPPER_ID }) => {
   const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
   const lv2work = rows.filter((val) => val.UPPER_ID === ID && val.LV === LV);
   return lv2work;
 };
-const getRSM_CARR = async () => {
-  const [rows, fiellds] = await pool.query(
-    'SELECT distinct c.id, b.COR_NAME, b.CID as COR_IDX, b.CSTART_DATE, b.CEND_DATE, b.WRK_LV3, b.WRK_LV4, c.NAME, c.WRK_STATUS, c.LGN_DATE, c.UID, d.UNIV_NAME, d.IID as UNIV_IDX1, d.TID as UNIV_IDX2, d.`TYPE`, d.MAJOR FROM TB_IND_RSM_CERT a, TB_IND_RSM_CARR b, TB_CMN_MEMBER c, TB_IND_RSM_EDUC d, TB_IND_RESUME e WHERE c.UID = b.UID AND c.UID = a.UID AND c.UID = d.UID AND c.UID = e.UID ORDER BY c.id'
-  );
-  console.log(rows);
-  return rows;
-};
-// const getRSM = async () => {
-//   const [rows, fiellds] = await pool.query(
-//     'SELECT distinct c.id, c.NAME, c.WRK_STATUS, c.LGN_DATE, c.UID, d.UNIV_NAME, d.IID as UNIV_IDX1, d.TID as UNIV_IDX2, d.`TYPE`, d.MAJOR  FROM TB_IND_RSM_CERT a, TB_CMN_MEMBER c, TB_IND_RSM_EDUC d, TB_IND_RESUME e WHERE c.UID = a.UID AND c.UID = d.UID AND c.UID = e.UID ORDER BY c.id'
-//   );
-//   console.log(rows);
-//   return rows;
-// };
 const resolvers = {
   Query: {
     getDefaultWork: (parent, { LV, ID, UPPER_ID }, context, info) =>
@@ -245,9 +304,8 @@ const resolvers = {
     // getlv2Work: (parent, args, context, info) => {
     //   getlv2Work();
     // }
-    getLevelWork: (_, { LV, ID }) => getLevelWork({ LV, ID }),
+    getLevelWork: (_, { LV, ID }) => getLevelWork({ LV, ID })
     // getlv2Work: (_, { LV, ID }) => console.log(LV)
-    getRSM_CARR: () => getRSM_CARR()
   }
 };
 const server = new ApolloServer({

@@ -5,6 +5,7 @@ import Popup from './PopupComponent';
 import icon_search from './logo_and_images/icon_search_40px.png';
 import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
 import SignInComponent from '../member/SignInComponent';
+import axios from 'axios';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -49,6 +50,45 @@ function BasicInfoComponent() {
 
   const handleSelectChange = () => {};
 
+  const [profileName, setProfileName] = useState([]);
+  const [profilePath, setProfilePath] = useState('');
+  const [filePreview, setfilePreview] = useState('');
+  const [filePath, setFilePath] = useState('');
+
+  async function getImage() {
+    try {
+      const response = await axios.get('/api/getImage/' + 1);
+      console.log(response.data);
+      console.log(response.data[0].PIC);
+      const dataArr = response.data[0].PIC;
+      setFilePath(dataArr);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const FileChange = (e) => {
+    setProfileName(e.target.files[0]);
+    setProfilePath(e.target.value);
+    setfilePreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  //submit-button에 적용
+  // const onClickSubmit = (e) => {
+  //   const formData = new FormData();
+  //   formData.append('profileName', profileName);
+  //   const config = {
+  //     headers: {
+  //       'content-type': 'multipart/form-data'
+  //     }
+  //   };
+  //   axios.post('/api/upload', formData, config);
+  // };
+
+  async function deleteImage() {
+    await axios.post('/api/deleteimage');
+  }
+
   return (
     <div className="root">
       <div className="title-wrap">
@@ -59,15 +99,48 @@ function BasicInfoComponent() {
         <span className="user-name">{user.name}</span> 님의 프로필을 입력하시고,
         더 많은 채용 기회를 확보하세요!
       </p>
-
       <div className="content-wrap">
         <span className="basic-info-title required">기본정보</span>
         <div className="basic-info-container">
           <div className="form-container">
             <div className="form-content">
-              <div className="form"></div>
-              <label className="picture-submit">등록</label>
-              <label className="picture-delete">삭제</label>
+              <div className="form" style={{ display: 'flex' }}>
+                {filePreview == '' ? (
+                  (getImage(),
+                  (
+                    <img
+                      src={filePath}
+                      width="160px"
+                      height="150px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ))
+                ) : (
+                  <img
+                    src={filePreview}
+                    width="160px"
+                    height="150px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                )}
+              </div>
+              {/* <button className="picture-submit">등록</button> */}
+              <label className="picture-submit" for="change-bt">
+                변경
+              </label>
+              <input
+                id="change-bt"
+                style={{ display: 'none' }}
+                type="file"
+                name="file"
+                // accept="image/*"
+                file={profileName}
+                value={profilePath}
+                onChange={FileChange}
+              />
+              <button className="picture-delete" onClick={deleteImage}>
+                삭제
+              </button>
             </div>
           </div>
           <div className="input-container">
