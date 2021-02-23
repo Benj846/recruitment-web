@@ -297,6 +297,13 @@ const getLevelWork = async ({ LV, ID, UPPER_ID }) => {
   const lv2work = rows.filter((val) => val.UPPER_ID === ID && val.LV === LV);
   return lv2work;
 };
+const getRSM_CARR = async () => {
+  const [rows, fiellds] = await pool.query(
+    'SELECT distinct c.id, b.COR_NAME, b.CID as COR_IDX, b.CSTART_DATE, b.CEND_DATE, b.WRK_LV3, b.WRK_LV4, c.NAME, c.WRK_STATUS, c.LGN_DATE, c.UID, d.UNIV_NAME, d.IID as UNIV_IDX1, d.TID as UNIV_IDX2, d.`TYPE`, d.MAJOR FROM TB_IND_RSM_CERT a, TB_IND_RSM_CARR b, TB_CMN_MEMBER c, TB_IND_RSM_EDUC d, TB_IND_RESUME e WHERE c.UID = b.UID AND c.UID = a.UID AND c.UID = d.UID AND c.UID = e.UID ORDER BY c.id'
+  );
+  console.log(rows);
+  return rows;
+};
 const resolvers = {
   Query: {
     getDefaultWork: (parent, { LV, ID, UPPER_ID }, context, info) =>
@@ -304,8 +311,9 @@ const resolvers = {
     // getlv2Work: (parent, args, context, info) => {
     //   getlv2Work();
     // }
-    getLevelWork: (_, { LV, ID }) => getLevelWork({ LV, ID })
+    getLevelWork: (_, { LV, ID }) => getLevelWork({ LV, ID }),
     // getlv2Work: (_, { LV, ID }) => console.log(LV)
+    getRSM_CARR: () => getRSM_CARR()
   }
 };
 const server = new ApolloServer({

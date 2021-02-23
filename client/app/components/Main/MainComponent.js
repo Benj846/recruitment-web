@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { ApolloProvider, Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import ApolloClient from 'apollo-boost';
+// import { ApolloProvider, Query } from 'react-apollo';
+// import gql from 'graphql-tag';
+// import ApolloClient from 'apollo-boost';
 import '../../styles/MainComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
@@ -28,9 +28,9 @@ import icon_profile from './images/icon_profile@2x.png';
 import btn_prev_active from './images/btn_prev_active.png';
 import btn_next_active from './images/btn_next_active.png';
 
-const client = new ApolloClient({
-  uri: 'http://localhost:3333/graphql'
-});
+// const client = new ApolloClient({
+//   uri: 'http://localhost:3333/graphql'
+// });
 function MainComponent(props) {
   const BANNER_BUTTON = 1;
   const AD_BUTTON = 2;
@@ -541,50 +541,50 @@ const JobTree = () => {
   const addFuntion = () => {
     return appendRef.current.append();
   };
-  const buttonItems = numbers.map((number) => (
-    <ApolloProvider client={client}>
-      <Query
-        query={gql`
-          {
-            getCommonWork(LV: 1) {
-              ID
-              VAL
-            }
-          }
-        `}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <p>Loading</p>;
-          if (error) return <p>error:{error.message}</p>;
-          return data.getCommonWork.map(({ ID, VAL }) => (
-            // <button
-            //   key={number.toString()}
-            //   className="lv1"
-            //   onClick={() => {
-            //     setSelected(!selected);
-            //     setSelected3(false);
-            //     console.log("i'm level 1");
-            //   }}
-            // >
-            //   {VAL}
-            // </button>
-            <button
-              key={ID}
-              className={`lv1 ${lvl1 === ID ? 'active' : null}`}
-              onClick={() => {
-                setLvl1(ID);
-                setActive2(false);
-                setLvl2(ID);
-                setCurLvl(2);
-              }}
-            >
-              {VAL}
-            </button>
-          ));
-        }}
-      </Query>
-    </ApolloProvider>
-  ));
+  // const buttonItems = numbers.map((number) => (
+  //   <ApolloProvider client={client}>
+  //     <Query
+  //       query={gql`
+  //         {
+  //           getCommonWork(LV: 1) {
+  //             ID
+  //             VAL
+  //           }
+  //         }
+  //       `}
+  //     >
+  //       {({ loading, error, data }) => {
+  //         if (loading) return <p>Loading</p>;
+  //         if (error) return <p>error:{error.message}</p>;
+  //         return data.getCommonWork.map(({ ID, VAL }) => (
+  //           // <button
+  //           //   key={number.toString()}
+  //           //   className="lv1"
+  //           //   onClick={() => {
+  //           //     setSelected(!selected);
+  //           //     setSelected3(false);
+  //           //     console.log("i'm level 1");
+  //           //   }}
+  //           // >
+  //           //   {VAL}
+  //           // </button>
+  //           <button
+  //             key={ID}
+  //             className={`lv1 ${lvl1 === ID ? 'active' : null}`}
+  //             onClick={() => {
+  //               setLvl1(ID);
+  //               setActive2(false);
+  //               setLvl2(ID);
+  //               setCurLvl(2);
+  //             }}
+  //           >
+  //             {VAL}
+  //           </button>
+  //         ));
+  //       }}
+  //     </Query>
+  //   </ApolloProvider>
+  // ));
   const button2Items = numbers.map((number) => (
     <button
       key={number.toString()}
@@ -619,7 +619,7 @@ const JobTree = () => {
   ));
   return (
     <div className="main-btn-cont">
-      <div className="main-btn-wrap active">{buttonItems}</div>
+      <div className="main-btn-wrap active">{}</div>
       <div className={`main-btn-wrap ${curLvl > 1 ? 'active' : null}`}>
         {button2Items}
       </div>
