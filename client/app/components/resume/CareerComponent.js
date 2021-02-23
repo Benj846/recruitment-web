@@ -476,10 +476,10 @@ function CareerListComponent({
       {console.log('isSelectDetailJob', isSelectDetailJob)}
       {console.log('--------------')} */}
       {ids.map((id) => (
-        <div key={id} className="body-detail">
-          <div className="company-input-close">
-            <div>
-              <span className="company-name">회사명</span>
+        <section key={id} className="body-detail">
+          <div className="company-input-close content-row">
+            <div className="company-name content-col">
+              <span className="content-title">회사명</span>
               <input
                 className="input-style"
                 name="company"
@@ -495,39 +495,40 @@ function CareerListComponent({
           </div>
           {/* 고용형태 */}
           <div className="employ-type">
-            <div className="employ-type-style">고용형태</div>
-            <select defaultValue="choose" name="emtype" onChange={onChange}>
-              <option value="choose" disabled={true}>
-                선택
-              </option>
-              <option value="0">정규직</option>
-              <option value="1">계약직</option>
-              <option value="2">파견직</option>
-              <option value="3">프리랜서</option>
-              <option value="4">개인사업</option>
-              <option value="5">병역특례</option>
-              <option value="6">인턴</option>
-            </select>
-            {/* <>
-              <Select
-                className="basic-single"
-                classNamePrefix="select"
-                name="etype"
-                options={selectOptions}
+            <div className="employment content-col">
+              <div className="employ-type-style content-title">고용형태</div>
+              <select
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="basic-single choose"
+                name="emtype"
                 onChange={onChange}
-                value={resumeInfo.etype}
-              />
-            </> */}
-            <div className="employ-type-style margin-style">최종직위</div>
-            <input
-              className="input-style"
-              name="lposition"
-              onChange={onChange}
-            ></input>
+              >
+                <option value="choose" disabled={true}>
+                  선택
+                </option>
+                <option value="0">정규직</option>
+                <option value="1">계약직</option>
+                <option value="2">파견직</option>
+                <option value="3">프리랜서</option>
+                <option value="4">개인사업</option>
+                <option value="5">병역특례</option>
+                <option value="6">인턴</option>
+              </select>
+            </div>
+            <div className="final content-col">
+              <div className="content-title">최종직위</div>
+              <input
+                className="input-style"
+                name="lposition"
+                onChange={onChange}
+              ></input>
+            </div>
           </div>
           {/* 근무기간 */}
           <div className="employ-type">
-            <div className="employ-type-style">근무기간</div>
+            <div className="content-title period">근무기간</div>
             <input
               type="month"
               name="csmonth"
@@ -871,7 +872,7 @@ function CareerListComponent({
               ) : null}
             </div>
           )} */}
-        </div>
+        </section>
       ))}
     </>
   );

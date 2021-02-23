@@ -313,7 +313,7 @@ function Resume({ match }) {
         />
       </section>
       <ResumeFooter onSubmit={onSubmit} />
-      {console.log(resumeInfo)}
+      {/* {console.log(resumeInfo)} */}
     </section>
   );
 }

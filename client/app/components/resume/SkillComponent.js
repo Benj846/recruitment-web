@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import '../../styles/SkillComponent.css';
+import icon_arrow_down_40px from './logo_and_images/icon_arrow_down_40px.png';
 import icon_close_32px from './logo_and_images/icon_close_32px.png';
 
 function SkillComponent({ resumeInfo, onChange, onClick }) {
@@ -42,8 +43,8 @@ function SkillListComponent({ ids, onRemove, onChange, onClick }) {
       {ids.map((id) => (
         <section key={id} className="body-detail">
           <div className="year-close">
-            <div>
-              <span className="acquisition">보유기간</span>
+            <div className="period-wrap content-row">
+              <span className="content-title">보유기간</span>
               <input
                 type="month"
                 name="ssmonth"
@@ -56,10 +57,12 @@ function SkillListComponent({ ids, onRemove, onChange, onClick }) {
                 className="acquisition-date"
                 onChange={onChange}
               />
-              <input className="acquisition-period" disabled="disabled" />
-            </div>
-            <div className="close-info" onClick={() => onRemove(id)}>
-              X
+              <div className="acquisition-period">
+                <span className="year">00</span>
+                <span className="year-hold">년</span>
+                <span className="month">00</span>
+                <span className="month-hold">개월</span>
+              </div>
             </div>
             <img
               className="close-info"
@@ -67,29 +70,28 @@ function SkillListComponent({ ids, onRemove, onChange, onClick }) {
               onClick={() => onRemove(id)}
             />
           </div>
-          <div className="wrapper">
-            <div className="input-wrapper">
-              <span className="acquisition">스킬명</span>
-              <input className="input-box" name="sname" onChange={onChange} />
-            </div>
-            <div>
-              <select
-                className="skill-level"
-                name="slevel"
-                onChange={onChange}
-                defaultValue="non-value"
-              >
-                <option value="non-value" disabled={true}>
-                  선택
-                </option>
-                <option value="상">상</option>
-                <option value="중">중</option>
-                <option value="하">하</option>
-              </select>
-            </div>
+          <div className="skill-name content-row">
+            <span className="content-title">스킬명</span>
+            <input className="input-box" name="sname" onChange={onChange} />
+            <select
+              className="skill-level"
+              name="slevel"
+              style={{
+                background: `url(${icon_arrow_down_40px}) no-repeat 100% 0`
+              }}
+              onChange={onChange}
+              defaultValue="non-value"
+            >
+              <option value="non-value" disabled={true}>
+                선택
+              </option>
+              <option value="상">상</option>
+              <option value="중">중</option>
+              <option value="하">하</option>
+            </select>
           </div>
-          <div>
-            <span className="acquisition">활용영역</span>
+          <div className="util content-col">
+            <span className="content-title">활용영역</span>
             <input className="skill-usage" name="sdesc" onChange={onChange} />
           </div>
         </section>
