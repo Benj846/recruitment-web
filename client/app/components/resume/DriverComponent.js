@@ -39,10 +39,10 @@ function DriversListComponent({ ids, onRemove, onChange, onClick }) {
   return (
     <>
       {ids.map((id) => (
-        <div key={id} className="body-detail">
-          <div className="year-close">
-            <div>
-              <span className="acquisition">취득년월 </span>
+        <section key={id} className="body-detail">
+          <div className="year-close content-row">
+            <div className="acquisition content-col">
+              <span className="acquisition content-col">취득년월 </span>
               <input
                 type="month"
                 name="dmonth"
@@ -59,21 +59,21 @@ function DriversListComponent({ ids, onRemove, onChange, onClick }) {
             />
           </div>
 
-          <div className="wrapper">
-            <div className="input-wrapper">
-              <span className="acquisition">자격증명</span>
+          <div className="wrapper content-row">
+            <div className="qualification  content-col">
+              <span className="content-title">자격증명</span>
               <input name="dname" className="input-box" onChange={onChange} />
             </div>
-            <div>
-              <span className="acquisition">급수</span>
+            <div className="rating content-col">
+              <span className="content-title">급수</span>
               <input className="input-box" name="dlevel" onChange={onChange} />
             </div>
           </div>
-          <div>
-            <span className="acquisition">기관명</span>
+          <div className="institution content-col">
+            <span className="content-title">기관명</span>
             <input className="input-box" name="dagency" onChange={onChange} />
           </div>
-        </div>
+        </section>
       ))}
     </>
   );

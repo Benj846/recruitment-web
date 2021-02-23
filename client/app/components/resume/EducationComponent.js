@@ -98,27 +98,30 @@ function EducationComponent({
     <div className="education-info">
       <span className="education-title">학력사항</span>
       <hr className="division-line" />
-      <div className="final-content">
-        <div className="title">최종학력</div>
-        <select
-          className="select-education"
-          defaultValue="non-value"
-          onChange={(e) => {
-            onChangeEdu(e);
-            onChange(e);
-          }}
-          name="etype"
-        >
-          <option value="non-value" disabled="disabled">
-            최종학력을 선택해주세요
-          </option>
-          <option value="0">고졸</option>
-          <option value="1">초대졸</option>
-          <option value="3">편입</option>
-          <option value="2">학사</option>
-          <option value="4">석사</option>
-          <option value="5">박사</option>
-        </select>
+      <div className="first-row content-row">
+        <div className="final-content content-col">
+          <span className="content-title">최종학력</span>
+          <select
+            className="select-education"
+            defaultValue="non-value"
+            onChange={(e) => {
+              onChangeEdu(e);
+              onChange(e);
+            }}
+            style={{ background: `url(${icon_arrow_down}) no-repeat 100% 0` }}
+            name="etype"
+          >
+            <option value="non-value" disabled="disabled">
+              최종학력을 선택해주세요
+            </option>
+            <option value="0">고졸</option>
+            <option value="1">초대졸</option>
+            <option value="3">편입</option>
+            <option value="2">학사</option>
+            <option value="4">석사</option>
+            <option value="5">박사</option>
+          </select>
+        </div>
         {isMasterClicked ? (
           <>
             <div className="integrated" onClick={handleCheckBoxChange}>
@@ -143,63 +146,50 @@ function HighSchool({ onChange, onClick, resumeInfo }) {
   return (
     <>
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">고등학교</div>
-          <div className="title">학교명</div>
-          <select
-            className="title-input"
-            defaultValue="default-value"
-            name="school"
-            onChange={onChange}
-          >
-            <option value="default-value" disa-bled="disabled">
-              선택
-            </option>
-            <option value="영동고">영동고</option>
-            <option value="경기고">경기고</option>
-            <option value="과천고">과천고</option>
-            <option value="휘문고">휘문고</option>
-            <option value="중대부고">중대부고</option>
-            <option value="현대고">현대고</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="edsmonth"
-            onChange={onChange}
-          ></input>
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="edemonth"
-            onChange={onChange}
-          ></input>
-        </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select
-            className="location-input"
-            defaultValue="default-value"
-            name="edregion"
-            onChange={onChange}
-          >
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="경기">경기</option>
-            <option value="인천">인천</option>
-            <option value="대전">대전</option>
-            <option value="세종">세종</option>
-            <option value="충남">충남</option>
-            <option value="충북">충북</option>
-            <option value="광주">광주</option>
-            <option value="전남">전남</option>
-            <option value="전북">전북</option>
-            <option value="대구">대구</option>
-            <option value="경남">경남</option>
-            <option value="경북">경북</option>
-            <option value="강원">강원</option>
-          </select>
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">고등학교</span>
+          </div>
+          <div className="name-school content-col">
+            <span className="content-title">학교명</span>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+              name="school"
+              onChange={onChange}
+            >
+              <option value="default-value" disa-bled="disabled">
+                선택
+              </option>
+              <option value="영동고">영동고</option>
+              <option value="경기고">경기고</option>
+              <option value="과천고">과천고</option>
+              <option value="휘문고">휘문고</option>
+              <option value="중대부고">중대부고</option>
+              <option value="현대고">현대고</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="edsmonth"
+                onChange={onChange}
+              ></input>
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="edemonth"
+                onChange={onChange}
+              ></input>
+            </div>
+          </div>
         </div>
         <div className="second-row">
           <div className="location content-col">
@@ -210,10 +200,24 @@ function HighSchool({ onChange, onClick, resumeInfo }) {
                 background: `url(${icon_arrow_down}) no-repeat 100% 0`
               }}
               defaultValue="default-value"
+              name="edregion"
+              onChange={onChange}
             >
-              <option value="default-value">소재지를 선택하세요</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="경기">경기</option>
+              <option value="인천">인천</option>
+              <option value="대전">대전</option>
+              <option value="세종">세종</option>
+              <option value="충남">충남</option>
+              <option value="충북">충북</option>
+              <option value="광주">광주</option>
+              <option value="전남">전남</option>
+              <option value="전북">전북</option>
+              <option value="대구">대구</option>
+              <option value="경남">경남</option>
+              <option value="경북">경북</option>
+              <option value="강원">강원</option>
             </select>
           </div>
           <div className="major-content content-col">
@@ -258,63 +262,50 @@ function College({ onChange, onClick, resumeInfo, onAddMajor, onRemoveMajor }) {
   return (
     <>
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">대학교</div>
-          <div className="title">학교명</div>
-          <select
-            className="title-input"
-            defaultValue="default-value"
-            name="school"
-            onChange={onChange}
-          >
-            <option value="default-value" disabled="disabled">
-              선택
-            </option>
-            <option value="농협대">농협대</option>
-            <option value="문경대">문경대</option>
-            <option value="경북보건대">경북보건대</option>
-            <option value="한국승강기대">한국승강기대</option>
-            <option value="원광보건대">원광보건대</option>
-            <option value="거제대">거제대</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="edsmonth"
-            onChange={onChange}
-          />
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="edemonth"
-            onChange={onChange}
-          />
-        </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select
-            className="location-input"
-            defaultValue="default-value"
-            onChange={onChange}
-            name="edregion"
-          >
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="경기">경기</option>
-            <option value="인천">인천</option>
-            <option value="대전">대전</option>
-            <option value="세종">세종</option>
-            <option value="충남">충남</option>
-            <option value="충북">충북</option>
-            <option value="광주">광주</option>
-            <option value="전남">전남</option>
-            <option value="전북">전북</option>
-            <option value="대구">대구</option>
-            <option value="경남">경남</option>
-            <option value="경북">경북</option>
-            <option value="강원">강원</option>
-          </select>
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">대학교</span>
+          </div>
+          <div className="name-school content-col">
+            <span className="content-title">학교명</span>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+              name="school"
+              onChange={onChange}
+            >
+              <option value="default-value" disabled="disabled">
+                선택
+              </option>
+              <option value="농협대">농협대</option>
+              <option value="문경대">문경대</option>
+              <option value="경북보건대">경북보건대</option>
+              <option value="한국승강기대">한국승강기대</option>
+              <option value="원광보건대">원광보건대</option>
+              <option value="거제대">거제대</option>
+            </select>
+          </div>
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="edsmonth"
+                onChange={onChange}
+              />
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="edemonth"
+                onChange={onChange}
+              />
+            </div>
+          </div>
         </div>
         <div className="second-row">
           <div className="location content-col">
@@ -324,11 +315,25 @@ function College({ onChange, onClick, resumeInfo, onAddMajor, onRemoveMajor }) {
               style={{
                 background: `url(${icon_arrow_down}) no-repeat 100% 0`
               }}
+              onChange={onChange}
+              name="edregion"
               defaultValue="default-value"
             >
               <option value="default-value"></option>
               <option value="서울">서울</option>
+              <option value="경기">경기</option>
               <option value="인천">인천</option>
+              <option value="대전">대전</option>
+              <option value="세종">세종</option>
+              <option value="충남">충남</option>
+              <option value="충북">충북</option>
+              <option value="광주">광주</option>
+              <option value="전남">전남</option>
+              <option value="전북">전북</option>
+              <option value="대구">대구</option>
+              <option value="경남">경남</option>
+              <option value="경북">경북</option>
+              <option value="강원">강원</option>
             </select>
           </div>
           <div className="major-content content-col">
@@ -362,15 +367,15 @@ function College({ onChange, onClick, resumeInfo, onAddMajor, onRemoveMajor }) {
                 전공추가
               </button>
             </div>
-            <AddedMajor
-              ids={ids}
-              onRemove={onRemove}
-              onCreate={onCreate}
-              onAddMajor={onAddMajor}
-              onRemoveMajor={onRemoveMajor}
-            />
           </div>
         </div>
+        <AddedMajor
+          ids={ids}
+          onRemove={onRemove}
+          onCreate={onCreate}
+          onAddMajor={onAddMajor}
+          onRemoveMajor={onRemoveMajor}
+        />{' '}
       </div>
     </>
   );
@@ -378,55 +383,43 @@ function College({ onChange, onClick, resumeInfo, onAddMajor, onRemoveMajor }) {
 
 function AddedMajor({ ids, order, onRemove, onAddMajor, onRemoveMajor }) {
   return ids.map((id) => (
-    // <div key={id} className="major-content-add content-col">
-    //   <div className="content-title">전공분류</div>
-    //   <div className="select-add-wrap">
-    //     <select className="select-major" defaultValue="국어국문">
-    //       <option value="국어국문">국어국문</option>
-    //       <option value="영어영문">영어영문</option>
-    //     </select>
-    //     <button
-    //       className="close-info"
-    //       style={{ background: `url(${icon_close_green}) no-repeat 0 center` }}
-    //       onClick={() => onRemove(id, order)}
-    //     >
-    //       삭제
-    //     </button>
-    //   </div>
-    <div key={id} className="major-content">
-      <div className="title">전공분류</div>
-      <select
-        className="select-major"
-        defaultValue="non-value"
-        name="edmajor"
-        onChange={onAddMajor}
-      >
-        <option value="non-value" disabled={true}>
-          선택
-        </option>
-        <option value="어문학">어문학</option>
-        <option value="영어영문">영어영문</option>
-        <option value="중어중문">중어중문</option>
-        <option value="일어일문">일어일문</option>
-        <option value="국어국문">국어국문</option>
-        <option value="인문과학">인문과학</option>
-        <option value="사회과학">사회과학</option>
-        <option value="상경계열">상경계열</option>
-        <option value="경영경제">경영경제</option>
-        <option value="회계학">회계학</option>
-        <option value="금속/비금속공학">금속/비금속공학</option>
-        <option value="컴퓨터/시스템공학">컴퓨터/시스템공학</option>
-        <option value="기계공학">기계공학</option>
-      </select>
-      <button
-        className="close-info"
-        onClick={(e) => {
-          onRemove(id, order);
-          onRemoveMajor(e);
-        }}
-      >
-        X 삭제
-      </button>
+    <div key={id} className="major-content-add content-col">
+      <div className="content-title">전공분류</div>
+      <div className="select-add-wrap">
+        <select
+          className="select-major"
+          defaultValue="non-value"
+          name="edmajor"
+          onChange={onAddMajor}
+        >
+          <option value="non-value" disabled={true}>
+            선택
+          </option>
+          <option value="어문학">어문학</option>
+          <option value="영어영문">영어영문</option>
+          <option value="중어중문">중어중문</option>
+          <option value="일어일문">일어일문</option>
+          <option value="국어국문">국어국문</option>
+          <option value="인문과학">인문과학</option>
+          <option value="사회과학">사회과학</option>
+          <option value="상경계열">상경계열</option>
+          <option value="경영경제">경영경제</option>
+          <option value="회계학">회계학</option>
+          <option value="금속/비금속공학">금속/비금속공학</option>
+          <option value="컴퓨터/시스템공학">컴퓨터/시스템공학</option>
+          <option value="기계공학">기계공학</option>
+        </select>
+        <button
+          className="close-info"
+          style={{ background: `url(${icon_close_green}) no-repeat 0 center` }}
+          onClick={(e) => {
+            onRemove(id, order);
+            onRemoveMajor(e);
+          }}
+        >
+          삭제
+        </button>
+      </div>
     </div>
   ));
 }
@@ -480,107 +473,103 @@ function Transfer({
                 backgroundSize: `32px 32px`
               }}
               defaultValue="default-value"
+              name="beforetrans"
+              onChange={onChange}
             >
               <option value="default-value" disabled="disabled">
-                패플대학교
+                선택
               </option>
-              <option value="2">하버드</option>
-              <option value="3">옥스퍼드</option>
+              <option value="서울대">서울대</option>
+              <option value="연세대">연세대</option>
+              <option value="고려대">고려대</option>
+              <option value="서강대">서강대</option>
+              <option value="성균관대">성균관대</option>
+              <option value="한양대">한양대</option>
+              <option value="서울시립대">서울시립대</option>
+              <option value="경희대">경희대</option>
+              <option value="중앙대">중앙대</option>
+              <option value="한국외대">한국외대</option>
             </select>
           </div>
           <div className="in-school-period content-col">
             <span className="content-title">재학기간</span>
             <div className="input-wrapper">
-              <input type="month" className="in-school-period-input" />
-              <input type="month" className="in-school-period-input" />
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="beforetrans_smonth"
+              />
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="beforetrans_emonth"
+              />
             </div>
           </div>
-          <div className="title">학교명</div>
-          <select
-            className="title-input"
-            defaultValue="default-value"
-            name="beforetrans"
-            onChange={onChange}
-          >
-            <option value="default-value" disabled="disabled">
-              선택
-            </option>
-            <option value="서울대">서울대</option>
-            <option value="연세대">연세대</option>
-            <option value="고려대">고려대</option>
-            <option value="서강대">서강대</option>
-            <option value="성균관대">성균관대</option>
-            <option value="한양대">한양대</option>
-            <option value="서울시립대">서울시립대</option>
-            <option value="경희대">경희대</option>
-            <option value="중앙대">중앙대</option>
-            <option value="한국외대">한국외대</option>
-          </select>
-          <div className="in-school-period">재학기간</div>
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="beforetrans_smonth"
-          />
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="beforetrans_emonth"
-          />
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select
-            className="location-input"
-            defaultValue="default-value"
-            onChange={onChange}
-            name="beforetrans_region"
-          >
-            <option value="default-value"></option>
-            <option value="서울">서울</option>
-            <option value="경기">경기</option>
-            <option value="인천">인천</option>
-            <option value="대전">대전</option>
-            <option value="세종">세종</option>
-            <option value="충남">충남</option>
-            <option value="충북">충북</option>
-            <option value="광주">광주</option>
-            <option value="전남">전남</option>
-            <option value="전북">전북</option>
-            <option value="대구">대구</option>
-            <option value="경남">경남</option>
-            <option value="경북">경북</option>
-            <option value="강원">강원</option>
-          </select>
-        </div>
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select
-            className="select-major"
-            defaultValue="non-value"
-            name="beforetrans_major"
-            onChange={onAddMajor}
-          >
-            <option value="non-value" disabled={true}>
-              선택
-            </option>
-            <option value="어문학">어문학</option>
-            <option value="영어영문">영어영문</option>
-            <option value="중어중문">중어중문</option>
-            <option value="일어일문">일어일문</option>
-            <option value="국어국문">국어국문</option>
-            <option value="인문과학">인문과학</option>
-            <option value="사회과학">사회과학</option>
-            <option value="상경계열">상경계열</option>
-            <option value="경영경제">경영경제</option>
-            <option value="회계학">회계학</option>
-            <option value="금속/비금속공학">금속/비금속공학</option>
-            <option value="컴퓨터/시스템공학">컴퓨터/시스템공학</option>
-            <option value="기계공학">기계공학</option>
-          </select>
-          <button className="add-major" onClick={() => onCreate(firstArea)}>
-            전공추가
-          </button>
+        <div className="second-row">
+          <div className="location content-col">
+            <div className="location-title content-title">소재지</div>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+              onChange={onChange}
+              name="beforetrans_region"
+            >
+              <option value="default-value"></option>
+              <option value="서울">서울</option>
+              <option value="경기">경기</option>
+              <option value="인천">인천</option>
+              <option value="대전">대전</option>
+              <option value="세종">세종</option>
+              <option value="충남">충남</option>
+              <option value="충북">충북</option>
+              <option value="광주">광주</option>
+              <option value="전남">전남</option>
+              <option value="전북">전북</option>
+              <option value="대구">대구</option>
+              <option value="경남">경남</option>
+              <option value="경북">경북</option>
+              <option value="강원">강원</option>
+            </select>
+          </div>
+          <div className="major-content content-col">
+            <div className="major-name content-title">전공분류</div>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="non-value"
+                name="beforetrans_major"
+                onChange={onAddMajor}
+              >
+                <option value="non-value" disabled={true}>
+                  선택
+                </option>
+                <option value="어문학">어문학</option>
+                <option value="영어영문">영어영문</option>
+                <option value="중어중문">중어중문</option>
+                <option value="일어일문">일어일문</option>
+                <option value="국어국문">국어국문</option>
+                <option value="인문과학">인문과학</option>
+                <option value="사회과학">사회과학</option>
+                <option value="상경계열">상경계열</option>
+                <option value="경영경제">경영경제</option>
+                <option value="회계학">회계학</option>
+                <option value="금속/비금속공학">금속/비금속공학</option>
+                <option value="컴퓨터/시스템공학">컴퓨터/시스템공학</option>
+                <option value="기계공학">기계공학</option>
+              </select>
+              <button className="add-major" onClick={() => onCreate(firstArea)}>
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={idsOne} order={firstArea} onRemove={onRemove} />
 
@@ -680,89 +669,111 @@ function University({
   return (
     <>
       <div className="education-container">
-        <div className="name-period-content">
-          <div className="level">대학교</div>
-          <div className="title">학교명</div>
-          <select
-            className="title-input"
-            defaultValue="default-value"
-            name="university"
-            onChange={onChange}
-          >
-            <option value="default-value" disabled="disabled">
-              선택
-            </option>
-            <option value="서울대">서울대</option>
-            <option value="카이스트">카이스트</option>
-            <option value="포항공대">포항공대</option>
-          </select>
+        <div className="first-row content-row">
+          <div className="level">
+            <span className="content-title">대학교</span>
+          </div>
+          <div className="name-school content-col">
+            <span className="content-title">학교명</span>
+            <select
+              className="title-input"
+              style={{
+                background: `url(${icon_search}) no-repeat 98% center`,
+                backgroundSize: `32px 32px`
+              }}
+              defaultValue="default-value"
+              name="university"
+              onChange={onChange}
+            >
+              <option value="default-value" disabled="disabled">
+                선택
+              </option>
+              <option value="서울대">서울대</option>
+              <option value="카이스트">카이스트</option>
+              <option value="포항공대">포항공대</option>
+            </select>
+          </div>
 
-          <div className="in-school-period">재학기간</div>
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="uni_smonth"
-            onChange={onChange}
-          />
-          <input
-            type="month"
-            className="in-school-period-input"
-            name="uni_emonth"
-            onChange={onChange}
-          />
+          <div className="in-school-period content-col">
+            <span className="content-title">재학기간</span>
+            <div className="input-wrapper">
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="uni_smonth"
+                onChange={onChange}
+              />
+              <input
+                type="month"
+                className="in-school-period-input"
+                name="uni_emonth"
+                onChange={onChange}
+              />
+            </div>
+          </div>
         </div>
-        <div className="location">
-          <div className="location-title">소재지</div>
-          <select
-            className="location-input"
-            defaultValue="default-value"
-            onChange={onChange}
-            name="uni_region"
-          >
-            <option value="default-value">선택</option>
-            <option value="서울">서울</option>
-            <option value="경기">경기</option>
-            <option value="인천">인천</option>
-            <option value="대전">대전</option>
-            <option value="세종">세종</option>
-            <option value="충남">충남</option>
-            <option value="충북">충북</option>
-            <option value="광주">광주</option>
-            <option value="전남">전남</option>
-            <option value="전북">전북</option>
-            <option value="대구">대구</option>
-            <option value="경남">경남</option>
-            <option value="경북">경북</option>
-            <option value="강원">강원</option>
-          </select>
-        </div>
+        <div className="second-row">
+          <div className="location content-col">
+            <span className="content-title">소재지</span>
+            <select
+              className="location-input"
+              style={{
+                background: `url(${icon_arrow_down}) no-repeat 100% 0`
+              }}
+              defaultValue="default-value"
+              onChange={onChange}
+              name="uni_region"
+            >
+              <option value="default-value">선택</option>
+              <option value="서울">서울</option>
+              <option value="경기">경기</option>
+              <option value="인천">인천</option>
+              <option value="대전">대전</option>
+              <option value="세종">세종</option>
+              <option value="충남">충남</option>
+              <option value="충북">충북</option>
+              <option value="광주">광주</option>
+              <option value="전남">전남</option>
+              <option value="전북">전북</option>
+              <option value="대구">대구</option>
+              <option value="경남">경남</option>
+              <option value="경북">경북</option>
+              <option value="강원">강원</option>
+            </select>
+          </div>
 
-        <div className="major-content">
-          <div className="title">전공분류</div>
-          <select
-            className="select-major"
-            defaultValue="non-value"
-            name="uni_major"
-            onChange={onAddMajor}
-          >
-            <option value="non-value">선택</option>
-            <option value="어문학">어문학</option>
-            <option value="영어영문">영어영문</option>
-            <option value="중어중문">중어중문</option>
-            <option value="일어일문">일어일문</option>
-            <option value="국어국문">국어국문</option>
-            <option value="인문과학">인문과학</option>
-            <option value="사회과학">사회과학</option>
-            <option value="상경계열">상경계열</option>
-            <option value="경영경제">경영경제</option>
-            <option value="회계학">회계학</option>
-            <option value="금속/비금속공학">금속/비금속공학</option>
-            <option value="컴퓨터/시스템공학">컴퓨터/시스템공학</option>
-            <option value="기계공학">기계공학</option>
-          </select>
-          <button className="add-major" onClick={onCreate}>
-            전공추가
-          </button>
+          <div className="major-content content-col">
+            <span className="content-title">전공분류</span>
+            <div className="select-add-wrap">
+              <select
+                className="select-major"
+                style={{
+                  background: `url(${icon_arrow_down}) no-repeat 100% 0`
+                }}
+                defaultValue="non-value"
+                name="uni_major"
+                onChange={onAddMajor}
+              >
+                <option value="non-value">선택</option>
+                <option value="어문학">어문학</option>
+                <option value="영어영문">영어영문</option>
+                <option value="중어중문">중어중문</option>
+                <option value="일어일문">일어일문</option>
+                <option value="국어국문">국어국문</option>
+                <option value="인문과학">인문과학</option>
+                <option value="사회과학">사회과학</option>
+                <option value="상경계열">상경계열</option>
+                <option value="경영경제">경영경제</option>
+                <option value="회계학">회계학</option>
+                <option value="금속/비금속공학">금속/비금속공학</option>
+                <option value="컴퓨터/시스템공학">컴퓨터/시스템공학</option>
+                <option value="기계공학">기계공학</option>
+              </select>
+              <button className="add-major" onClick={onCreate}>
+                전공추가
+              </button>
+            </div>
+          </div>
         </div>
         <AddedMajor ids={ids} onRemove={onRemove} onAddMajor={onAddMajor} />
       </div>

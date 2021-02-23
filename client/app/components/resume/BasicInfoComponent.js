@@ -171,7 +171,7 @@ function BasicInfoComponent({
                 )}
               </div>
               {/* <button className="picture-submit">등록</button> */}
-              <label className="picture-submit" for="change-bt">
+              <label className="picture-submit" htmlFor="change-bt">
                 변경
               </label>
               <input
@@ -227,7 +227,7 @@ function BasicInfoComponent({
                   name="birthmonth"
                   placeholder="yyyy-mm-dd"
                   onChange={onChange}
-                  value={resumeInfo.birth}
+                  value={resumeInfo.birthmonth}
                 ></input>
               </div>
               <div className="content-phone content-col">

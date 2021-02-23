@@ -61,16 +61,19 @@
   margin-right: 20px;
 }
 .root .form-container .form-content {
+  display: flex;
+  flex-flow: wrap row;
 }
 .root .form-container .form-content .form {
   width: 160px;
   height: 150px;
   background: #f0f0f0;
-  border: 1px solid #dddddd;
+  border: 1px solid #ccc;
 }
 .root .form-container label {
   display: inline-block;
   text-align: center;
+  flex-grow: 1;
   width: 80px;
   height: 40px;
   background: #009999;
@@ -79,8 +82,17 @@
   color: #fff;
   font: normal normal 500 13px/40px 'Noto Sans KR', sans-serif;
 }
-.root .form-container label:nth-of-type(2) {
+.root .form-container button {
+  display: block;
+  text-align: center;
+  flex-grow: 1;
+  width: 80px;
+  height: 40px;
   background: #aaa;
+  outline: none;
+  border: none;
+  color: #fff;
+  font: normal normal 500 13px/40px 'Noto Sans KR', sans-serif;
 }
 .root .input-container {
   flex: 1 1 auto;
@@ -121,10 +133,9 @@
 .root .content-birth .input-birth {
   width: 250px;
   height: 40px;
-  --background: #f0f0f0;
   border: 1px solid #dddddd;
   font: normal normal 500 13px/16px 'Noto Sans KR', sans-serif;
-  padding-left: 16px;
+  padding: 0 16px;
   color: #666666;
 }
 .root .content-phone {

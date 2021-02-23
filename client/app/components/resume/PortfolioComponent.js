@@ -16,9 +16,9 @@ function PortfolioComponent({ resumeInfo, onClick, onChange }) {
     if (isClicked === true) {
       return (
         <>
-          <div className="url-link-container">
-            <div className="url-link-content">
-              <span className="url-link-title">URL 링크</span>
+          <div className="url-link-container content-row">
+            <div className="url-link-content content-col">
+              <span className="content-title">URL 링크</span>
               <input
                 className="link-input"
                 placeholder="http://"
@@ -35,7 +35,7 @@ function PortfolioComponent({ resumeInfo, onClick, onChange }) {
             <span className="content-title">첨부파일</span>
             <input className="file-input" />
             <button className="add-file">파일추가</button>
-          </div>{' '}
+          </div>
         </>
       );
     } else {
