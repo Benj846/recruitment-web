@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import '../../styles/Resume.css';
 import ResumeComponent from './ResumeComponent';
 import ResumeFooter from './ResumeFooter';
+const axios = require('axios');
 
 function Resume({ match }) {
   //const { uid } = useParams();
@@ -10,17 +11,22 @@ function Resume({ match }) {
     name: '',
     email: '',
     gender: '',
-    birth: '',
+    birthmonth: '',
     phone: '',
     address: '',
     military: '',
     company: '',
     lposition: '',
-    csdate: '',
-    cedate: '',
+    csmonth: '',
+    cemonth: '',
+    emtype: '',
     present: false,
     levelThree: [],
     levelFour: [],
+    job_smonth: '',
+    job_emonth: '',
+    main_result: '',
+    detail_desc: [],
     dmonth: '',
     dname: '',
     dlevel: '',
@@ -34,12 +40,24 @@ function Resume({ match }) {
     semonth: '',
     sname: '',
     slevel: '',
+    sdesc: '',
     intro: '',
     etype: '',
-    high: '',
+    school: '',
     edsmonth: '',
     edemonth: '',
-    edregion: ''
+    edregion: '',
+    edmajor: [],
+    beforetrans: '',
+    beforetrans_smonth: '',
+    beforetrans_emonth: '',
+    beforetrans_region: '',
+    beforetrans_major: '',
+    university: '',
+    uni_smonth: '',
+    uni_emonth: '',
+    uni_region: '',
+    uni_major: ''
   });
 
   const onCloseJob = (index) => {};
@@ -81,12 +99,39 @@ function Resume({ match }) {
     }
   };
 
+  const onAddMajor = (e) => {
+    const { value } = e.target;
+    setResumeInfo({ ...resumeInfo, edmajor: [...resumeInfo.edmajor, value] });
+  };
+
+  const onRemoveMajor = (e) => {
+    const { value } = e.target;
+    //console.log('onRemoveMajor:value', value);
+    setResumeInfo({
+      ...resumeInfo,
+      edmajor: resumeInfo.edmajor.filter((major) => major !== value)
+    });
+  };
+
   const onChange = (e) => {
     const { name, value } = e.target;
-    console.log('name', name);
-    console.log('value', value);
-    setResumeInfo({ ...resumeInfo, [name]: value });
+    if (name.includes('month')) {
+      let numValue = value.replaceAll('-', '');
+      numValue = parseInt(numValue, 10);
+      setResumeInfo({ ...resumeInfo, [name]: numValue });
+    } else {
+      setResumeInfo({ ...resumeInfo, [name]: value });
+    }
   };
+
+  const onChangeDetailDesc = (e) => {
+    const { value } = e.target;
+    setResumeInfo({
+      ...resumeInfo,
+      detail_desc: [...resumeInfo.edmajor, value]
+    });
+  };
+
   const onClick = (e) => {
     //alert(e.target.textContent);
     setResumeInfo({ ...resumeInfo, [e.target.name]: e.target.textContent });
@@ -95,6 +140,157 @@ function Resume({ match }) {
     // console.log('e.target.checked', e.target.checked);
     // console.log('e.target.value', e.target.value);
     setResumeInfo({ ...resumeInfo, present: e.target.checked });
+  };
+
+  const insertResume = () => {
+    insertBasicInfo();
+    insertEducation();
+    insertCareer();
+    insertCertificate();
+    insertExam();
+    insertSkill();
+    insertIntroduction();
+  };
+
+  const insertBasicInfo = async () => {
+    const info = {
+      email: resumeInfo.email,
+      phone: resumeInfo.phone,
+      military: parseInt(resumeInfo.military, 10)
+    };
+    try {
+      const response = await axios.post('/resume/insertbasic', { info: info });
+      //const dataArr = response.data;
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const insertEducation = async () => {
+    console.log('etype', resumeInfo.etype);
+    console.log('typeof etype', typeof resumeInfo.etype);
+    console.log('typeof etype', typeof parseInt(resumeInfo.etype, 10));
+    const info = {
+      email: resumeInfo.email,
+      etype: parseInt(resumeInfo.etype, 10),
+      university: resumeInfo.university,
+      uni_major: resumeInfo.uni_major,
+      uni_region: resumeInfo.uni_region,
+      uni_smonth: resumeInfo.uni_smonth,
+      uni_emonth: resumeInfo.uni_emonth
+    };
+    try {
+      const response = await axios.post('/resume/insertedu', { info: info });
+      //const dataArr = response.data;
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const insertCareer = async () => {
+    let stringLevelThree = '';
+    let stringLevelFour = '';
+    resumeInfo.levelThree.forEach(
+      (data) => (stringLevelThree = data.title + ',' + stringLevelThree)
+    );
+    resumeInfo.levelFour.forEach(
+      (data) => (stringLevelFour = data.title + ',' + stringLevelFour)
+    );
+
+    const info = {
+      email: resumeInfo.email,
+      levelThree: stringLevelThree,
+      company: resumeInfo.company,
+      emtype: parseInt(resumeInfo.emtype, 10),
+      lposition: resumeInfo.lposition,
+      present: resumeInfo.present,
+      levelFour: stringLevelFour,
+      main_result: resumeInfo.main_result,
+      job_smonth: resumeInfo.job_smonth,
+      job_emonth: resumeInfo.job_emonth,
+      csmonth: resumeInfo.csmonth,
+      cemonth: resumeInfo.cemonth
+    };
+    try {
+      const response = await axios.post('/resume/insertcareer', { info: info });
+      //const dataArr = response.data;
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const insertCertificate = async () => {
+    const info = {
+      email: resumeInfo.email,
+      dmonth: resumeInfo.dmonth,
+      dname: resumeInfo.dname,
+      dlevel: resumeInfo.dlevel,
+      dagency: resumeInfo.dagency
+    };
+    try {
+      const response = await axios.post('/resume/insertcerti', { info: info });
+      //const dataArr = response.data;
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const insertExam = async () => {
+    const info = {
+      email: resumeInfo.email,
+      exmonth: resumeInfo.exmonth,
+      exname: resumeInfo.exname,
+      exlevel: resumeInfo.exlevel,
+      exagency: resumeInfo.exagency
+    };
+    try {
+      const response = await axios.post('/resume/insertexam', { info: info });
+      //const dataArr = response.data;
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const insertSkill = async () => {
+    const info = {
+      email: resumeInfo.email,
+      ssmonth: resumeInfo.ssmonth,
+      semonth: resumeInfo.semonth,
+      sname: resumeInfo.sname,
+      slevel: resumeInfo.slevel,
+      sdesc: resumeInfo.sdesc
+    };
+    try {
+      const response = await axios.post('/resume/insertskill', { info: info });
+      //const dataArr = response.data;
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const insertIntroduction = async () => {
+    const info = {
+      email: resumeInfo.email,
+      intro: resumeInfo.intro
+    };
+    try {
+      const response = await axios.post('/resume/insertintro', { info: info });
+      //const dataArr = response.data;
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onSubmit = (e) => {
+    insertResume();
+    alert('등록되었습니다');
   };
 
   const { params } = match;
@@ -110,10 +306,12 @@ function Resume({ match }) {
           onClickCheckBox={onClickCheckBox}
           onSelectJobs={onSelectJobs}
           onRemoveJobs={onRemoveJobs}
+          onAddMajor={onAddMajor}
+          onRemoveMajor={onRemoveMajor}
         />
       </section>
-      <ResumeFooter />
-      {console.log(resumeInfo)}
+      <ResumeFooter onSubmit={onSubmit} />
+      {/* {console.log(resumeInfo)} */}
     </section>
   );
 }

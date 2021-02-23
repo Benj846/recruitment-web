@@ -238,6 +238,156 @@ app.post('/member/getname', async (req, res, next) => {
   }
 });
 
+// 이력서 등록
+// 기본 정보
+app.post('/resume/insertbasic', async (req, res, next) => {
+  const { info } = req.body;
+  // console.log('info.email', info.email);
+  // console.log('info.phone', info.phone);
+  // console.log('info.military', typeof info.military);
+  try {
+    const [dataList, fieldPacket] = await pool.query(
+      `INSERT INTO fapply.TB_IND_RESUME 
+    (UID, PHONE, MILITARY, ADDR_ZIP, ADDR_ROAD, ADDR_DETAIL, REG_DATE) 
+    VALUES(?, ?, ?, '22001', '인천 연수구 컨벤시아대로42번길 8', '102-415', 20210223)`,
+      [info.email, info.phone, info.military]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
+// 학력사항
+app.post('/resume/insertedu', async (req, res, next) => {
+  const { info } = req.body;
+  console.log('info.etype type', typeof info.etype);
+  try {
+    const [
+      dataList,
+      fieldPacket
+    ] = await pool.query(
+      'INSERT INTO fapply.TB_IND_RSM_EDUC (UID, RID, `TYPE`, UNIV_NAME, MAJOR, LOCATION, START_DATE, END_DATE)' +
+        'VALUES(?, 1, ?, ?, ?, ?, ?, ?)',
+      [
+        info.email,
+        info.etype,
+        info.university,
+        info.uni_major,
+        info.uni_region,
+        info.uni_smonth,
+        info.uni_emonth
+      ]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
+// 경력사항
+app.post('/resume/insertcareer', async (req, res, next) => {
+  const { info } = req.body;
+  try {
+    const [
+      dataList,
+      fieldPacket
+    ] = await pool.query(
+      'INSERT INTO fapply.TB_IND_RSM_CARR (UID, RID, WORK_NAME, COR_NAME, EMP_TYPE, `POSITION`,' +
+        'WORK_YN, WORK_LVL4_DETAIL, ACHIEVEMENT, WSTART_DATE, WEND_DATE, CSTART_DATE, CEND_DATE)' +
+        'VALUES(?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [
+        info.email,
+        info.levelThree,
+        info.company,
+        info.emtype,
+        info.lposition,
+        info.present,
+        info.levelFour,
+        info.main_result,
+        info.job_smonth,
+        info.job_emonth,
+        info.csmonth,
+        info.cemonth
+      ]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+// 자격면허
+app.post('/resume/insertcerti', async (req, res, next) => {
+  const { info } = req.body;
+  try {
+    const [dataList, fieldPacket] = await pool.query(
+      `INSERT INTO fapply.TB_IND_RSM_CERT (UID, RID, CDATE, CNAME, CLEVEL, CAUTH) 
+      VALUES(?, 1, ?, ?, ?, ?)`,
+      [info.email, info.dmonth, info.dname, info.dlevel, info.dagency]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
+// 공인시험
+app.post('/resume/insertexam', async (req, res, next) => {
+  const { info } = req.body;
+  try {
+    const [dataList, fieldPacket] = await pool.query(
+      `INSERT INTO fapply.TB_IND_RSM_AUTH (UID, RID, CDATE, CNAME, CLEVEL, CAUTH) 
+      VALUES(?, 1, ?, ?, ?, ?)`,
+      [info.email, info.exmonth, info.exname, info.exlevel, info.exagency]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
+// 보유기술
+app.post('/resume/insertskill', async (req, res, next) => {
+  const { info } = req.body;
+  try {
+    const [dataList, fieldPacket] = await pool.query(
+      `INSERT INTO fapply.TB_IND_RSM_TECH (UID, RID, CSTART_DATE, CEND_DATE, CNAME, CLEVEL, CDESC) 
+      VALUES(?, 1, ?, ?, ?, ?, ?)`,
+      [
+        info.email,
+        info.ssmonth,
+        info.semonth,
+        info.sname,
+        info.slevel,
+        info.sdesc
+      ]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
+// 논문/포트폴리오 x
+
+// 자기소개서
+app.post('/resume/insertintro', async (req, res, next) => {
+  const { info } = req.body;
+
+  try {
+    const [
+      dataList,
+      fieldPacket
+    ] = await pool.query(
+      `INSERT INTO fapply.TB_IND_RSM_INTD (UID, RID, CDESC) VALUES(?, 1, ?)`,
+      [info.email, info.intro]
+    );
+    res.send(dataList);
+  } catch (err) {
+    console.log(res.status(500).json(err));
+  }
+});
+
 // 이 부분을 async로 고쳐야 함
 // app.post('/member/count', (req, res) => {
 //   let sql = `SELECT COUNT(*) COUNT from TB_CMN_MEMBER WHERE UID = ?`;

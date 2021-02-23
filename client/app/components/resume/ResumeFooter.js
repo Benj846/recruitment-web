@@ -1,10 +1,12 @@
 import React from 'react';
 import '../../styles/ResumeFooter';
 
-function ResumeFooter() {
+function ResumeFooter({ onSubmit }) {
   return (
     <footer className="resume-footer">
-      <button className="resume-submit">저장</button>
+      <button className="resume-submit" onClick={onSubmit}>
+        저장
+      </button>
     </footer>
   );
 }

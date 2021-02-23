@@ -17,7 +17,9 @@ function ResumeComponent({
   onChange,
   onClickCheckBox,
   onSelectJobs,
-  onRemoveJobs
+  onRemoveJobs,
+  onAddMajor,
+  onRemoveMajor
 }) {
   return (
     <article id="resume-content">
@@ -32,6 +34,8 @@ function ResumeComponent({
         resumeInfo={resumeInfo}
         onChange={onChange}
         onClick={onClick}
+        onAddMajor={onAddMajor}
+        onRemoveMajor={onRemoveMajor}
       />
       <CareerComponent
         resumeInfo={resumeInfo}
