@@ -45,29 +45,6 @@ function HeadhuntingComponent() {
     }
   };
 
-  const GET_TEST_WORK = gql`
-    {
-      getRSM_CARR {
-        id
-        COR_NAME
-        COR_IDX
-        CSTART_DATE
-        CEND_DATE
-        WRK_LV3
-        WRK_LV4
-        NAME
-        WRK_STATUS
-        LGN_DATE
-        UID
-        UNIV_NAME
-        UNIV_IDX1
-        UNIV_IDX2
-        TYPE
-        MAJOR
-      }
-    }
-  `;
-  const { data, loading, error } = useQuery(GET_TEST_WORK);
   return (
     <div className="headhunt-container">
       {/* <div className="filter-container">
@@ -182,95 +159,124 @@ function HeadhuntingComponent() {
               <button className="tab-item tab-01">제안수락 0명</button>
               <button className="tab-item tab-01">채용전형 0명</button>
             </div>
-
-            {loading && <p>loading</p>}
-            {error && <p>error message is : {error.message}</p>}
-            {!loading &&
-              data.getRSM_CARR.map((name) => (
-                <div key={name.id} className="result-list">
-                  <input
-                    className="list-checkbox"
-                    type="checkbox"
-                    name="list-checkbox"
-                  />
-                  <div className="left-result">
-                    <img className="list-img" src={profilePic} alt="" />
-                    <span className="name-span">{name.NAME}</span>
-                    <span className="status-span">{name.WRK_STATUS}</span>
-                  </div>
-                  <div className="middle-result">
-                    <div className="title">
-                      <span className="recent-company-title">최근회사</span>
-                      <span className="recent-company">{name.COR_NAME}</span>
-                      <span className="recent-company-date">
-                        ({name.CSTART_DATE} ~ {name.CEND_DATE})
-                      </span>
-                      <span className="job-level">{name.WRK_LV3}</span>
-                      <span className="recent-login">
-                        최근접속일 {name.LGN_DATE}
-                      </span>
-                    </div>
-                    <div className="bubble-wrap">
-                      <span className="level4-bubble">{name.WRK_LV4}</span>
-                      <span className="level4-bubble">{name.WRK_LV4}</span>
-                      <span className="level4-bubble">{name.WRK_LV4}</span>
-                    </div>
-                    <div className="result-box">
-                      <div className="experience-wrap">
-                        <span
-                          className="total"
-                          style={{
-                            background: `url(${icon_career}) no-repeat 0 1px`,
-                            paddingLeft: `24px`
-                          }}
-                        >
-                          총 경력 8년 1개월
-                        </span>
-                        <span className="experience">
-                          {name.COR_NAME}(5년 11개월)
-                        </span>
-                      </div>
-                      <div className="edu-detail">
-                        <span
-                          className="name"
-                          style={{
-                            background: `url(${icon_edu}) no-repeat 0 1px`,
-                            paddingLeft: `24px`
-                          }}
-                        >
-                          {name.UNIV_NAME}({name.TYPE})
-                        </span>
-                        <span className="major">{name.MAJOR}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="right-result">
-                    <button
-                      className="interests"
-                      style={{
-                        background: `url(${icon_interests}) no-repeat 38px center`,
-                        paddingLeft: `22px`
-                      }}
-                    >
-                      관심인재
-                    </button>
-                    <button
-                      className="interests"
-                      style={{
-                        background: `url(${icon_memo}) no-repeat 38px center`,
-                        paddingLeft: `22px`
-                      }}
-                    >
-                      메모하기
-                    </button>
-                    <button className="interests">이력없음</button>
-                  </div>
-                </div>
-              ))}
+            <ResultLists />
           </div>
         </div>
       </div>
     </div>
   );
 }
+
 export default HeadhuntingComponent;
+
+const ResultLists = () => {
+  const GET_TEST_WORK = gql`
+    {
+      getRSM_CARR {
+        id
+        COR_NAME
+        COR_IDX
+        CSTART_DATE
+        CEND_DATE
+        WRK_LV3
+        WRK_LV4
+        NAME
+        WRK_STATUS
+        LGN_DATE
+        UID
+        UNIV_NAME
+        UNIV_IDX1
+        UNIV_IDX2
+        TYPE
+        MAJOR
+      }
+    }
+  `;
+  const { data, loading, error } = useQuery(GET_TEST_WORK);
+  return (
+    <div className="Component-wrapper">
+      {loading && <p>loading</p>}
+      {error && <p>error message is : {error.message}</p>}
+      {!loading &&
+        data.getRSM_CARR.map((name) => (
+          <div key={name.id} className="result-list">
+            <input
+              className="list-checkbox"
+              type="checkbox"
+              name="list-checkbox"
+            />
+            <div className="left-result">
+              <img className="list-img" src={profilePic} alt="" />
+              <span className="name-span">{name.NAME}</span>
+              <span className="status-span">{name.WRK_STATUS}</span>
+            </div>
+            <div className="middle-result">
+              <div className="title">
+                <span className="recent-company-title">최근회사</span>
+                <span className="recent-company">{name.COR_NAME}</span>
+                <span className="recent-company-date">
+                  ({name.CSTART_DATE} ~ {name.CEND_DATE})
+                </span>
+                <span className="job-level">{name.WRK_LV3}</span>
+                <span className="recent-login">최근접속일 {name.LGN_DATE}</span>
+              </div>
+              <div className="bubble-wrap">
+                <span className="level4-bubble">{name.WRK_LV4}</span>
+                <span className="level4-bubble">{name.WRK_LV4}</span>
+                <span className="level4-bubble">{name.WRK_LV4}</span>
+              </div>
+              <div className="result-box">
+                <div className="experience-wrap">
+                  <span
+                    className="total"
+                    style={{
+                      background: `url(${icon_career}) no-repeat 0 1px`,
+                      paddingLeft: `24px`
+                    }}
+                  >
+                    총 경력 8년 1개월
+                  </span>
+                  <span className="experience">
+                    {name.COR_NAME}(5년 11개월)
+                  </span>
+                </div>
+                <div className="edu-detail">
+                  <span
+                    className="name"
+                    style={{
+                      background: `url(${icon_edu}) no-repeat 0 1px`,
+                      paddingLeft: `24px`
+                    }}
+                  >
+                    {name.UNIV_NAME}({name.TYPE})
+                  </span>
+                  <span className="major">{name.MAJOR}</span>
+                </div>
+              </div>
+            </div>
+            <div className="right-result">
+              <button
+                className="interests"
+                style={{
+                  background: `url(${icon_interests}) no-repeat 38px center`,
+                  paddingLeft: `22px`
+                }}
+              >
+                관심인재
+              </button>
+              <button
+                className="interests"
+                style={{
+                  background: `url(${icon_memo}) no-repeat 38px center`,
+                  paddingLeft: `22px`
+                }}
+              >
+                메모하기
+              </button>
+              <button className="interests">이력없음</button>
+            </div>
+          </div>
+        ))}
+    </div>
+  );
+};
