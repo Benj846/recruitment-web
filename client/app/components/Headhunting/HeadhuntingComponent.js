@@ -15,7 +15,7 @@ function HeadhuntingComponent() {
   const [btn, setbtn] = useState(false);
   const [generalBtn, setgeneralBtn] = useState(true);
   const [toggle, settoggle] = useState(1);
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(true);
   const [storeData, setStoreData] = useState();
   const JOB = 1;
   const ADDRESS = 2;
@@ -133,6 +133,14 @@ function HeadhuntingComponent() {
                   전체선택
                 </button>
                 <button className="summit-button">관심인재 등록</button>
+                <button
+                  className="summit-button"
+                  onClick={() => {
+                    setCheck(!check);
+                  }}
+                >
+                  제안 보내기
+                </button>
               </div>
               <div className="filter-wrapper">
                 <div className="filter filter-01">
@@ -163,6 +171,27 @@ function HeadhuntingComponent() {
           </div>
         </div>
       </div>
+      {check ? (
+        <div className="popup-propos">
+          <div className="popup-content">
+            <div className="banner">
+              <span className="name">채용제안 작성하기</span>
+            </div>
+            <div className="saved-info">
+              불러오기
+              <br />
+              <select name="saved-list" id="nothing">
+                <option value="생산관리(보냄)">생산관리(보냄)</option>
+                <option value="생산관리(보냄)">생산관리(보냄)</option>
+                <option value="생산관리(보냄)">생산관리(보냄)</option>
+              </select>
+            </div>
+            <div className="basic">기본정보</div>
+          </div>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }

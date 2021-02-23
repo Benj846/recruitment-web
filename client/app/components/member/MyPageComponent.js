@@ -322,7 +322,7 @@ function Profile() {
             </div>
             <div className="buttons">
               {/* <button className="change-btn">변경</button> */}
-              <label className="change-btn" for="change-bt">
+              <label className="change-btn" htmlFor="change-bt">
                 변경
               </label>
               <input
