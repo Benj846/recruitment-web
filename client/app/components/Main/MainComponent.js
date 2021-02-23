@@ -1,7 +1,5 @@
 import React, { useState, useRef } from 'react';
-// import { ApolloProvider, Query } from 'react-apollo';
-// import gql from 'graphql-tag';
-// import ApolloClient from 'apollo-boost';
+import { gql, useQuery } from '@apollo/client';
 import '../../styles/MainComponent';
 import Footer from '../Footer/Footer';
 //import 'react-slideshow-image/dist/styles.css';
@@ -537,11 +535,50 @@ const JobTree = () => {
   const [active1, setActive1] = useState(false);
   const [active2, setActive2] = useState(false);
   const [active3, setActive3] = useState(false);
+  const [LV_1_ID, setLV_1_ID] = useState();
+  const [LV_2_ID, setLV_2_ID] = useState();
+  const GET_DEFAULT = gql`
+    {
+      getDefaultWork(LV: 1) {
+        ID
+        VAL
+      }
+    }
+  `;
+  const GET_LV2_WORK = gql`
+    query getVariableLv2($lv1id: Int) {
+      getLevelWork(ID: $lv1id, LV: 2) {
+        ID
+        LV
+        VAL
+      }
+    }
+  `;
+  const GET_LV3_WORK = gql`
+    query getVariableLv2($lv1id: Int) {
+      getLevelWork(ID: $lv1id, LV: 3) {
+        ID
+        LV
+        VAL
+      }
+    }
+  `;
+  const { data, loading, error } = useQuery(GET_DEFAULT);
+  const {
+    data: LV2Data,
+    error: LV2Error,
+    loading: LV2Loading
+  } = useQuery(GET_LV2_WORK, { variables: { lv1id: LV_1_ID } });
 
+  const {
+    data: LV3Data,
+    error: LV3Error,
+    loading: LV3Loading
+  } = useQuery(GET_LV3_WORK, { variables: { lv1id: LV_2_ID } });
   const addFuntion = () => {
     return appendRef.current.append();
   };
-  // const buttonItems = numbers.map((number) => (
+
   //   <ApolloProvider client={client}>
   //     <Query
   //       query={gql`
@@ -556,7 +593,8 @@ const JobTree = () => {
   //       {({ loading, error, data }) => {
   //         if (loading) return <p>Loading</p>;
   //         if (error) return <p>error:{error.message}</p>;
-  //         return data.getCommonWork.map(({ ID, VAL }) => (
+  //         return
+  // data.getCommonWork.map(({ ID, VAL }) => (
   //           // <button
   //           //   key={number.toString()}
   //           //   className="lv1"
@@ -619,12 +657,65 @@ const JobTree = () => {
   ));
   return (
     <div className="main-btn-cont">
-      <div className="main-btn-wrap active">{}</div>
+      <div className="main-btn-wrap active">
+        {loading && <div>loading</div>}
+        {error && <div>error</div>}
+        {!loading &&
+          data.getDefaultWork.map(({ ID, VAL }) => (
+            <button
+              key={ID}
+              className={`lv1 ${lvl1 === ID ? 'active' : null}`}
+              onClick={() => {
+                setLvl1(ID);
+                setActive2(false);
+                setLvl2(ID);
+                setCurLvl(2);
+                setLV_1_ID(ID);
+              }}
+            >
+              {VAL}
+            </button>
+          ))}
+      </div>
       <div className={`main-btn-wrap ${curLvl > 1 ? 'active' : null}`}>
-        {button2Items}
+        {LV2Loading && <div></div>}
+        {LV2Error && <div>error</div>}
+        {!LV2Loading &&
+          LV2Data.getLevelWork.map(({ ID, VAL }) => (
+            <button
+              key={ID}
+              className={`lv2 ${lvl2 === ID ? 'active' : null}`}
+              onClick={() => {
+                setLvl1(ID);
+                setActive2(false);
+                setLvl2(ID);
+                setCurLvl(2);
+                setLV_2_ID(ID);
+              }}
+            >
+              {VAL}
+              {console.log(LV_2_ID)}
+            </button>
+          ))}
       </div>
       <div className={`main-btn-wrap ${curLvl > 2 ? 'active' : null}`}>
-        {button3Items}
+        {LV3Loading && <div></div>}
+        {LV3Error && <div>error</div>}
+        {!LV3Loading &&
+          LV3Data.getLevelWork.map(({ ID, VAL }) => (
+            <button
+              key={ID}
+              className={`lv3 ${lvl3 === ID ? 'active' : null}`}
+              onClick={() => {
+                setLvl1(ID);
+                setActive2(false);
+                setLvl2(ID);
+                setCurLvl(3);
+              }}
+            >
+              {VAL}
+            </button>
+          ))}
       </div>
       <div ref={appendRef} className="ad-content-append"></div>
     </div>

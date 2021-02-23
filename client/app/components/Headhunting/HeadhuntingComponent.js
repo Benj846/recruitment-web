@@ -48,6 +48,7 @@ function HeadhuntingComponent() {
   const [actSkChecked, setActSkChecked] = useState(false);
   const [recentChecked, setRecentChecked] = useState(false);
   const [listSelected, setListSelected] = useState(false);
+  const [search, setsearch] = useState(false);
   return (
     <div className="headhunt-container">
       {/* <div className="filter-container">
@@ -66,6 +67,7 @@ function HeadhuntingComponent() {
         <button
           className="search-btn"
           onChange={(e) => setKeyword(e.target.value)}
+          onClick={() => setsearch(true)}
         >
           <span className="search-text">검색</span>
         </button>
@@ -187,7 +189,8 @@ function HeadhuntingComponent() {
               <button className="tab-item tab-01">제안수락 0명</button>
               <button className="tab-item tab-01">채용전형 0명</button>
             </div>
-            <ResultLists />
+            {search ? <ResultLists /> : <div></div>}
+            {/* <ResultLists /> */}
           </div>
         </div>
       </div>
@@ -206,7 +209,16 @@ function HeadhuntingComponent() {
                 <option value="생산관리(보냄)">생산관리(보냄)</option>
               </select>
             </div>
-            <div className="basic">기본정보</div>
+            <div className="basic">기본정보1</div>
+            <div className="basic">기본정보2</div>
+            <div className="basic">기본정보3</div>
+            <div className="basic">기본정보4</div>
+            <div className="basic">기본정보5</div>
+            <div className="basic">기본정보6</div>
+            <div className="basic">기본정보7</div>
+            <div className="basic">기본정보8</div>
+            <div className="basic">기본정보9</div>
+            <button className="basic-summit">submit</button>
           </div>
         </div>
       ) : (
@@ -264,7 +276,7 @@ const ResultLists = () => {
             <div className="left-result">
               <img className="list-img" src={profilePic} alt="" />
               <span className="name-span">{name.NAME}</span>
-              <span className="status-span">{name.WRK_STATUS}</span>
+              <span className="status-span">적극구징중</span>
             </div>
             <div className="middle-result">
               <div className="title">
@@ -274,7 +286,7 @@ const ResultLists = () => {
                   ({name.CSTART_DATE} ~ {name.CEND_DATE})
                 </span>
                 <span className="job-level">{name.WRK_LV3}</span>
-                <span className="recent-login">최근접속일 {name.LGN_DATE}</span>
+                <span className="recent-login">최근접속일 2021.02.17</span>
               </div>
               <div className="bubble-wrap">
                 <span className="level4-bubble">{name.WRK_LV4}</span>
