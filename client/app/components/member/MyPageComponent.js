@@ -8,6 +8,7 @@ import emptyHeart from './images/empty_heart.png';
 import fullHeart from './images/full_heart.png';
 import emptyBookmark from './images/empty_bookmark.png';
 import fullBookmark from './images/full_bookmark.png';
+import icon_arrow_right from './images/icon_arrow_right_gray.png';
 import MainComponent from '../Main/MainComponent';
 import ResumeComponent from '../resume/ResumeComponent';
 
@@ -649,13 +650,21 @@ function ResumeList() {
       finishDate: '2021.2.1'
     }
   ]);
+  const [isPublic, setIsPublic] = useState(false);
 
   return (
     <section id="resume-list-container">
       <article id="resume-list-content">
         <nav>
           <ul className="resume-breadcrumb">
-            <li className="breadcrumb-items">이력서 관리 &gt; </li>
+            <li
+              className="breadcrumb-items"
+              style={{
+                background: `url(${icon_arrow_right}) no-repeat right 12px`
+              }}
+            >
+              이력서 관리
+            </li>
             <li className="breadcrumb-items">이력서 목록</li>
           </ul>
         </nav>
@@ -670,7 +679,7 @@ function ResumeList() {
         <div className="title-content">
           <div>
             <span className="title">최대 10개 중 </span>
-            <span>{items.length}</span>
+            <span className="count">{items.length}</span>
             <span>건</span>
           </div>
           <button>신규 이력서 만들기 +</button>
@@ -691,11 +700,18 @@ function ResumeList() {
                   </span>
                 </div>
               </div>
-              <div>(자소서명) {item.title} </div>
+              <div className="resume-name">(자소서명) {item.title} </div>
               <div className="resume-bottom">
                 <div className="left">
                   <span>공개 설정 변경: 공개</span>
-                  <button>변경</button>
+                  <div
+                    className={`btn-public ${isPublic ? 'active' : null}`}
+                    onClick={() => setIsPublic(!isPublic)}
+                  >
+                    <div
+                      className={`ellipse ${isPublic ? 'active' : null}`}
+                    ></div>
+                  </div>
                   <span>지원내역 보기</span>
                 </div>
                 <div className="right">
@@ -722,9 +738,9 @@ function MakeResume() {
           <li className="breadcrumb-items">&nbsp;최근 본 공고</li>
         </ul>
       </nav>
-      <article id="resume-container">
+      <section className="resume-main">
         <ResumeComponent />
-      </article>
+      </section>
     </section>
   );
 }
