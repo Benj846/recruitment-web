@@ -260,8 +260,8 @@ function Profile() {
   async function getImage() {
     try {
       const response = await axios.get('/api/getimage/' + 1);
-      console.log(response.data);
-      console.log(response.data[0].PIC);
+      // console.log(response.data);
+      // console.log(response.data[0].PIC);
       const dataArr = response.data[0].PIC;
       setFilePath(dataArr);
     } catch (error) {
@@ -296,7 +296,14 @@ function Profile() {
             <div style={{ display: 'flex' }}>
               {filePreview == '' ? (
                 (getImage(),
-                (
+                filePath == null ? (
+                  <img
+                    src={david}
+                    width="160px"
+                    height="220px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                ) : (
                   <img
                     src={filePath}
                     width="160px"
