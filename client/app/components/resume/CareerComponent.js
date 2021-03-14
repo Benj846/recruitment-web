@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Select from 'react-select';
-import MultiLevelSelect from 'react-multi-level-selector';
 import icon_arrow_down from './logo_and_images/icon_arrow_down_40px.png';
 import icon_close_32px from './logo_and_images/icon_close_32px.png';
 import '../../styles/CareerComponent';

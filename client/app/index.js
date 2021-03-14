@@ -11,8 +11,10 @@ import 'babel-polyfill';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: 'http://localhost:3333/graphql'
+  uri: 'http://localhost:23306/graphql'
+  // uri: 'http://121.0.123.233:23306/graphql'
 });
+
 render(
   <ApolloProvider client={client}>
     <Router>

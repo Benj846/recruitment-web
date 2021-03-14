@@ -15,7 +15,7 @@ const typeDefs = require('./schema');
 const { ApolloServer, gql } = require('apollo-server-express');
 
 const isDev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 3333;
+const port = process.env.PORT || 23306;
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -449,6 +449,7 @@ app.post('/resume/insertintro', async (req, res, next) => {
 //   });
 // });
 
+// -------------------------Graphql---------------------------------
 const getDefaultWork = async ({ LV, ID, UPPER_ID }) => {
   const [rows, fields] = await pool.query('select * from TB_CMN_WORK');
   const filteredWorks = rows.filter((args) => args.LV === LV);
@@ -470,11 +471,7 @@ const resolvers = {
   Query: {
     getDefaultWork: (parent, { LV, ID, UPPER_ID }, context, info) =>
       getDefaultWork({ LV, ID, UPPER_ID }),
-    // getlv2Work: (parent, args, context, info) => {
-    //   getlv2Work();
-    // }
     getLevelWork: (_, { LV, ID }) => getLevelWork({ LV, ID }),
-    // getlv2Work: (_, { LV, ID }) => console.log(LV)
     getRSM_CARR: () => getRSM_CARR()
   }
 };

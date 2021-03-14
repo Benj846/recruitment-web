@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/HeadhuntingComponent';
 import JobTreeComponent from '../recruitment/switchMenu/JobTreeComponent';
+import Button from './tab_button/index';
 import profilePic from './image/img_profile.png';
 import { gql, useQuery, useLazyQuery } from '@apollo/client';
 import icon_chevron from './image/icon_chevron_7px.png';
@@ -221,140 +222,10 @@ function HeadhuntingComponent() {
               <button className="tab-item tab-01">제안수락 0명</button>
               <button className="tab-item tab-01">채용전형 0명</button>
             </div>
-            <div className="Component-wrapper">
-              {/* {called && loading && <p>loading</p>} */}
-              {/* {error && <p>error message is : {error.message}</p>} */}
-              {/* {data && Object.keys(data.getRSM_CARR)} */}
-              {data &&
-                data.getRSM_CARR.map((name) => (
-                  <div key={name.ID} className="result-list">
-                    {console.log(data)}
-                    <div
-                      className="list-checkbox"
-                      type="checkbox"
-                      name="list-checkbox"
-                      onClick={() => setListSelected(!listSelected)}
-                      style={{
-                        background: listSelected
-                          ? `url(${icon_chevron_active}) no-repeat center center`
-                          : `url(${icon_chevron}) no-repeat center center`
-                      }}
-                    ></div>
-                    <div className="left-result">
-                      <img className="list-img" src={profilePic} alt="" />
-                      <span className="name-span">{name.NAME}</span>
-                      <span className="status-span">적극구직중</span>
-                    </div>
-                    <div className="middle-result">
-                      <div className="title">
-                        <span className="recent-company-title">최근회사</span>
-                        <span className="recent-company">{name.COR_NAME}</span>
-                        <span className="recent-company-date">
-                          ({name.CSTART_DATE} ~ {name.CEND_DATE})
-                        </span>
-                        <span className="job-level">{name.WRK_LV3}</span>
-                        <span className="recent-login">
-                          최근접속일 2021.02.17
-                        </span>
-                      </div>
-                      <div className="bubble-wrap">
-                        <span className="level4-bubble">{name.WRK_LV4}</span>
-                        <span className="level4-bubble">{name.WRK_LV4}</span>
-                        <span className="level4-bubble">{name.WRK_LV4}</span>
-                      </div>
-                      <div className="result-box">
-                        <div className="experience-wrap">
-                          <span
-                            className="total"
-                            style={{
-                              background: `url(${icon_career}) no-repeat 0 1px`,
-                              paddingLeft: `24px`
-                            }}
-                          >
-                            총 경력 8년 1개월
-                          </span>
-                          <span className="experience">
-                            {name.COR_NAME}(5년 11개월)
-                          </span>
-                        </div>
-                        <div className="edu-detail">
-                          <span
-                            className="name"
-                            style={{
-                              background: `url(${icon_edu}) no-repeat 0 1px`,
-                              paddingLeft: `24px`
-                            }}
-                          >
-                            {name.UNIV_NAME}({name.TYPE})
-                          </span>
-                          <span className="major">{name.MAJOR}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="right-result">
-                      <button
-                        className="interests"
-                        style={{
-                          background: `url(${
-                            star ? icon_interests_active : icon_interests
-                          }) no-repeat 38px center`,
-                          paddingLeft: `22px`
-                        }}
-                        onClick={() => setStar(!star)}
-                      >
-                        관심인재
-                      </button>
-                      <button
-                        className="interests"
-                        style={{
-                          background: `url(${icon_memo}) no-repeat 38px center`,
-                          paddingLeft: `22px`
-                        }}
-                      >
-                        메모하기
-                      </button>
-                      <button className="interests">이력없음</button>
-                    </div>
-                  </div>
-                ))}
-            </div>
+            <Button />
           </div>
         </div>
       </div>
-      {/* --------------conditional rendering----------- */}
-      {check ? (
-        <div className="popup-propos">
-          <div className="popup-content">
-            <div className="banner">
-              <span className="name">채용제안 작성하기</span>
-            </div>
-            <div className="close" onClick={() => setCheck(!check)}>
-              close
-            </div>
-            <div className="saved-info">
-              불러오기
-              <br />
-              <select name="saved-list" id="nothing">
-                <option value="생산관리(보냄)">생산관리(보냄)</option>
-                <option value="생산관리(보냄)">생산관리(보냄)</option>
-                <option value="생산관리(보냄)">생산관리(보냄)</option>
-              </select>
-            </div>
-            <div className="basic">기본정보1</div>
-            <div className="basic">기본정보2</div>
-            <div className="basic">기본정보3</div>
-            <div className="basic">기본정보4</div>
-            <div className="basic">기본정보5</div>
-            <div className="basic">기본정보6</div>
-            <div className="basic">기본정보7</div>
-            <div className="basic">기본정보8</div>
-            <div className="basic">기본정보9</div>
-            <button className="basic-summit">submit</button>
-          </div>
-        </div>
-      ) : (
-        <div></div>
-      )}
     </div>
   );
 }
